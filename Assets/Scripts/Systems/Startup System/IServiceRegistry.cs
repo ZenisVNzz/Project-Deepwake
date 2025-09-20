@@ -5,5 +5,5 @@ public interface IServiceRegistry
 {
     void Register<TService>(TService service);
     TService Get<TService>();
-    TService TryGet<TService>(out TService service);
+    bool TryGet<TService>(out TService service);
 }
