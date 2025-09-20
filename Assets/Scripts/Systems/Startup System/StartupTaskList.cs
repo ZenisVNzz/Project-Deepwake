@@ -1,9 +1,9 @@
-using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "StartupTaskList", menuName = "StartupSystem/StartupTaskList")]
 public class StartupTaskList : ScriptableObject
 {
-    List<IStartupTask> taskList;
+    public List<StartupTask> taskList = new List<StartupTask>();
 }
