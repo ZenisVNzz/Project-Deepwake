@@ -9,12 +9,13 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class NetworkManager : IGameService
 {
     private NetworkServiceList _networkServiceList;
-    private ServiceRegistry _serviceRegistry;
+    private IServiceRegistry _serviceRegistry;
 
     public async Task<bool> InitAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
         AsyncOperationHandle<NetworkServiceList> handle = Addressables.LoadAssetAsync<NetworkServiceList>("NetworkServiceList");
         _networkServiceList = await handle.Task;
+        _serviceRegistry = new ServiceRegistry();
 
         foreach (var service in _networkServiceList.NetworkServices)
         {
@@ -25,7 +26,7 @@ public class NetworkManager : IGameService
                 timeoutCTS.CancelAfter(TimeSpan.FromSeconds(10));
                 try
                 {
-                    var o = await service.InitAsync(serviceRegistry, timeoutCTS.Token);
+                    var o = await service.InitAsync(_serviceRegistry, timeoutCTS.Token);
                     if (!o)
                     {
                         Debug.Log($"[Network] Initialize service failed: {ServiceName}");

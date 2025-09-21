@@ -7,19 +7,26 @@ using UnityEngine.Networking;
 public class NetworkMonitor : NetworkService
 {
     private bool _isOnline;
+    public bool IsOnline => _isOnline;
     private readonly string _pingUrl = "https://www.google.com";
     private readonly int _interval = 5;
 
     public override async Task<bool> InitAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
+        _isOnline = await CheckConnectionAsync();
+        Debug.Log($"[NetworkMonitor] Client status: {(_isOnline ? "Online" : "Offline")}");
+        serviceRegistry.Register<NetworkMonitor>(this);
+        _ = MonitorLoop(ct);
+        return true;
+    }
+
+    private async Task MonitorLoop(CancellationToken ct)
+    {
         while (!ct.IsCancellationRequested)
         {
             _isOnline = await CheckConnectionAsync();
-            await Task.Delay(_interval * 1000);
+            await Task.Delay(_interval * 1000, ct);
         }
-        Debug.Log($"[NetworkMonitor] Client status: {(_isOnline ? "Online" : "Offline")}");
-        serviceRegistry.Register<NetworkMonitor>(this);
-        return true;
     }
 
     private async Task<bool> CheckConnectionAsync()

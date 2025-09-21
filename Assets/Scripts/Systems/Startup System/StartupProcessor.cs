@@ -11,7 +11,7 @@ public class StartupProcessor : MonoBehaviour
     public static StartupProcessor Instance;
     [SerializeField] private string _sceneToLoad = "Title";
     private StartupTaskList _taskList;
-    private ServiceRegistry _serviceRegistry;
+    private IServiceRegistry _serviceRegistry;
 
     private CancellationTokenSource _cts;
     [SerializeField] private float _timeout = 10f;
