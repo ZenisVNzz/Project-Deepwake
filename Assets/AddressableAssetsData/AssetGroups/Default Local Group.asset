@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - GameService
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc0f9d8e4b4b7734ea1084e7c1386341
+    m_Address: NetworkServiceList
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NetworkService
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: db30cef871e41d8428315e0e590fec13, type: 2}
   m_SchemaSet:
