@@ -16,7 +16,7 @@ public class StartupProcessor : MonoBehaviour
     private CancellationTokenSource _cts;
     [SerializeField] private float _timeout = 10f;
 
-    private void Awake()
+    private async void Awake()
     {
         if (Instance == null)
         {
@@ -29,24 +29,11 @@ public class StartupProcessor : MonoBehaviour
         }
 
         AsyncOperationHandle<StartupTaskList> handle = Addressables.LoadAssetAsync<StartupTaskList>("StartupTaskList");
-        handle.Completed += op =>
-        {
-            if (op.Status == AsyncOperationStatus.Succeeded)
-            {
-                _taskList = (StartupTaskList)op.Result;
-            }
-            else
-            {
-                Debug.LogError("[Addressables] Load StartupTaskList failed.");
-            }    
-        };
+        _taskList = await handle.Task;
 
         _serviceRegistry = new ServiceRegistry();
         _cts = new CancellationTokenSource();
-    }
 
-    private async void Start()
-    {
         var t = await RunAllTasks(_cts.Token);
         if (t)
         {
@@ -60,7 +47,13 @@ public class StartupProcessor : MonoBehaviour
     }
 
     private async Task<bool> RunAllTasks(CancellationToken ct)
-    {      
+    {
+        if (_taskList.TaskList.Count <= 0)
+        {
+            Debug.LogWarning("[Startup] No task to do.");
+            return false;
+        }
+
         foreach (var task in _taskList.TaskList)
         {
             string TaskName = task.GetType().Name;
