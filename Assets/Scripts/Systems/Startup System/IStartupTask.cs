@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IStartupTask
 {
-    Task<bool> RunTask(IServiceRegistry serviceRegistry, CancellationToken ct);
+    bool HasTimeout { get; }
+    Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct);
 }

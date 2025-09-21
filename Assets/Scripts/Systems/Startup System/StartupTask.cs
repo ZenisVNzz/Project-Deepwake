@@ -4,5 +4,6 @@ using UnityEngine;
 
 public abstract class StartupTask : ScriptableObject, IStartupTask
 {
-    public abstract Task<bool> RunTask(IServiceRegistry serviceRegistry, CancellationToken ct);
+    public abstract bool HasTimeout { get; }
+    public abstract Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct);
 }

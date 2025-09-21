@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StartupTaskList", menuName = "StartupSystem/StartupTaskList")]
 public class StartupTaskList : ScriptableObject
 {
-    public List<StartupTask> taskList = new List<StartupTask>();
+    public List<StartupTask> TaskList = new List<StartupTask>();
 }
