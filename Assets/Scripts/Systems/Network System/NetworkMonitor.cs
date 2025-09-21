@@ -8,7 +8,6 @@ using UnityEngine.Networking;
 public class NetworkMonitor : NetworkService
 {
     private bool _isOnline;
-    public bool IsOnline => _isOnline;
     private readonly string _pingUrl = "https://www.google.com";
     private readonly int _interval = 5;
 
@@ -17,10 +16,10 @@ public class NetworkMonitor : NetworkService
     public override async Task<bool> InitAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
         _cts = new CancellationTokenSource();
-        _isOnline = await CheckConnectionAsync(_cts.Token);
+        _isOnline = await CheckConnectionAsync();
         Debug.Log($"[NetworkMonitor] Client status: {(_isOnline ? "Online" : "Offline")}");
         serviceRegistry.Register<NetworkMonitor>(this);
-        _ = MonitorLoop(ct);
+        _ = MonitorLoop(_cts.Token);
         return true;
     }
 
@@ -28,33 +27,34 @@ public class NetworkMonitor : NetworkService
     {
         while (!ct.IsCancellationRequested)
         {
-            _isOnline = await CheckConnectionAsync(_cts.Token);
-            await Task.Delay(_interval * 1000, ct);
+            bool IsOnline = await CheckConnectionAsync();
+            if (_isOnline && !IsOnline)
+            {
+                Debug.LogWarning("[NetworkMonitor] Connection Lost.");
+            }    
+            _isOnline = IsOnline;
+            await Task.Delay(_interval * 1000);
         }
     }
 
-    private async Task<bool> CheckConnectionAsync(CancellationToken ct)
+    public async Task<bool> CheckConnectionAsync()
     {
         using (var req = UnityWebRequest.Get(_pingUrl))
+        using (var timeoutCTS = new CancellationTokenSource(TimeSpan.FromSeconds(5)))
         {
-            using (var timeoutCTS = CancellationTokenSource.CreateLinkedTokenSource(ct))
+            var op = req.SendWebRequest();
+
+            while (!op.isDone)
             {
-                timeoutCTS.CancelAfter(TimeSpan.FromSeconds(5));
-                var op = req.SendWebRequest();
-
-                while (!op.isDone)
+                if (timeoutCTS.Token.IsCancellationRequested)
                 {
-                    if (ct.IsCancellationRequested)
-                    {
-                        req.Abort();
-                        return false;
-                    }
-                    await Task.Yield();
+                    req.Abort();
+                    return false;
                 }
+                await Task.Yield();
+            }
 
-                return req.result == UnityWebRequest.Result.Success;
-            }    
-            
+            return req.result == UnityWebRequest.Result.Success;
         }
     }
 }

@@ -77,11 +77,21 @@ public class StartupProcessor : MonoBehaviour
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogException(ex);
-                    return false;
+                    Debug.LogException(ex); 
+                    return false;                  
                 }
             }    
         }   
         return true;
+    }   
+    
+    public Tservice GetService<Tservice>()
+    {
+        return _serviceRegistry.Get<Tservice>();
+    }    
+
+    public bool GetService<Tservice>(out Tservice service)
+    {
+        return _serviceRegistry.TryGet<Tservice>(out service);
     }    
 }
