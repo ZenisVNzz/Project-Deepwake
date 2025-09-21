@@ -21,6 +21,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - GameService
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b8cafbb0e58d79a4e9faf99966fe58d1
+    m_Address: PlayerSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc0f9d8e4b4b7734ea1084e7c1386341
     m_Address: NetworkServiceList
     m_ReadOnly: 0
