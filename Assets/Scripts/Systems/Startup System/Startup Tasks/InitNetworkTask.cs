@@ -9,8 +9,9 @@ public class InitNetworkTask : StartupTask
 
     public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
-        var net = new NetworkManager();
-        await net.InitAsync(serviceRegistry, ct);
+        var Net = new NetworkManager();
+        await Net.InitAsync(serviceRegistry, ct);
+
         return true;
     }
 }

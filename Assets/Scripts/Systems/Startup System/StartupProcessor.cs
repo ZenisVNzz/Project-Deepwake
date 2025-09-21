@@ -69,6 +69,10 @@ public class StartupProcessor : MonoBehaviour
                         Debug.LogWarning($"[Startup] Task failed: {TaskName}");
                         return false;
                     }
+                    else
+                    {
+                        Debug.Log($"[Startup] Task successfully: {TaskName}");
+                    }    
                 }
                 catch (OperationCanceledException)
                 {

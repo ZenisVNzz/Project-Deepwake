@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ad2543a8461bc44898f2605edbeb4c, type: 3}
-  m_Name: StartupTaskList
+  m_Script: {fileID: 11500000, guid: 4810152772639dc4e8d1cd4d0a3b1436, type: 3}
+  m_Name: ConfigList
   m_EditorClassIdentifier: 
-  TaskList:
-  - {fileID: 11400000, guid: 7a53a98db98edaf42ba9ca2546f3ba43, type: 2}
-  - {fileID: 11400000, guid: 068713747145d9c4d9158f06f1526fbc, type: 2}
+  _configs:
+  - {fileID: 11400000, guid: b8cafbb0e58d79a4e9faf99966fe58d1, type: 2}

@@ -47,5 +47,15 @@ public class NetworkManager : IGameService
         }
         serviceRegistry.Register<NetworkManager>(this);
         return true;
-    }    
+    }
+
+    public Tservice GetService<Tservice>()
+    {
+        return _serviceRegistry.Get<Tservice>();
+    }
+
+    public bool GetService<Tservice>(out Tservice service)
+    {
+        return _serviceRegistry.TryGet<Tservice>(out service);
+    }
 }

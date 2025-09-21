@@ -8,7 +8,7 @@ public class JsonReader
     public JsonReader(string path)
         { this.FilePath = path; }
 
-    public T Read<T>(string fileName)
+    public string Read(string fileName)
     {
         string path = Path.Combine(FilePath, fileName);
 
@@ -18,7 +18,6 @@ public class JsonReader
             return default;
         }
 
-        string json = File.ReadAllText(path);
-        return JsonUtility.FromJson<T>(json);
+        return File.ReadAllText(path);
     }
 }

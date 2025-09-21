@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ff1207baddb889741829269af6217c36
   m_SerializeEntries:
+  - m_GUID: 41767efadb643f8479652853c78d1545
+    m_Address: Assets/Data/Config/ConfigList.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Config
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aa9bdcda775f36949b2bc92509a912ff
     m_Address: StartupTaskList
     m_ReadOnly: 0
@@ -24,7 +30,8 @@ MonoBehaviour:
   - m_GUID: b8cafbb0e58d79a4e9faf99966fe58d1
     m_Address: PlayerSettings
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Config
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc0f9d8e4b4b7734ea1084e7c1386341
     m_Address: NetworkServiceList
