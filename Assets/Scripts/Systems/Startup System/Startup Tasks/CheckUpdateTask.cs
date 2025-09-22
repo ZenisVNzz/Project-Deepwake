@@ -40,7 +40,7 @@ public class CheckUpdateTask : StartupTask
                 }
                 else
                 {
-                    Debug.LogWarning($"[CheckUpdateTask] Game is up to date.");
+                    Debug.Log($"[CheckUpdateTask] Game is up to date.");
                     task.SetResult(true);
                 }
             }
