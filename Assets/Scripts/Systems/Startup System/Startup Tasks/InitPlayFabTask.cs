@@ -48,7 +48,7 @@ public class InitPlayFabTask : StartupTask
 
         var playFabServiceMg = new PlayFabServiceManager(SR);
         PlayFabClient playFabClient = playFabServiceMg.GetService<PlayFabClient>();
-        await playFabClient.LoginWithDefaultIdAsync();
+        await playFabClient.DefaultIdLoginAsync();
 
         await playFabServiceMg.InitAsync(serviceRegistry, ct);
 
