@@ -9,16 +9,18 @@ public class ConfigLoader : IConfigLoader
         reader = new JsonReader(Application.persistentDataPath);
     }
 
-    public T Load<T>() where T : ScriptableObject, IConfig
+    public void Load(ScriptableObject config)
     {
-        string fileName = typeof(T).Name + ".json";
+        if (!(config is IConfig))
+        {
+            Debug.LogWarning($"[ConfigLoader] {config.name} type is incorrect, please check again.");
+            return;
+        }    
+
+        string fileName = config.name + ".json";
 
         string json = reader.Read(fileName);
+        JsonUtility.FromJsonOverwrite(json, config);
 
-        T instance = ScriptableObject.CreateInstance<T>();
-
-        JsonUtility.FromJsonOverwrite(json, instance);
-
-        return instance;
     }
 }

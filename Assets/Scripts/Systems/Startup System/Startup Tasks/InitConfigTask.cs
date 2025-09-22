@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -19,18 +20,26 @@ public class InitConfigTask : StartupTask
         IConfigLoader loader = new ConfigLoader();
 
         foreach (var config in configList.Configs)
-        {
+        {           
             var type = config.GetType();
 
             string fileName = type.Name + ".json";
-            JsonReader reader = new JsonReader(Application.persistentDataPath);
-            string json = reader.Read(fileName);
+            Debug.Log($"[ConfigReader] Reading {fileName}");
 
-            JsonUtility.FromJsonOverwrite(json, config);
+            try
+            {
+                loader.Load(config);
 
-            var registryMethod = typeof(IServiceRegistry).GetMethod("Register");
-            var genericRegister = registryMethod.MakeGenericMethod(type);
-            genericRegister.Invoke(SR, new object[] { config });
+                var registryMethod = typeof(IServiceRegistry).GetMethod("Register");
+                var genericRegister = registryMethod.MakeGenericMethod(type);
+                genericRegister.Invoke(SR, new object[] { config });
+
+                Debug.Log($"[ConfigReader] Reading {fileName} successfully");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[ConfigReader] Reading {fileName} failed\nException: {ex}");
+            }        
         }
 
         var configManager = new ConfigManager(SR);
