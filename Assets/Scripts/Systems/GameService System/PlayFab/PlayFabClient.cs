@@ -3,6 +3,7 @@ using PlayFab.ClientModels;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using static UnityEditorInternal.ReorderableList;
 
 [CreateAssetMenu(fileName = "PlayFabClient", menuName = "PlayFabService/PlayFabClient")]
 public class PlayFabClient : PlayFabService
@@ -14,14 +15,14 @@ public class PlayFabClient : PlayFabService
         return true;
     }
 
-    public async Task<bool> LoginCustomIdAsync()
+    public async Task<bool> LoginWithDefaultIdAsync()
     {
         var task = new TaskCompletionSource<bool>();
 
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = SystemInfo.deviceUniqueIdentifier,
-            CreateAccount = true
+            CustomId = "70844766C918E6C2",
+            CreateAccount = false
         };
 
         PlayFabClientAPI.LoginWithCustomID(request, result =>
