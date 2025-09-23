@@ -4,10 +4,25 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManager : MonoBehaviour, IManager
 {
     public static ResourceManager Instance;
+    private Dictionary<string, AssetReferences> _assetReferences = new Dictionary<string, AssetReferences>();
     private Dictionary<string, AsyncOperationHandle> _loadedAssets = new Dictionary<string, AsyncOperationHandle>();
+
+    public async Task<bool> InitAsync()
+    {
+        AsyncOperationHandle<AssetReferencesList> handle = Addressables.LoadAssetAsync<AssetReferencesList>("AssetReferencesList");
+        await handle.Task;
+        AssetReferencesList AssetReferencesList = handle.Result;
+
+        foreach (AssetReferences assetReference in AssetReferencesList.References)
+        {
+            _assetReferences[assetReference.Key] = assetReference;
+        }
+
+        return true;
+    }
 
     private void Awake()
     {
@@ -22,25 +37,57 @@ public class ResourceManager : MonoBehaviour
         }    
     }
 
-    public async Task Preload(string label)
+    public async Task Preload(string key)
     {
-        AsyncOperationHandle<IList<Object>> handle = Addressables.LoadAssetAsync<IList<Object>>(label);
-        await handle.Task;
-        
-        if (handle.Status == AsyncOperationStatus.Succeeded)
-        {           
-            foreach (Object asset in handle.Result)
+        if (_assetReferences.TryGetValue(key, out AssetReferences assetReferences))
+        {
+            if (assetReferences.Assets.Count > 0)
             {
-                if (!_loadedAssets.ContainsKey(asset.name))
+                foreach (AssetReference assetReference in assetReferences.Assets)
                 {
-                    _loadedAssets.Add(asset.name, handle);
-                    Debug.Log($"[ResourceManager] Preloaded asset {asset.name}");
+                    AsyncOperationHandle<Object> handle = assetReference.LoadAssetAsync<Object>();
+                    await handle.Task;
+
+                    if (handle.Status == AsyncOperationStatus.Succeeded)
+                    {
+                        _loadedAssets[assetReference.RuntimeKey.ToString()] = handle;
+                    }    
+                    else
+                    {
+                        Debug.LogError($"[ResourceManager] Preload asset: {assetReference.RuntimeKey.ToString()} failed.");
+                    }    
                 }    
-            }    
-        }    
+            }
+
+            if (assetReferences.Labels.Count > 0)
+            {
+                foreach (AssetLabelReference labelReference in assetReferences.Labels)
+                {
+                    var locations = await Addressables.LoadResourceLocationsAsync(labelReference).Task;
+                    var handles = new List<AsyncOperationHandle<Object>>();
+
+                    foreach (var loc in locations)
+                    {
+                        AsyncOperationHandle<Object> handle = Addressables.LoadAssetAsync<Object>(loc);
+                        handles.Add(handle);
+
+                        await handle.Task;
+
+                        if (handle.Status == AsyncOperationStatus.Succeeded)
+                        {
+                            _loadedAssets[loc.PrimaryKey] = handle;
+                        }    
+                        else
+                        {
+                            Debug.LogError($"[ResourceManager] Preload asset: {loc.PrimaryKey} failed.");
+                        }    
+                    }
+                }    
+            }
+        }
         else
         {
-            Debug.LogError($"[ResourceManager] Failed to load assets with label: {label}");
-        }    
+            Debug.LogError($"[ResourceManager] Preload assets with key: {key} failed.");
+        }
     }    
 }

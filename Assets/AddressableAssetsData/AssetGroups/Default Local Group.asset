@@ -20,6 +20,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Config
+    - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62010da19a83ece4b8358141f7e0210e
+    m_Address: AssetReferences_Startup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aa9bdcda775f36949b2bc92509a912ff
     m_Address: StartupTaskList
