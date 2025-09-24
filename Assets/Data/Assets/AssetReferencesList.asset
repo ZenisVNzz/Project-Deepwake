@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4adde81d17bca84f96672e38333f45b, type: 3}
   m_Name: AssetReferencesList
   m_EditorClassIdentifier: 
-  references: []
+  _references: []

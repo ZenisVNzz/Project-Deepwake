@@ -89,5 +89,75 @@ public class ResourceManager : MonoBehaviour, IManager
         {
             Debug.LogError($"[ResourceManager] Preload assets with key: {key} failed.");
         }
-    }    
+    }
+    
+    public T GetAsset<T>(string key) where T : Object
+    {
+        if (_loadedAssets.TryGetValue(key, out AsyncOperationHandle handle))
+        {
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                return handle.Result as T;
+            }
+            else
+            {
+                Debug.LogError($"[ResourceManager] Asset with key: {key} not loaded successfully.");
+            }
+        }
+        else
+        {
+            Debug.LogError($"[ResourceManager] Asset with key: {key} not found in cache.");
+        }
+        return null;
+    }
+
+    public void Release(string key)
+    {
+        if (_loadedAssets.TryGetValue(key, out AsyncOperationHandle handle))
+        {
+            Addressables.Release(handle);
+            _loadedAssets.Remove(key);
+            Debug.Log($"[ResourceManager] Released asset: {key}");
+        }
+        else
+        {
+            Debug.LogWarning($"[ResourceManager] No asset loaded with key: {key}");
+        }
+    }
+
+    public void ReleaseAssetReferences(string key)
+    {
+        if (_assetReferences.TryGetValue(key, out AssetReferences assetReferences))
+        {
+            foreach (var assetReference in assetReferences.Assets)
+            {
+                string runtimeKey = assetReference.RuntimeKey.ToString();
+                if (_loadedAssets.TryGetValue(runtimeKey, out AsyncOperationHandle handle))
+                {
+                    Addressables.Release(handle);
+                    _loadedAssets.Remove(runtimeKey);
+                    Debug.Log($"[ResourceManager] Released asset: {runtimeKey}");
+                }
+            }
+
+            foreach (var labelReference in assetReferences.Labels)
+            {
+                var locations = Addressables.LoadResourceLocationsAsync(labelReference).WaitForCompletion();
+                foreach (var loc in locations)
+                {
+                    string locKey = loc.PrimaryKey;
+                    if (_loadedAssets.TryGetValue(locKey, out AsyncOperationHandle handle))
+                    {
+                        Addressables.Release(handle);
+                        _loadedAssets.Remove(locKey);
+                        Debug.Log($"[ResourceManager] Released asset from label: {locKey}");
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"[ResourceManager] No AssetReferences found with key: {key}");
+        }
+    }
 }
