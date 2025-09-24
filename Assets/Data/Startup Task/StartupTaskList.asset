@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: StartupTaskList
   m_EditorClassIdentifier: 
   TaskList:
+  - {fileID: 11400000, guid: f6cd3a1540cf5fa4eb537dd2e944f15d, type: 2}
   - {fileID: 11400000, guid: 7a53a98db98edaf42ba9ca2546f3ba43, type: 2}
   - {fileID: 11400000, guid: 068713747145d9c4d9158f06f1526fbc, type: 2}
+  - {fileID: 11400000, guid: 5c2196b301ca2f0459d16ec24b60b7ca, type: 2}

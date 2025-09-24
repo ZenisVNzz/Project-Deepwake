@@ -32,6 +32,8 @@ public class InitManagerTask : StartupTask
 
         foreach (var script in _script)
         {
+            Debug.Log($"[InitManagerTask] Initialize manager: {script.name}");
+
             var type = script.GetClass();
 
             var component = managerRoot.GetComponent(type);
@@ -44,6 +46,7 @@ public class InitManagerTask : StartupTask
             await manager.InitAsync();
 
             serviceRegistry.Register(component);
+            Debug.Log($"[InitManagerTask] Initialize {script.name} successfully.");
         }    
 
         return true;

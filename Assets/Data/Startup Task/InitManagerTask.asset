@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bb9828f4e9b8940a861726c96fda6a, type: 3}
   m_Name: InitManagerTask
   m_EditorClassIdentifier: 
-  _managersRoot: {fileID: 0}
-  _script: []
+  _managersRoot: Script(DontDestroyOnLoad)
+  _script:
+  - {fileID: 11500000, guid: a4ec63f06910982448e6c33ea42a4b99, type: 3}

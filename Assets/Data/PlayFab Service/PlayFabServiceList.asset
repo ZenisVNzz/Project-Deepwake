@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21dcbea37f443e4cac7d56b640a6eaa, type: 3}
   m_Name: PlayFabServiceList
   m_EditorClassIdentifier: 
-  _services: []
+  _services:
+  - {fileID: 11400000, guid: 2db960babd764e1428ab689e7e1dda48, type: 2}

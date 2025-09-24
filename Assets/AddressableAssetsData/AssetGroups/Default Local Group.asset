@@ -15,17 +15,52 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ff1207baddb889741829269af6217c36
   m_SerializeEntries:
+  - m_GUID: 068713747145d9c4d9158f06f1526fbc
+    m_Address: InitNetworkTask
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2181469371b432441ae247de73c323d1
+    m_Address: NetworkMonitor
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2db960babd764e1428ab689e7e1dda48
+    m_Address: PlayFabClient
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Startup
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 41767efadb643f8479652853c78d1545
     m_Address: ConfigList
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Config
+    - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c2904f09cbab1247bd408db3140276c
+    m_Address: Assets/Data/Startup Task/CheckUpdateTask.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c2196b301ca2f0459d16ec24b60b7ca
+    m_Address: InitPlayFabTask
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 62010da19a83ece4b8358141f7e0210e
     m_Address: AssetReferences_Startup
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a53a98db98edaf42ba9ca2546f3ba43
+    m_Address: Assets/Data/Startup Task/InitConfigTask.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Startup
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 943c9d1c8e9d1a148842b991cb1f90fa
     m_Address: AssetReferencesList
@@ -36,7 +71,6 @@ MonoBehaviour:
     m_Address: StartupTaskList
     m_ReadOnly: 0
     m_SerializedLabels:
-    - GameService
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b8cafbb0e58d79a4e9faf99966fe58d1
@@ -49,7 +83,18 @@ MonoBehaviour:
     m_Address: NetworkServiceList
     m_ReadOnly: 0
     m_SerializedLabels:
-    - NetworkService
+    - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2cafec9cd945b940ac8f841e8de8d00
+    m_Address: PlayFabServiceList
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6cd3a1540cf5fa4eb537dd2e944f15d
+    m_Address: InitManagerTask
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
