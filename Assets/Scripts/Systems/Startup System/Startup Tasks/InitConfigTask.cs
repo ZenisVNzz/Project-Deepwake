@@ -14,8 +14,7 @@ public class InitConfigTask : StartupTask
     {
         IServiceRegistry SR = new ServiceRegistry();
 
-        AsyncOperationHandle<ConfigList> handle = Addressables.LoadAssetAsync<ConfigList>("ConfigList");
-        ConfigList configList = await handle.Task;
+        ConfigList configList = ResourceManager.Instance.GetAsset<ConfigList>("ConfigList");
 
         IConfigLoader loader = new ConfigLoader();
 

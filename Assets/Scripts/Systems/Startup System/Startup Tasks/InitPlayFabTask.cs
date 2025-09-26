@@ -14,8 +14,7 @@ public class InitPlayFabTask : StartupTask
     {
         IServiceRegistry SR = new ServiceRegistry();
 
-        AsyncOperationHandle<PlayFabServiceList> handle = Addressables.LoadAssetAsync<PlayFabServiceList>("PlayFabServiceList");
-        PlayFabServiceList playFabServiceList = await handle.Task;
+        PlayFabServiceList playFabServiceList = ResourceManager.Instance.GetAsset<PlayFabServiceList>("PlayFabServiceList");
 
         foreach (PlayFabService service in playFabServiceList.Services)
         {

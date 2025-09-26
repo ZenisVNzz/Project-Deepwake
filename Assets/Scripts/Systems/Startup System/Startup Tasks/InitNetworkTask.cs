@@ -14,8 +14,7 @@ public class InitNetworkTask : StartupTask
     {
         IServiceRegistry SR = new ServiceRegistry();
 
-        AsyncOperationHandle<NetworkServiceList> handle = Addressables.LoadAssetAsync<NetworkServiceList>("NetworkServiceList");
-        NetworkServiceList networkServiceList = await handle.Task;
+        NetworkServiceList networkServiceList = ResourceManager.Instance.GetAsset<NetworkServiceList>("NetworkServiceList");
 
         foreach (var service in networkServiceList.NetworkServices)
         {

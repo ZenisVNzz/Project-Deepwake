@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 public class StartupProcessor : MonoBehaviour
 {
     public static StartupProcessor Instance;
-    [SerializeField] private string _sceneToLoad = "Title";
     private StartupTaskList _taskList;
     private IServiceRegistry _serviceRegistry;
 
@@ -38,7 +37,7 @@ public class StartupProcessor : MonoBehaviour
         if (t)
         {
             Debug.Log("[Startup] Startup success.");
-            SceneManager.LoadScene(_sceneToLoad);
+            ResourceManager.Instance.ReleaseAssetReferences("Startup");
         }
         else
         {
