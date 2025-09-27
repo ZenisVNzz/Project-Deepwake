@@ -85,6 +85,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cadb41cdb7ccc9445beb2408da5c4ea8
+    m_Address: Assets/Data/Startup Task/CheckConnectionTask.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Startup
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f2cafec9cd945b940ac8f841e8de8d00
     m_Address: PlayFabServiceList
     m_ReadOnly: 0

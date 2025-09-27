@@ -12,6 +12,7 @@ public class InitPlayFabTask : StartupTask
 
     public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
+        EventManager.Instance.Trigger("UI_NextProgress");
         IServiceRegistry SR = new ServiceRegistry();
 
         PlayFabServiceList playFabServiceList = ResourceManager.Instance.GetAsset<PlayFabServiceList>("PlayFabServiceList");

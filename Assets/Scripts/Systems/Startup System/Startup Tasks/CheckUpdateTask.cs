@@ -11,8 +11,8 @@ public class CheckUpdateTask : StartupTask
 
     public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
-        Debug.Log($"[CheckUpdateTask] Check for Update.");
         EventManager.Instance.Trigger("UI_NextProgress");
+        Debug.Log($"[CheckUpdateTask] Check for Update.");        
         bool checkResult = await CheckGameVersionAsync();
         if (checkResult)
         {

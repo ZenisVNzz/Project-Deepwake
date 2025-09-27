@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 75946565}
   - component: {fileID: 75946567}
   - component: {fileID: 75946568}
+  - component: {fileID: 75946569}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -305,7 +306,7 @@ MonoBehaviour:
   - m_TableReference:
       m_TableCollectionName: GUID:07d22206b5095cd449538865d9ea746a
     m_TableEntryReference:
-      m_KeyId: 47033154723840
+      m_KeyId: 480723328491520
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -318,9 +319,56 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:07d22206b5095cd449538865d9ea746a
+    m_TableEntryReference:
+      m_KeyId: 47033154723840
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:07d22206b5095cd449538865d9ea746a
+    m_TableEntryReference:
+      m_KeyId: 47388689096704
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _textEffect: {fileID: 75946569}
+  _loadingUI: {fileID: 1027035519}
   references:
     version: 2
     RefIds: []
+--- !u!114 &75946569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75946563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 75946565}
+  usePreset: 0
+  preset: {fileID: 0}
+  tagEffects:
+  - triggerWhen: 0
+    effect: {fileID: 11400000, guid: 2f362e9fd3c67f243b12a475f0f2f4ca, type: 2}
+    onEffectCompleted:
+      m_PersistentCalls:
+        m_Calls: []
+  globalEffects:
+  - triggerWhen: 1
+    effect: {fileID: 11400000, guid: 2f362e9fd3c67f243b12a475f0f2f4ca, type: 2}
+    onEffectCompleted:
+      m_PersistentCalls:
+        m_Calls: []
+    overrideTagEffects: 0
+  updatesPerSecond: 30
 --- !u!1 &151198995
 GameObject:
   m_ObjectHideFlags: 0

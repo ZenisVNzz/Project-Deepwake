@@ -48,6 +48,10 @@ MonoBehaviour:
     m_Localized: "Nh\u1EA5n b\u1EA5t k\u1EF3 \u0111\u1EC3 b\u1EAFt \u0111\u1EA7u"
     m_Metadata:
       m_Items: []
+  - m_Id: 480723328491520
+    m_Localized: "Ki\u1EC3m tra k\u1EBFt n\u1ED1i m\u1EA1ng..."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

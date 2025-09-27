@@ -43,6 +43,10 @@ MonoBehaviour:
     m_Key: UI_PressAny
     m_Metadata:
       m_Items: []
+  - m_Id: 480723328491520
+    m_Key: UI_CheckConnection
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

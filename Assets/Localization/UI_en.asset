@@ -48,6 +48,10 @@ MonoBehaviour:
     m_Localized: Touch to start
     m_Metadata:
       m_Items: []
+  - m_Id: 480723328491520
+    m_Localized: Checking connection...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
