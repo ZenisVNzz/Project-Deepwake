@@ -32,4 +32,10 @@ public class LocalizationText : MonoBehaviour, ITextProvider
     {
         _localizedString.Arguments = value.ToArray();
     }
+
+    public void ChangeText(LocalizedString text)
+    {
+        _localizedString = text;
+        InitText();
+    }
 }
