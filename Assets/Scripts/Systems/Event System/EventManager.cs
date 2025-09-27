@@ -35,6 +35,7 @@ public class EventManager : MonoBehaviour, IManager
             eventListeners[eventName] = null;
         }
         eventListeners[eventName] += listener;
+        Debug.Log($"[EventManager] Registered listener for event: {eventName}");
     }
 
     public void Unregister(string eventName, Action listener)
@@ -43,6 +44,7 @@ public class EventManager : MonoBehaviour, IManager
         {
             eventListeners[eventName] -= listener;
         }
+        Debug.Log($"[EventManager] Unregistered listener for event: {eventName}");
     }
 
     public void Trigger(string eventName)
@@ -51,5 +53,6 @@ public class EventManager : MonoBehaviour, IManager
         {
             eventListeners[eventName]?.Invoke();
         }
+        Debug.Log($"[EventManager] Triggered event: {eventName}");
     }
 }

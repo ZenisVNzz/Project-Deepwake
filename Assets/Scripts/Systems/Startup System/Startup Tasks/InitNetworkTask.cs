@@ -12,6 +12,7 @@ public class InitNetworkTask : StartupTask
 
     public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
+        EventManager.Instance.Trigger("UI_NextProgress");
         IServiceRegistry SR = new ServiceRegistry();
 
         NetworkServiceList networkServiceList = ResourceManager.Instance.GetAsset<NetworkServiceList>("NetworkServiceList");

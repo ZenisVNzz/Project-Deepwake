@@ -38,6 +38,7 @@ public class StartupProcessor : MonoBehaviour
         {
             Debug.Log("[Startup] Startup success.");
             ResourceManager.Instance.ReleaseAssetReferences("Startup");
+            EventManager.Instance.Trigger("UI_NextProgress");
         }
         else
         {
