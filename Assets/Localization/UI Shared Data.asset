@@ -47,6 +47,14 @@ MonoBehaviour:
     m_Key: UI_CheckConnection
     m_Metadata:
       m_Items: []
+  - m_Id: 722644768579584
+    m_Key: UI_Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 722696186552320
+    m_Key: UI_NoConnection
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -52,6 +52,14 @@ MonoBehaviour:
     m_Localized: Checking connection...
     m_Metadata:
       m_Items: []
+  - m_Id: 722644768579584
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 722696186552320
+    m_Localized: No internet connection. Please check your internet and try again.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

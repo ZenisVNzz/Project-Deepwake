@@ -52,6 +52,15 @@ MonoBehaviour:
     m_Localized: "Ki\u1EC3m tra k\u1EBFt n\u1ED1i m\u1EA1ng..."
     m_Metadata:
       m_Items: []
+  - m_Id: 722644768579584
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 722696186552320
+    m_Localized: "Kh\xF4ng c\xF3 k\u1EBFt n\u1ED1i m\u1EA1ng. Vui l\xF2ng ki\u1EC3m
+      tra k\u1EBFt n\u1ED1i v\xE0 th\u1EED l\u1EA1i."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3138bb231e946134f868987a05e4062c
+    m_Address: UI_Loading
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 41767efadb643f8479652853c78d1545
     m_Address: ConfigList
     m_ReadOnly: 0
