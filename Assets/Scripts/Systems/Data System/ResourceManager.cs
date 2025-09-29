@@ -50,11 +50,12 @@ public class ResourceManager : MonoBehaviour, IManager
 
                     if (handle.Status == AsyncOperationStatus.Succeeded)
                     {
-                        _loadedAssets[assetReference.RuntimeKey.ToString()] = handle;
+                        _loadedAssets[assetReference.Asset.name] = handle;
+                        Debug.Log($"[ResourceManager] Preloaded asset: {assetReference.Asset.name}");
                     }    
                     else
                     {
-                        Debug.LogError($"[ResourceManager] Preload asset: {assetReference.RuntimeKey.ToString()} failed.");
+                        Debug.LogError($"[ResourceManager] Preload asset: {assetReference.Asset.name} failed.");
                     }    
                 }    
             }
@@ -76,6 +77,7 @@ public class ResourceManager : MonoBehaviour, IManager
                         if (handle.Status == AsyncOperationStatus.Succeeded)
                         {
                             _loadedAssets[loc.PrimaryKey] = handle;
+                            Debug.Log($"[ResourceManager] Preloaded asset: {loc.PrimaryKey}");
                         }    
                         else
                         {

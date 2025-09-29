@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: AssetReferences_Startup
   m_EditorClassIdentifier: 
   _key: Startup
-  _assets: []
+  _assets:
+  - m_AssetGUID: a33d88e093ea3b54da2efae9eae1258f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _labels:
   - m_LabelString: Startup

@@ -73,6 +73,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a33d88e093ea3b54da2efae9eae1258f
+    m_Address: PopupContainer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Prefab
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aa9bdcda775f36949b2bc92509a912ff
     m_Address: StartupTaskList
     m_ReadOnly: 0
