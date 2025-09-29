@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _managersRoot: Script(DontDestroyOnLoad)
   _script:
-  - {fileID: 11500000, guid: a4ec63f06910982448e6c33ea42a4b99, type: 3}
   - {fileID: 11500000, guid: 8d46cfab094f88e4dbe1140bf0c6f37b, type: 3}
   - {fileID: 11500000, guid: 757f53d2a50b9754e826a26caa932c6a, type: 3}

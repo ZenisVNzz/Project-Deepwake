@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class PopupService : IPopupService
 {
@@ -18,9 +19,9 @@ public class PopupService : IPopupService
         }
     }
 
-    public void Create(string prefabID, string instanceID, string content, Action button1, Action button2)
+    public void Create(string prefabID, string instanceID, LocalizedString content, Action button1, Action button2)
     {
-        if (canvas != null)
+        if (canvas == null)
         {
             CanvasCreator canvasCreator = new CanvasCreator();
             canvas = canvasCreator.Create();
@@ -32,7 +33,7 @@ public class PopupService : IPopupService
         _activePopups.Add(instanceID, popupGO);
     }
 
-    public void Create(string prefabID, string instanceID, string content) => Create(prefabID, instanceID, content, null, null);
+    public void Create(string prefabID, string instanceID, LocalizedString content) => Create(prefabID, instanceID, content, null, null);
 
     public void Show(string instanceID)
     {

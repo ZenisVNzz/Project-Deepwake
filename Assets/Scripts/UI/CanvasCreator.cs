@@ -10,6 +10,7 @@ public class CanvasCreator
         Canvas canvas = CanvasGO.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         canvas.worldCamera = Camera.main;
+        canvas.sortingOrder = 5;
 
         CanvasScaler scaler = CanvasGO.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;

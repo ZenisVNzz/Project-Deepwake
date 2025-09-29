@@ -1,11 +1,12 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 public class Popup : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI contentText;
+    [SerializeField] private LocalizationText contentText;
     [SerializeField] private Button button1;
     [SerializeField] private Button button2;
     private Animator animator;
@@ -15,11 +16,11 @@ public class Popup : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Setup(string content, Action button1Action, Action button2Action)
+    public void Setup(LocalizedString content, Action button1Action, Action button2Action)
     {
-        contentText.text = content;
+        contentText.ChangeText(content);
 
-        if (button1Action != null)
+        if (button1 != null)
         {
             button1.onClick.AddListener(() =>
             {
@@ -29,7 +30,7 @@ public class Popup : MonoBehaviour
             });
         }   
 
-        if (button2Action != null)
+        if (button2 != null)
         {
             button2.onClick.AddListener(() =>
             {
@@ -40,5 +41,5 @@ public class Popup : MonoBehaviour
         }
     }
 
-    public void Setup(string content) => Setup(content, null, null);
+    public void Setup(LocalizedString content) => Setup(content, null, null);
 }

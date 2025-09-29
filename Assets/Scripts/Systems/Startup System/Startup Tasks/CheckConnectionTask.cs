@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Localization;
 
 
 [CreateAssetMenu(fileName = "CheckConnectionTask", menuName = "StartupSystem/CheckConnectionTask")]
@@ -26,6 +27,7 @@ public class CheckConnectionTask : StartupTask
                 else
                 {
                     Debug.LogWarning("[CheckConnectionTask] Network is offline.");
+                    UIManager.Instance.GetPopupService().Create("300001", "NetworkError", new LocalizedString("UI", "UI_NoConnection"));
                     return false;
                 }
             }    
