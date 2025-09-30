@@ -39,6 +39,7 @@ public class StartupProcessor : MonoBehaviour
             Debug.Log("[Startup] Startup success.");
             ResourceManager.Instance.ReleaseAssetReferences("Startup");
             EventManager.Instance.Trigger("UI_NextProgress");
+            await WaitForClick();
         }
         else
         {
@@ -87,7 +88,16 @@ public class StartupProcessor : MonoBehaviour
             }    
         }   
         return true;
-    }   
+    }  
+
+    private async Task WaitForClick()
+    {   
+        while (!Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+        {
+            await Task.Yield();
+        }
+        await SceneLoader.Instance.LoadScene("Title");
+    }
     
     public Tservice GetService<Tservice>()
     {
