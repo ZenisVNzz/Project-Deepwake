@@ -49,7 +49,7 @@ public class GameTimeController : MonoBehaviour
     {
         foreach (var shadowCaster in ShadowCasters)
         {
-            shadowCaster.UpdateShadowTransparency(hour, minute);
+            shadowCaster.UpdateShadowTransparency(hour);
             shadowCaster.RotateByTime(hour, minute);
         }
     }

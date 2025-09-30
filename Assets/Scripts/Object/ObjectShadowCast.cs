@@ -41,29 +41,28 @@ public class ObjectShadowCast : MonoBehaviour
         _shadowObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f, value);
     }
 
-    public void UpdateShadowTransparency(int hour, int minute = 0)
+    public void UpdateShadowTransparency(int hour)
     {
-        float timeOfDay = hour + minute / 60f;
         float alpha;
 
-        if (timeOfDay >= 6f && timeOfDay <= 18f)
+        if (hour >= 6 && hour <= 18)
         {
-            float t = (timeOfDay - 6f) / 12f;
-            alpha = Mathf.Lerp(0.3f, 0.6f, Mathf.Cos((t - 0.5f) * Mathf.PI) * 0.5f + 0.5f);
+            float t = (hour - 6) / 12f;
+            alpha = Mathf.Lerp(0.3f, 0.5f, 1f - Mathf.Abs(t - 0.5f) * 2f);
         }
-        else if (timeOfDay >= 5f && timeOfDay < 6f)
+        else if (hour > 18 && hour <= 24)
         {
-            float t = (timeOfDay - 5f) / 1f;
-            alpha = Mathf.Lerp(0.1f, 0.3f, t);
+            float t = (hour - 18) / 6f;
+            alpha = Mathf.Lerp(0.1f, 0.05f, t);
         }
-        else if (timeOfDay > 18f && timeOfDay <= 19f)
+        else if (hour >= 0 && hour < 6)
         {
-            float t = (timeOfDay - 18f) / 1f;
-            alpha = Mathf.Lerp(0.3f, 0.1f, t);
+            float t = hour / 6f;
+            alpha = Mathf.Lerp(0.05f, 0.28f, t);
         }
         else
         {
-            alpha = 0.1f;
+            alpha = 0.05f;
         }
 
         transparency(alpha);
