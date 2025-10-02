@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,9 +11,19 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        //Vector2 move = new Vector2(joystick.Horizontal, joystick.Vertical);
-        //rb.velocity = move * moveSpeed;
+        float moveX = joystick.Horizontal;
+        float moveY = joystick.Vertical;
+
+        Vector2 move = new Vector2(moveX, moveY);
+
+        rb.linearVelocity = move * moveSpeed;
+
+        if (move != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
+            rb.rotation = angle;
+        }
     }
 }
