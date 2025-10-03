@@ -1,27 +1,34 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : IMovable
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float deceleration = 20f;
 
-    public Joystick joystick;
+    private Joystick joystick;
     private Rigidbody2D rb;
+    private Vector2 input;
 
-    void Start()
+    public PlayerMovement(Rigidbody2D rigidbody, Joystick joystick)
     {
-        rb = GetComponent<Rigidbody2D>();
+        this.rb = rigidbody;
+        this.joystick = joystick;
     }
 
-    void FixedUpdate()
+    public void Move()
     {
         float moveX = joystick.Horizontal;
         float moveY = joystick.Vertical;
 
-        Vector2 move = new Vector2(moveX, moveY);
+        input = new Vector2(moveX, moveY);
 
-        rb.linearVelocity = move * moveSpeed;
+        rb.linearVelocity = input * moveSpeed;
+    }
+
+    public Vector2 GetDir()
+    {
+        return input;
     }
 }
