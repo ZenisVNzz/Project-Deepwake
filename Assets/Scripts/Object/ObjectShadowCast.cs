@@ -3,6 +3,7 @@ using UnityEngine;
 public class ObjectShadowCast : MonoBehaviour
 {
     private GameObject _shadowObject;
+    [SerializeField] private bool updateShadowSprite = false;
 
     private void Awake()
     {
@@ -74,5 +75,21 @@ public class ObjectShadowCast : MonoBehaviour
         float angle = t * 360f; 
 
         _shadowObject.transform.localRotation = Quaternion.Euler(45f, 0f, angle);
+    }
+
+    private void LateUpdate()
+    {
+        if (_shadowObject == null) return;
+
+        if (updateShadowSprite)
+        {
+            SpriteRenderer originalRenderer = GetComponent<SpriteRenderer>();
+            SpriteRenderer shadowRenderer = _shadowObject.GetComponent<SpriteRenderer>();
+
+            if (originalRenderer != null && shadowRenderer != null && shadowRenderer.sprite != originalRenderer.sprite)
+            {
+                shadowRenderer.sprite = originalRenderer.sprite;
+            }
+        }
     }
 }
