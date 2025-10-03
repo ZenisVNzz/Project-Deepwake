@@ -322,7 +322,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -336,7 +336,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -360,7 +360,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -401,10 +401,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 466
-        width: 14
-        height: 30
+        x: 0
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -423,10 +423,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_1
       rect:
         serializedVersion: 2
-        x: 88
-        y: 466
-        width: 14
-        height: 29
+        x: 64
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -445,10 +445,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_2
       rect:
         serializedVersion: 2
-        x: 152
-        y: 466
-        width: 14
-        height: 29
+        x: 128
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,10 +467,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_3
       rect:
         serializedVersion: 2
-        x: 216
-        y: 466
-        width: 14
-        height: 29
+        x: 192
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,10 +489,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_4
       rect:
         serializedVersion: 2
-        x: 280
-        y: 466
-        width: 14
-        height: 29
+        x: 256
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -511,10 +511,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_5
       rect:
         serializedVersion: 2
-        x: 344
-        y: 466
-        width: 14
-        height: 30
+        x: 320
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -533,10 +533,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_6
       rect:
         serializedVersion: 2
-        x: 408
-        y: 466
-        width: 14
-        height: 31
+        x: 384
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -555,10 +555,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_7
       rect:
         serializedVersion: 2
-        x: 472
-        y: 466
-        width: 14
-        height: 31
+        x: 448
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -577,10 +577,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_8
       rect:
         serializedVersion: 2
-        x: 536
-        y: 466
-        width: 14
-        height: 31
+        x: 512
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -599,10 +599,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_9
       rect:
         serializedVersion: 2
-        x: 600
-        y: 466
-        width: 14
-        height: 31
+        x: 576
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -621,10 +621,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_10
       rect:
         serializedVersion: 2
-        x: 664
-        y: 466
-        width: 14
-        height: 31
+        x: 640
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -643,10 +643,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_11
       rect:
         serializedVersion: 2
-        x: 728
-        y: 466
-        width: 14
-        height: 31
+        x: 704
+        y: 448
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -665,10 +665,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_12
       rect:
         serializedVersion: 2
-        x: 25
-        y: 402
-        width: 12
-        height: 29
+        x: 0
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -687,10 +687,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_13
       rect:
         serializedVersion: 2
-        x: 89
-        y: 402
-        width: 12
-        height: 28
+        x: 64
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -709,10 +709,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_14
       rect:
         serializedVersion: 2
-        x: 153
-        y: 402
-        width: 12
-        height: 28
+        x: 128
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -731,10 +731,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_15
       rect:
         serializedVersion: 2
-        x: 217
-        y: 402
-        width: 12
-        height: 28
+        x: 192
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -753,10 +753,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_16
       rect:
         serializedVersion: 2
-        x: 281
-        y: 402
-        width: 12
-        height: 28
+        x: 256
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -775,10 +775,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_17
       rect:
         serializedVersion: 2
-        x: 345
-        y: 402
-        width: 12
-        height: 29
+        x: 320
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -797,10 +797,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_18
       rect:
         serializedVersion: 2
-        x: 409
-        y: 402
-        width: 12
-        height: 30
+        x: 384
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -819,10 +819,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_19
       rect:
         serializedVersion: 2
-        x: 473
-        y: 402
-        width: 12
-        height: 30
+        x: 448
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -841,10 +841,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_20
       rect:
         serializedVersion: 2
-        x: 537
-        y: 402
-        width: 12
-        height: 30
+        x: 512
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -863,10 +863,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_21
       rect:
         serializedVersion: 2
-        x: 601
-        y: 402
-        width: 12
-        height: 30
+        x: 576
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -885,10 +885,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_22
       rect:
         serializedVersion: 2
-        x: 665
-        y: 402
-        width: 12
-        height: 30
+        x: 640
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -907,10 +907,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_23
       rect:
         serializedVersion: 2
-        x: 729
-        y: 402
-        width: 12
-        height: 30
+        x: 704
+        y: 384
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -929,10 +929,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_24
       rect:
         serializedVersion: 2
-        x: 23
-        y: 338
-        width: 16
-        height: 29
+        x: 0
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -951,10 +951,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_25
       rect:
         serializedVersion: 2
-        x: 87
-        y: 338
-        width: 16
-        height: 28
+        x: 64
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -973,10 +973,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_26
       rect:
         serializedVersion: 2
-        x: 151
-        y: 338
-        width: 16
-        height: 28
+        x: 128
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -995,10 +995,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_27
       rect:
         serializedVersion: 2
-        x: 215
-        y: 338
-        width: 16
-        height: 28
+        x: 192
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1017,10 +1017,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_28
       rect:
         serializedVersion: 2
-        x: 279
-        y: 338
-        width: 16
-        height: 28
+        x: 256
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1039,10 +1039,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_29
       rect:
         serializedVersion: 2
-        x: 343
-        y: 338
-        width: 16
-        height: 29
+        x: 320
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1061,10 +1061,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_30
       rect:
         serializedVersion: 2
-        x: 407
-        y: 338
-        width: 16
-        height: 30
+        x: 384
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1083,10 +1083,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_31
       rect:
         serializedVersion: 2
-        x: 471
-        y: 338
-        width: 16
-        height: 30
+        x: 448
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1105,10 +1105,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_32
       rect:
         serializedVersion: 2
-        x: 535
-        y: 338
-        width: 16
-        height: 30
+        x: 512
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1127,10 +1127,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_33
       rect:
         serializedVersion: 2
-        x: 599
-        y: 338
-        width: 16
-        height: 30
+        x: 576
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1149,10 +1149,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_34
       rect:
         serializedVersion: 2
-        x: 663
-        y: 338
-        width: 16
-        height: 30
+        x: 640
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1171,10 +1171,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_35
       rect:
         serializedVersion: 2
-        x: 727
-        y: 338
-        width: 16
-        height: 30
+        x: 704
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1193,10 +1193,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_36
       rect:
         serializedVersion: 2
-        x: 25
-        y: 275
-        width: 14
-        height: 28
+        x: 0
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1215,10 +1215,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_37
       rect:
         serializedVersion: 2
-        x: 89
-        y: 275
-        width: 14
-        height: 27
+        x: 64
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1237,10 +1237,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_38
       rect:
         serializedVersion: 2
-        x: 153
-        y: 275
-        width: 14
-        height: 27
+        x: 128
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1259,10 +1259,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_39
       rect:
         serializedVersion: 2
-        x: 217
-        y: 275
-        width: 14
-        height: 27
+        x: 192
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1281,10 +1281,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_40
       rect:
         serializedVersion: 2
-        x: 281
-        y: 275
-        width: 14
-        height: 27
+        x: 256
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1303,10 +1303,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_41
       rect:
         serializedVersion: 2
-        x: 345
-        y: 275
-        width: 14
-        height: 28
+        x: 320
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1325,10 +1325,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_42
       rect:
         serializedVersion: 2
-        x: 409
-        y: 275
-        width: 14
-        height: 29
+        x: 384
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1347,10 +1347,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_43
       rect:
         serializedVersion: 2
-        x: 473
-        y: 275
-        width: 14
-        height: 29
+        x: 448
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1369,10 +1369,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_44
       rect:
         serializedVersion: 2
-        x: 537
-        y: 275
-        width: 14
-        height: 29
+        x: 512
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1391,10 +1391,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_45
       rect:
         serializedVersion: 2
-        x: 601
-        y: 275
-        width: 14
-        height: 29
+        x: 576
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1413,10 +1413,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_46
       rect:
         serializedVersion: 2
-        x: 665
-        y: 275
-        width: 14
-        height: 29
+        x: 640
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1435,10 +1435,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_47
       rect:
         serializedVersion: 2
-        x: 729
-        y: 275
-        width: 14
-        height: 29
+        x: 704
+        y: 256
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1457,10 +1457,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_48
       rect:
         serializedVersion: 2
-        x: 25
-        y: 210
-        width: 16
-        height: 29
+        x: 0
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1479,10 +1479,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_49
       rect:
         serializedVersion: 2
-        x: 89
-        y: 210
-        width: 16
-        height: 28
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1501,10 +1501,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_50
       rect:
         serializedVersion: 2
-        x: 153
-        y: 210
-        width: 16
-        height: 28
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1523,10 +1523,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_51
       rect:
         serializedVersion: 2
-        x: 217
-        y: 210
-        width: 16
-        height: 28
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1545,10 +1545,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_52
       rect:
         serializedVersion: 2
-        x: 281
-        y: 210
-        width: 16
-        height: 28
+        x: 256
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1567,10 +1567,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_53
       rect:
         serializedVersion: 2
-        x: 345
-        y: 210
-        width: 16
-        height: 29
+        x: 320
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1589,10 +1589,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_54
       rect:
         serializedVersion: 2
-        x: 409
-        y: 210
-        width: 16
-        height: 30
+        x: 384
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1611,10 +1611,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_55
       rect:
         serializedVersion: 2
-        x: 473
-        y: 210
-        width: 16
-        height: 30
+        x: 448
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1633,10 +1633,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_56
       rect:
         serializedVersion: 2
-        x: 537
-        y: 210
-        width: 16
-        height: 30
+        x: 512
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1655,10 +1655,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_57
       rect:
         serializedVersion: 2
-        x: 601
-        y: 210
-        width: 16
-        height: 30
+        x: 576
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1677,10 +1677,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_58
       rect:
         serializedVersion: 2
-        x: 665
-        y: 210
-        width: 16
-        height: 30
+        x: 640
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1699,10 +1699,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_59
       rect:
         serializedVersion: 2
-        x: 729
-        y: 210
-        width: 16
-        height: 30
+        x: 704
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1721,10 +1721,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_60
       rect:
         serializedVersion: 2
-        x: 27
-        y: 146
-        width: 12
-        height: 29
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1743,10 +1743,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_61
       rect:
         serializedVersion: 2
-        x: 91
-        y: 146
-        width: 12
-        height: 28
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1765,10 +1765,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_62
       rect:
         serializedVersion: 2
-        x: 155
-        y: 146
-        width: 12
-        height: 28
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1787,10 +1787,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_63
       rect:
         serializedVersion: 2
-        x: 219
-        y: 146
-        width: 12
-        height: 28
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1809,10 +1809,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_64
       rect:
         serializedVersion: 2
-        x: 283
-        y: 146
-        width: 12
-        height: 28
+        x: 256
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1831,10 +1831,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_65
       rect:
         serializedVersion: 2
-        x: 347
-        y: 146
-        width: 12
-        height: 29
+        x: 320
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1853,10 +1853,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_66
       rect:
         serializedVersion: 2
-        x: 411
-        y: 146
-        width: 12
-        height: 30
+        x: 384
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1875,10 +1875,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_67
       rect:
         serializedVersion: 2
-        x: 475
-        y: 146
-        width: 12
-        height: 30
+        x: 448
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1897,10 +1897,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_68
       rect:
         serializedVersion: 2
-        x: 539
-        y: 146
-        width: 12
-        height: 30
+        x: 512
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1919,10 +1919,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_69
       rect:
         serializedVersion: 2
-        x: 603
-        y: 146
-        width: 12
-        height: 30
+        x: 576
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1941,10 +1941,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_70
       rect:
         serializedVersion: 2
-        x: 667
-        y: 146
-        width: 12
-        height: 30
+        x: 640
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1963,10 +1963,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_71
       rect:
         serializedVersion: 2
-        x: 731
-        y: 146
-        width: 12
-        height: 30
+        x: 704
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1985,10 +1985,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_72
       rect:
         serializedVersion: 2
-        x: 26
-        y: 82
-        width: 14
-        height: 30
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2007,10 +2007,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_73
       rect:
         serializedVersion: 2
-        x: 90
-        y: 82
-        width: 14
-        height: 29
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2029,10 +2029,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_74
       rect:
         serializedVersion: 2
-        x: 154
-        y: 82
-        width: 14
-        height: 29
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2051,10 +2051,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_75
       rect:
         serializedVersion: 2
-        x: 218
-        y: 82
-        width: 14
-        height: 29
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2073,10 +2073,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_76
       rect:
         serializedVersion: 2
-        x: 282
-        y: 82
-        width: 14
-        height: 29
+        x: 256
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2095,10 +2095,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_77
       rect:
         serializedVersion: 2
-        x: 346
-        y: 82
-        width: 14
-        height: 30
+        x: 320
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2117,10 +2117,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_78
       rect:
         serializedVersion: 2
-        x: 410
-        y: 82
-        width: 14
-        height: 31
+        x: 384
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2139,10 +2139,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_79
       rect:
         serializedVersion: 2
-        x: 474
-        y: 82
-        width: 14
-        height: 31
+        x: 448
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2161,10 +2161,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_80
       rect:
         serializedVersion: 2
-        x: 538
-        y: 82
-        width: 14
-        height: 31
+        x: 512
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2183,10 +2183,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_81
       rect:
         serializedVersion: 2
-        x: 602
-        y: 82
-        width: 14
-        height: 31
+        x: 576
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2205,10 +2205,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_82
       rect:
         serializedVersion: 2
-        x: 666
-        y: 82
-        width: 14
-        height: 31
+        x: 640
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2227,10 +2227,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_83
       rect:
         serializedVersion: 2
-        x: 730
-        y: 82
-        width: 14
-        height: 31
+        x: 704
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2249,10 +2249,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_84
       rect:
         serializedVersion: 2
-        x: 25
-        y: 19
-        width: 14
-        height: 28
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2271,10 +2271,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_85
       rect:
         serializedVersion: 2
-        x: 89
-        y: 19
-        width: 14
-        height: 27
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2293,10 +2293,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_86
       rect:
         serializedVersion: 2
-        x: 153
-        y: 19
-        width: 14
-        height: 27
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2315,10 +2315,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_87
       rect:
         serializedVersion: 2
-        x: 217
-        y: 19
-        width: 14
-        height: 27
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2337,10 +2337,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_88
       rect:
         serializedVersion: 2
-        x: 281
-        y: 19
-        width: 14
-        height: 27
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2359,10 +2359,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_89
       rect:
         serializedVersion: 2
-        x: 345
-        y: 19
-        width: 14
-        height: 28
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2381,10 +2381,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_90
       rect:
         serializedVersion: 2
-        x: 409
-        y: 19
-        width: 14
-        height: 29
+        x: 384
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2403,10 +2403,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_91
       rect:
         serializedVersion: 2
-        x: 473
-        y: 19
-        width: 14
-        height: 29
+        x: 448
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2425,10 +2425,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_92
       rect:
         serializedVersion: 2
-        x: 537
-        y: 19
-        width: 14
-        height: 29
+        x: 512
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2447,10 +2447,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_93
       rect:
         serializedVersion: 2
-        x: 601
-        y: 19
-        width: 14
-        height: 29
+        x: 576
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2469,10 +2469,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_94
       rect:
         serializedVersion: 2
-        x: 665
-        y: 19
-        width: 14
-        height: 29
+        x: 640
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2491,10 +2491,10 @@ TextureImporter:
       name: idle full sprite sheet (transparent BG)_95
       rect:
         serializedVersion: 2
-        x: 729
-        y: 19
-        width: 14
-        height: 29
+        x: 704
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2513,7 +2513,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d5634ed753c661941a03036cd59fc3c0
     internalID: 0
     vertices: []
     indices: 
@@ -2522,7 +2522,103 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      idle full sprite sheet (transparent BG)_0: 5138445019864556417
+      idle full sprite sheet (transparent BG)_1: 5831296548194945355
+      idle full sprite sheet (transparent BG)_10: -7019652706873629142
+      idle full sprite sheet (transparent BG)_11: 1683906828353751180
+      idle full sprite sheet (transparent BG)_12: -5130621912673721178
+      idle full sprite sheet (transparent BG)_13: 1823865521805508569
+      idle full sprite sheet (transparent BG)_14: -2069652278500812931
+      idle full sprite sheet (transparent BG)_15: 3184316643599016080
+      idle full sprite sheet (transparent BG)_16: -1127758632045206817
+      idle full sprite sheet (transparent BG)_17: -8896957166285365032
+      idle full sprite sheet (transparent BG)_18: -8883047001597221664
+      idle full sprite sheet (transparent BG)_19: -5356752847974563007
+      idle full sprite sheet (transparent BG)_2: 4406561144445313962
+      idle full sprite sheet (transparent BG)_20: 9176332283315958678
+      idle full sprite sheet (transparent BG)_21: 4991020304597919182
+      idle full sprite sheet (transparent BG)_22: -5804756500224251464
+      idle full sprite sheet (transparent BG)_23: 8796989654399586516
+      idle full sprite sheet (transparent BG)_24: -2012378114652519469
+      idle full sprite sheet (transparent BG)_25: -3944784652706744232
+      idle full sprite sheet (transparent BG)_26: 9035933859261501991
+      idle full sprite sheet (transparent BG)_27: -39434026613069358
+      idle full sprite sheet (transparent BG)_28: 2826528659700551554
+      idle full sprite sheet (transparent BG)_29: -1931574098692884503
+      idle full sprite sheet (transparent BG)_3: -927251273646225345
+      idle full sprite sheet (transparent BG)_30: 42343580685997182
+      idle full sprite sheet (transparent BG)_31: -3300339726003875108
+      idle full sprite sheet (transparent BG)_32: 3446929303884749650
+      idle full sprite sheet (transparent BG)_33: 5631594287495148135
+      idle full sprite sheet (transparent BG)_34: 6889573361263041449
+      idle full sprite sheet (transparent BG)_35: 1501248079831302007
+      idle full sprite sheet (transparent BG)_36: -4815058663842254037
+      idle full sprite sheet (transparent BG)_37: 6483306421098876720
+      idle full sprite sheet (transparent BG)_38: -1812761527168973937
+      idle full sprite sheet (transparent BG)_39: 720906435820337981
+      idle full sprite sheet (transparent BG)_4: 8456283697183728905
+      idle full sprite sheet (transparent BG)_40: -7214817483919411504
+      idle full sprite sheet (transparent BG)_41: 5006443631574978895
+      idle full sprite sheet (transparent BG)_42: 201578045965723189
+      idle full sprite sheet (transparent BG)_43: 6611683228686167370
+      idle full sprite sheet (transparent BG)_44: -1833825005348904225
+      idle full sprite sheet (transparent BG)_45: -476744900600155387
+      idle full sprite sheet (transparent BG)_46: 888457692667747675
+      idle full sprite sheet (transparent BG)_47: 5231169195562169338
+      idle full sprite sheet (transparent BG)_48: 6359851436940653560
+      idle full sprite sheet (transparent BG)_49: -5901460765555626809
+      idle full sprite sheet (transparent BG)_5: 6321143374938373139
+      idle full sprite sheet (transparent BG)_50: -625351277072845186
+      idle full sprite sheet (transparent BG)_51: 3891940692298721910
+      idle full sprite sheet (transparent BG)_52: 2893582774811547528
+      idle full sprite sheet (transparent BG)_53: 9154328295280395446
+      idle full sprite sheet (transparent BG)_54: -3545949045273451564
+      idle full sprite sheet (transparent BG)_55: 4766391677907385493
+      idle full sprite sheet (transparent BG)_56: -827829025599157761
+      idle full sprite sheet (transparent BG)_57: 762442571248188634
+      idle full sprite sheet (transparent BG)_58: -5110410772785339067
+      idle full sprite sheet (transparent BG)_59: -4870041723853003063
+      idle full sprite sheet (transparent BG)_6: -5528862106001965873
+      idle full sprite sheet (transparent BG)_60: 8931619312290168706
+      idle full sprite sheet (transparent BG)_61: -6803453631235394807
+      idle full sprite sheet (transparent BG)_62: 3474697333929083750
+      idle full sprite sheet (transparent BG)_63: 4491001165601750410
+      idle full sprite sheet (transparent BG)_64: -7952402385015366796
+      idle full sprite sheet (transparent BG)_65: -9063622356410952934
+      idle full sprite sheet (transparent BG)_66: 2913844623649176528
+      idle full sprite sheet (transparent BG)_67: -2041884740077007422
+      idle full sprite sheet (transparent BG)_68: 3470918356943953179
+      idle full sprite sheet (transparent BG)_69: 5290263086061458132
+      idle full sprite sheet (transparent BG)_7: -5206018004162819800
+      idle full sprite sheet (transparent BG)_70: 2613539918562273634
+      idle full sprite sheet (transparent BG)_71: 2386923628997126701
+      idle full sprite sheet (transparent BG)_72: 7485957873315541429
+      idle full sprite sheet (transparent BG)_73: -2571126399636375981
+      idle full sprite sheet (transparent BG)_74: 6621588937240163435
+      idle full sprite sheet (transparent BG)_75: 355196368204599111
+      idle full sprite sheet (transparent BG)_76: -6331322149827889825
+      idle full sprite sheet (transparent BG)_77: 3198924583654554359
+      idle full sprite sheet (transparent BG)_78: 2308109566160254776
+      idle full sprite sheet (transparent BG)_79: -188257747754043283
+      idle full sprite sheet (transparent BG)_8: 7673396517622501846
+      idle full sprite sheet (transparent BG)_80: -2615161010716584190
+      idle full sprite sheet (transparent BG)_81: -1623514686075585976
+      idle full sprite sheet (transparent BG)_82: 1909056069286926246
+      idle full sprite sheet (transparent BG)_83: -2047542775792959533
+      idle full sprite sheet (transparent BG)_84: -2304648620885107403
+      idle full sprite sheet (transparent BG)_85: -3506574234844169019
+      idle full sprite sheet (transparent BG)_86: 1875482704723932230
+      idle full sprite sheet (transparent BG)_87: -8711439012334282355
+      idle full sprite sheet (transparent BG)_88: -3659395537492948416
+      idle full sprite sheet (transparent BG)_89: 2274547407998591880
+      idle full sprite sheet (transparent BG)_9: -5947465207588992809
+      idle full sprite sheet (transparent BG)_90: -3742021331801144456
+      idle full sprite sheet (transparent BG)_91: 4249025387492285528
+      idle full sprite sheet (transparent BG)_92: 4694992059267177429
+      idle full sprite sheet (transparent BG)_93: 4815027889211077177
+      idle full sprite sheet (transparent BG)_94: 4883716077068077872
+      idle full sprite sheet (transparent BG)_95: -4294851596142183333
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

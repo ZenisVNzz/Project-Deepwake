@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    [Header("Movement Settings")]
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float acceleration = 15f;
+    [SerializeField] private float deceleration = 20f;
+
     public Joystick joystick;
     private Rigidbody2D rb;
 
@@ -19,11 +23,5 @@ public class PlayerMovement : MonoBehaviour
         Vector2 move = new Vector2(moveX, moveY);
 
         rb.linearVelocity = move * moveSpeed;
-
-        if (move != Vector2.zero)
-        {
-            float angle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
-        }
     }
 }
