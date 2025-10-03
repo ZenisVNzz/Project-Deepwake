@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : IMovable
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float deceleration = 20f;
 
