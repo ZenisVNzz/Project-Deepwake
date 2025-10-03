@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6169053821661467765}
   - component: {fileID: 3752239519099501585}
   - component: {fileID: 5961608221630878537}
+  - component: {fileID: 3597957618923908358}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3256734958460882611}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.496, y: 1.162, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -100,3 +101,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8ca9f96edd3c84a83868e5eb3c8071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3597957618923908358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256734958460882611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b377adcc03526724e88db2a73cd88cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reflectionAxis: 2
+  reflectionOffset: 0
+  reflectionLayer: 3
+  reflectionSprite: {fileID: 0}
+  updatePerFrame: 0

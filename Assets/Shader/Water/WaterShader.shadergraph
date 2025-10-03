@@ -1966,8 +1966,8 @@
     "m_ObjectId": "09bad07baacd4d63b2185487d394041f",
     "m_Title": "Get edges from main texture",
     "m_Position": {
-        "x": -224.99998474121095,
-        "y": 36.000003814697269
+        "x": -225.00006103515626,
+        "y": 35.999996185302737
     }
 }
 
@@ -4232,7 +4232,7 @@
     "m_Title": "Get final alpha value",
     "m_Position": {
         "x": -1321.0001220703125,
-        "y": 204.0
+        "y": 203.99998474121095
     }
 }
 
@@ -4572,7 +4572,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "X",
     "m_StageCapability": 3,
-    "m_Value": 0.10000000149011612,
+    "m_Value": 0.10999999940395355,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }
@@ -6257,7 +6257,7 @@
     "m_Title": "Get depth colour to replace MainColour (you need a height map for this to work)",
     "m_Position": {
         "x": -3119.000244140625,
-        "y": 318.99981689453127
+        "y": 318.99969482421877
     }
 }
 
@@ -9325,8 +9325,8 @@
     "m_ObjectId": "f552671eb4bd43de862972dfa8f0f056",
     "m_Title": "Get time",
     "m_Position": {
-        "x": -1073.9998779296875,
-        "y": -1668.9998779296875
+        "x": -1074.0001220703125,
+        "y": -1669.0001220703125
     }
 }
 
