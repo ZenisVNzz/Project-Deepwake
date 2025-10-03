@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameVersionUI : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class GameVersionUI : MonoBehaviour
         LocalizationText localizationText = GetComponent<LocalizationText>();
         if (localizationText != null)
         {
-            localizationText.SetArguments(new System.Collections.Generic.List<string> { Application.version });
+            localizationText.SetArguments(new List<string> { Application.version });
         }
         else
         {
