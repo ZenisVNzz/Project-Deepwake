@@ -491,6 +491,7 @@
     "m_OutputNode": {
         "m_Id": "7608b6e851914f6bb30ecea2d3487e92"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -554,7 +555,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -1243,8 +1244,8 @@
     "m_ObjectId": "6037b451b36e4ab385da834cc182128f",
     "m_Title": "Sample and colourize foam texture",
     "m_Position": {
-        "x": 10.0,
-        "y": 10.0
+        "x": -822.9998779296875,
+        "y": -288.99993896484377
     }
 }
 
@@ -1290,8 +1291,8 @@
     "m_ObjectId": "634e935391e24158ac2d6f666a93ffa8",
     "m_Title": "Get blurred main texture to use as alpha",
     "m_Position": {
-        "x": 10.0,
-        "y": 10.0
+        "x": -732.9998779296875,
+        "y": 379.99993896484377
     }
 }
 
@@ -1850,8 +1851,8 @@
     "m_ObjectId": "8bb8b19c2db34f22a5c6ed0f555663dd",
     "m_Title": "Get pixelized coords",
     "m_Position": {
-        "x": -1901.0,
-        "y": -211.50003051757813
+        "x": -1900.9998779296875,
+        "y": -211.99993896484376
     }
 }
 
@@ -2900,7 +2901,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "",
         "m_Guid": ""
     },
     "m_DefaultType": 0

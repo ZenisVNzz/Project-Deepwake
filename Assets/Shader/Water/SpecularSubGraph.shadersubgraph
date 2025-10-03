@@ -1449,8 +1449,8 @@
     "m_ObjectId": "348992fcd3774539b36b9d819d78f2f7",
     "m_Title": "Get noise scrolling left",
     "m_Position": {
-        "x": -1088.0001220703125,
-        "y": -49.0
+        "x": -1088.0,
+        "y": -49.00004577636719
     }
 }
 
@@ -1673,8 +1673,8 @@
     "m_ObjectId": "4bb9cf113a6a4ae0949d578b8aae5adc",
     "m_Title": "Get pixelized coords",
     "m_Position": {
-        "x": -2344.000244140625,
-        "y": -145.0
+        "x": -2344.0,
+        "y": -145.0000457763672
     }
 }
 
@@ -2363,8 +2363,8 @@
     "m_ObjectId": "8236e4f5af7c4acbad78d8e2534a22f1",
     "m_Title": "Get noise scrolling right",
     "m_Position": {
-        "x": -1214.0001220703125,
-        "y": 439.0
+        "x": -1213.9998779296875,
+        "y": 439.0000915527344
     }
 }
 
@@ -2731,8 +2731,8 @@
     "m_ObjectId": "9d317de4b7924587b4cf40c6b1ff203d",
     "m_Title": "Get time",
     "m_Position": {
-        "x": -1754.0001220703125,
-        "y": 379.0000305175781
+        "x": -1754.0,
+        "y": 379.0
     }
 }
 
