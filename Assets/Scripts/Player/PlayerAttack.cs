@@ -1,11 +1,26 @@
+using Mirror.BouncyCastle.Math.Field;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : IDamageDealer
 {
-    public void Attack()
+    [Header("Player Attack Settings")]
+    private float _cooldown = 2f;
+
+    private IState _playerState;
+
+    public PlayerAttack(IState playerState)
     {
-        Debug.Log("Attack");
+        _playerState = playerState;
     }
 
+    public void Attack()
+    {
+        CharacterStateType state = _playerState.GetCurrentState();
+        if (state != CharacterStateType.Attacking)
+        {
+            _playerState.ChangeState(CharacterStateType.Attacking);
+        }
+    }
 }

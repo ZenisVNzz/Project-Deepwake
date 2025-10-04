@@ -11,10 +11,14 @@ public enum CharacterStateType
 
 public class PlayerState : IState
 {
-    public CharacterStateType CurrentState { get; private set; }
+    private CharacterStateType CurrentState;
 
     public void ChangeState(CharacterStateType newState)
     {
         CurrentState = newState;
+    }
+    public CharacterStateType GetCurrentState()
+    {
+        return CurrentState;
     }
 }

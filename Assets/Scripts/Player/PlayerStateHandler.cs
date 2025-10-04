@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerStateHandler
 {
-    private PlayerState playerState;
+    private IState playerState;
     private IMovable playerMovement;
 
-    public PlayerStateHandler(PlayerState state, IMovable playerMovement)
+    public PlayerStateHandler(IState state, IMovable playerMovement)
     {
         playerState = state;
         this.playerMovement = playerMovement;
@@ -13,6 +13,8 @@ public class PlayerStateHandler
 
     public void UpdateState()
     {
+        if (playerState.GetCurrentState() == CharacterStateType.Attacking)
+            return;
         if (CheckIfMoving())
             playerState.ChangeState(CharacterStateType.Running);
         else
