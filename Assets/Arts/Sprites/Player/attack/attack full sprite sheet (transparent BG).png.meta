@@ -1,0 +1,1652 @@
+fileFormatVersion: 2
+guid: 733e7c7edea968b4382a2ef22552b7e8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3682518012810459413
+    second: attack full sprite sheet (transparent BG)_0
+  - first:
+      213: -9043495865491242975
+    second: attack full sprite sheet (transparent BG)_1
+  - first:
+      213: 6880650802152196975
+    second: attack full sprite sheet (transparent BG)_2
+  - first:
+      213: -6271550177902624891
+    second: attack full sprite sheet (transparent BG)_3
+  - first:
+      213: 6659828708506125863
+    second: attack full sprite sheet (transparent BG)_4
+  - first:
+      213: -357399788451420217
+    second: attack full sprite sheet (transparent BG)_5
+  - first:
+      213: -2158115760490160787
+    second: attack full sprite sheet (transparent BG)_6
+  - first:
+      213: 4869803010426089179
+    second: attack full sprite sheet (transparent BG)_7
+  - first:
+      213: 2874234371907084413
+    second: attack full sprite sheet (transparent BG)_8
+  - first:
+      213: -3861406250813299369
+    second: attack full sprite sheet (transparent BG)_9
+  - first:
+      213: -3764344838444846277
+    second: attack full sprite sheet (transparent BG)_10
+  - first:
+      213: 4383827650461565722
+    second: attack full sprite sheet (transparent BG)_11
+  - first:
+      213: -1341856205176715706
+    second: attack full sprite sheet (transparent BG)_12
+  - first:
+      213: -2177781370897758302
+    second: attack full sprite sheet (transparent BG)_13
+  - first:
+      213: -638897211326896390
+    second: attack full sprite sheet (transparent BG)_14
+  - first:
+      213: -1917287584216458399
+    second: attack full sprite sheet (transparent BG)_15
+  - first:
+      213: 567834448099657838
+    second: attack full sprite sheet (transparent BG)_16
+  - first:
+      213: -5537603725709343815
+    second: attack full sprite sheet (transparent BG)_17
+  - first:
+      213: -2839811422773042548
+    second: attack full sprite sheet (transparent BG)_18
+  - first:
+      213: 2074545493806514567
+    second: attack full sprite sheet (transparent BG)_19
+  - first:
+      213: 1094874816343911683
+    second: attack full sprite sheet (transparent BG)_20
+  - first:
+      213: -3695839680411502336
+    second: attack full sprite sheet (transparent BG)_21
+  - first:
+      213: 6949336777502548237
+    second: attack full sprite sheet (transparent BG)_22
+  - first:
+      213: -5635295902925429967
+    second: attack full sprite sheet (transparent BG)_23
+  - first:
+      213: 4835165138129314208
+    second: attack full sprite sheet (transparent BG)_24
+  - first:
+      213: 5499355664615438294
+    second: attack full sprite sheet (transparent BG)_25
+  - first:
+      213: 1849947826943071223
+    second: attack full sprite sheet (transparent BG)_26
+  - first:
+      213: -1832219217739070800
+    second: attack full sprite sheet (transparent BG)_27
+  - first:
+      213: -4978164703312054453
+    second: attack full sprite sheet (transparent BG)_28
+  - first:
+      213: -6069219486976009078
+    second: attack full sprite sheet (transparent BG)_29
+  - first:
+      213: 2612819286156653029
+    second: attack full sprite sheet (transparent BG)_30
+  - first:
+      213: -8933601978337019669
+    second: attack full sprite sheet (transparent BG)_31
+  - first:
+      213: 8596162392659428622
+    second: attack full sprite sheet (transparent BG)_32
+  - first:
+      213: 3231328054579432086
+    second: attack full sprite sheet (transparent BG)_33
+  - first:
+      213: -6264924841582242556
+    second: attack full sprite sheet (transparent BG)_34
+  - first:
+      213: 4511407863737633731
+    second: attack full sprite sheet (transparent BG)_35
+  - first:
+      213: 3400216368381248337
+    second: attack full sprite sheet (transparent BG)_36
+  - first:
+      213: 2339451811027401094
+    second: attack full sprite sheet (transparent BG)_37
+  - first:
+      213: 2749667608790177284
+    second: attack full sprite sheet (transparent BG)_38
+  - first:
+      213: 5736239277100806905
+    second: attack full sprite sheet (transparent BG)_39
+  - first:
+      213: -1213200816574280548
+    second: attack full sprite sheet (transparent BG)_40
+  - first:
+      213: -7411451976230540491
+    second: attack full sprite sheet (transparent BG)_41
+  - first:
+      213: 7037764338839892221
+    second: attack full sprite sheet (transparent BG)_42
+  - first:
+      213: -7935358954348470756
+    second: attack full sprite sheet (transparent BG)_43
+  - first:
+      213: 5276610483392759313
+    second: attack full sprite sheet (transparent BG)_44
+  - first:
+      213: 310986104030689665
+    second: attack full sprite sheet (transparent BG)_45
+  - first:
+      213: -8497184014808188590
+    second: attack full sprite sheet (transparent BG)_46
+  - first:
+      213: 6580808974583084038
+    second: attack full sprite sheet (transparent BG)_47
+  - first:
+      213: -5515601417531532532
+    second: attack full sprite sheet (transparent BG)_48
+  - first:
+      213: 8146594338598596510
+    second: attack full sprite sheet (transparent BG)_49
+  - first:
+      213: -5229021282003270206
+    second: attack full sprite sheet (transparent BG)_50
+  - first:
+      213: 8523580236355557643
+    second: attack full sprite sheet (transparent BG)_51
+  - first:
+      213: 4254276341539858453
+    second: attack full sprite sheet (transparent BG)_52
+  - first:
+      213: -5364583194898046792
+    second: attack full sprite sheet (transparent BG)_53
+  - first:
+      213: 8097940780275753517
+    second: attack full sprite sheet (transparent BG)_54
+  - first:
+      213: -2422176334939904674
+    second: attack full sprite sheet (transparent BG)_55
+  - first:
+      213: 9086468464140602852
+    second: attack full sprite sheet (transparent BG)_56
+  - first:
+      213: 80520368631706924
+    second: attack full sprite sheet (transparent BG)_57
+  - first:
+      213: 6628327480080052766
+    second: attack full sprite sheet (transparent BG)_58
+  - first:
+      213: 3509516696737925600
+    second: attack full sprite sheet (transparent BG)_59
+  - first:
+      213: -7775820227836117725
+    second: attack full sprite sheet (transparent BG)_60
+  - first:
+      213: -4617031551017002538
+    second: attack full sprite sheet (transparent BG)_61
+  - first:
+      213: 5648685301527043962
+    second: attack full sprite sheet (transparent BG)_62
+  - first:
+      213: 7859468782787098928
+    second: attack full sprite sheet (transparent BG)_63
+  - first:
+      213: 7499384252447695238
+    second: attack full sprite sheet (transparent BG)_64
+  - first:
+      213: -2957997781474358352
+    second: attack full sprite sheet (transparent BG)_65
+  - first:
+      213: -738988109980664692
+    second: attack full sprite sheet (transparent BG)_66
+  - first:
+      213: 4741691518156790008
+    second: attack full sprite sheet (transparent BG)_67
+  - first:
+      213: -6070302023189321629
+    second: attack full sprite sheet (transparent BG)_68
+  - first:
+      213: 7574493618820771409
+    second: attack full sprite sheet (transparent BG)_69
+  - first:
+      213: 3782031870787330767
+    second: attack full sprite sheet (transparent BG)_70
+  - first:
+      213: -4997246396837495101
+    second: attack full sprite sheet (transparent BG)_71
+  - first:
+      213: 5585492609323077305
+    second: attack full sprite sheet (transparent BG)_72
+  - first:
+      213: -5915488701298487868
+    second: attack full sprite sheet (transparent BG)_73
+  - first:
+      213: 8777762888032602341
+    second: attack full sprite sheet (transparent BG)_74
+  - first:
+      213: -6106296773222830294
+    second: attack full sprite sheet (transparent BG)_75
+  - first:
+      213: -6245417455924882873
+    second: attack full sprite sheet (transparent BG)_76
+  - first:
+      213: -3701143839451615622
+    second: attack full sprite sheet (transparent BG)_77
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be6847fc06115ecc0800000000000000
+      internalID: -3682518012810459413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 672
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1204ea1cc6c0f7280800000000000000
+      internalID: -9043495865491242975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 672
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6bc9c5037bfc7f50800000000000000
+      internalID: 6880650802152196975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 672
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58f731f575af6f8a0800000000000000
+      internalID: -6271550177902624891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 672
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 726c473dce67c6c50800000000000000
+      internalID: 6659828708506125863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 672
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c7ad8639c24a0bf0800000000000000
+      internalID: -357399788451420217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 672
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6ddfc76625dc02e0800000000000000
+      internalID: -2158115760490160787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bde23926904059340800000000000000
+      internalID: 4869803010426089179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 576
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d706db2dee453e720800000000000000
+      internalID: 2874234371907084413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 755ecc63977896ac0800000000000000
+      internalID: -3861406250813299369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_10
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 576
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b337b64505c52cbc0800000000000000
+      internalID: -3764344838444846277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a130c46850c76dc30800000000000000
+      internalID: 4383827650461565722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_12
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 576
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 646c9ce04e4c06de0800000000000000
+      internalID: -1341856205176715706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_13
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 576
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a70d2da167f6c1e0800000000000000
+      internalID: -2177781370897758302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af66fde0f5e2227f0800000000000000
+      internalID: -638897211326896390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 480
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16bd282b91d6465e0800000000000000
+      internalID: -1917287584216458399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 480
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e68c53a0c6a51e700800000000000000
+      internalID: 567834448099657838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_17
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 480
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b3073e30ca7623b0800000000000000
+      internalID: -5537603725709343815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_18
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 480
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8224849e86f698d0800000000000000
+      internalID: -2839811422773042548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_19
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 480
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78189bc92244acc10800000000000000
+      internalID: 2074545493806514567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_20
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 480
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30d23b538d6c13f00800000000000000
+      internalID: 1094874816343911683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 009774e546db5bcc0800000000000000
+      internalID: -3695839680411502336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d01e89fdaf0017060800000000000000
+      internalID: 6949336777502548237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_23
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1336aedbb386bc1b0800000000000000
+      internalID: -5635295902925429967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_24
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 384
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a1ec884315f91340800000000000000
+      internalID: 4835165138129314208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_25
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d77fe217d2a15c40800000000000000
+      internalID: 5499355664615438294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_26
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 384
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f392f54fb55ca910800000000000000
+      internalID: 1849947826943071223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_27
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b2c4083456a296e0800000000000000
+      internalID: -1832219217739070800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4772b9e3910aeab0800000000000000
+      internalID: -4978164703312054453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_29
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8c9aee580dc5cba0800000000000000
+      internalID: -6069219486976009078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_30
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e138a52c49924420800000000000000
+      internalID: 2612819286156653029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_31
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be8be7c3558750480800000000000000
+      internalID: -8933601978337019669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_32
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e058906d624bb4770800000000000000
+      internalID: 8596162392659428622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_33
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69a06fdcebbf7dc20800000000000000
+      internalID: 3231328054579432086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_34
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40558f0bc048e09a0800000000000000
+      internalID: -6264924841582242556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cb4cf2bc8dbb9e30800000000000000
+      internalID: 4511407863737633731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_36
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15345dc95ceff2f20800000000000000
+      internalID: 3400216368381248337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_37
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 689be65f607677020800000000000000
+      internalID: 2339451811027401094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_38
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40616503f18c82620800000000000000
+      internalID: 2749667608790177284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_39
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f2bc3a0b373b9f40800000000000000
+      internalID: 5736239277100806905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_40
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9c40eef848d92fe0800000000000000
+      internalID: -1213200816574280548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_41
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53b69e6f1bb352990800000000000000
+      internalID: -7411451976230540491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df0b675e0692ba160800000000000000
+      internalID: 7037764338839892221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_43
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1e18d80311ffd190800000000000000
+      internalID: -7935358954348470756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_44
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1164ab827494a3940800000000000000
+      internalID: 5276610483392759313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_45
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 189f4d4c638d05400800000000000000
+      internalID: 310986104030689665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_46
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 259fa369820f31a80800000000000000
+      internalID: -8497184014808188590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_47
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6043ab055eab35b50800000000000000
+      internalID: 6580808974583084038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_48
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0b5461dbb5a473b0800000000000000
+      internalID: -5515601417531532532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9fa06173648e0170800000000000000
+      internalID: 8146594338598596510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_50
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c5cc3b39d8ce67b0800000000000000
+      internalID: -5229021282003270206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_51
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b09538aa017d94670800000000000000
+      internalID: 8523580236355557643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_52
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518e4d1eac93a0b30800000000000000
+      internalID: 4254276341539858453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_53
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b0621cc10c2d85b0800000000000000
+      internalID: -5364583194898046792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_54
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d226c742c3aa16070800000000000000
+      internalID: 8097940780275753517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack full sprite sheet (transparent BG)_55
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3468542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e55ac84e473b26ed0800000000000000
+      internalID: -2422176334939904674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3ecefda53b257c44c8ed92f1ef20d123
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      attack full sprite sheet (transparent BG)_0: -3682518012810459413
+      attack full sprite sheet (transparent BG)_1: -9043495865491242975
+      attack full sprite sheet (transparent BG)_10: -3764344838444846277
+      attack full sprite sheet (transparent BG)_11: 4383827650461565722
+      attack full sprite sheet (transparent BG)_12: -1341856205176715706
+      attack full sprite sheet (transparent BG)_13: -2177781370897758302
+      attack full sprite sheet (transparent BG)_14: -638897211326896390
+      attack full sprite sheet (transparent BG)_15: -1917287584216458399
+      attack full sprite sheet (transparent BG)_16: 567834448099657838
+      attack full sprite sheet (transparent BG)_17: -5537603725709343815
+      attack full sprite sheet (transparent BG)_18: -2839811422773042548
+      attack full sprite sheet (transparent BG)_19: 2074545493806514567
+      attack full sprite sheet (transparent BG)_2: 6880650802152196975
+      attack full sprite sheet (transparent BG)_20: 1094874816343911683
+      attack full sprite sheet (transparent BG)_21: -3695839680411502336
+      attack full sprite sheet (transparent BG)_22: 6949336777502548237
+      attack full sprite sheet (transparent BG)_23: -5635295902925429967
+      attack full sprite sheet (transparent BG)_24: 4835165138129314208
+      attack full sprite sheet (transparent BG)_25: 5499355664615438294
+      attack full sprite sheet (transparent BG)_26: 1849947826943071223
+      attack full sprite sheet (transparent BG)_27: -1832219217739070800
+      attack full sprite sheet (transparent BG)_28: -4978164703312054453
+      attack full sprite sheet (transparent BG)_29: -6069219486976009078
+      attack full sprite sheet (transparent BG)_3: -6271550177902624891
+      attack full sprite sheet (transparent BG)_30: 2612819286156653029
+      attack full sprite sheet (transparent BG)_31: -8933601978337019669
+      attack full sprite sheet (transparent BG)_32: 8596162392659428622
+      attack full sprite sheet (transparent BG)_33: 3231328054579432086
+      attack full sprite sheet (transparent BG)_34: -6264924841582242556
+      attack full sprite sheet (transparent BG)_35: 4511407863737633731
+      attack full sprite sheet (transparent BG)_36: 3400216368381248337
+      attack full sprite sheet (transparent BG)_37: 2339451811027401094
+      attack full sprite sheet (transparent BG)_38: 2749667608790177284
+      attack full sprite sheet (transparent BG)_39: 5736239277100806905
+      attack full sprite sheet (transparent BG)_4: 6659828708506125863
+      attack full sprite sheet (transparent BG)_40: -1213200816574280548
+      attack full sprite sheet (transparent BG)_41: -7411451976230540491
+      attack full sprite sheet (transparent BG)_42: 7037764338839892221
+      attack full sprite sheet (transparent BG)_43: -7935358954348470756
+      attack full sprite sheet (transparent BG)_44: 5276610483392759313
+      attack full sprite sheet (transparent BG)_45: 310986104030689665
+      attack full sprite sheet (transparent BG)_46: -8497184014808188590
+      attack full sprite sheet (transparent BG)_47: 6580808974583084038
+      attack full sprite sheet (transparent BG)_48: -5515601417531532532
+      attack full sprite sheet (transparent BG)_49: 8146594338598596510
+      attack full sprite sheet (transparent BG)_5: -357399788451420217
+      attack full sprite sheet (transparent BG)_50: -5229021282003270206
+      attack full sprite sheet (transparent BG)_51: 8523580236355557643
+      attack full sprite sheet (transparent BG)_52: 4254276341539858453
+      attack full sprite sheet (transparent BG)_53: -5364583194898046792
+      attack full sprite sheet (transparent BG)_54: 8097940780275753517
+      attack full sprite sheet (transparent BG)_55: -2422176334939904674
+      attack full sprite sheet (transparent BG)_6: -2158115760490160787
+      attack full sprite sheet (transparent BG)_7: 4869803010426089179
+      attack full sprite sheet (transparent BG)_8: 2874234371907084413
+      attack full sprite sheet (transparent BG)_9: -3861406250813299369
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
