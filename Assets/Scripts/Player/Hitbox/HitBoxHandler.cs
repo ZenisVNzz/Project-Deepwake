@@ -8,6 +8,7 @@ public class HitBoxHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other == null) return;
         if (other.CompareTag("Enemy"))
         {
             IAttackable damageable = other.GetComponentInParent<IAttackable>();
