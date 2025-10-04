@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerStateHandler
+public class PlayerStateHandler : IStateHandler
 {
     private IState playerState;
     private IMovable playerMovement;

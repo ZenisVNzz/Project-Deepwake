@@ -11,20 +11,29 @@ public class PlayerMovement : IMovable
     private Rigidbody2D rb;
     private Vector2 input;
 
-    public PlayerMovement(Rigidbody2D rigidbody, Joystick joystick)
+    private IState playerState;
+
+    public PlayerMovement(Rigidbody2D rigidbody, Joystick joystick, IState playerState)
     {
         this.rb = rigidbody;
         this.joystick = joystick;
+        this.playerState = playerState;
     }
 
     public void Move()
     {
+        if (playerState.GetCurrentState() == CharacterStateType.Attacking)
+        {
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
+            return;
+        }
+
         float moveX = joystick.Horizontal;
         float moveY = joystick.Vertical;
 
         input = new Vector2(moveX, moveY);
 
-        rb.linearVelocity = input * moveSpeed;
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, input.normalized * moveSpeed, acceleration * Time.fixedDeltaTime);
     }
 
     public Vector2 GetDir()

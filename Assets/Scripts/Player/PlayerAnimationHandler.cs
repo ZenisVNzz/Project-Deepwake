@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class PlayerAnimationHandler
+public class PlayerAnimationHandler : IAnimationHandler
 {
     private Animator animator;
     private IState playerState;
-    private PlayerDirectionHander directionHander;
+    private ICharacterDirectionHandler directionHander;
 
-    public PlayerAnimationHandler(Animator animator, IState playerState, PlayerDirectionHander directionHander)
+    public PlayerAnimationHandler(Animator animator, IState playerState, ICharacterDirectionHandler directionHander)
     {
         this.animator = animator;
         this.playerState = playerState;

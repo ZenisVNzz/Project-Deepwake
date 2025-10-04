@@ -12,14 +12,14 @@ public enum Direction
     Right,
 }
 
-public class PlayerDirectionHander
+public class PlayerDirectionHandler : ICharacterDirectionHandler
 {
     private IMovable playerMovement;
     private Direction lastDirection = Direction.Down;
 
     private float deadzone = 0.3f;
 
-    public PlayerDirectionHander(IMovable playerMovement)
+    public PlayerDirectionHandler(IMovable playerMovement)
     {
         this.playerMovement = playerMovement;
     }

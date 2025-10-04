@@ -1,3 +1,4 @@
+using Mirror.BouncyCastle.Crypto.Signers;
 using System.Threading;
 using UnityEngine;
 
@@ -5,41 +6,29 @@ public class PlayerController : MonoBehaviour
 {
     private IMovable playerMovement;
     private IState playerState;
-    private PlayerDirectionHander directionHander;
-    private PlayerAnimationHandler animationHandler;
-    private PlayerStateHandler stateHandler;
-
+    private ICharacterDirectionHandler directionHandler;
+    private IAnimationHandler animationHandler;
+    private IStateHandler stateHandler;
     private IDamageDealer playerAttack;
 
-    private InputSystem_Actions inputActions;
+    private InputSystem_Actions inputHandler;
 
-    private Rigidbody2D rb;
-    private Animator animator;
-    private Joystick joystick;
-
-    private void Awake()
+    public void Initialize
+    (
+      IMovable movement,
+      IState state,
+      IDamageDealer attack,
+      IAnimationHandler animation,
+      InputSystem_Actions input
+    )
     {
-        inputActions = new InputSystem_Actions();
-        inputActions.Player.Enable();
+        playerMovement = movement;
+        playerState = state;
+        playerAttack = attack;
+        animationHandler = animation;
+        inputHandler = input;
 
-        joystick = FindAnyObjectByType<Joystick>();
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-
-        playerState = new PlayerState();
-        playerMovement = new PlayerMovement(rb, joystick);
-        directionHander = new PlayerDirectionHander(playerMovement);
-        stateHandler = new PlayerStateHandler(playerState, playerMovement);
-        animationHandler = new PlayerAnimationHandler(animator, playerState, directionHander);
-
-        playerAttack = new PlayerAttack(playerState);
-
-        inputActions.Player.Attack.performed += ctx => OnAttack();
-    }
-
-    void Start()
-    {
-           
+        inputHandler.Player.Attack.performed += ctx => OnAttack();
     }
 
     private void OnAttack()
