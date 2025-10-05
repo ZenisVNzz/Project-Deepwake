@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3752239519099501585}
   - component: {fileID: 5961608221630878537}
   - component: {fileID: 3597957618923908358}
-  - component: {fileID: 3395454460727351052}
+  - component: {fileID: 3906155797700224100}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 1
+  m_SpriteSortPoint: 0
 --- !u!114 &5961608221630878537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8ca9f96edd3c84a83868e5eb3c8071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  updateShadowSprite: 0
 --- !u!114 &3597957618923908358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,8 +120,8 @@ MonoBehaviour:
   reflectionLayer: 3
   reflectionSprite: {fileID: 0}
   updatePerFrame: 0
---- !u!61 &3395454460727351052
-BoxCollider2D:
+--- !u!60 &3906155797700224100
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -153,7 +154,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.02947247, y: 0.007740259}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.34149623}
@@ -163,5 +164,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6916716, y: 0.3266654}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.009341955, y: 0.13481426}
+      - {x: -0.39693964, y: 0.13207853}
+      - {x: -0.29959464, y: -0.02297318}
+      - {x: -0.17818964, y: -0.05966288}
+      - {x: -0.0876953, y: -0.16241574}
+      - {x: 0.08837372, y: -0.15909678}
+      - {x: 0.32632762, y: -0.07281214}
+      - {x: 0.31818384, y: 0.13751829}
+  m_UseDelaunayMesh: 0

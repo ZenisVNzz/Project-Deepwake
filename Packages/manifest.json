@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.mackysoft.serializereference-extensions": "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions",
     "com.qiaozhilei.easy-text-effects": "https://github.com/LeiQiaoZhi/Easy-Text-Effects-for-Unity.git",
     "com.unity.addressables": "2.4.6",
     "com.unity.cinemachine": "3.1.4",

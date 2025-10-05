@@ -9,6 +9,7 @@ public enum CharacterStateType
     Attacking
 }
 
+[System.Serializable]
 public class PlayerState : IState
 {
     private CharacterStateType CurrentState;

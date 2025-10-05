@@ -12,6 +12,7 @@ public enum Direction
     Right,
 }
 
+[System.Serializable]
 public class PlayerDirectionHandler : ICharacterDirectionHandler
 {
     private IMovable playerMovement;

@@ -24697,10 +24697,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1642385336}
     m_Modifications:
-    - target: {fileID: 2666293195900840226, guid: b85f960a82fd6b44eb65a64e8d5999b0, type: 3}
-      propertyPath: updateShadowSprite
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3912686927431394956, guid: b85f960a82fd6b44eb65a64e8d5999b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -24827,7 +24823,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -26912,10 +26908,6 @@ PrefabInstance:
     - target: {fileID: 3256734958460882611, guid: 3bfa86f2a2bf2e24d875da98229fcfa7, type: 3}
       propertyPath: m_Name
       value: Stone
-      objectReference: {fileID: 0}
-    - target: {fileID: 5961608221630878537, guid: 3bfa86f2a2bf2e24d875da98229fcfa7, type: 3}
-      propertyPath: updateShadowSprite
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6169053821661467765, guid: 3bfa86f2a2bf2e24d875da98229fcfa7, type: 3}
       propertyPath: m_LocalPosition.x

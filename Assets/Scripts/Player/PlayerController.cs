@@ -2,7 +2,8 @@ using Mirror.BouncyCastle.Crypto.Signers;
 using System.Threading;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+[System.Serializable]
+public class PlayerController : MonoBehaviour, IPlayerController
 {
     private IMovable playerMovement;
     private IState playerState;
@@ -19,15 +20,18 @@ public class PlayerController : MonoBehaviour
       IState state,
       IDamageDealer attack,
       IAnimationHandler animation,
+      IStateHandler stateHandler,
       InputSystem_Actions input
     )
     {
-        playerMovement = movement;
-        playerState = state;
-        playerAttack = attack;
-        animationHandler = animation;
-        inputHandler = input;
+        this.playerMovement = movement;
+        this.playerState = state;
+        this.playerAttack = attack;
+        this.animationHandler = animation;
+        this.stateHandler = stateHandler;
+        this.inputHandler = input;
 
+        inputHandler.Player.Enable();
         inputHandler.Player.Attack.performed += ctx => OnAttack();
     }
 

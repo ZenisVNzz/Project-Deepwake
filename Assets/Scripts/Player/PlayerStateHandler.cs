@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public class PlayerStateHandler : IStateHandler
 {
     private IState playerState;

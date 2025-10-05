@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class HitBoxHandler : MonoBehaviour
 {
-    [Header("HitBox Settings")]
-    [SerializeField] private float damage = 10f;
-    [SerializeField] private float knockbackForce = 5f;
+    private HitBoxController _controller;
+
+    public void Init(HitBoxController hitBoxController)
+    {
+        _controller = hitBoxController;
+    }    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,8 +18,8 @@ public class HitBoxHandler : MonoBehaviour
             if (damageable != null)
             {
                 Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
-                damageable.TakeDamage(damage, knockbackDirection * knockbackForce);
-                Debug.Log($"Dealt {damage} damage with {knockbackForce} knockback to {other.name}");
+                damageable.TakeDamage(_controller.Damage, knockbackDirection * _controller.KnockbackForce);
+                Debug.Log($"Dealt {_controller.Damage} damage with {_controller.KnockbackForce} knockback to {other.name}");
             }
         }    
     }
