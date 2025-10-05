@@ -1,6 +1,7 @@
 using Mirror.BouncyCastle.Crypto.Signers;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class PlayerController : MonoBehaviour, IPlayerController
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
         inputHandler.Player.Enable();
         inputHandler.Player.Attack.performed += ctx => OnAttack();
+        inputHandler.Player.Move.performed += OnMove;
+        inputHandler.Player.Move.canceled += OnMove;
     }
 
     private void OnAttack()
@@ -40,14 +43,20 @@ public class PlayerController : MonoBehaviour, IPlayerController
         playerAttack.Attack();
     }
 
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        playerInput = context.ReadValue<Vector2>();
+    }    
+
     void Update()
     {
         stateHandler.UpdateState();
         animationHandler.UpdateAnimation();   
     }
 
+    Vector2 playerInput;
     void FixedUpdate()
     {
-        playerMovement.Move();
+        playerMovement.Move(playerInput);
     }
 }

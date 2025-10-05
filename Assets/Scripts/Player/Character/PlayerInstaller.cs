@@ -19,7 +19,6 @@ public class PlayerInstaller : MonoBehaviour
     private Animator _animator;
     private HitBoxController _hitBoxController;
     private HitBoxController _skillHitBoxController;
-    private Joystick _joystick;
 
     private void Awake()
     {
@@ -38,13 +37,12 @@ public class PlayerInstaller : MonoBehaviour
         {
             _skillHitBoxController = gameObject.transform.Find("HitBoxs_Skill").GetComponent<HitBoxController>();
         }
-        _joystick = FindAnyObjectByType<Joystick>();
     }
 
     public virtual void InitComponent()
     {      
         _playerState = new PlayerState();
-        _playerMovement = new PlayerMovement(_rigidbody2D, _joystick, _playerState);
+        _playerMovement = new PlayerMovement(_rigidbody2D, _playerState);
         _directionHandler = new PlayerDirectionHandler(_playerMovement);
         _animationHandler = new PlayerAnimationHandler(_animator, _playerState, _directionHandler);
         _stateHandler = new PlayerStateHandler(_playerState, _playerMovement);
