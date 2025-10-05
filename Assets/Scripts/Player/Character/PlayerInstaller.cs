@@ -19,6 +19,7 @@ public class PlayerInstaller : MonoBehaviour
     private Animator _animator;
     private HitBoxController _hitBoxController;
     private HitBoxController _skillHitBoxController;
+    private InputSystem_Actions _inputHandler;
 
     private void Awake()
     {
@@ -40,12 +41,13 @@ public class PlayerInstaller : MonoBehaviour
     }
 
     public virtual void InitComponent()
-    {      
+    {
+        _inputHandler = new InputSystem_Actions();
         _playerState = new PlayerState();
         _playerMovement = new PlayerMovement(_rigidbody2D, _playerState);
         _directionHandler = new PlayerDirectionHandler(_playerMovement);
         _animationHandler = new PlayerAnimationHandler(_animator, _playerState, _directionHandler);
-        _stateHandler = new PlayerStateHandler(_playerState, _playerMovement);
+        _stateHandler = new PlayerStateHandler(_playerState, _playerMovement, _inputHandler);
         _playerAttack = new PlayerAttack( _playerState, _hitBoxController);
     }
 
@@ -56,6 +58,6 @@ public class PlayerInstaller : MonoBehaviour
         ICharacterRuntime playerRuntime = gameObject.AddComponent<PlayerRuntime>();
         playerRuntime.Init(_playerData, _rigidbody2D);
         _playerController = gameObject.AddComponent<PlayerController>();
-        _playerController.Initialize(_playerMovement, _playerState, _playerAttack, _animationHandler, _stateHandler, new InputSystem_Actions());
+        _playerController.Initialize(_playerMovement, _playerState, _playerAttack, _animationHandler, _stateHandler, _inputHandler);
     }
 }

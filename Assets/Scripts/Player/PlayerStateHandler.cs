@@ -5,17 +5,25 @@ public class PlayerStateHandler : IStateHandler
 {
     private IState playerState;
     private IMovable playerMovement;
+    private InputSystem_Actions inputHandler;
 
-    public PlayerStateHandler(IState state, IMovable playerMovement)
+    public PlayerStateHandler(IState state, IMovable playerMovement, InputSystem_Actions inputHandler)
     {
         playerState = state;
         this.playerMovement = playerMovement;
+        this.inputHandler = inputHandler;
     }
 
     public void UpdateState()
     {
         if (playerState.GetCurrentState() == CharacterStateType.Attacking)
+        {
+            inputHandler.Player.Disable();
             return;
+        }    
+        else
+            inputHandler.Player.Enable();
+
         if (CheckIfMoving())
             playerState.ChangeState(CharacterStateType.Running);
         else
