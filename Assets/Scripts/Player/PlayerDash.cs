@@ -1,49 +1,41 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class PlayerDash : MonoBehaviour
+public class PlayerDash : IDashable
 {
-    public float dashForce = 5f;     
+    public float dashForce = 15f;     
     public float dashDuration = 0.2f;  
     public float dashCooldown = 1f;     
 
     private Rigidbody2D rb;
     private bool isDashing = false;
-    private bool canDash = true;
     private float dashTime;
     private Vector2 dashDirection;
 
-    void Start()
+    public PlayerDash(Rigidbody2D rigidbody)
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = rigidbody;
     }
 
-    void Update()
+    private async Task DaskCooldown()
     {
-        if (isDashing && Time.time > dashTime)
+        while (isDashing && Time.time <= dashTime)
         {
-            isDashing = false;
-            rb.linearVelocity = Vector2.zero;
+            await Task.Yield();
         }
+        isDashing = false;
     }
 
-    public void Dash()
+    public async void Dash()
     {
-        Debug.Log("Dash");
-        if (canDash && !isDashing)
+        if (!isDashing)
         {
             dashDirection = rb.linearVelocity.normalized;
             rb.linearVelocity = dashDirection * dashForce;
 
             isDashing = true;
             dashTime = Time.time + dashDuration;
-
-            canDash = false;
-            Invoke(nameof(ResetDash), dashCooldown);
+            await DaskCooldown();
         }
-    }
-
-    void ResetDash()
-    {
-        canDash = true;
     }
 }

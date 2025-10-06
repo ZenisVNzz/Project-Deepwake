@@ -5,6 +5,7 @@ public class PlayerInstaller : MonoBehaviour
     [SerializeField] private PlayerData _playerData;
 
     private IMovable _playerMovement;
+    private IDashable _playerDash;
     private IState _playerState;
     private ICharacterDirectionHandler _directionHandler;
     private IAnimationHandler _animationHandler;
@@ -45,6 +46,7 @@ public class PlayerInstaller : MonoBehaviour
         _inputHandler = new InputSystem_Actions();
         _playerState = new PlayerState();
         _playerMovement = new PlayerMovement(_rigidbody2D, _playerState);
+        _playerDash = new PlayerDash(_rigidbody2D);
         _directionHandler = new PlayerDirectionHandler(_playerMovement);
         _animationHandler = new PlayerAnimationHandler(_animator, _playerState, _directionHandler);
         _stateHandler = new PlayerStateHandler(_playerState, _playerMovement, _inputHandler);
@@ -58,6 +60,6 @@ public class PlayerInstaller : MonoBehaviour
         ICharacterRuntime playerRuntime = gameObject.AddComponent<PlayerRuntime>();
         playerRuntime.Init(_playerData, _rigidbody2D);
         _playerController = gameObject.AddComponent<PlayerController>();
-        _playerController.Initialize(_playerMovement, _playerState, _playerAttack, _animationHandler, _stateHandler, _inputHandler);
+        _playerController.Initialize(_playerMovement, _playerDash, _playerState, _playerAttack, _animationHandler, _stateHandler, _inputHandler);
     }
 }

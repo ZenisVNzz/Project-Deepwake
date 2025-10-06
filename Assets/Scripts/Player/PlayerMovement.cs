@@ -29,7 +29,18 @@ public class PlayerMovement : IMovable
             return;
         }
 
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, input.normalized * moveSpeed, acceleration * Time.fixedDeltaTime);
+        Vector2 isoInput = ToIsometric(input.normalized);
+
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, isoInput * moveSpeed, acceleration * Time.fixedDeltaTime);
+    }
+
+    private Vector2 ToIsometric(Vector2 input)
+    {
+        float isoX = input.x;
+        float isoY = input.y * 0.5f;
+        Vector2 iso = new Vector2(isoX, isoY);
+
+        return iso.normalized;
     }
 
     public Vector2 GetDir()

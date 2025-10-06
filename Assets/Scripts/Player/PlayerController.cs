@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, IPlayerController
 {
     private IMovable playerMovement;
+    private IDashable playerDash;
     private IState playerState;
     private ICharacterDirectionHandler directionHandler;
     private IAnimationHandler animationHandler;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     public void Initialize
     (
       IMovable movement,
+      IDashable dash,
       IState state,
       IDamageDealer attack,
       IAnimationHandler animation,
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     )
     {
         this.playerMovement = movement;
+        this.playerDash = dash;
         this.playerState = state;
         this.playerAttack = attack;
         this.animationHandler = animation;
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         inputHandler.Player.Attack.performed += ctx => OnAttack();
         inputHandler.Player.Move.performed += OnMove;
         inputHandler.Player.Move.canceled += OnMove;
+        inputHandler.Player.Dash.performed += ctx => OnDash();
     }
 
     private void OnAttack()
@@ -47,6 +51,11 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         playerInput = context.ReadValue<Vector2>();
     }    
+
+    private void OnDash()
+    {
+        playerDash.Dash();
+    }
 
     void Update()
     {
