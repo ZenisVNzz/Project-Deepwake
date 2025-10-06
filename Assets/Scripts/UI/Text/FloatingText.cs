@@ -1,14 +1,14 @@
 using TMPro;
 using UnityEngine;
 
-public class FloatingDamage : MonoBehaviour
+public class FloatingText : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _damageText;
+    [SerializeField] private TextMeshProUGUI _text;
     private Animator _animator;
 
-    public void SetDamage(string damage)
+    public void SetText(string damage)
     {
-        _damageText.text = damage;
+        _text.text = damage;
     }
 
     private void Awake()

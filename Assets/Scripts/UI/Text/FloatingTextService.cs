@@ -2,16 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
 
-public class SingleUIService : ISingleUIService
+public class FloatingTextService : IFloatingTextService
 {
     private Dictionary<string, GameObject> _uiPrefab = new Dictionary<string, GameObject>();
     private Dictionary<string, GameObject> _activeUI = new Dictionary<string, GameObject>();
     private GameObject canvas;
 
-    public SingleUIService()
+    public FloatingTextService()
     {
-        SingleUIContainer ui = ResourceManager.Instance.GetAsset<SingleUIContainer>("SingleUIContainer");
-        foreach (var entry in ui.UI)
+        FloatingTextContainer ui = ResourceManager.Instance.GetAsset<FloatingTextContainer>("FloatingTextContainer");
+        foreach (var entry in ui.Text)
         {
             _uiPrefab[entry.ID] = entry.Prefab;
         }
@@ -28,11 +28,12 @@ public class SingleUIService : ISingleUIService
         GameObject uiGO = GameObject.Instantiate(_uiPrefab[prefabID], canvas.transform);
         uiGO.transform.position = position;
 
-        if (uiGO.GetComponent<FloatingDamage>())
+        if (uiGO.GetComponent<FloatingText>())
         {
-            uiGO.GetComponent<FloatingDamage>().SetDamage(content);
+            uiGO.GetComponent<FloatingText>().SetText(content);
         }
-            _activeUI.Add(instanceID, uiGO);
+
+        _activeUI.Add(instanceID, uiGO);
     }
 
     public void Create(string prefabID, string instanceID, LocalizedString content) => Create(prefabID, instanceID, content.GetLocalizedString(), new Vector3(0, 0));

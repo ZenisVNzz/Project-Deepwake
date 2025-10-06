@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f833cfc0c563a14baf6b82bbe13f4aa, type: 3}
-  m_Name: SingleUIContainer
+  m_Name: FloatingTextContainer
   m_EditorClassIdentifier: 
-  _ui:
+  _text:
   - ID: FloatingDamage
     Prefab: {fileID: 6929440941060760012, guid: b61f72ad0005e8848b7e7d3cdcff2f69, type: 3}

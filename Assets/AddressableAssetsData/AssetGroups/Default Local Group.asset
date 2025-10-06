@@ -82,7 +82,7 @@ MonoBehaviour:
     - MapObject
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 48dedf0f1a10ceb4aa3fc4a4fc4d6ec7
-    m_Address: SingleUIContainer
+    m_Address: FloatingTextContainer
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
