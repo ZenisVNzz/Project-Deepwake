@@ -22,12 +22,13 @@ public class PlayerStateHandler : IStateHandler
             return;
         }    
         else
+        {
             inputHandler.Player.Enable();
-
-        if (CheckIfMoving())
-            playerState.ChangeState(CharacterStateType.Running);
-        else
-            playerState.ChangeState(CharacterStateType.Idle);
+            if (CheckIfMoving())
+                playerState.ChangeState(CharacterStateType.Running);
+            else
+                playerState.ChangeState(CharacterStateType.Idle);
+        }   
     }
 
     private bool CheckIfMoving()
