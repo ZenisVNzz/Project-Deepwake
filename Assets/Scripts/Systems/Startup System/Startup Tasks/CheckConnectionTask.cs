@@ -27,7 +27,7 @@ public class CheckConnectionTask : StartupTask
                 else
                 {
                     Debug.LogWarning("[CheckConnectionTask] Network is offline.");
-                    UIManager.Instance.GetPopupService().Create("300001", "NetworkError", new LocalizedString("UI", "UI_NoConnection"));
+                    UIManager.Instance.GetPopupService().Create("Popup", "NetworkError", new LocalizedString("UI", "UI_NoConnection"));
                     return false;
                 }
             }    

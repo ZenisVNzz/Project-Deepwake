@@ -21,6 +21,7 @@ public class Wolf : MonoBehaviour, IAttackable
         health -= damage;
         rb.AddForce(knockback, ForceMode2D.Impulse);
         damageFlash.TriggerFlash();
+        UIManager.Instance.GetSingleUIService().Create("FloatingDamage", $"FloatingDamage{Time.time}", damage.ToString(), transform.position + Vector3.up * 0.8f);
 
         Debug.Log($"Wolf took {damage} damage. Remaining health: {health}");
 

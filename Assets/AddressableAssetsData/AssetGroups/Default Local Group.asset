@@ -81,6 +81,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - MapObject
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48dedf0f1a10ceb4aa3fc4a4fc4d6ec7
+    m_Address: SingleUIContainer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4c2904f09cbab1247bd408db3140276c
     m_Address: Assets/Data/Startup Task/CheckUpdateTask.asset
     m_ReadOnly: 0

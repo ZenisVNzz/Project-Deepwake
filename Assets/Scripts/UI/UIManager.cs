@@ -5,10 +5,12 @@ public class UIManager : MonoBehaviour, IManager
 {
     public static UIManager Instance;
     private IPopupService _popupService;
+    private ISingleUIService _singleUIService;
 
     public async Task<bool> InitAsync()
     {
         _popupService = new PopupService();
+        _singleUIService = new SingleUIService();
         await Task.CompletedTask;
         return true;
     }
@@ -27,4 +29,5 @@ public class UIManager : MonoBehaviour, IManager
     }
 
     public IPopupService GetPopupService() => _popupService;
+    public ISingleUIService GetSingleUIService() => _singleUIService;
 }

@@ -24,7 +24,7 @@ public class PopupService : IPopupService
         if (canvas == null)
         {
             CanvasCreator canvasCreator = new CanvasCreator();
-            canvas = canvasCreator.Create();
+            canvas = canvasCreator.Create(false);
         }
 
         GameObject popupGO = GameObject.Instantiate(_popupsPrefab[prefabID], canvas.transform);
