@@ -1,19 +1,60 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerRuntime : MonoBehaviour, ICharacterRuntime
+public class PlayerRuntime : MonoBehaviour, IPlayerRuntime
 {
     [SerializeField] private float _hp;
     [SerializeField] private float _stamina;
-    private PlayerData _playerData;
+    public float HP => _hp;
+    public float Stamina => _stamina;
+
+    private float _hpRegenRate;
+    private float _staminaRegenRate;
+    private float _staminaConsumptionMultiplier;
+
+    private CharacterData _playerData;
+    public CharacterData PlayerData => _playerData;
+
     private Rigidbody2D _rigidbody2D;
 
-    public void Init(PlayerData playerData, Rigidbody2D rigidbody2D)
+    public void Init(CharacterData playerData, Rigidbody2D rigidbody2D)
     {
+        _playerData = Instantiate(playerData);
         _hp = playerData.HP;
         _stamina = playerData.Stamina;
-        _playerData = playerData;
+        _hpRegenRate = playerData.HPRegenRate;
+        _staminaRegenRate = playerData.StaminaRegenRate;
+        _staminaConsumptionMultiplier = playerData.StaminaConsumptionMultiplier;
+
         _rigidbody2D = rigidbody2D;
+    }
+
+    public bool UseStamina(float amount)
+    {
+        float adjustedAmount = amount * _staminaConsumptionMultiplier;
+        if (_stamina >= adjustedAmount)
+        {
+            _stamina -= adjustedAmount;
+            StartCoroutine(RegenSatamina());
+            return true;
+        }
+        return false;
+    }
+
+    private IEnumerator RegenSatamina()
+    {
+        yield return new WaitForSeconds(2f);
+        while (_stamina < _playerData.Stamina)
+        {
+            _stamina += _staminaRegenRate * Time.deltaTime;
+            if (_stamina > _playerData.Stamina)
+            {
+                _stamina = _playerData.Stamina;
+            }
+            yield return null;
+        }
     }
 
     public void TakeDamage(float damage, Vector3 knockback)

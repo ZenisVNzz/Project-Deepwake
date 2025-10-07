@@ -3,38 +3,42 @@ using UnityEngine;
 
 public class PlayerDash : IDashable
 {
-    public float dashForce = 15f;     
-    public float dashDuration = 0.2f;  
-    public float dashCooldown = 1f;     
+    private float _dashForce = 15f;
+    private float _dashDuration = 0.2f;
+    private float _dashCooldown = 1f;     
+    private float _staminaCost = 25f;
 
-    private Rigidbody2D rb;
-    private bool isDashing = false;
-    private float dashTime;
-    private Vector2 dashDirection;
+    private Rigidbody2D _rb;
+    private bool _isDashing = false;
+    private float _dashTime;
+    private Vector2 _dashDirection;
 
-    public PlayerDash(Rigidbody2D rigidbody)
+    private IPlayerRuntime _characterRuntime;
+
+    public PlayerDash(Rigidbody2D rigidbody, IPlayerRuntime characterRuntime)
     {
-        rb = rigidbody;
+        _rb = rigidbody;
+        this._characterRuntime = characterRuntime;
     }
 
     private async Task DaskCooldown()
     {
-        while (isDashing && Time.time <= dashTime)
+        while (_isDashing && Time.time <= _dashTime)
         {
             await Task.Yield();
         }
-        isDashing = false;
+        _isDashing = false;
     }
 
     public async void Dash()
     {
-        if (!isDashing)
+        if (!_isDashing && _characterRuntime.UseStamina(_staminaCost))
         {
-            dashDirection = rb.linearVelocity.normalized;
-            rb.linearVelocity = dashDirection * dashForce;
+            _dashDirection = _rb.linearVelocity.normalized;
+            _rb.linearVelocity = _dashDirection * _dashForce;
 
-            isDashing = true;
-            dashTime = Time.time + dashDuration;
+            _isDashing = true;
+            _dashTime = Time.time + _dashDuration;
             await DaskCooldown();
         }
     }

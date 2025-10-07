@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerInstaller : MonoBehaviour
 {
-    [SerializeField] private PlayerData _playerData;
+    [SerializeField] private CharacterData _playerData;
 
     private IMovable _playerMovement;
     private IDashable _playerDash;
@@ -13,6 +13,7 @@ public class PlayerInstaller : MonoBehaviour
     private IDamageDealer _playerAttack;
 
     private IPlayerController _playerController;
+    private IPlayerRuntime _playerRuntime;
 
     private Rigidbody2D _rigidbody2D;
     private Collider2D _hurtBox;
@@ -43,10 +44,11 @@ public class PlayerInstaller : MonoBehaviour
 
     public virtual void InitComponent()
     {
+        _playerRuntime = gameObject.AddComponent<PlayerRuntime>();
         _inputHandler = new InputSystem_Actions();
         _playerState = new PlayerState();
         _playerMovement = new PlayerMovement(_rigidbody2D, _playerState);
-        _playerDash = new PlayerDash(_rigidbody2D);
+        _playerDash = new PlayerDash(_rigidbody2D, _playerRuntime);
         _directionHandler = new PlayerDirectionHandler(_playerMovement);
         _animationHandler = new PlayerAnimationHandler(_animator, _playerState, _directionHandler);
         _stateHandler = new PlayerStateHandler(_playerState, _playerMovement, _inputHandler);
@@ -57,8 +59,7 @@ public class PlayerInstaller : MonoBehaviour
     {
         GetComponent();
         InitComponent();
-        ICharacterRuntime playerRuntime = gameObject.AddComponent<PlayerRuntime>();
-        playerRuntime.Init(_playerData, _rigidbody2D);
+        _playerRuntime.Init(_playerData, _rigidbody2D);
         _playerController = gameObject.AddComponent<PlayerController>();
         _playerController.Initialize(_playerMovement, _playerDash, _playerState, _playerAttack, _animationHandler, _stateHandler, _inputHandler);
     }

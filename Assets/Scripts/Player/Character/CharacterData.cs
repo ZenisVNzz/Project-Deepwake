@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/PlayerData", order = 1)]
-public class PlayerData : ScriptableObject
+public class CharacterData : ScriptableObject
 {
     public float HP;
     public float Stamina;
@@ -10,6 +10,10 @@ public class PlayerData : ScriptableObject
     public float MoveSpeed;
     public float CriticalChance;
     public float CriticalDamageMultiplier;
+
+    public float HPRegenRate;
+    public float StaminaRegenRate;
+    public float StaminaConsumptionMultiplier;
 
     public Skill skill;
     public Passive Passive1;
