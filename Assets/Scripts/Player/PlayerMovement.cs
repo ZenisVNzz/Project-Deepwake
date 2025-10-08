@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : IMovable
+public class PlayerMovement : MonoBehaviour, IMovable
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 3f;
