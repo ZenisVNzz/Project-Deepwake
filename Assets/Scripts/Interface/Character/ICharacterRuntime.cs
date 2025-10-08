@@ -4,7 +4,7 @@ public interface ICharacterRuntime : IAttackable
 {
     float HP { get; }
 
-    CharacterData PlayerData { get; }
+    CharacterData CharacterData { get; }
 
     void Init(CharacterData playerData, Rigidbody2D rigidbody2D);
 }

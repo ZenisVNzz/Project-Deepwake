@@ -12,11 +12,15 @@ public class PlayerMovement : IMovable
     private Vector2 input;
 
     private IState playerState;
+    private CharacterData characterData;
 
-    public PlayerMovement(Rigidbody2D rigidbody, IState playerState)
+    public PlayerMovement(Rigidbody2D rigidbody, IState playerState, CharacterData characterData)
     {
         this.rb = rigidbody;
         this.playerState = playerState;
+        this.characterData = characterData;
+
+        moveSpeed = characterData.MoveSpeed;
     }
 
     public void Move(Vector2 input)

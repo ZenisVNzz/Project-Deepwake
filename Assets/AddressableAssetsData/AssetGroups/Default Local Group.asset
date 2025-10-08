@@ -135,6 +135,12 @@ MonoBehaviour:
     - Prefab
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8eb31fb7cc8eaf46b0980872aea0724
+    m_Address: DamageFlashMaterial
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Material
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aa9bdcda775f36949b2bc92509a912ff
     m_Address: StartupTaskList
     m_ReadOnly: 0

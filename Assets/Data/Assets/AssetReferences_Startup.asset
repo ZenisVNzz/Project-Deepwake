@@ -26,3 +26,4 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _labels:
   - m_LabelString: Startup
+  - m_LabelString: Material

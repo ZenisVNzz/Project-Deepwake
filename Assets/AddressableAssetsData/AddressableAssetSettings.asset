@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: ff1207baddb889741829269af6217c36
   m_currentHash:
     serializedVersion: 2
-    Hash: ff938570abfc5355964300ced42d8ab6
+    Hash: 2a0a6ee72345cf7c438e71546c1ad459
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
     - EnemyPrefab
     - UIPrefab
     - MapObject
+    - Material
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: e502e0a3f9200af40b86405639d86598, type: 2}
