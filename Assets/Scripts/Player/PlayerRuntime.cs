@@ -13,6 +13,7 @@ public class PlayerRuntime : MonoBehaviour, IPlayerRuntime
     private float _hpRegenRate;
     private float _staminaRegenRate;
     private float _staminaConsumptionMultiplier;
+    private Coroutine _staminaRegenCoroutine;
 
     private CharacterData _playerData;
     public CharacterData PlayerData => _playerData;
@@ -37,7 +38,13 @@ public class PlayerRuntime : MonoBehaviour, IPlayerRuntime
         if (_stamina >= adjustedAmount)
         {
             _stamina -= adjustedAmount;
-            StartCoroutine(RegenSatamina());
+
+            if (_staminaRegenCoroutine != null)
+            {
+                StopCoroutine(_staminaRegenCoroutine);
+            }
+            _staminaRegenCoroutine = StartCoroutine(RegenSatamina());
+
             return true;
         }
         return false;
@@ -55,6 +62,7 @@ public class PlayerRuntime : MonoBehaviour, IPlayerRuntime
             }
             yield return null;
         }
+        _staminaRegenCoroutine = null;
     }
 
     public void TakeDamage(float damage, Vector3 knockback)
