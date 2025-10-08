@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -38,7 +39,8 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
         }
 
         damageFlash.TriggerFlash();
-        UIManager.Instance.GetSingleUIService().Create("FloatingDamage", $"FloatingDamage{Time.time}", FinalDamage.ToString(), transform.position + Vector3.up * 0.8f);
+        UIManager.Instance.GetSingleUIService().Create
+            ("FloatingDamage", $"FloatingDamage{Time.time}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
 
         _hp -= FinalDamage;
         _rigidbody2D.AddForce(knockback, ForceMode2D.Impulse);

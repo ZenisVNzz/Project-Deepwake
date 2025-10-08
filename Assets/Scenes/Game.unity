@@ -38060,6 +38060,7 @@ GameObject:
   - component: {fileID: 313667733}
   - component: {fileID: 313667732}
   - component: {fileID: 313667731}
+  - component: {fileID: 313667734}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -38156,6 +38157,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &313667734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313667730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &341786785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40962,22 +40987,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4276787825326146820, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
-      propertyPath: m_Size.x
-      value: 0.76126945
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276787825326146820, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.04031156
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445622558880229747, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445622558880229747, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+    - target: {fileID: 579978094126374855, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: _playerData
       value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+      objectReference: {fileID: 11400000, guid: 098d9d2e804edfc42baf230e7d2efea1, type: 2}
     - target: {fileID: 4832012355954888320, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.1
@@ -41018,10 +41031,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6372753584565639234, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
-      propertyPath: flashMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: a8eb31fb7cc8eaf46b0980872aea0724, type: 2}
     - target: {fileID: 8049365926704496716, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
       propertyPath: m_Name
       value: Wolf
