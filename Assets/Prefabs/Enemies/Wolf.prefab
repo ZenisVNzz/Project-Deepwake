@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 304104845779160755}
   - component: {fileID: 4276787825326146820}
-  - component: {fileID: 4117462596697292198}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -79,18 +78,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.76126945, y: 0.31201178}
   m_EdgeRadius: 0
---- !u!114 &4117462596697292198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223056643357205314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1617f70131bc3314d876c985d3304fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &595514064554062274
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +794,8 @@ GameObject:
   - component: {fileID: 579978094126374855}
   - component: {fileID: 6594723177715109048}
   - component: {fileID: 7408561927820063938}
+  - component: {fileID: 2866568678023557882}
+  - component: {fileID: 1749853278582577541}
   m_Layer: 7
   m_Name: Wolf
   m_TagString: Enemy
@@ -926,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c187325dea6b274a9762eddd41353fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerData: {fileID: 0}
+  _playerData: {fileID: 11400000, guid: 098d9d2e804edfc42baf230e7d2efea1, type: 2}
 --- !u!114 &6594723177715109048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,6 +951,48 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2866568678023557882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8049365926704496716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c2166d332da8c46ac4a3edcbd5d3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  nextWaypointDistance: 1
+--- !u!114 &1749853278582577541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8049365926704496716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &8535615014044358217
 GameObject:
   m_ObjectHideFlags: 0
