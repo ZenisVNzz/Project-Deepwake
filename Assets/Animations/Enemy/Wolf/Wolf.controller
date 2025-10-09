@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_UpRight_Run
+  m_Name: Enemy_UpRight_Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -33,7 +33,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_UpRight_Idle
+  m_Name: Enemy_UpRight_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -59,7 +59,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_UpRight_Attack1
+  m_Name: Enemy_UpRight_Attack1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -78,32 +78,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-4357491701503210230
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_DownLeft
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 206230a42634a4e44b2c19e5f2f275fb, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &-3883780523678031469
 AnimatorState:
   serializedVersion: 6
@@ -111,7 +85,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_DownLeft_Run
+  m_Name: Enemy_DownLeft_Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -137,7 +111,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_UpLeft_Run
+  m_Name: Enemy_UpLeft_Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -163,7 +137,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_DownLeft_Idle
+  m_Name: Enemy_DownLeft_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -189,7 +163,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_DownRight_Run
+  m_Name: Enemy_DownRight_Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -215,7 +189,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_UpLeft_Attack1
+  m_Name: Enemy_UpLeft_Attack1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -270,10 +244,7 @@ AnimatorStateMachine:
     m_Position: {x: 300, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2437079801068276489}
-    m_Position: {x: 335, y: 185, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -4357491701503210230}
-    m_Position: {x: 370, y: 250, z: 0}
+    m_Position: {x: 340, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3000084680613339485}
     m_Position: {x: 405, y: 315, z: 0}
@@ -294,13 +265,13 @@ AnimatorStateMachine:
     m_Position: {x: 580, y: 640, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9160303191630352072}
-    m_Position: {x: 615, y: 705, z: 0}
+    m_Position: {x: 610, y: 710, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7828153937033775204}
     m_Position: {x: 650, y: 770, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4901516285267334059}
-    m_Position: {x: 685, y: 835, z: 0}
+    m_Position: {x: 680, y: 840, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1718903882964166840}
     m_Position: {x: 720, y: 900, z: 0}
@@ -324,7 +295,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_UpLeft_Idle
+  m_Name: Enemy_UpLeft_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -376,7 +347,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_DownRight_Attack1
+  m_Name: Enemy_DownRight_Attack1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -402,7 +373,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_DownLeft_Attack1
+  m_Name: Enemy_DownLeft_Attack1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -428,7 +399,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_DownRight_Idle
+  m_Name: Enemy_DownRight_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

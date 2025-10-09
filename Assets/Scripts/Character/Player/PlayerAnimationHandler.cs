@@ -1,23 +1,24 @@
 using UnityEngine;
 
-[System.Serializable]
 public class PlayerAnimationHandler : IAnimationHandler
 {
-    private Animator animator;
-    private IState playerState;
-    private ICharacterDirectionHandler directionHander;
+    private readonly Animator animator;
+    private readonly IState playerState;
+    private readonly ICharacterDirectionHandler directionHandler;
 
-    public PlayerAnimationHandler(Animator animator, IState playerState, ICharacterDirectionHandler directionHander)
+    private string currentAnimName;
+
+    public PlayerAnimationHandler(Animator animator, IState playerState, ICharacterDirectionHandler directionHandler)
     {
         this.animator = animator;
         this.playerState = playerState;
-        this.directionHander = directionHander;
+        this.directionHandler = directionHandler;
     }
 
     public void UpdateAnimation()
     {
         CharacterStateType currentState = playerState.GetCurrentState();
-        Direction currentDirection = directionHander.GetDirection();
+
         switch (currentState)
         {
             case CharacterStateType.Idle:
@@ -37,114 +38,68 @@ public class PlayerAnimationHandler : IAnimationHandler
 
     private void IdleProcess()
     {
-        if (Direction.Left == directionHander.GetDirection())
+        Direction dir = directionHandler.GetDirection();
+        string anim = dir switch
         {
-            animator.Play("Player_Left_Idle");
-        }
-        else if (Direction.Right == directionHander.GetDirection())
-        {
-            animator.Play("Player_Right_Idle");
-        }
-        else if (Direction.UpLeft == directionHander.GetDirection())
-        {
-            animator.Play("Player_UpLeft_Idle");
-        }
-        else if (Direction.UpRight == directionHander.GetDirection())
-        {
-            animator.Play("Player_UpRight_Idle");
-        }
-        else if (Direction.DownLeft == directionHander.GetDirection())
-        {
-            animator.Play("Player_DownLeft_Idle");
-        }
-        else if (Direction.DownRight == directionHander.GetDirection())
-        {
-            animator.Play("Player_DownRight_Idle");
-        }
-        else if (Direction.Up == directionHander.GetDirection())
-        {
-            animator.Play("Player_Up_Idle");
-        }
-        else if (Direction.Down == directionHander.GetDirection())
-        {
-            animator.Play("Player_Down_Idle");
-        }
+            Direction.Left => "Player_Left_Idle",
+            Direction.Right => "Player_Right_Idle",
+            Direction.UpLeft => "Player_UpLeft_Idle",
+            Direction.UpRight => "Player_UpRight_Idle",
+            Direction.DownLeft => "Player_DownLeft_Idle",
+            Direction.DownRight => "Player_DownRight_Idle",
+            Direction.Up => "Player_Up_Idle",
+            Direction.Down => "Player_Down_Idle",
+            _ => "Player_Down_Idle"
+        };
+        PlayAnimation(anim);
     }
 
     private void RunningProcess()
     {
-        if (Direction.Left == directionHander.GetDirection())
+        Direction dir = directionHandler.GetDirection();
+        string anim = dir switch
         {
-            animator.Play("Player_Left_Walk");
-        }
-        else if (Direction.Right == directionHander.GetDirection())
-        {
-            animator.Play("Player_Right_Walk");
-        }
-        else if (Direction.UpLeft == directionHander.GetDirection())
-        {
-            animator.Play("Player_UpLeft_Walk");
-        }
-        else if (Direction.UpRight == directionHander.GetDirection())
-        {
-            animator.Play("Player_UpRight_Walk");
-        }
-        else if (Direction.DownLeft == directionHander.GetDirection())
-        {
-            animator.Play("Player_DownLeft_Walk");
-        }
-        else if (Direction.DownRight == directionHander.GetDirection())
-        {
-            animator.Play("Player_DownRight_Walk");
-        }
-        else if (Direction.Up == directionHander.GetDirection())
-        {
-            animator.Play("Player_Up_Walk");
-        }
-        else if (Direction.Down == directionHander.GetDirection())
-        {
-            animator.Play("Player_Down_Walk");
-        }
+            Direction.Left => "Player_Left_Walk",
+            Direction.Right => "Player_Right_Walk",
+            Direction.UpLeft => "Player_UpLeft_Walk",
+            Direction.UpRight => "Player_UpRight_Walk",
+            Direction.DownLeft => "Player_DownLeft_Walk",
+            Direction.DownRight => "Player_DownRight_Walk",
+            Direction.Up => "Player_Up_Walk",
+            Direction.Down => "Player_Down_Walk",
+            _ => "Player_Down_Walk"
+        };
+        PlayAnimation(anim);
     }
 
     private void AttackProcess()
     {
-        if (Direction.Left == directionHander.GetDirection())
+        Direction dir = directionHandler.GetDirection();
+        string anim = dir switch
         {
-            animator.Play("Player_Left_Attack1");
-        }
-        else if (Direction.Right == directionHander.GetDirection())
-        {
-            animator.Play("Player_Right_Attack1");
-        }
-        else if (Direction.UpLeft == directionHander.GetDirection())
-        {
-            animator.Play("Player_UpLeft_Attack1");
-        }
-        else if (Direction.UpRight == directionHander.GetDirection())
-        {
-            animator.Play("Player_UpRight_Attack1");
-        }
-        else if (Direction.DownLeft == directionHander.GetDirection())
-        {
-            animator.Play("Player_DownLeft_Attack1");
-        }
-        else if (Direction.DownRight == directionHander.GetDirection())
-        {
-            animator.Play("Player_DownRight_Attack1");
-        }
-        else if (Direction.Up == directionHander.GetDirection())
-        {
-            animator.Play("Player_Up_Attack1");
-        }
-        else if (Direction.Down == directionHander.GetDirection())
-        {
-            animator.Play("Player_Down_Attack1");
-        }
+            Direction.Left => "Player_Left_Attack1",
+            Direction.Right => "Player_Right_Attack1",
+            Direction.UpLeft => "Player_UpLeft_Attack1",
+            Direction.UpRight => "Player_UpRight_Attack1",
+            Direction.DownLeft => "Player_DownLeft_Attack1",
+            Direction.DownRight => "Player_DownRight_Attack1",
+            Direction.Up => "Player_Up_Attack1",
+            Direction.Down => "Player_Down_Attack1",
+            _ => "Player_Down_Attack1"
+        };
+        PlayAnimation(anim);
 
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsName(currentAnimName) && stateInfo.normalizedTime >= 1.0f)
         {
             playerState.ChangeState(CharacterStateType.Idle);
         }
+    }
+
+    private void PlayAnimation(string animName)
+    {
+        if (currentAnimName == animName) return;
+        animator.Play(animName);
+        currentAnimName = animName;
     }
 }
