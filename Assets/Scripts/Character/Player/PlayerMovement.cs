@@ -38,6 +38,8 @@ public class PlayerMovement : IMovable
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, isoInput * moveSpeed, acceleration * Time.fixedDeltaTime);
     }
 
+    public void Move() => Debug.LogWarning("[PlayerMovement] input is missing.");
+
     private Vector2 ToIsometric(Vector2 input)
     {
         float isoX = input.x;

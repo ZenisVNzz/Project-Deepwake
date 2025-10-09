@@ -35,7 +35,7 @@ public class PlayerStateHandler : IStateHandler
     {
         Vector2 vec = playerMovement.GetDir();
 
-        if (vec.magnitude > 0)
+        if (vec.sqrMagnitude > 0.01f)
             return true;
         else
             return false;

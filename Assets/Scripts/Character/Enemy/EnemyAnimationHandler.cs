@@ -54,10 +54,10 @@ public class EnemyAnimationHandler : IAnimationHandler
         Direction dir = directionHandler.GetDirection();
         string anim = dir switch
         {
-            Direction.UpLeft => "Enemy_UpLeft_Walk",
-            Direction.UpRight => "Enemy_UpRight_Walk",
-            Direction.DownLeft => "Enemy_DownLeft_Walk",
-            _ => "Enemy_DownRight_Walk"
+            Direction.UpLeft => "Enemy_UpLeft_Run",
+            Direction.UpRight => "Enemy_UpRight_Run",
+            Direction.DownLeft => "Enemy_DownLeft_Run",
+            _ => "Enemy_DownRight_Run"
         };
         PlayAnimation(anim);
     }

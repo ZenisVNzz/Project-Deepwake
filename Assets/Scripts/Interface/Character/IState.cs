@@ -6,6 +6,7 @@ public enum CharacterStateType
     Running,
     Jumping,
     Falling,
+    Knockback,
     Attacking
 }
 

@@ -6,8 +6,6 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerAttack : IDamageDealer
 {
-    [Header("Player Attack Settings")]
-
     private IState _playerState;
     private HitBoxController _hitBoxController;
 

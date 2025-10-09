@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class CharacterInstaller : MonoBehaviour
 {
-    [SerializeField] protected CharacterData _playerData;
+    [SerializeField] protected CharacterData _characterData;
 
-    private IMovable _playerMovement;
-    private IDashable _playerDash;
-    private IState _playerState;
-    private ICharacterDirectionHandler _directionHandler;
-    private IAnimationHandler _animationHandler;
-    private IStateHandler _stateHandler;
-    private IDamageDealer _playerAttack;
+    protected IMovable _characterMovement;
+    private IDashable _characterDash;
+    protected IState _characterState;
+    protected ICharacterDirectionHandler _directionHandler;
+    protected IAnimationHandler _animationHandler;
+    protected IStateHandler _stateHandler;
+    protected IDamageDealer _characterAttack;
 
-    private IPlayerController _playerController;
-    private IPlayerRuntime _playerRuntime;
+    protected IPlayerController _characterController;
+    protected IPlayerRuntime _characterRuntime;
 
     protected Rigidbody2D _rigidbody2D;
     protected Collider2D _hurtBox;
@@ -23,7 +23,7 @@ public class CharacterInstaller : MonoBehaviour
     protected HitBoxController _skillHitBoxController;
     private InputSystem_Actions _inputHandler;
 
-    private void Awake()
+    protected void Awake()
     {
         InitCharacter();
     }
@@ -44,23 +44,23 @@ public class CharacterInstaller : MonoBehaviour
 
     public virtual void InitComponent()
     {
-        _playerRuntime = gameObject.AddComponent<PlayerRuntime>();
+        _characterRuntime = gameObject.AddComponent<PlayerRuntime>();
         _inputHandler = new InputSystem_Actions();
-        _playerState = new PlayerState();
-        _playerMovement = new PlayerMovement(_rigidbody2D, _playerState, _playerData);
-        _playerDash = new PlayerDash(_rigidbody2D, _playerRuntime);
-        _directionHandler = new PlayerDirectionHandler(_playerMovement);
-        _animationHandler = new PlayerAnimationHandler(_animator, _playerState, _directionHandler);
-        _stateHandler = new PlayerStateHandler(_playerState, _playerMovement, _inputHandler);
-        _playerAttack = new PlayerAttack( _playerState, _hitBoxController);
+        _characterState = new PlayerState();
+        _characterMovement = new PlayerMovement(_rigidbody2D, _characterState, _characterData);
+        _characterDash = new PlayerDash(_rigidbody2D, _characterRuntime);
+        _directionHandler = new PlayerDirectionHandler(_characterMovement);
+        _animationHandler = new PlayerAnimationHandler(_animator, _characterState, _directionHandler);
+        _stateHandler = new PlayerStateHandler(_characterState, _characterMovement, _inputHandler);
+        _characterAttack = new PlayerAttack( _characterState, _hitBoxController);
     }
 
     public virtual void InitCharacter()
     {
         GetComponent();
         InitComponent();
-        _playerRuntime.Init(_playerData, _rigidbody2D);
-        _playerController = gameObject.AddComponent<PlayerController>();
-        _playerController.Initialize(_playerMovement, _playerDash, _playerState, _playerAttack, _animationHandler, _stateHandler, _inputHandler);
+        _characterRuntime.Init(_characterData, _rigidbody2D);
+        _characterController = gameObject.AddComponent<PlayerController>();
+        _characterController.Initialize(_characterMovement, _characterDash, _characterState, _characterAttack, _animationHandler, _stateHandler, _inputHandler);
     }
 }
