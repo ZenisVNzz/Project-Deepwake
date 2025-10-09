@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerState : IState
+public class EnemyState : IState
 {
     private CharacterStateType CurrentState;
 

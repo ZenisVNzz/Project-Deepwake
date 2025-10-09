@@ -1,18 +1,5 @@
 using UnityEngine;
 
-public enum Direction
-{
-    Up,
-    UpLeft,
-    UpRight,
-    DownLeft,
-    DownRight,
-    Down,
-    Left,
-    Right,
-}
-
-[System.Serializable]
 public class PlayerDirectionHandler : ICharacterDirectionHandler
 {
     private IMovable playerMovement;

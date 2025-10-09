@@ -38934,7 +38934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAA4IewzEquMdAIAADEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z4jAM/SuMz1sm4aOUve1SSntoy5Tu9JKLiRXiwbEztlOgHf77Sk5CsiwXnKcn6T1ZyTeT2pWQemNXVopnI4D9HLAnZwrwVqYEsh+DjvUIR74zeiO/oCV/SOFzIvHAeeNeGsRjSmvr/NI7ReTbaBjRb3yH0UrLzNhiKXawMM47jGdcOcCQNZ7KaIS+B+yIfzeTKeInPI1mEZ6+8DSPBmc8pqA92B41Grbc5kjkOHArnSpelCDIQZcSzy4pdAxUjf4aVjScUR+jlHSNKuZPZbC/KXOwQP6F5Og2KImGZDAHucs9Se5nv2aZA0LJhuWne2lxbHVZ9tvUsyy429fyPrmqqNE0HgVZddHn/+I3tcHMmuKx7RtH1MPnMt2/8VPKne/NuA/fd9LjMKUDV3u+VfCRg34xK2sqLTDobUWplYPRffd4sbbIId13eC31CqzKbuxRM/P2QsnDObg/LpQstmGSkxrYKBMGPicyWLycJxQctsQ1JRAlFX8cvPNdf52awIO0zmOocalJ3tZUlqhsGWZGbiq/MFZDgBvRJWiu/GmNZfz1FV7Fem2vIg+c3qCmeRNrX4yrlAB3/Ci6Cq3N4XJZLjeHZ3D5a+WV1NCJpsALzmlhtK43rD+TNm1T2YynvbRdJcW/q8Wmt9vZNBtl27tsPMvG6Y2YzCe3Ip3FWxjPRTxnYfekRp9crWuhzXjw1nRXXOOeUUX6sAxWlpdh24Xlh5X8Kkxv5FJnZpNaAP1aV7gIB4tN8MUUSyFxQBvwXupw3+w7YcqkexDJpVASnC6P3vKkq5KwUn4aT0jCFuEDkjCCL7u8tvAp4UDN22Jndv4LUEsDBBQAAAgIAAA4IeyAAkLwbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSqVmSuWmaUVqSRZqxeZpxsm6KiaWJWUqyuWFSqrFliqGlUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAA4IewzEquMdAIAADEFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAA4IeyAAkLwbQAAAHgAAAAJACQAAAAAAAAAAAAAAMECAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAeQMAAAAA
+    dataString: UEsDBBQAAAgIAAA4IewKzeOdcwIAADIFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK5yVl8whhb7uEkBySUCFbufgirDFWIUsuSQ6QFP++M7KNvSwX5J6eR7fG/mZSuxJSb+zKSvFsBLCfA/bkTAHeypRA9mPQsR7hyHdGb+QXtOQPKXxOJB44b9xLg3hMaW2dX3qniHwb3UT0G99htNIyM7ZYih0sjPMO4xlXDjBkjacyGqHvATvi33AyRfyEp9EswtMXnubR4IzHFLQH26NGNy23ORI5DtxKp4oXJQhS0KXEs0sKHQNVo76GFd3MqI9RSrpmKuZPZZC/KXOwQPqF5Kg2TIIJVC8Hucs9zdxPf80yB4SSDstP99Kib3Vd9tvUZhbc7ev5PrmqqNM0HoW56qLP/8WHtcLMmuKx7RtH1MPnMt2/8VPKne+Z3Ifvu9njYNOBqz3fKvjIQb+YlTWVFhj0tqLUysHovnu8SFvkkO47vB71CqzKzveoMb29UdJwDuqPCyWLbbByUgMbZYLjcyKDxdt5woHDmrimBKI0xR8H73zX36cm8CCt8xhqVGoab2sqS1S2DJ6RmsovjNUQ4GboEjRX/rTGMv76Cq9ivbZXkQdOr1DTvIm1b8ZVSoA7fhRdhdbmcLksl5vDM7j8tfJKauiGpsAL+rQwWtcb1vekTdtUNuNpL21XSfHvarHp7XY2zUbZ9i4bz7JxOhST+eRWpLN4C+O5iOcs7J7UqJOrdT1oYw/emu6Ka9wzqkhflsHK8jJsu7D8sJJfhelZLnVmNqkF0K91hcvgYLEJvpliKSQatAHvpQ73zb4Tpky6B5FcCiVB6fLoLU+6Kgkr5afxhCRsEb4gCSP4sstrC58SDtS8LXZm579QSwMEFAAACAgAADgh7IACQvBtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJKpWZK5aZpRWpJFmrF5mnGyboqJpYlZSrK5YVKqsWWKoaVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAADgh7ArN451zAgAAMgUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAADgh7IACQvBtAAAAeAAAAAkAJAAAAAAAAAAAAAAAwAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB4AwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -41009,6 +41009,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floating Joystick
       objectReference: {fileID: 0}
+    - target: {fileID: 58427536452496701, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2630634529060554306, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_Canvas
       value: 
@@ -41106,10 +41110,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1749853278582577541, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: detailedGizmos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749853278582577541, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: startEndModifier.exactEndPoint
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749853278582577541, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: startEndModifier.exactStartPoint
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2866568678023557882, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 579848557}
+    - target: {fileID: 2866568678023557882, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: nextWaypointDistance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276787825326146820, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: m_Size.x
+      value: 0.70387936
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276787825326146820, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: m_Size.y
+      value: 0.30124453
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276787825326146820, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276787825326146820, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.04747206
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276787825326146820, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0675312
+      objectReference: {fileID: 0}
     - target: {fileID: 4832012355954888320, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.43
