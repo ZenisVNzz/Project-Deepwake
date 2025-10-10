@@ -6,5 +6,5 @@ public interface ICharacterRuntime : IAttackable
 
     CharacterData CharacterData { get; }
 
-    void Init(CharacterData playerData, Rigidbody2D rigidbody2D);
+    void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState characterState);
 }

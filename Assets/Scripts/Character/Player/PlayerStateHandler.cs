@@ -4,13 +4,13 @@ using UnityEngine;
 public class PlayerStateHandler : IStateHandler
 {
     private IState playerState;
-    private IMovable playerMovement;
+    private Rigidbody2D rb;
     private InputSystem_Actions inputHandler;
 
-    public PlayerStateHandler(IState state, IMovable playerMovement, InputSystem_Actions inputHandler)
+    public PlayerStateHandler(IState state, Rigidbody2D rigidbody2D, InputSystem_Actions inputHandler)
     {
         playerState = state;
-        this.playerMovement = playerMovement;
+        rb = rigidbody2D;
         this.inputHandler = inputHandler;
     }
 
@@ -33,11 +33,6 @@ public class PlayerStateHandler : IStateHandler
 
     private bool CheckIfMoving()
     {
-        Vector2 vec = playerMovement.GetDir();
-
-        if (vec.sqrMagnitude > 0.01f)
-            return true;
-        else
-            return false;
+        return rb.linearVelocity.sqrMagnitude > 0.01f;
     }
 }

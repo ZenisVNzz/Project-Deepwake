@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 {
-    [SerializeField] protected float _hp;
-    public float HP => _hp;
+    [SerializeField] protected float hp;
+    public float HP => hp;
 
     protected float _hpRegenRate;
 
-    protected CharacterData _characterData;
-    public CharacterData CharacterData => _characterData;
+    protected CharacterData characterData;
+    public CharacterData CharacterData => characterData;
 
-    protected Rigidbody2D _rigidbody2D;
+    protected Rigidbody2D rb;
+    protected IState characterState;
 
     private Material flashMaterial;
     private DamageFlash damageFlash;
 
-    public virtual void Init(CharacterData CharacterData, Rigidbody2D rigidbody2D)
+    public virtual void Init(CharacterData CharacterData, Rigidbody2D rigidbody2D, IState characterState)
     {
-        _characterData = Instantiate(CharacterData);
-        _hp = CharacterData.HP;
+        characterData = Instantiate(CharacterData);
+        hp = CharacterData.HP;
 
-        _rigidbody2D = rigidbody2D;     
+        rb = rigidbody2D;  
+        this.characterState = characterState;
     }
 
     public virtual void TakeDamage(float damage, Vector3 knockback)
@@ -30,7 +32,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
         if (this == null) return;
 
         DamageReduceCal damageReduceCal = new DamageReduceCal();
-        float FinalDamage = damageReduceCal.Calculate(damage, _characterData.Defense);
+        float FinalDamage = damageReduceCal.Calculate(damage, characterData.Defense);
 
         if (flashMaterial == null)
         {
@@ -42,15 +44,16 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
         UIManager.Instance.GetSingleUIService().Create
             ("FloatingDamage", $"FloatingDamage{Time.time}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
 
-        _hp -= FinalDamage;
-        _rigidbody2D.AddForce(knockback, ForceMode2D.Impulse);
+        hp -= FinalDamage;
+        rb.AddForce(knockback, ForceMode2D.Impulse);
+        characterState.ChangeState(CharacterStateType.Knockback);
 
-        if (_hp <= 0)
+        if (hp <= 0)
         {
             Die();
         }
 
-        Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {_hp}");
+        Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");
     }
 
     protected void Die()

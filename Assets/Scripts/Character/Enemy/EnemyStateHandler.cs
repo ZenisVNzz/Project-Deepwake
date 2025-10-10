@@ -1,21 +1,26 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class EnemyStateHandler : IStateHandler
 {
     private IState enemyState;
-    private IMovable enemyMovement;
+    private Rigidbody2D rb;
 
-    public EnemyStateHandler(IState state, IMovable enemyMovement)
+    public EnemyStateHandler(IState state, Rigidbody2D rigidbody2D)
     {
         enemyState = state;
-        this.enemyMovement = enemyMovement;
+        this.rb = rigidbody2D;
     }
 
-    public void UpdateState()
+    public async void UpdateState()
     {
         if (enemyState.GetCurrentState() == CharacterStateType.Attacking)
         {
             return;
+        }
+        else if (enemyState.GetCurrentState() == CharacterStateType.Knockback)
+        {
+            await WaitForKnockBack();
         }
         else
         {
@@ -28,11 +33,12 @@ public class EnemyStateHandler : IStateHandler
 
     private bool CheckIfMoving()
     {
-        Vector2 vec = enemyMovement.GetDir();
+        return rb.linearVelocity.sqrMagnitude > 0.01f;
+    }
 
-        if (vec.sqrMagnitude > 0.01f)
-            return true;
-        else
-            return false;
+    private async Task WaitForKnockBack()
+    {
+        await Task.Delay(700);
+        enemyState.ChangeState(CharacterStateType.Idle);
     }
 }

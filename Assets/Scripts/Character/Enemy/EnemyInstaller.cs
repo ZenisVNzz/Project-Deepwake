@@ -20,7 +20,7 @@ public class EnemyInstaller : CharacterInstaller
         _characterState = new EnemyState(); 
         _directionHandler = new EnemyDirectionHandler(_characterMovement);
         _animationHandler = new EnemyAnimationHandler(_animator, _characterState, _directionHandler);
-        _stateHandler = new EnemyStateHandler(_characterState, _characterMovement);
+        _stateHandler = new EnemyStateHandler(_characterState, _rigidbody2D);
         _characterAttack = new EnemyAttack(_characterState, _hitBoxController);
     }
 
@@ -28,7 +28,7 @@ public class EnemyInstaller : CharacterInstaller
     {
         GetComponent();
         InitComponent();
-        _enemyRuntime.Init(_characterData, _rigidbody2D);
+        _enemyRuntime.Init(_characterData, _rigidbody2D, _characterState);
         _enemyController = gameObject.AddComponent<EnemyController>();
         _enemyController.Initialize(_characterMovement, _characterState, _characterAttack, _animationHandler, _stateHandler);
     }

@@ -15,16 +15,17 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     private CharacterData _playerData;
     public CharacterData PlayerData => _playerData;
 
-    public override void Init(CharacterData playerData, Rigidbody2D rigidbody2D)
+    public override void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState)
     {
         _playerData = Instantiate(playerData);
-        _hp = playerData.HP;
+        hp = playerData.HP;
         _stamina = playerData.Stamina;
         _hpRegenRate = playerData.HPRegenRate;
         _staminaRegenRate = playerData.StaminaRegenRate;
         _staminaConsumptionMultiplier = playerData.StaminaConsumptionMultiplier;
 
-        _rigidbody2D = rigidbody2D;
+        rb = rigidbody2D;
+        characterState = PlayerState;
     }
 
     public bool UseStamina(float amount)

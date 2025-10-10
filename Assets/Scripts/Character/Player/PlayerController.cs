@@ -58,8 +58,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     }
 
     void Update()
-    {
-        stateHandler.UpdateState();
+    {       
         animationHandler.UpdateAnimation();   
     }
 
@@ -67,5 +66,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
     void FixedUpdate()
     {
         playerMovement.Move(playerInput);
+        stateHandler.UpdateState();
     }
 }

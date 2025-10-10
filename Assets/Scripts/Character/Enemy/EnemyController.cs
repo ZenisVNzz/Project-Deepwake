@@ -33,17 +33,20 @@ public class EnemyController : MonoBehaviour, ICharacterController
 
     private void OnMove()
     {
-        enemyMovement.Move();
+        if (enemyState.GetCurrentState() != CharacterStateType.Knockback)
+        {
+            enemyMovement.Move();
+        }      
     }
 
     void Update()
     {
-        stateHandler.UpdateState();
         animationHandler.UpdateAnimation();
     }
 
     void FixedUpdate()
     {
         OnMove();
+        stateHandler.UpdateState();
     }
 }

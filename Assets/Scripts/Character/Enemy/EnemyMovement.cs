@@ -37,7 +37,7 @@ public class EnemyMovement : IMovable
         while (true)
         {
             UpdatePath();
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

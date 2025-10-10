@@ -51,7 +51,7 @@ public class CharacterInstaller : MonoBehaviour
         _characterDash = new PlayerDash(_rigidbody2D, _characterRuntime);
         _directionHandler = new PlayerDirectionHandler(_characterMovement);
         _animationHandler = new PlayerAnimationHandler(_animator, _characterState, _directionHandler);
-        _stateHandler = new PlayerStateHandler(_characterState, _characterMovement, _inputHandler);
+        _stateHandler = new PlayerStateHandler(_characterState, _rigidbody2D, _inputHandler);
         _characterAttack = new PlayerAttack( _characterState, _hitBoxController);
     }
 
@@ -59,7 +59,7 @@ public class CharacterInstaller : MonoBehaviour
     {
         GetComponent();
         InitComponent();
-        _characterRuntime.Init(_characterData, _rigidbody2D);
+        _characterRuntime.Init(_characterData, _rigidbody2D, _characterState);
         _characterController = gameObject.AddComponent<PlayerController>();
         _characterController.Initialize(_characterMovement, _characterDash, _characterState, _characterAttack, _animationHandler, _stateHandler, _inputHandler);
     }
