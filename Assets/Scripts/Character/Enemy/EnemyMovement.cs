@@ -70,7 +70,7 @@ public class EnemyMovement : IMovable
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * 100f * Time.fixedDeltaTime;
+        Vector2 force = direction * 140f * Time.fixedDeltaTime;
         rb.linearVelocity = force;
 
         if (Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)

@@ -41,12 +41,13 @@ public class EnemyController : MonoBehaviour, ICharacterController
 
     void Update()
     {
-        animationHandler.UpdateAnimation();
+       
     }
 
     void FixedUpdate()
     {
-        OnMove();
         stateHandler.UpdateState();
+        animationHandler.UpdateAnimation();
+        OnMove(); 
     }
 }

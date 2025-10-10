@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -6,13 +7,15 @@ public class EnemyStateHandler : IStateHandler
     private IState enemyState;
     private Rigidbody2D rb;
 
+    private bool IsWaitForKnockBack = false;
+
     public EnemyStateHandler(IState state, Rigidbody2D rigidbody2D)
     {
         enemyState = state;
         this.rb = rigidbody2D;
     }
 
-    public async void UpdateState()
+    public void UpdateState()
     {
         if (enemyState.GetCurrentState() == CharacterStateType.Attacking)
         {
@@ -20,7 +23,11 @@ public class EnemyStateHandler : IStateHandler
         }
         else if (enemyState.GetCurrentState() == CharacterStateType.Knockback)
         {
-            await WaitForKnockBack();
+            if (!IsWaitForKnockBack)
+            {
+                CoroutineRunner.Instance.RunCoroutine(WaitForKnockBack());
+            }
+            return;
         }
         else
         {
@@ -33,12 +40,17 @@ public class EnemyStateHandler : IStateHandler
 
     private bool CheckIfMoving()
     {
-        return rb.linearVelocity.sqrMagnitude > 0.01f;
+        return rb.linearVelocity.sqrMagnitude > 0.05f;
     }
 
-    private async Task WaitForKnockBack()
+    private IEnumerator WaitForKnockBack()
     {
-        await Task.Delay(700);
-        enemyState.ChangeState(CharacterStateType.Idle);
+        IsWaitForKnockBack = true;
+        yield return new WaitForSeconds(0.7f);
+        if (enemyState.GetCurrentState() == CharacterStateType.Knockback)
+        {
+            enemyState.ChangeState(CharacterStateType.Idle);
+            IsWaitForKnockBack = false;
+        }  
     }
 }

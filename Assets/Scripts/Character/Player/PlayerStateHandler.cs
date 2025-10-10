@@ -33,6 +33,6 @@ public class PlayerStateHandler : IStateHandler
 
     private bool CheckIfMoving()
     {
-        return rb.linearVelocity.sqrMagnitude > 0.01f;
+        return rb.linearVelocity.sqrMagnitude > 0.05f;
     }
 }
