@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAnimationHandler : IAnimationHandler
@@ -7,6 +8,7 @@ public class EnemyAnimationHandler : IAnimationHandler
     private ICharacterDirectionHandler directionHandler;
 
     private string currentAnimName;
+    private bool isDeath = false;
 
     public EnemyAnimationHandler(Animator animator, IState enemyState, ICharacterDirectionHandler directionHander)
     {
@@ -29,6 +31,9 @@ public class EnemyAnimationHandler : IAnimationHandler
                 break;
             case CharacterStateType.Attacking:
                 AttackProcess();
+                break;
+            case CharacterStateType.Death:
+                DeathProcess();
                 break;
             default:
                 IdleProcess();
@@ -79,6 +84,23 @@ public class EnemyAnimationHandler : IAnimationHandler
         {
             enemyState.ChangeState(CharacterStateType.Idle);
         }
+    }
+
+    private void DeathProcess()
+    {
+        if (!isDeath)
+        {
+            Direction dir = directionHandler.GetDirection();
+            string anim = dir switch
+            {
+                Direction.UpLeft => "Enemy_UpLeft_Death",
+                Direction.UpRight => "Enemy_UpRight_Death",
+                Direction.DownLeft => "Enemy_DownLeft_Death",
+                _ => "Enemy_DownRight_Death"
+            };
+            PlayAnimation(anim);
+            isDeath = true;
+        }   
     }
 
     private void PlayAnimation(string animName)

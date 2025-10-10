@@ -17,7 +17,7 @@ public class EnemyStateHandler : IStateHandler
 
     public void UpdateState()
     {
-        if (enemyState.GetCurrentState() == CharacterStateType.Attacking)
+        if (enemyState.GetCurrentState() == CharacterStateType.Attacking || enemyState.GetCurrentState() == CharacterStateType.Death)
         {
             return;
         }

@@ -29,35 +29,39 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 
     public virtual void TakeDamage(float damage, Vector3 knockback)
     {
-        if (this == null) return;
-
-        DamageReduceCal damageReduceCal = new DamageReduceCal();
-        float FinalDamage = damageReduceCal.Calculate(damage, characterData.Defense);
-
-        if (flashMaterial == null)
+        if (characterState.GetCurrentState() != CharacterStateType.Death)
         {
-            flashMaterial = ResourceManager.Instance.GetAsset<Material>("DamageFlashMaterial");
-            damageFlash = new DamageFlash(GetComponent<SpriteRenderer>(), flashMaterial);
-        }
+            if (this == null) return;
 
-        damageFlash.TriggerFlash();
-        UIManager.Instance.GetSingleUIService().Create
-            ("FloatingDamage", $"FloatingDamage{Time.time}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
+            DamageReduceCal damageReduceCal = new DamageReduceCal();
+            float FinalDamage = damageReduceCal.Calculate(damage, characterData.Defense);
 
-        hp -= FinalDamage;
-        rb.AddForce(knockback, ForceMode2D.Impulse);
-        characterState.ChangeState(CharacterStateType.Knockback);
+            if (flashMaterial == null)
+            {
+                flashMaterial = ResourceManager.Instance.GetAsset<Material>("DamageFlashMaterial");
+                damageFlash = new DamageFlash(GetComponent<SpriteRenderer>(), flashMaterial);
+            }
 
-        if (hp <= 0)
-        {
-            Die();
-        }
+            damageFlash.TriggerFlash();
+            UIManager.Instance.GetSingleUIService().Create
+                ("FloatingDamage", $"FloatingDamage{Time.time}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
 
-        Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");
+            hp -= FinalDamage;
+            rb.AddForce(knockback, ForceMode2D.Impulse);
+            characterState.ChangeState(CharacterStateType.Knockback);
+
+            if (hp <= 0)
+            {
+                Die();
+            }
+
+            Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");
+        }   
     }
 
     protected void Die()
     {
         Debug.Log($"{gameObject} has died.");
+        characterState.ChangeState(CharacterStateType.Death);
     }
 }

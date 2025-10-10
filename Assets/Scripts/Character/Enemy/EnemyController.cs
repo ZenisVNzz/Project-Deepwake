@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour, ICharacterController
 
     private void OnMove()
     {
-        if (enemyState.GetCurrentState() != CharacterStateType.Knockback)
+        if (enemyState.GetCurrentState() != CharacterStateType.Knockback && enemyState.GetCurrentState() != CharacterStateType.Death)
         {
             enemyMovement.Move();
         }      

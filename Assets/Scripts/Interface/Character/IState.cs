@@ -7,7 +7,8 @@ public enum CharacterStateType
     Jumping,
     Falling,
     Knockback,
-    Attacking
+    Attacking,
+    Death
 }
 
 public interface IState
