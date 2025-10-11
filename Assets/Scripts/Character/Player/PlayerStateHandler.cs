@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -7,6 +9,8 @@ public class PlayerStateHandler : IStateHandler
     private IState playerState;
     private Rigidbody2D rb;
     private InputSystem_Actions inputHandler;
+
+    private Dictionary<string, Action> eventListeners = new Dictionary<string, Action>();
 
     private bool IsWaitForKnockBack = false;
 
@@ -56,6 +60,23 @@ public class PlayerStateHandler : IStateHandler
         {
             playerState.ChangeState(CharacterStateType.Idle);
             IsWaitForKnockBack = false;
+        }
+    }
+
+    public void Register(string eventName, Action listener)
+    {
+        if (!eventListeners.ContainsKey(eventName))
+        {
+            eventListeners[eventName] = null;
+        }
+        eventListeners[eventName] += listener;
+    }
+
+    private void Trigger(string eventName)
+    {
+        if (eventListeners.ContainsKey(eventName))
+        {
+            eventListeners[eventName]?.Invoke();
         }
     }
 }

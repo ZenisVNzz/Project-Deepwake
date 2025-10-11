@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +11,9 @@ public class EnemyController : MonoBehaviour, ICharacterController
     private IAnimationHandler animationHandler;
     private IStateHandler stateHandler;
     private IDamageDealer enemyAttack;
+
+    private SpriteRenderer spriteRenderer;
+    private Collider2D cd2D;
 
     public void Initialize
     (
@@ -24,6 +29,10 @@ public class EnemyController : MonoBehaviour, ICharacterController
         this.enemyAttack = attack;
         this.animationHandler = animation;
         this.stateHandler = stateHandler;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        cd2D = transform.Find("Collider").GetComponent<Collider2D>();
+        stateHandler.Register("OnDeath", OnDead);
     }
 
     private void OnAttack()
@@ -37,6 +46,18 @@ public class EnemyController : MonoBehaviour, ICharacterController
         {
             enemyMovement.Move();
         }      
+    }
+
+    private void OnDead()
+    {
+        StartCoroutine(DeathProcess());
+    }
+
+    private IEnumerator DeathProcess()
+    {
+        cd2D.enabled = false;
+        yield return new WaitForSeconds(3);
+        spriteRenderer.DOFade(0f, 3f).OnComplete(() => Destroy(gameObject));
     }
 
     void Update()

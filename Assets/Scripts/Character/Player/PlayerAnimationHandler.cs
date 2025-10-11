@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerAnimationHandler : IAnimationHandler
@@ -7,6 +8,7 @@ public class PlayerAnimationHandler : IAnimationHandler
     private readonly ICharacterDirectionHandler directionHandler;
 
     private string currentAnimName;
+    private bool isDeath = false;
 
     public PlayerAnimationHandler(Animator animator, IState playerState, ICharacterDirectionHandler directionHandler)
     {
