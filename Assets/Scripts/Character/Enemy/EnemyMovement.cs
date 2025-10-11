@@ -8,7 +8,8 @@ public class EnemyMovement : IMovable
 {
     private Transform target;
     private float nextWaypointDistance = 0.3f;
-    private float stopDistance = 0.8f;
+    private float stopDistance = 0.9f;
+    private float chaseDistance = 5f;
 
     private Path path;
     private int currentWaypoint = 0;
@@ -16,10 +17,13 @@ public class EnemyMovement : IMovable
     private Rigidbody2D rb;
     private MonoBehaviour runner;
 
-    public EnemyMovement(Seeker seeker, Rigidbody2D rb, MonoBehaviour runner)
+    private IState enemyState;
+
+    public EnemyMovement(Seeker seeker, Rigidbody2D rb, IState enemyState, MonoBehaviour runner)
     {
         this.seeker = seeker;
         this.rb = rb;
+        this.enemyState = enemyState;
         this.runner = runner;
        
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -62,16 +66,20 @@ public class EnemyMovement : IMovable
         if (currentWaypoint >= path.vectorPath.Count) return;
 
         float distanceToPlayer = Vector2.Distance(rb.position, target.position);
+        if (distanceToPlayer > chaseDistance)
+        {
+            return;
+        }
 
         if (distanceToPlayer <= stopDistance)
         {
             rb.linearVelocity = Vector2.zero;
+            enemyState.ChangeState(CharacterStateType.Attacking);
             return;
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * 140f * Time.fixedDeltaTime;
-        rb.linearVelocity = force;
+        rb.linearVelocity = direction * 2.8f;
 
         if (Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
             currentWaypoint++;
@@ -81,6 +89,13 @@ public class EnemyMovement : IMovable
 
     public Vector2 GetDir()
     {
-        return ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        if (path == null || path.vectorPath == null || path.vectorPath.Count < 2)
+            return Vector2.zero;
+
+        Vector2 currentPos = rb.position;
+        Vector2 targetPos = path.vectorPath[currentWaypoint];
+
+        Vector2 dir = (targetPos - currentPos).normalized;
+        return dir;
     }
 }

@@ -9,9 +9,13 @@ public class EnemyStateHandler : IStateHandler
     private IState enemyState;
     private Rigidbody2D rb;
 
+    private float idleDelay = 0.2f;
+    private float idleTimer = 0f;
+
     private Dictionary<string, Action> eventListeners = new Dictionary<string, Action>();
 
     private bool IsWaitForKnockBack = false;
+
 
     public EnemyStateHandler(IState state, Rigidbody2D rigidbody2D)
     {
@@ -49,7 +53,20 @@ public class EnemyStateHandler : IStateHandler
 
     private bool CheckIfMoving()
     {
-        return rb.linearVelocity.sqrMagnitude > 0.05f;
+        if (rb.linearVelocity.sqrMagnitude > 0.01f)
+        {
+            idleTimer = 0f;
+            return true;
+        }
+        else
+        {
+            idleTimer += Time.deltaTime;
+            if (idleTimer >= idleDelay)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     private IEnumerator WaitForKnockBack()

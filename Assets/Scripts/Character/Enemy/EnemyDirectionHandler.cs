@@ -4,8 +4,10 @@ public class EnemyDirectionHandler : ICharacterDirectionHandler
 {
     private IMovable enemyMovement;
     private Direction lastDirection = Direction.DownLeft;
+    private Vector2 lastDirVector = Vector2.down;
 
     private float deadzone = 0.3f;
+    private float directionChangeThreshold = 25f;
 
     public EnemyDirectionHandler(IMovable enemyMovement)
     {
@@ -16,10 +18,11 @@ public class EnemyDirectionHandler : ICharacterDirectionHandler
     {
         Vector2 dir = enemyMovement.GetDir();
 
-        if (Mathf.Abs(dir.x) < deadzone) dir.x = 0;
-        if (Mathf.Abs(dir.y) < deadzone) dir.y = 0;
+        if (dir.sqrMagnitude < deadzone * deadzone)
+            return lastDirection;
 
-        if (dir == Vector2.zero)
+        float angle = Vector2.Angle(lastDirVector, dir);
+        if (angle < directionChangeThreshold)
             return lastDirection;
 
         Direction newDir;
@@ -34,6 +37,7 @@ public class EnemyDirectionHandler : ICharacterDirectionHandler
             newDir = Direction.DownLeft;
 
         lastDirection = newDir;
+        lastDirVector = dir.normalized;
         return newDir;
     }
 }
