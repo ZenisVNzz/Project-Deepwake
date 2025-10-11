@@ -15,8 +15,9 @@ public class PlayerAttack : IDamageDealer
         _hitBoxController = hitBoxController;
     }
 
-    public void Attack()
-    { 
+    public void Attack(float ATK)
+    {
+        _hitBoxController.SetStats(ATK, 10f);
         CharacterStateType state = _playerState.GetCurrentState();
         if (state != CharacterStateType.Attacking)
         {

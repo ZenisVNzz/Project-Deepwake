@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private IDamageDealer playerAttack;
 
     private InputSystem_Actions inputHandler;
+    private CharacterData characterData;
 
     public void Initialize
     (
@@ -24,7 +25,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
       IDamageDealer attack,
       IAnimationHandler animation,
       IStateHandler stateHandler,
-      InputSystem_Actions input
+      InputSystem_Actions input,
+      CharacterData characterData
     )
     {
         this.playerMovement = movement;
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         this.animationHandler = animation;
         this.stateHandler = stateHandler;
         this.inputHandler = input;
+        this.characterData = characterData;
 
         inputHandler.Player.Enable();
         inputHandler.Player.Attack.performed += ctx => OnAttack();
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void OnAttack()
     {
-        playerAttack.Attack();
+        playerAttack.Attack(characterData.AttackPower);
     }
 
     private void OnMove(InputAction.CallbackContext context)
@@ -65,7 +68,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     Vector2 playerInput;
     void FixedUpdate()
     {
-        playerMovement.Move(playerInput);
+        playerMovement.Move(playerInput, characterData.MoveSpeed);
         stateHandler.UpdateState();
     }
 }

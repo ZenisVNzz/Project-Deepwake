@@ -3,9 +3,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class EnemyController : MonoBehaviour, ICharacterController
+public class EnemyController : MonoBehaviour, IEnemyController
 {
-    private IMovable enemyMovement;
+    private IAIMove enemyMovement;
     private IState enemyState;
     private ICharacterDirectionHandler directionHandler;
     private IAnimationHandler animationHandler;
@@ -15,13 +15,16 @@ public class EnemyController : MonoBehaviour, ICharacterController
     private SpriteRenderer spriteRenderer;
     private Collider2D cd2D;
 
+    private CharacterData characterData;
+
     public void Initialize
     (
-      IMovable movement,
+      IAIMove movement,
       IState state,
       IDamageDealer attack,
       IAnimationHandler animation,
-      IStateHandler stateHandler
+      IStateHandler stateHandler,
+      CharacterData characterData
     )
     {
         this.enemyMovement = movement;
@@ -29,6 +32,7 @@ public class EnemyController : MonoBehaviour, ICharacterController
         this.enemyAttack = attack;
         this.animationHandler = animation;
         this.stateHandler = stateHandler;
+        this.characterData = characterData;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
@@ -37,14 +41,17 @@ public class EnemyController : MonoBehaviour, ICharacterController
 
     private void OnAttack()
     {
-        enemyAttack.Attack();
+        if (enemyMovement.HaveReachedTarget())
+        {
+            enemyAttack.Attack(characterData.AttackPower);
+        }      
     }
 
     private void OnMove()
     {
         if (enemyState.GetCurrentState() != CharacterStateType.Knockback && enemyState.GetCurrentState() != CharacterStateType.Death && enemyState.GetCurrentState() != CharacterStateType.Attacking)
         {
-            enemyMovement.Move();
+            enemyMovement.Move(characterData.MoveSpeed);
         }      
     }
 
@@ -69,6 +76,7 @@ public class EnemyController : MonoBehaviour, ICharacterController
     {
         stateHandler.UpdateState();
         animationHandler.UpdateAnimation();
-        OnMove(); 
+        OnMove();
+        OnAttack();
     }
 }

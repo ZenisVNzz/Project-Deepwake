@@ -20,7 +20,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 
     public virtual void Init(CharacterData CharacterData, Rigidbody2D rigidbody2D, IState characterState)
     {
-        characterData = Instantiate(CharacterData);
+        characterData = CharacterData;
         hp = CharacterData.HP;
 
         rb = rigidbody2D;  
@@ -47,7 +47,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
                 ("FloatingDamage", $"FloatingDamage{Time.time}_{UnityEngine.Random.Range(0, 99999)}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
 
             hp -= FinalDamage;         
-            if (characterState.GetCurrentState() != CharacterStateType.Attacking)
+            if (characterState.GetCurrentState() != CharacterStateType.Attacking && characterState.GetCurrentState() != CharacterStateType.Death)
             {
                 rb.AddForce(knockback, ForceMode2D.Impulse);
                 characterState.ChangeState(CharacterStateType.Knockback);

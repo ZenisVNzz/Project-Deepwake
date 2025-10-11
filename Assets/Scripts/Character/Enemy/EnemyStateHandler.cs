@@ -24,14 +24,14 @@ public class EnemyStateHandler : IStateHandler
     }
 
     public void UpdateState()
-    {
-        if (enemyState.GetCurrentState() == CharacterStateType.Attacking)
-        {
-            return;
-        }
-        else if (enemyState.GetCurrentState() == CharacterStateType.Death)
+    {   
+        if (enemyState.GetCurrentState() == CharacterStateType.Death)
         {
             Trigger("OnDeath");
+            return;
+        }
+        else if (enemyState.GetCurrentState() == CharacterStateType.Attacking)
+        {
             return;
         }
         else if (enemyState.GetCurrentState() == CharacterStateType.Knockback)
@@ -73,7 +73,7 @@ public class EnemyStateHandler : IStateHandler
     {
         IsWaitForKnockBack = true;
         yield return new WaitForSeconds(0.7f);
-        if (enemyState.GetCurrentState() == CharacterStateType.Knockback)
+        if (enemyState.GetCurrentState() == CharacterStateType.Knockback && enemyState.GetCurrentState() != CharacterStateType.Death)
         {
             enemyState.ChangeState(CharacterStateType.Idle);
             IsWaitForKnockBack = false;

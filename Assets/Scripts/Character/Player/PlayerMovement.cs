@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerMovement : IMovable
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float deceleration = 20f;
 
@@ -12,18 +11,14 @@ public class PlayerMovement : IMovable
     private Vector2 input;
 
     private IState playerState;
-    private CharacterData characterData;
 
-    public PlayerMovement(Rigidbody2D rigidbody, IState playerState, CharacterData characterData)
+    public PlayerMovement(Rigidbody2D rigidbody, IState playerState)
     {
         this.rb = rigidbody;
         this.playerState = playerState;
-        this.characterData = characterData;
-
-        moveSpeed = characterData.MoveSpeed;
     }
 
-    public void Move(Vector2 input)
+    public void Move(Vector2 input, float moveSpeed)
     {
         this.input = input;
 
@@ -38,7 +33,7 @@ public class PlayerMovement : IMovable
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, isoInput * moveSpeed, acceleration * Time.fixedDeltaTime);
     }
 
-    public void Move() => Debug.LogWarning("[PlayerMovement] input is missing.");
+    public void Move(float moveSpeed) => Debug.LogWarning("[PlayerMovement] input is missing.");
 
     private Vector2 ToIsometric(Vector2 input)
     {

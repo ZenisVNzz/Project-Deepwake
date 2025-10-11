@@ -1,13 +1,14 @@
 using UnityEngine;
 
-public interface ICharacterController
+public interface IEnemyController
 {
     void Initialize
     (
-      IMovable movement,
+      IAIMove movement,
       IState state,
       IDamageDealer attack,
       IAnimationHandler animation,
-      IStateHandler stateHandler
+      IStateHandler stateHandler,
+      CharacterData characterData
     );
 }

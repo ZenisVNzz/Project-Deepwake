@@ -4,7 +4,7 @@ using PlayFab.MultiplayerModels;
 using System.Collections;
 using UnityEngine;
 
-public class EnemyMovement : IMovable
+public class EnemyMovement : IAIMove
 {
     private Transform target;
     private float nextWaypointDistance = 0.3f;
@@ -17,13 +17,12 @@ public class EnemyMovement : IMovable
     private Rigidbody2D rb;
     private MonoBehaviour runner;
 
-    private IState enemyState;
+    private bool haveReachedTarget = false;
 
-    public EnemyMovement(Seeker seeker, Rigidbody2D rb, IState enemyState, MonoBehaviour runner)
+    public EnemyMovement(Seeker seeker, Rigidbody2D rb, MonoBehaviour runner)
     {
         this.seeker = seeker;
         this.rb = rb;
-        this.enemyState = enemyState;
         this.runner = runner;
        
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -60,7 +59,7 @@ public class EnemyMovement : IMovable
         }
     }    
 
-    public void Move()
+    public void Move(float moveSpeed)
     {
         if (path == null) return;
         if (currentWaypoint >= path.vectorPath.Count) return;
@@ -74,18 +73,22 @@ public class EnemyMovement : IMovable
         if (distanceToPlayer <= stopDistance)
         {
             rb.linearVelocity = Vector2.zero;
-            enemyState.ChangeState(CharacterStateType.Attacking);
+            haveReachedTarget = true;
             return;
+        }
+        else
+        {
+            haveReachedTarget = false;
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        rb.linearVelocity = direction * 2.8f;
+        rb.linearVelocity = direction * moveSpeed;
 
         if (Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
             currentWaypoint++;
     }
 
-    public void Move(Vector2 input) => Move();
+    public void Move(Vector2 input, float moveSpeed) => Move(moveSpeed);
 
     public Vector2 GetDir()
     {
@@ -98,4 +101,6 @@ public class EnemyMovement : IMovable
         Vector2 dir = (targetPos - currentPos).normalized;
         return dir;
     }
+
+    public bool HaveReachedTarget () => haveReachedTarget;
 }

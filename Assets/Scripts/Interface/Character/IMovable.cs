@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IMovable
 {
-    void Move();
-    void Move(Vector2 input);
+    void Move(float moveSpeed);
+    void Move(Vector2 input, float moveSpeed);
     Vector2 GetDir();
 }

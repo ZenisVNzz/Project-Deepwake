@@ -10,6 +10,7 @@ public interface IPlayerController
       IDamageDealer attack,
       IAnimationHandler animation,
       IStateHandler stateHandler,
-      InputSystem_Actions input
+      InputSystem_Actions input,
+      CharacterData characterData
     );
 }

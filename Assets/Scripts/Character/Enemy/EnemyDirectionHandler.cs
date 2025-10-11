@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class EnemyDirectionHandler : ICharacterDirectionHandler
 {
-    private IMovable enemyMovement;
+    private IAIMove enemyMovement;
     private Direction lastDirection = Direction.DownLeft;
     private Vector2 lastDirVector = Vector2.down;
 
     private float deadzone = 0.3f;
     private float directionChangeThreshold = 25f;
 
-    public EnemyDirectionHandler(IMovable enemyMovement)
+    public EnemyDirectionHandler(IAIMove enemyMovement)
     {
         this.enemyMovement = enemyMovement;
     }

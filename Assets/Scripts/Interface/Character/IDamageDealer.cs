@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IDamageDealer
 {
-    void Attack();
+    void Attack(float ATK);
 }

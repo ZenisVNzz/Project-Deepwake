@@ -5,6 +5,7 @@ public class CharacterInstaller : MonoBehaviour
     [SerializeField] protected CharacterData _characterData;
 
     protected IMovable _characterMovement;
+    protected IAIMove _AIMovement;
     private IDashable _characterDash;
     protected IState _characterState;
     protected ICharacterDirectionHandler _directionHandler;
@@ -23,6 +24,8 @@ public class CharacterInstaller : MonoBehaviour
     protected HitBoxController _skillHitBoxController;
     private InputSystem_Actions _inputHandler;
 
+    protected CharacterData CharacterDataClone;
+
     protected void Awake()
     {
         InitCharacter();
@@ -40,6 +43,8 @@ public class CharacterInstaller : MonoBehaviour
         {
             _skillHitBoxController = gameObject.transform.Find("HitBoxs_Skill").GetComponent<HitBoxController>();
         }
+
+        CharacterDataClone = Instantiate(_characterData);
     }
 
     public virtual void InitComponent()
@@ -47,7 +52,7 @@ public class CharacterInstaller : MonoBehaviour
         _characterRuntime = gameObject.AddComponent<PlayerRuntime>();
         _inputHandler = new InputSystem_Actions();
         _characterState = new PlayerState();
-        _characterMovement = new PlayerMovement(_rigidbody2D, _characterState, _characterData);
+        _characterMovement = new PlayerMovement(_rigidbody2D, _characterState);
         _characterDash = new PlayerDash(_rigidbody2D, _characterRuntime);
         _directionHandler = new PlayerDirectionHandler(_characterMovement);
         _animationHandler = new PlayerAnimationHandler(_animator, _characterState, _directionHandler);
@@ -59,8 +64,8 @@ public class CharacterInstaller : MonoBehaviour
     {
         GetComponent();
         InitComponent();
-        _characterRuntime.Init(_characterData, _rigidbody2D, _characterState);
+        _characterRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState);
         _characterController = gameObject.AddComponent<PlayerController>();
-        _characterController.Initialize(_characterMovement, _characterDash, _characterState, _characterAttack, _animationHandler, _stateHandler, _inputHandler);
+        _characterController.Initialize(_characterMovement, _characterDash, _characterState, _characterAttack, _animationHandler, _stateHandler, _inputHandler, CharacterDataClone);
     }
 }
