@@ -11,7 +11,7 @@ public class HitBoxHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag != _controller.tag && other.tag != gameObject.tag)
+        if (other.tag != _controller.tag && other.tag != gameObject.tag && other.tag != "Untagged")
         {
             IAttackable damageable = other.GetComponentInParent<IAttackable>();
             if (damageable != null)

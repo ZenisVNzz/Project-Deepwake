@@ -7,7 +7,6 @@ public class EnemyState : IState
     public void ChangeState(CharacterStateType newState)
     {
         CurrentState = newState;
-        Debug.LogWarning($"Change State To {newState}");
     }
     public CharacterStateType GetCurrentState()
     {

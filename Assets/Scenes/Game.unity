@@ -38960,7 +38960,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 4
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -39011,7 +39011,7 @@ MonoBehaviour:
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -39019,7 +39019,7 @@ MonoBehaviour:
     seed: 0
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
-  showGraphs: 1
+  showGraphs: 0
 --- !u!4 &672263100
 Transform:
   m_ObjectHideFlags: 0
@@ -39157,6 +39157,10 @@ PrefabInstance:
     - target: {fileID: 5290127179865208800, guid: 066cefe94252b384fbad449ace9d6809, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305639373998598117, guid: 066cefe94252b384fbad449ace9d6809, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41220,6 +41224,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 223056643357205314, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4832012355954888320, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.117
