@@ -16,7 +16,7 @@ MonoBehaviour:
   Stamina: 0
   AttackPower: 15
   Defense: 2
-  MoveSpeed: 2
+  MoveSpeed: 2.8
   CriticalChance: 0
   CriticalDamageMultiplier: 0
   HPRegenRate: 0

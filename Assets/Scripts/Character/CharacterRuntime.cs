@@ -44,11 +44,14 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 
             damageFlash.TriggerFlash();
             UIManager.Instance.GetSingleUIService().Create
-                ("FloatingDamage", $"FloatingDamage{Time.time}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
+                ("FloatingDamage", $"FloatingDamage{Time.time}_{UnityEngine.Random.Range(0, 99999)}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
 
-            hp -= FinalDamage;
-            rb.AddForce(knockback, ForceMode2D.Impulse);
-            characterState.ChangeState(CharacterStateType.Knockback);
+            hp -= FinalDamage;         
+            if (characterState.GetCurrentState() != CharacterStateType.Attacking)
+            {
+                rb.AddForce(knockback, ForceMode2D.Impulse);
+                characterState.ChangeState(CharacterStateType.Knockback);
+            }           
 
             if (hp <= 0)
             {

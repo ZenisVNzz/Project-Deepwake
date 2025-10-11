@@ -12,12 +12,9 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     private float _staminaConsumptionMultiplier;
     private Coroutine _staminaRegenCoroutine;
 
-    private CharacterData _playerData;
-    public CharacterData PlayerData => _playerData;
-
     public override void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState)
     {
-        _playerData = Instantiate(playerData);
+        characterData = Instantiate(playerData);
         hp = playerData.HP;
         _stamina = playerData.Stamina;
         _hpRegenRate = playerData.HPRegenRate;
@@ -49,12 +46,12 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     private IEnumerator RegenSatamina()
     {
         yield return new WaitForSeconds(2f);
-        while (_stamina < _playerData.Stamina)
+        while (_stamina < characterData.Stamina)
         {
             _stamina += _staminaRegenRate * Time.deltaTime;
-            if (_stamina > _playerData.Stamina)
+            if (_stamina > characterData.Stamina)
             {
-                _stamina = _playerData.Stamina;
+                _stamina = characterData.Stamina;
             }
             yield return null;
         }

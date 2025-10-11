@@ -15,9 +15,9 @@ public class EnemyInstaller : CharacterInstaller
 
     public override void InitComponent()
     {
-        _enemyRuntime = gameObject.AddComponent<EnemyRuntime>();
-        _characterMovement = new EnemyMovement(_seeker, _rigidbody2D, this);
-        _characterState = new EnemyState(); 
+        _enemyRuntime = gameObject.AddComponent<EnemyRuntime>();  
+        _characterState = new EnemyState();
+        _characterMovement = new EnemyMovement(_seeker, _rigidbody2D, _characterState, this);
         _directionHandler = new EnemyDirectionHandler(_characterMovement);
         _animationHandler = new EnemyAnimationHandler(_animator, _characterState, _directionHandler);
         _stateHandler = new EnemyStateHandler(_characterState, _rigidbody2D);
