@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
 
     private SpriteRenderer spriteRenderer;
     private Collider2D cd2D;
+    private Collider2D hurtBox;
 
     private CharacterData characterData;
 
@@ -36,6 +37,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
+        hurtBox = transform.Find("HurtBox").GetComponent<Collider2D>();
         stateHandler.Register("OnDeath", OnDead);
     }
 
@@ -63,6 +65,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
     private IEnumerator DeathProcess()
     {
         cd2D.enabled = false;
+        hurtBox.enabled = false;
         yield return new WaitForSeconds(3);
         spriteRenderer.DOFade(0f, 3f).OnComplete(() => Destroy(gameObject));
     }

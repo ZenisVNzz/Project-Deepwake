@@ -46,16 +46,17 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
             UIManager.Instance.GetSingleUIService().Create
                 ("FloatingDamage", $"FloatingDamage{Time.time}_{UnityEngine.Random.Range(0, 99999)}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
 
-            hp -= FinalDamage;         
-            if (characterState.GetCurrentState() != CharacterStateType.Attacking && characterState.GetCurrentState() != CharacterStateType.Death)
-            {
-                rb.AddForce(knockback, ForceMode2D.Impulse);
-                characterState.ChangeState(CharacterStateType.Knockback);
-            }           
+            hp -= FinalDamage;                             
 
             if (hp <= 0)
             {
                 Die();
+            }
+
+            if (characterState.GetCurrentState() != CharacterStateType.Attacking && characterState.GetCurrentState() != CharacterStateType.Death)
+            {
+                rb.AddForce(knockback, ForceMode2D.Impulse);
+                characterState.ChangeState(CharacterStateType.Knockback);
             }
 
             Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");
@@ -64,7 +65,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 
     protected void Die()
     {
-        Debug.Log($"{gameObject} has died.");
         characterState.ChangeState(CharacterStateType.Death);
+        Debug.Log($"{gameObject} has died.");
     }
 }

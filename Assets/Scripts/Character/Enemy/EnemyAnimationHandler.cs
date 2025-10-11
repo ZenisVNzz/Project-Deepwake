@@ -20,26 +20,29 @@ public class EnemyAnimationHandler : IAnimationHandler
 
     public void UpdateAnimation()
     {
-        CharacterStateType currentState = enemyState.GetCurrentState();
-
-        switch (currentState)
+        if (!isDeath)
         {
-            case CharacterStateType.Idle:
-                IdleProcess();
-                break;
-            case CharacterStateType.Running:
-                RunningProcess();
-                break;
-            case CharacterStateType.Attacking:
-                AttackProcess();
-                break;
-            case CharacterStateType.Death:
-                DeathProcess();
-                break;
-            default:
-                IdleProcess();
-                break;
-        }
+            CharacterStateType currentState = enemyState.GetCurrentState();
+
+            switch (currentState)
+            {
+                case CharacterStateType.Idle:
+                    IdleProcess();
+                    break;
+                case CharacterStateType.Running:
+                    RunningProcess();
+                    break;
+                case CharacterStateType.Attacking:
+                    AttackProcess();
+                    break;
+                case CharacterStateType.Death:
+                    DeathProcess();
+                    break;
+                default:
+                    IdleProcess();
+                    break;
+            }
+        }   
     }
 
     private void IdleProcess()
