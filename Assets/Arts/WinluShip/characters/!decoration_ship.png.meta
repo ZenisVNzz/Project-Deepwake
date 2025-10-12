@@ -1,0 +1,1030 @@
+fileFormatVersion: 2
+guid: 93907f186d3ce514cb9b0eeb8385ba9e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2392338019466429343
+    second: '!decoration_ship_0'
+  - first:
+      213: 7728720890189428841
+    second: '!decoration_ship_1'
+  - first:
+      213: -7123855649914690261
+    second: '!decoration_ship_2'
+  - first:
+      213: -4822075560638333050
+    second: '!decoration_ship_3'
+  - first:
+      213: 7680891643131091813
+    second: '!decoration_ship_4'
+  - first:
+      213: 1993654336451238885
+    second: '!decoration_ship_5'
+  - first:
+      213: 533051502116484734
+    second: '!decoration_ship_6'
+  - first:
+      213: 4102780737334448108
+    second: '!decoration_ship_7'
+  - first:
+      213: -4394024068218944291
+    second: '!decoration_ship_8'
+  - first:
+      213: -7183679894823297198
+    second: '!decoration_ship_9'
+  - first:
+      213: 4769749998922673251
+    second: '!decoration_ship_10'
+  - first:
+      213: 2586207159463922275
+    second: '!decoration_ship_11'
+  - first:
+      213: 1400459625608707833
+    second: '!decoration_ship_12'
+  - first:
+      213: -8986181252080181960
+    second: '!decoration_ship_13'
+  - first:
+      213: -9172469035433906161
+    second: '!decoration_ship_14'
+  - first:
+      213: 8499228388400798611
+    second: '!decoration_ship_15'
+  - first:
+      213: 3635729490050562559
+    second: '!decoration_ship_16'
+  - first:
+      213: -6953496031220460918
+    second: '!decoration_ship_17'
+  - first:
+      213: 7537833898795142407
+    second: '!decoration_ship_18'
+  - first:
+      213: -2265065417948798254
+    second: '!decoration_ship_19'
+  - first:
+      213: 882886999352539759
+    second: '!decoration_ship_20'
+  - first:
+      213: 5240475415731137238
+    second: '!decoration_ship_21'
+  - first:
+      213: -2144233673491799927
+    second: '!decoration_ship_22'
+  - first:
+      213: 7118660688960239117
+    second: '!decoration_ship_23'
+  - first:
+      213: 82776860771113520
+    second: '!decoration_ship_24'
+  - first:
+      213: 4391286083342508926
+    second: '!decoration_ship_25'
+  - first:
+      213: 1787984722378865127
+    second: '!decoration_ship_26'
+  - first:
+      213: -9218058493615776387
+    second: '!decoration_ship_27'
+  - first:
+      213: -8882819763279114803
+    second: '!decoration_ship_28'
+  - first:
+      213: -8198360999178245490
+    second: '!decoration_ship_29'
+  - first:
+      213: -4493281122487605544
+    second: '!decoration_ship_30'
+  - first:
+      213: -5784938290111082189
+    second: '!decoration_ship_31'
+  - first:
+      213: -5601216209994980442
+    second: '!decoration_ship_32'
+  - first:
+      213: -6585757157645771839
+    second: '!decoration_ship_33'
+  - first:
+      213: 1396702611836808143
+    second: '!decoration_ship_34'
+  - first:
+      213: 6105443778303766554
+    second: '!decoration_ship_35'
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: '!decoration_ship_0'
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 712
+        width: 16
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9345f8e0ca433120800000000000000
+      internalID: 2392338019466429343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_1'
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 712
+        width: 15
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 968b1eb73bee14b60800000000000000
+      internalID: 7728720890189428841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_2'
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 712
+        width: 15
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b25ecabb70bf22d90800000000000000
+      internalID: -7123855649914690261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_3'
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 671
+        width: 50
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68f3f0873db841db0800000000000000
+      internalID: -4822075560638333050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_4'
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 671
+        width: 50
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56b581b1142089a60800000000000000
+      internalID: 7680891643131091813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_5'
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 671
+        width: 96
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ebd7116e02eaab10800000000000000
+      internalID: 1993654336451238885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_6'
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 671
+        width: 50
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7634a65487c56700800000000000000
+      internalID: 533051502116484734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_7'
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 671
+        width: 96
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cef8228d75100f830800000000000000
+      internalID: 4102780737334448108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_8'
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 671
+        width: 50
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd40b47f36a4503c0800000000000000
+      internalID: -4394024068218944291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_9'
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 671
+        width: 48
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25f11f842317e4c90800000000000000
+      internalID: -7183679894823297198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_10'
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 616
+        width: 27
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36ca4315a5e813240800000000000000
+      internalID: 4769749998922673251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_11'
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 616
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36a4b6f85bd04e320800000000000000
+      internalID: 2586207159463922275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_12'
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 616
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fefeaa0c9e6f6310800000000000000
+      internalID: 1400459625608707833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_13'
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 575
+        width: 50
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83d5c7613cbaa4380800000000000000
+      internalID: -8986181252080181960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_14'
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 575
+        width: 50
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0031b59208d4b080800000000000000
+      internalID: -9172469035433906161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_15'
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 575
+        width: 97
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b9b8b303353f570800000000000000
+      internalID: 8499228388400798611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_16'
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 575
+        width: 50
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff930e155b4b47230800000000000000
+      internalID: 3635729490050562559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_17'
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 575
+        width: 97
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8214086338308f90800000000000000
+      internalID: -6953496031220460918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_18'
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 575
+        width: 50
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70d05996ef3cb9860800000000000000
+      internalID: 7537833898795142407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_19'
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 575
+        width: 49
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d2e322d00fd090e0800000000000000
+      internalID: -2265065417948798254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_20'
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 520
+        width: 31
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6af7355c05a04c00800000000000000
+      internalID: 882886999352539759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_21'
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 520
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6da62d810a8e9b840800000000000000
+      internalID: 5240475415731137238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_22'
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 479
+        width: 124
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9802718a5d62e32e0800000000000000
+      internalID: -2144233673491799927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_23'
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 479
+        width: 145
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d06330a2e209ac260800000000000000
+      internalID: 7118660688960239117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_24'
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 479
+        width: 145
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03a52e5cd15162100800000000000000
+      internalID: 82776860771113520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_25'
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 479
+        width: 48
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e732fb04d6bf0fc30800000000000000
+      internalID: 4391286083342508926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_26'
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 403
+        width: 8
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e9b731c1a230d810800000000000000
+      internalID: 1787984722378865127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_27'
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 403
+        width: 8
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d5241b3a0e21080800000000000000
+      internalID: -9218058493615776387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_28'
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 403
+        width: 8
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcdcded0d72e9b480800000000000000
+      internalID: -8882819763279114803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_29'
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 399
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8a6097ab12993e80800000000000000
+      internalID: -8198360999178245490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_30'
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 399
+        width: 8
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d6682220a8a4a1c0800000000000000
+      internalID: -4493281122487605544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_31'
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 399
+        width: 8
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3319f5a6645c7bfa0800000000000000
+      internalID: -5784938290111082189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_32'
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 400
+        width: 8
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a3e615988b7442b0800000000000000
+      internalID: -5601216209994980442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_33'
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 400
+        width: 8
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cb998902c0ba94a0800000000000000
+      internalID: -6585757157645771839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_34'
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 400
+        width: 8
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcba46b10a5126310800000000000000
+      internalID: 1396702611836808143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_35'
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 291
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a103ae1b4c4eab450800000000000000
+      internalID: 6105443778303766554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
