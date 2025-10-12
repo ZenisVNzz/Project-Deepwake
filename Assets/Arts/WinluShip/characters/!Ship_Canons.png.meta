@@ -214,7 +214,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -252,7 +252,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1622,7 +1622,67 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      '!Ship_Canons_0': 4855473640022410409
+      '!Ship_Canons_1': 6383319750404811890
+      '!Ship_Canons_10': -5560079097758067060
+      '!Ship_Canons_11': 1042837229572779086
+      '!Ship_Canons_12': -3343027997928292751
+      '!Ship_Canons_13': 352985159220582859
+      '!Ship_Canons_14': 828843291942969912
+      '!Ship_Canons_15': 3695625431174165254
+      '!Ship_Canons_16': 5486522731903065031
+      '!Ship_Canons_17': 6724278180357756691
+      '!Ship_Canons_18': 8263410111096607334
+      '!Ship_Canons_19': -2703141520674258433
+      '!Ship_Canons_2': 5361233794860390300
+      '!Ship_Canons_20': -4342395832131297431
+      '!Ship_Canons_21': -348207770574207483
+      '!Ship_Canons_22': 2431130648405957984
+      '!Ship_Canons_23': 6859574301242027432
+      '!Ship_Canons_24': 6232302198874114935
+      '!Ship_Canons_25': -9026479548130707972
+      '!Ship_Canons_26': -1726689049907111298
+      '!Ship_Canons_27': 6683530265083673888
+      '!Ship_Canons_28': -1790217965381579196
+      '!Ship_Canons_29': -6992885557749519320
+      '!Ship_Canons_3': 2256399559031299949
+      '!Ship_Canons_30': 5675597091449975774
+      '!Ship_Canons_31': 3010048675837985248
+      '!Ship_Canons_32': -3698732025471722526
+      '!Ship_Canons_33': -6409728311960160191
+      '!Ship_Canons_34': -5901976153404605760
+      '!Ship_Canons_35': 2303210746109142785
+      '!Ship_Canons_36': -3141379414895660302
+      '!Ship_Canons_37': -1050299672282910268
+      '!Ship_Canons_38': -5357060281385175959
+      '!Ship_Canons_39': -5725567102686854265
+      '!Ship_Canons_4': -1814367722060395069
+      '!Ship_Canons_40': -4312285689333886753
+      '!Ship_Canons_41': -7730666272393688213
+      '!Ship_Canons_42': 7446601070899837378
+      '!Ship_Canons_43': -1609712804918500239
+      '!Ship_Canons_44': 2290255793456445632
+      '!Ship_Canons_45': 103426017123967591
+      '!Ship_Canons_46': 5737315042988139998
+      '!Ship_Canons_47': -864610815466208659
+      '!Ship_Canons_48': -6909329338622651345
+      '!Ship_Canons_49': 1740516916461099929
+      '!Ship_Canons_5': -3799153998625055585
+      '!Ship_Canons_50': 2112505136193060570
+      '!Ship_Canons_51': 3919915559603045545
+      '!Ship_Canons_52': -6401292619233303435
+      '!Ship_Canons_53': 440897539350921803
+      '!Ship_Canons_54': 889865684302198755
+      '!Ship_Canons_55': 1423032877384261741
+      '!Ship_Canons_56': 2646777843400005468
+      '!Ship_Canons_57': -3160051986101214338
+      '!Ship_Canons_58': -6241141383953183960
+      '!Ship_Canons_59': -7055165976193113981
+      '!Ship_Canons_6': 7655073723488247243
+      '!Ship_Canons_7': 5726461695549905209
+      '!Ship_Canons_8': -5487681311725455104
+      '!Ship_Canons_9': -3979025528466467207
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

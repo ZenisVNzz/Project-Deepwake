@@ -142,7 +142,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -180,7 +180,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -221,10 +221,10 @@ TextureImporter:
       name: '!decoration_ship_0'
       rect:
         serializedVersion: 2
-        x: 15
-        y: 712
-        width: 16
-        height: 56
+        x: 0
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,10 +243,10 @@ TextureImporter:
       name: '!decoration_ship_1'
       rect:
         serializedVersion: 2
-        x: 65
-        y: 712
-        width: 15
-        height: 56
+        x: 48
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,10 +265,10 @@ TextureImporter:
       name: '!decoration_ship_2'
       rect:
         serializedVersion: 2
-        x: 115
-        y: 712
-        width: 15
-        height: 56
+        x: 96
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,10 +287,10 @@ TextureImporter:
       name: '!decoration_ship_3'
       rect:
         serializedVersion: 2
-        x: 142
-        y: 671
-        width: 50
-        height: 97
+        x: 144
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,10 +309,10 @@ TextureImporter:
       name: '!decoration_ship_4'
       rect:
         serializedVersion: 2
-        x: 191
-        y: 671
-        width: 50
-        height: 97
+        x: 192
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -332,9 +332,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 240
-        y: 671
-        width: 96
-        height: 97
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -353,10 +353,10 @@ TextureImporter:
       name: '!decoration_ship_6'
       rect:
         serializedVersion: 2
-        x: 335
-        y: 671
-        width: 50
-        height: 97
+        x: 288
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -375,10 +375,10 @@ TextureImporter:
       name: '!decoration_ship_7'
       rect:
         serializedVersion: 2
-        x: 384
-        y: 671
-        width: 96
-        height: 97
+        x: 336
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,10 +397,10 @@ TextureImporter:
       name: '!decoration_ship_8'
       rect:
         serializedVersion: 2
-        x: 479
-        y: 671
-        width: 50
-        height: 97
+        x: 384
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -419,10 +419,10 @@ TextureImporter:
       name: '!decoration_ship_9'
       rect:
         serializedVersion: 2
-        x: 528
-        y: 671
+        x: 432
+        y: 683
         width: 48
-        height: 97
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -441,10 +441,10 @@ TextureImporter:
       name: '!decoration_ship_10'
       rect:
         serializedVersion: 2
-        x: 0
-        y: 616
-        width: 27
-        height: 52
+        x: 480
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -463,10 +463,10 @@ TextureImporter:
       name: '!decoration_ship_11'
       rect:
         serializedVersion: 2
-        x: 47
-        y: 616
-        width: 28
-        height: 52
+        x: 528
+        y: 683
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -485,10 +485,10 @@ TextureImporter:
       name: '!decoration_ship_12'
       rect:
         serializedVersion: 2
-        x: 95
-        y: 616
-        width: 30
-        height: 52
+        x: 0
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -507,10 +507,10 @@ TextureImporter:
       name: '!decoration_ship_13'
       rect:
         serializedVersion: 2
-        x: 142
-        y: 575
-        width: 50
-        height: 94
+        x: 48
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -529,10 +529,10 @@ TextureImporter:
       name: '!decoration_ship_14'
       rect:
         serializedVersion: 2
-        x: 191
-        y: 575
-        width: 50
-        height: 94
+        x: 96
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -551,10 +551,10 @@ TextureImporter:
       name: '!decoration_ship_15'
       rect:
         serializedVersion: 2
-        x: 239
-        y: 575
-        width: 97
-        height: 94
+        x: 144
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -573,10 +573,10 @@ TextureImporter:
       name: '!decoration_ship_16'
       rect:
         serializedVersion: 2
-        x: 335
-        y: 575
-        width: 50
-        height: 94
+        x: 192
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -595,10 +595,10 @@ TextureImporter:
       name: '!decoration_ship_17'
       rect:
         serializedVersion: 2
-        x: 383
-        y: 575
-        width: 97
-        height: 94
+        x: 240
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -617,10 +617,10 @@ TextureImporter:
       name: '!decoration_ship_18'
       rect:
         serializedVersion: 2
-        x: 479
-        y: 575
-        width: 50
-        height: 94
+        x: 288
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -639,10 +639,10 @@ TextureImporter:
       name: '!decoration_ship_19'
       rect:
         serializedVersion: 2
-        x: 527
-        y: 575
-        width: 49
-        height: 94
+        x: 336
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -661,10 +661,10 @@ TextureImporter:
       name: '!decoration_ship_20'
       rect:
         serializedVersion: 2
-        x: 18
-        y: 520
-        width: 31
-        height: 53
+        x: 384
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -683,10 +683,10 @@ TextureImporter:
       name: '!decoration_ship_21'
       rect:
         serializedVersion: 2
-        x: 68
-        y: 520
-        width: 29
-        height: 53
+        x: 432
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -705,10 +705,10 @@ TextureImporter:
       name: '!decoration_ship_22'
       rect:
         serializedVersion: 2
-        x: 117
-        y: 479
-        width: 124
-        height: 94
+        x: 480
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -727,10 +727,10 @@ TextureImporter:
       name: '!decoration_ship_23'
       rect:
         serializedVersion: 2
-        x: 240
-        y: 479
-        width: 145
-        height: 94
+        x: 528
+        y: 598
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -749,10 +749,10 @@ TextureImporter:
       name: '!decoration_ship_24'
       rect:
         serializedVersion: 2
-        x: 384
-        y: 479
-        width: 145
-        height: 94
+        x: 0
+        y: 513
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -771,10 +771,10 @@ TextureImporter:
       name: '!decoration_ship_25'
       rect:
         serializedVersion: 2
-        x: 528
-        y: 479
+        x: 48
+        y: 513
         width: 48
-        height: 94
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -793,10 +793,10 @@ TextureImporter:
       name: '!decoration_ship_26'
       rect:
         serializedVersion: 2
-        x: 15
-        y: 403
-        width: 8
-        height: 25
+        x: 96
+        y: 513
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -815,10 +815,10 @@ TextureImporter:
       name: '!decoration_ship_27'
       rect:
         serializedVersion: 2
-        x: 63
-        y: 403
-        width: 8
-        height: 24
+        x: 144
+        y: 513
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -837,10 +837,10 @@ TextureImporter:
       name: '!decoration_ship_28'
       rect:
         serializedVersion: 2
-        x: 111
-        y: 403
-        width: 8
-        height: 25
+        x: 192
+        y: 513
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -859,10 +859,10 @@ TextureImporter:
       name: '!decoration_ship_29'
       rect:
         serializedVersion: 2
-        x: 172
-        y: 399
-        width: 8
-        height: 20
+        x: 240
+        y: 513
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -881,10 +881,10 @@ TextureImporter:
       name: '!decoration_ship_30'
       rect:
         serializedVersion: 2
-        x: 220
-        y: 399
-        width: 8
-        height: 22
+        x: 288
+        y: 513
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -903,10 +903,10 @@ TextureImporter:
       name: '!decoration_ship_31'
       rect:
         serializedVersion: 2
-        x: 268
-        y: 399
-        width: 8
-        height: 23
+        x: 336
+        y: 513
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -925,10 +925,10 @@ TextureImporter:
       name: '!decoration_ship_32'
       rect:
         serializedVersion: 2
-        x: 305
-        y: 400
-        width: 8
-        height: 24
+        x: 384
+        y: 513
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -947,10 +947,10 @@ TextureImporter:
       name: '!decoration_ship_33'
       rect:
         serializedVersion: 2
-        x: 353
-        y: 400
-        width: 8
-        height: 23
+        x: 432
+        y: 513
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -969,10 +969,10 @@ TextureImporter:
       name: '!decoration_ship_34'
       rect:
         serializedVersion: 2
-        x: 401
-        y: 400
-        width: 8
-        height: 24
+        x: 480
+        y: 513
+        width: 48
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -991,10 +991,10 @@ TextureImporter:
       name: '!decoration_ship_35'
       rect:
         serializedVersion: 2
-        x: 1
-        y: 291
+        x: 528
+        y: 513
         width: 48
-        height: 50
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1009,11 +1009,429 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_36'
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 428
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a10f9b848e1fa8d49aa680db25eefcec
+      internalID: 916277453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_37'
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 428
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987d2b97f0c9df040be400aeefbac156
+      internalID: -1264803740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_38'
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 428
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0ccf84f76b4aa247a48455beca6c315
+      internalID: -726209683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_39'
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 428
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4adfdbe52ef53884cacf77914c853c7a
+      internalID: -638709586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_40'
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 428
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b3ffa988d3d194b88768151f34d947
+      internalID: -1656103535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_41'
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 428
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a130040a7956a4aa4d5affdb5d7150
+      internalID: -2102005716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_42'
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 428
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ffdcf4684632564b92ab614ac84fa00
+      internalID: -377694995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_43'
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 428
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92f15b7c684576f448fa8ce2d6a0485f
+      internalID: 398485178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_44'
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 428
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9669c624db037d349bed20a4834bc093
+      internalID: 1767738501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_45'
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 343
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09b9d7a3122976f4ea816b5b4573eaf6
+      internalID: -343732829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_46'
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 343
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7319fce62e78459459367743d28b246d
+      internalID: -689098067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_47'
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 343
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e371df7e9a435864aad42c993a6074ab
+      internalID: 1785224566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_48'
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 343
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f7e5cb7d5c70684a965772c5738c803
+      internalID: 1770644975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_49'
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 343
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 154383acdb293fb4fbaf2b77a4f4cf24
+      internalID: -1415383719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_50'
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 343
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4a57b24ddf85f94e961a9d1d638dfa1
+      internalID: -139665520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_51'
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 343
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7c518140151f9243b327fe8b7836294
+      internalID: -1888818034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_52'
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 343
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acee9379f09c1bf41940e02354acef80
+      internalID: -815233059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_53'
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 343
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad4068f4c7972724092b398c78df3ed1
+      internalID: -1846505015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!decoration_ship_54'
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 258
+        width: 48
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aefe376345c5e1a4bbc747e4f7ddf093
+      internalID: 1194672190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bb0a6eb9510bfcd42a7ab5a6408e6c7a
     internalID: 0
     vertices: []
     indices: 
@@ -1022,7 +1440,62 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      '!decoration_ship_0': 2392338019466429343
+      '!decoration_ship_1': 7728720890189428841
+      '!decoration_ship_10': 4769749998922673251
+      '!decoration_ship_11': 2586207159463922275
+      '!decoration_ship_12': 1400459625608707833
+      '!decoration_ship_13': -8986181252080181960
+      '!decoration_ship_14': -9172469035433906161
+      '!decoration_ship_15': 8499228388400798611
+      '!decoration_ship_16': 3635729490050562559
+      '!decoration_ship_17': -6953496031220460918
+      '!decoration_ship_18': 7537833898795142407
+      '!decoration_ship_19': -2265065417948798254
+      '!decoration_ship_2': -7123855649914690261
+      '!decoration_ship_20': 882886999352539759
+      '!decoration_ship_21': 5240475415731137238
+      '!decoration_ship_22': -2144233673491799927
+      '!decoration_ship_23': 7118660688960239117
+      '!decoration_ship_24': 82776860771113520
+      '!decoration_ship_25': 4391286083342508926
+      '!decoration_ship_26': 1787984722378865127
+      '!decoration_ship_27': -9218058493615776387
+      '!decoration_ship_28': -8882819763279114803
+      '!decoration_ship_29': -8198360999178245490
+      '!decoration_ship_3': -4822075560638333050
+      '!decoration_ship_30': -4493281122487605544
+      '!decoration_ship_31': -5784938290111082189
+      '!decoration_ship_32': -5601216209994980442
+      '!decoration_ship_33': -6585757157645771839
+      '!decoration_ship_34': 1396702611836808143
+      '!decoration_ship_35': 6105443778303766554
+      '!decoration_ship_36': 916277453
+      '!decoration_ship_37': -1264803740
+      '!decoration_ship_38': -726209683
+      '!decoration_ship_39': -638709586
+      '!decoration_ship_4': 7680891643131091813
+      '!decoration_ship_40': -1656103535
+      '!decoration_ship_41': -2102005716
+      '!decoration_ship_42': -377694995
+      '!decoration_ship_43': 398485178
+      '!decoration_ship_44': 1767738501
+      '!decoration_ship_45': -343732829
+      '!decoration_ship_46': -689098067
+      '!decoration_ship_47': 1785224566
+      '!decoration_ship_48': 1770644975
+      '!decoration_ship_49': -1415383719
+      '!decoration_ship_5': 1993654336451238885
+      '!decoration_ship_50': -139665520
+      '!decoration_ship_51': -1888818034
+      '!decoration_ship_52': -815233059
+      '!decoration_ship_53': -1846505015
+      '!decoration_ship_54': 1194672190
+      '!decoration_ship_6': 533051502116484734
+      '!decoration_ship_7': 4102780737334448108
+      '!decoration_ship_8': -4394024068218944291
+      '!decoration_ship_9': -7183679894823297198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
