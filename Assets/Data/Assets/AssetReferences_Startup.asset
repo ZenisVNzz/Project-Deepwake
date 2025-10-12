@@ -19,5 +19,11 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  - m_AssetGUID: 48dedf0f1a10ceb4aa3fc4a4fc4d6ec7
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _labels:
   - m_LabelString: Startup
+  - m_LabelString: Material

@@ -1,0 +1,60 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
+{
+    [SerializeField] private float _stamina;
+    public float Stamina => _stamina;
+
+    private float _staminaRegenRate;
+    private float _staminaConsumptionMultiplier;
+    private Coroutine _staminaRegenCoroutine;
+
+    public override void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState)
+    {
+        characterData = Instantiate(playerData);
+        hp = playerData.HP;
+        _stamina = playerData.Stamina;
+        _hpRegenRate = playerData.HPRegenRate;
+        _staminaRegenRate = playerData.StaminaRegenRate;
+        _staminaConsumptionMultiplier = playerData.StaminaConsumptionMultiplier;
+
+        rb = rigidbody2D;
+        characterState = PlayerState;
+    }
+
+    public bool UseStamina(float amount)
+    {
+        float adjustedAmount = amount * _staminaConsumptionMultiplier;
+        if (_stamina >= adjustedAmount)
+        {
+            _stamina -= adjustedAmount;
+
+            if (_staminaRegenCoroutine != null)
+            {
+                StopCoroutine(_staminaRegenCoroutine);
+            }
+            _staminaRegenCoroutine = StartCoroutine(RegenSatamina());
+
+            return true;
+        }
+        return false;
+    }
+
+    private IEnumerator RegenSatamina()
+    {
+        yield return new WaitForSeconds(2f);
+        while (_stamina < characterData.Stamina)
+        {
+            _stamina += _staminaRegenRate * Time.deltaTime;
+            if (_stamina > characterData.Stamina)
+            {
+                _stamina = characterData.Stamina;
+            }
+            yield return null;
+        }
+        _staminaRegenCoroutine = null;
+    }
+}

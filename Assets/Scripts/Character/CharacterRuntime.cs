@@ -1,0 +1,71 @@
+using System;
+using System.Collections;
+using UnityEngine;
+
+public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
+{
+    [SerializeField] protected float hp;
+    public float HP => hp;
+
+    protected float _hpRegenRate;
+
+    protected CharacterData characterData;
+    public CharacterData CharacterData => characterData;
+
+    protected Rigidbody2D rb;
+    protected IState characterState;
+
+    private Material flashMaterial;
+    private DamageFlash damageFlash;
+
+    public virtual void Init(CharacterData CharacterData, Rigidbody2D rigidbody2D, IState characterState)
+    {
+        characterData = CharacterData;
+        hp = CharacterData.HP;
+
+        rb = rigidbody2D;  
+        this.characterState = characterState;
+    }
+
+    public virtual void TakeDamage(float damage, Vector3 knockback)
+    {
+        if (characterState.GetCurrentState() != CharacterStateType.Death)
+        {
+            if (this == null) return;
+
+            DamageReduceCal damageReduceCal = new DamageReduceCal();
+            float FinalDamage = damageReduceCal.Calculate(damage, characterData.Defense);
+
+            if (flashMaterial == null)
+            {
+                flashMaterial = ResourceManager.Instance.GetAsset<Material>("DamageFlashMaterial");
+                damageFlash = new DamageFlash(GetComponent<SpriteRenderer>(), flashMaterial);
+            }
+
+            damageFlash.TriggerFlash();
+            UIManager.Instance.GetSingleUIService().Create
+                ("FloatingDamage", $"FloatingDamage{Time.time}_{UnityEngine.Random.Range(0, 99999)}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
+
+            hp -= FinalDamage;                             
+
+            if (hp <= 0)
+            {
+                Die();
+            }
+
+            if (characterState.GetCurrentState() != CharacterStateType.Attacking && characterState.GetCurrentState() != CharacterStateType.Death)
+            {
+                rb.AddForce(knockback, ForceMode2D.Impulse);
+                characterState.ChangeState(CharacterStateType.Knockback);
+            }
+
+            Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");
+        }   
+    }
+
+    protected void Die()
+    {
+        characterState.ChangeState(CharacterStateType.Death);
+        Debug.Log($"{gameObject} has died.");
+    }
+}

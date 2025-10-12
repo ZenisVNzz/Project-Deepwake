@@ -101,7 +101,7 @@ Material:
     - _SpecularScale: 0.89
     - _SpecularScale2: 3.68
     - _SpecularSpeed: 0.4
-    - _SpecularThreshold: -0.84
+    - _SpecularThreshold: -0.92
     m_Colors:
     - _CausticColour: {r: 0.4738341, g: 0.7641519, b: 0.8301887, a: 0.078431375}
     - _CausticHighlightColour: {r: 1, g: 1, b: 1, a: 0.19607843}

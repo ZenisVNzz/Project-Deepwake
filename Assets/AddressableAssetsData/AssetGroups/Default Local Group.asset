@@ -15,11 +15,35 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ff1207baddb889741829269af6217c36
   m_SerializeEntries:
+  - m_GUID: 066cefe94252b384fbad449ace9d6809
+    m_Address: Player
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlayerPrefab
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 068713747145d9c4d9158f06f1526fbc
     m_Address: InitNetworkTask
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d230cc8be529a542a08cb878ab14b18
+    m_Address: FloatingJoystick
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1cb24a4d51a73674fabcf3436f3bf17f
+    m_Address: Popup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f0f23958af3ab5499b66085211e1a3a
+    m_Address: TestPlayer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlayerData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2181469371b432441ae247de73c323d1
     m_Address: NetworkMonitor
@@ -39,17 +63,42 @@ MonoBehaviour:
     m_SerializedLabels:
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3bfa86f2a2bf2e24d875da98229fcfa7
+    m_Address: Stone
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapObject
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 41767efadb643f8479652853c78d1545
     m_Address: ConfigList
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43abe47e41247a448b4951bc04302964
+    m_Address: Flower
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapObject
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48dedf0f1a10ceb4aa3fc4a4fc4d6ec7
+    m_Address: FloatingTextContainer
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4c2904f09cbab1247bd408db3140276c
     m_Address: Assets/Data/Startup Task/CheckUpdateTask.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c6b45260f7bb39498815aa7733af88b
+    m_Address: Wood
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapObject
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5c2196b301ca2f0459d16ec24b60b7ca
     m_Address: InitPlayFabTask
@@ -61,6 +110,12 @@ MonoBehaviour:
     m_Address: AssetReferences_Startup
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 672b1f5794111cd48b83feef02587ea9
+    m_Address: Wolf
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnemyPrefab
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7a53a98db98edaf42ba9ca2546f3ba43
     m_Address: Assets/Data/Startup Task/InitConfigTask.asset
@@ -80,11 +135,29 @@ MonoBehaviour:
     - Prefab
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8eb31fb7cc8eaf46b0980872aea0724
+    m_Address: DamageFlashMaterial
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Material
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aa9bdcda775f36949b2bc92509a912ff
     m_Address: StartupTaskList
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aaa2c939c0359ac4dbce3f49e8b90252
+    m_Address: FixedJoystick
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b85f960a82fd6b44eb65a64e8d5999b0
+    m_Address: Tree
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapObject
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b8cafbb0e58d79a4e9faf99966fe58d1
     m_Address: PlayerSettings
@@ -103,6 +176,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e07642fd886fae440beb488f74e8fdc6
+    m_Address: Grass
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapObject
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f2cafec9cd945b940ac8f841e8de8d00
     m_Address: PlayFabServiceList

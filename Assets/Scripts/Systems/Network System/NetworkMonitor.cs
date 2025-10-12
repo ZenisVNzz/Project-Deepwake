@@ -40,7 +40,7 @@ public class NetworkMonitor : NetworkService
     public async Task<bool> CheckConnectionAsync()
     {
         using (var req = UnityWebRequest.Get(_pingUrl))
-        using (var timeoutCTS = new CancellationTokenSource(TimeSpan.FromSeconds(5)))
+        using (var timeoutCTS = new CancellationTokenSource(TimeSpan.FromSeconds(1)))
         {
             var op = req.SendWebRequest();
 
