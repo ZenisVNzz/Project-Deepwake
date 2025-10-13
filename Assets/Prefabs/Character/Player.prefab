@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b377adcc03526724e88db2a73cd88cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reflectionAxis: 2
-  reflectionOffset: 0
+  reflectionAxis: 0
+  reflectionOffset: -0.06
   reflectionLayer: 3
   reflectionSprite: {fileID: 0}
   updatePerFrame: 1
@@ -818,6 +818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7361976085956347995}
   - component: {fileID: 7967186856073291779}
+  - component: {fileID: 3071693745844717877}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -886,6 +887,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.29445094, y: 0.2408127}
   m_EdgeRadius: 0
+--- !u!114 &3071693745844717877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305639373998598117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a87795a892cd343b32b0df8d2b37f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6489934191483881121
 GameObject:
   m_ObjectHideFlags: 0

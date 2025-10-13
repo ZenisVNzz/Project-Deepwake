@@ -497,6 +497,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_16
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 522
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c098b23c5fd87114c9b3280066b7649a
+      internalID: -821493933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -519,6 +541,7 @@ TextureImporter:
       Fantasy_Ship1_X_13: -1403566416
       Fantasy_Ship1_X_14: -268859671
       Fantasy_Ship1_X_15: -71891635
+      Fantasy_Ship1_X_16: -821493933
       Fantasy_Ship1_X_2: 485920079
       Fantasy_Ship1_X_3: 2127735411
       Fantasy_Ship1_X_4: 1426613343

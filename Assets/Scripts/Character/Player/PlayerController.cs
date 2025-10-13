@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private IDamageDealer playerAttack;
 
     private InputSystem_Actions inputHandler;
+    private IInteractionHandler interactionHandler;
     private CharacterData characterData;
 
     private SpriteRenderer spriteRenderer;
@@ -50,11 +51,20 @@ public class PlayerController : MonoBehaviour, IPlayerController
         inputHandler.Player.Move.performed += OnMove;
         inputHandler.Player.Move.canceled += OnMove;
         inputHandler.Player.Dash.performed += ctx => OnDash();
+        inputHandler.Player.Interact.performed += ctx => OnInteract();
+
+        interactionHandler = GetComponentInChildren<InteractionHandler>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
         hurtBox = transform.Find("HurtBox").GetComponent<Collider2D>();
         stateHandler.Register("OnDeath", OnDead);
+    }
+
+    private void OnInteract()
+    {
+        Debug.LogWarning("OnPressE");
+        interactionHandler.Interact();    
     }
 
     private void OnAttack()
