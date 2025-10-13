@@ -1,0 +1,39 @@
+using UnityEngine;
+
+public class Character : MonoBehaviour
+{
+    [Header("Character Base Stats")]
+    [SerializeField] private float maxHealth = 100;
+    [SerializeField] private float maxStamina = 100;
+    [SerializeField] private float attackPower = 10;
+    [SerializeField] private float defense = 5;
+    [SerializeField] private float speed = 5;
+    [SerializeField] private float criticalChance = 0.1f;
+    [SerializeField] private float criticalDamage = 1.5f;
+
+    [Header("Character Bonus Stats")]
+    public float bonusMaxHealth = 100;
+    public float bonusStamina = 100;
+    public float bonusAttackPower = 10;
+    public float bonusDefense = 5;
+    public float bonusSpeed = 5;
+    public float bonusCriticalChance = 0.1f;
+    public float bonusCriticalDamage = 1.5f;
+
+    public float CurrentHealth { get; set; }
+    public float CurrentStamina { get; set; }
+
+    public float MaxHealth => maxHealth + bonusMaxHealth;
+    public float MaxStamina => maxStamina + bonusStamina;
+    public float Attack => attackPower + bonusAttackPower;
+    public float Defense => defense + bonusDefense;
+    public float Speed => speed + bonusSpeed;
+    public float CriticalChance => criticalChance + bonusCriticalChance;
+    public float CriticalDamage => criticalDamage + bonusCriticalDamage;
+
+    private void Start()
+    {
+        CurrentHealth = MaxHealth;
+    }
+
+}
