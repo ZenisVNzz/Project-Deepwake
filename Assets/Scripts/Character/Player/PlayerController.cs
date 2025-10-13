@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private Collider2D cd2D;
     private Collider2D hurtBox;
 
+    private PlayerModifier playerModifier;
+    public PlayerModifier PlayerModifier => playerModifier;
+
     public void Initialize
     (
       IMovable movement,
@@ -54,16 +57,17 @@ public class PlayerController : MonoBehaviour, IPlayerController
         inputHandler.Player.Interact.performed += ctx => OnInteract();
 
         interactionHandler = GetComponentInChildren<InteractionHandler>();
+        playerModifier = new PlayerModifier();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
         hurtBox = transform.Find("HurtBox").GetComponent<Collider2D>();
         stateHandler.Register("OnDeath", OnDead);
+
     }
 
     private void OnInteract()
     {
-        Debug.LogWarning("OnPressE");
         interactionHandler.Interact();    
     }
 
@@ -74,12 +78,22 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void OnMove(InputAction.CallbackContext context)
     {
-        playerInput = context.ReadValue<Vector2>();
+        if (playerModifier.CanMove)
+        {
+            playerInput = context.ReadValue<Vector2>();
+        }
+        else
+        {
+            playerInput = Vector2.zero;
+        }
     }    
 
     private void OnDash()
     {
-        playerDash.Dash();
+        if (playerModifier.CanDash)
+        {
+            playerDash.Dash();
+        }        
     }
 
     private void OnDead()
