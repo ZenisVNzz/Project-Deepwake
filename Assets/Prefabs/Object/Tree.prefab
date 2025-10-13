@@ -102,6 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8ca9f96edd3c84a83868e5eb3c8071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shadowOffset: {x: 0, y: 0, z: 0}
+  _shadowScale: {x: 0, y: 0, z: 0}
+  rotate: 1
   updateShadowSprite: 0
 --- !u!114 &4656402642672947663
 MonoBehaviour:
