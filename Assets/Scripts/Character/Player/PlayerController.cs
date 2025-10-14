@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
       IMovable movement,
       IDashable dash,
       IState state,
+      ICharacterDirectionHandler directionHandler,
       IDamageDealer attack,
       IAnimationHandler animation,
       IStateHandler stateHandler,
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         this.playerMovement = movement;
         this.playerDash = dash;
         this.playerState = state;
+        this.directionHandler = directionHandler;
         this.playerAttack = attack;
         this.animationHandler = animation;
         this.stateHandler = stateHandler;
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         inputHandler.Player.Interact.performed += ctx => OnInteract();
 
         interactionHandler = GetComponentInChildren<InteractionHandler>();
-        playerModifier = new PlayerModifier();
+        playerModifier = new PlayerModifier(directionHandler);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
@@ -73,7 +75,10 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void OnAttack()
     {
-        playerAttack.Attack(characterData.AttackPower);
+        if (playerModifier.CanAttack)
+        {
+            playerAttack.Attack(characterData.AttackPower);
+        }   
     }
 
     private void OnMove(InputAction.CallbackContext context)

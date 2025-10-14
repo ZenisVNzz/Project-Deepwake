@@ -66,6 +66,6 @@ public class CharacterInstaller : MonoBehaviour
         InitComponent();
         _characterRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState);
         _characterController = gameObject.AddComponent<PlayerController>();
-        _characterController.Initialize(_characterMovement, _characterDash, _characterState, _characterAttack, _animationHandler, _stateHandler, _inputHandler, CharacterDataClone);
+        _characterController.Initialize(_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, CharacterDataClone);
     }
 }
