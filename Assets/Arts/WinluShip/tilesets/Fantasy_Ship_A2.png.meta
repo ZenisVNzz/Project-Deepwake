@@ -124,6 +124,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -272,7 +285,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fantasy_Ship_A2_0: 8935417062070403309
+      Fantasy_Ship_A2_1: -4218357547255720899
+      Fantasy_Ship_A2_2: -5073163797527028316
+      Fantasy_Ship_A2_3: -5074430086110347684
+      Fantasy_Ship_A2_4: -2835625042057233586
+      Fantasy_Ship_A2_5: 7754508377868438337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

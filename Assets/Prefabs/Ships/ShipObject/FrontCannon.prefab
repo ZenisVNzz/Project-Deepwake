@@ -265,6 +265,7 @@ MonoBehaviour:
   playerLockDir: 5
   RotateObj: {fileID: 4269921978136163244}
   NavigateGuideObj: {fileID: 2295530647046514311}
+  shootPos: {fileID: 5887866314005823947}
 --- !u!95 &7084368990104633465
 Animator:
   serializedVersion: 7

@@ -142,6 +142,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -422,7 +435,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fantasy_Ship1_X_haunted_0: -2559635227170288108
+      Fantasy_Ship1_X_haunted_1: -4424078180163147916
+      Fantasy_Ship1_X_haunted_10: 6240337713336518517
+      Fantasy_Ship1_X_haunted_11: 978139389279200145
+      Fantasy_Ship1_X_haunted_2: -8153566032009063923
+      Fantasy_Ship1_X_haunted_3: 4356123344789260654
+      Fantasy_Ship1_X_haunted_4: -8786720268788259236
+      Fantasy_Ship1_X_haunted_5: 8196093437865021630
+      Fantasy_Ship1_X_haunted_6: 4427288948909131704
+      Fantasy_Ship1_X_haunted_7: 3141386180529540159
+      Fantasy_Ship1_X_haunted_8: -8967110397825992525
+      Fantasy_Ship1_X_haunted_9: -81851786268973833
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

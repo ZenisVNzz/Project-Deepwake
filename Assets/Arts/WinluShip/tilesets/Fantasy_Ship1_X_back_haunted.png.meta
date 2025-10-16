@@ -157,6 +157,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -547,7 +560,24 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fantasy_Ship1_X_back_haunted_0: -166294836547290616
+      Fantasy_Ship1_X_back_haunted_1: 3738411152845758882
+      Fantasy_Ship1_X_back_haunted_10: 8524272041904397393
+      Fantasy_Ship1_X_back_haunted_11: 9036669213625156933
+      Fantasy_Ship1_X_back_haunted_12: -8014485479530927802
+      Fantasy_Ship1_X_back_haunted_13: 9031784287917650055
+      Fantasy_Ship1_X_back_haunted_14: 4622316118568733429
+      Fantasy_Ship1_X_back_haunted_15: -8571499800100661694
+      Fantasy_Ship1_X_back_haunted_16: -3130202261140029567
+      Fantasy_Ship1_X_back_haunted_2: -6870866316369121160
+      Fantasy_Ship1_X_back_haunted_3: -487560604814603224
+      Fantasy_Ship1_X_back_haunted_4: 5721635836670710694
+      Fantasy_Ship1_X_back_haunted_5: -5239305916357305115
+      Fantasy_Ship1_X_back_haunted_6: -4215552719024203263
+      Fantasy_Ship1_X_back_haunted_7: 2472177922806909627
+      Fantasy_Ship1_X_back_haunted_8: -249316288955772576
+      Fantasy_Ship1_X_back_haunted_9: 8090519255768107971
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -343,6 +343,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -2097,7 +2110,86 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fantasy_Ship1_X_Interior_0: 8941485803340233280
+      Fantasy_Ship1_X_Interior_1: -6121679946428072258
+      Fantasy_Ship1_X_Interior_10: 4197181598187645128
+      Fantasy_Ship1_X_Interior_11: 7795492436916238761
+      Fantasy_Ship1_X_Interior_12: 8820567435476962940
+      Fantasy_Ship1_X_Interior_13: 2205573854537014325
+      Fantasy_Ship1_X_Interior_14: -9189901301027866801
+      Fantasy_Ship1_X_Interior_15: -5460798377346320061
+      Fantasy_Ship1_X_Interior_16: -6442762466267302759
+      Fantasy_Ship1_X_Interior_17: 5496338272528851657
+      Fantasy_Ship1_X_Interior_18: 3285182800426410698
+      Fantasy_Ship1_X_Interior_19: -4960560123926686465
+      Fantasy_Ship1_X_Interior_2: -1463934926074349246
+      Fantasy_Ship1_X_Interior_20: -4741239872548201298
+      Fantasy_Ship1_X_Interior_21: -1733615346777026609
+      Fantasy_Ship1_X_Interior_22: -4161682908773574885
+      Fantasy_Ship1_X_Interior_23: -4774391071365192354
+      Fantasy_Ship1_X_Interior_24: -7372429554493475456
+      Fantasy_Ship1_X_Interior_25: 1386055524432956751
+      Fantasy_Ship1_X_Interior_26: -5524367953761253820
+      Fantasy_Ship1_X_Interior_27: -350488313189389736
+      Fantasy_Ship1_X_Interior_28: 7827063186442986023
+      Fantasy_Ship1_X_Interior_29: -5992494891118539628
+      Fantasy_Ship1_X_Interior_3: -6682478681346902177
+      Fantasy_Ship1_X_Interior_30: -6368750335124898986
+      Fantasy_Ship1_X_Interior_31: 149409624365995318
+      Fantasy_Ship1_X_Interior_32: 3480188604503946171
+      Fantasy_Ship1_X_Interior_33: 6550081410831451044
+      Fantasy_Ship1_X_Interior_34: -6863199541650055061
+      Fantasy_Ship1_X_Interior_35: -4195510971912248018
+      Fantasy_Ship1_X_Interior_36: 4769907444002428129
+      Fantasy_Ship1_X_Interior_37: 4040461208208585864
+      Fantasy_Ship1_X_Interior_38: -8306177167085987325
+      Fantasy_Ship1_X_Interior_39: -3380343932994188139
+      Fantasy_Ship1_X_Interior_4: 4892446155224542222
+      Fantasy_Ship1_X_Interior_40: -3822676488944188190
+      Fantasy_Ship1_X_Interior_41: -2295251284802660914
+      Fantasy_Ship1_X_Interior_42: -1763052459017237132
+      Fantasy_Ship1_X_Interior_43: 2410268818280686392
+      Fantasy_Ship1_X_Interior_44: -7992337980225621651
+      Fantasy_Ship1_X_Interior_45: 8350711517182667698
+      Fantasy_Ship1_X_Interior_46: 6939835387935920276
+      Fantasy_Ship1_X_Interior_47: 2816086464150346651
+      Fantasy_Ship1_X_Interior_48: 2169126770672636559
+      Fantasy_Ship1_X_Interior_49: -4875594464519997560
+      Fantasy_Ship1_X_Interior_5: -7872712135632096913
+      Fantasy_Ship1_X_Interior_50: 6204068450136150972
+      Fantasy_Ship1_X_Interior_51: -812704505008211374
+      Fantasy_Ship1_X_Interior_52: -3781871595368421574
+      Fantasy_Ship1_X_Interior_53: 6593355088698587150
+      Fantasy_Ship1_X_Interior_54: 3528739830184455831
+      Fantasy_Ship1_X_Interior_55: -6280279702761020234
+      Fantasy_Ship1_X_Interior_56: -4892289071743298957
+      Fantasy_Ship1_X_Interior_57: 4892511853676511623
+      Fantasy_Ship1_X_Interior_58: -7232455895864489769
+      Fantasy_Ship1_X_Interior_59: 467544599368122
+      Fantasy_Ship1_X_Interior_6: 6471243509604384346
+      Fantasy_Ship1_X_Interior_60: 1786499184768851399
+      Fantasy_Ship1_X_Interior_61: 4872068146846956823
+      Fantasy_Ship1_X_Interior_62: -238873649544329829
+      Fantasy_Ship1_X_Interior_63: -8373641486787614826
+      Fantasy_Ship1_X_Interior_64: -6007925556017615260
+      Fantasy_Ship1_X_Interior_65: 3201725066206954575
+      Fantasy_Ship1_X_Interior_66: -7804926370725899092
+      Fantasy_Ship1_X_Interior_67: 5476161683013827125
+      Fantasy_Ship1_X_Interior_68: 3766129569336682024
+      Fantasy_Ship1_X_Interior_69: 7846366048929609956
+      Fantasy_Ship1_X_Interior_7: 5110849656407241960
+      Fantasy_Ship1_X_Interior_70: 5169989702232140247
+      Fantasy_Ship1_X_Interior_71: -4776585927427485956
+      Fantasy_Ship1_X_Interior_72: -1354319993420375453
+      Fantasy_Ship1_X_Interior_73: -7805592684820615956
+      Fantasy_Ship1_X_Interior_74: 5147544447430220722
+      Fantasy_Ship1_X_Interior_75: -8857100903036823908
+      Fantasy_Ship1_X_Interior_76: -8060735988806421021
+      Fantasy_Ship1_X_Interior_77: -2283668636382117233
+      Fantasy_Ship1_X_Interior_78: -9122287227635839859
+      Fantasy_Ship1_X_Interior_8: 3298748363611452591
+      Fantasy_Ship1_X_Interior_9: -8685639626727657919
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

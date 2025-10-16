@@ -12,6 +12,7 @@ public class CannonController : MonoBehaviour
     [SerializeField] Direction playerLockDir;
     [SerializeField] GameObject RotateObj;
     [SerializeField] GameObject NavigateGuideObj;
+    [SerializeField] Transform shootPos;
 
     private Animator animator;
 
@@ -19,6 +20,7 @@ public class CannonController : MonoBehaviour
     private Vector2 input;
 
     private CannonNavigation cannonNavigation;
+    private CannonShoot cannonShoot;
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class CannonController : MonoBehaviour
         Interactable.Register(UseCannon);
 
         cannonNavigation = new CannonNavigation(RotateObj, NavigateGuideObj);
+        cannonShoot = new CannonShoot(cannonNavigation, shootPos);
         animator = GetComponent<Animator>();
 
         inputActions = new InputSystem_Actions();
@@ -57,7 +60,7 @@ public class CannonController : MonoBehaviour
 
     private void ExitCannon()
     {
-
+        
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -67,7 +70,7 @@ public class CannonController : MonoBehaviour
 
     public void OnShoot()
     {
-        animator.Play("Cannon_Shoot");
         cannonNavigation.ApplyRecoil();
+        cannonShoot.Shoot();
     }
 }

@@ -124,6 +124,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -272,7 +285,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      '!$Ship_Mast_back_haunted_0': 7149909519329826067
+      '!$Ship_Mast_back_haunted_1': -2194107965852918916
+      '!$Ship_Mast_back_haunted_2': 4876493314045796178
+      '!$Ship_Mast_back_haunted_3': -5991523784888015202
+      '!$Ship_Mast_back_haunted_4': 29594161103841598
+      '!$Ship_Mast_back_haunted_5': -2640623265390360342
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
