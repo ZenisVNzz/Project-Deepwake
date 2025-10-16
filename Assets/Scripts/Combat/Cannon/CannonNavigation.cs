@@ -59,7 +59,7 @@ public class CannonNavigation
         if (navigateGuideObject == null)
             return Vector2.right;
 
-        return navigateGuideObject.transform.right.normalized;
+        return -navigateGuideObject.transform.up.normalized;
     }
 
     public void ApplyRecoil()

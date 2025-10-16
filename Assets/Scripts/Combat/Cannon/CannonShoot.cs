@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,6 @@ public class CannonShoot
     {
         GameObject bullet = GameObject.Instantiate(bulletPrefab);
         bullet.transform.position = spawnPos.position;
-        bullet.AddComponent<CannonBulletRuntime>();
-    }
+        bullet.AddComponent<CannonBulletRuntime>().Init(cannonNavigation.GetFireDirection());
+    }  
 }
