@@ -18,21 +18,4 @@ public class UIManager : MonoBehaviour
         return null;
     }
 
-    public void ShowUI(string key)
-    {
-        if (_uiDictionary.TryGetValue(key, out var ui))
-            ui.Show();
-    }
-
-    public void HideUI(string key)
-    {
-        if (_uiDictionary.TryGetValue(key, out var ui))
-            ui.Hide();
-    }
-
-    public void UpdateAllUI()
-    {
-        foreach (var ui in _uiDictionary.Values)
-            ui.UpdateUI();
-    }
 }

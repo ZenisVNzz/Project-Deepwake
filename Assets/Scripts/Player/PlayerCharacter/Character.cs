@@ -20,6 +20,8 @@ public class Character : MonoBehaviour
     public float bonusCriticalChance = 0.1f;
     public float bonusCriticalDamage = 1.5f;
 
+    private UIStatusBar _statusBar;
+
     public float CurrentHealth { get; set; }
     public float CurrentStamina { get; set; }
 
@@ -34,6 +36,19 @@ public class Character : MonoBehaviour
     private void Start()
     {
         CurrentHealth = MaxHealth;
+        var uiManager = FindObjectOfType<UIManager>();
+        _statusBar = uiManager.GetUI<UIStatusBar>("StatusBar");
+
+        if (_statusBar != null)
+        {
+            _statusBar.BindData(this);
+            _statusBar.Show();
+        }
+    }
+
+    private void Update()
+    {
+        _statusBar?.UpdateUI();
     }
 
 }
