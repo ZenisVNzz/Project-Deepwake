@@ -15,6 +15,7 @@ public class CannonController : MonoBehaviour
     [SerializeField] GameObject RotateObj;
     [SerializeField] GameObject NavigateGuideObj;
     [SerializeField] Transform shootPos;
+    [SerializeField] Transform recoilPivot;
 
     private Animator animator;
 
@@ -32,7 +33,7 @@ public class CannonController : MonoBehaviour
         Interactable = GetComponentInChildren<Interactable>();
         Interactable.Register(UseCannon);
 
-        cannonNavigation = new CannonNavigation(RotateObj, NavigateGuideObj);
+        cannonNavigation = new CannonNavigation(RotateObj, NavigateGuideObj, recoilPivot);
         cannonShoot = new CannonShoot(cannonNavigation, shootPos);
         animator = GetComponent<Animator>();
 

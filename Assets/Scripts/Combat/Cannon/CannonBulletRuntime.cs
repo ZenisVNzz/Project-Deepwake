@@ -12,6 +12,11 @@ public class CannonBulletRuntime : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
     public void Init(Vector2 dir)
     {
         rb.linearVelocity = dir * speed;

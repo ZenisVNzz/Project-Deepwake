@@ -17,19 +17,22 @@ public class CannonNavigation
     private float recoilVelocity = 0f;
 
     private Vector3 rotateObjectStartPos;
+    private Transform recoilPivot;
 
     private GameObject rotateObject;
     private GameObject navigateGuideObject;
 
-    public CannonNavigation(GameObject rotateObject, GameObject navigateGuideObject)
+    public CannonNavigation(GameObject rotateObject, GameObject navigateGuideObject, Transform recoilPivot)
     {      
         this.rotateObject = rotateObject;
         this.navigateGuideObject = navigateGuideObject;
-        rotateObjectStartPos = rotateObject.transform.position;
+        this.recoilPivot = recoilPivot;       
     }
 
     public void UpdateNavigation(float input)
     {
+        rotateObjectStartPos = recoilPivot.transform.position;
+
         if (Mathf.Abs(input) > 0.01f)
         {
             rotateSpeed += input * acceleration * Time.deltaTime;
