@@ -83,14 +83,12 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void OnMove(InputAction.CallbackContext context)
     {
-        if (playerModifier.CanMove)
+        if (!playerModifier.CanMove)
         {
-            playerInput = context.ReadValue<Vector2>();
+            return;
         }
-        else
-        {
-            playerInput = Vector2.zero;
-        }
+
+        playerInput = context.ReadValue<Vector2>();
     }    
 
     private void OnDash()
@@ -121,6 +119,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
     Vector2 playerInput;
     void FixedUpdate()
     {
+        if (!playerModifier.CanMove) playerInput = Vector2.zero;
+
         playerMovement.Move(playerInput, characterData.MoveSpeed);
         stateHandler.UpdateState();
     }

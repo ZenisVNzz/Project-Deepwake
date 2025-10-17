@@ -24,7 +24,7 @@ public class CannonController : MonoBehaviour
     private CannonNavigation cannonNavigation;
     private CannonShoot cannonShoot;
 
-    private float cooldown = 2f;
+    private float cooldown = 1.5f;
     private float timer;
 
     private void Awake()

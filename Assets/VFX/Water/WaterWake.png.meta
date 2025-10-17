@@ -1,0 +1,627 @@
+fileFormatVersion: 2
+guid: 59ef296aec4858b4ebb53bdbbc56d29f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8363413169821699597
+    second: WaterWake_0
+  - first:
+      213: 8735070838810725831
+    second: WaterWake_1
+  - first:
+      213: 272759452969662915
+    second: WaterWake_2
+  - first:
+      213: -447998760115391266
+    second: WaterWake_3
+  - first:
+      213: 1711616506051396891
+    second: WaterWake_4
+  - first:
+      213: 9179262072723916315
+    second: WaterWake_5
+  - first:
+      213: 3982352767482746844
+    second: WaterWake_6
+  - first:
+      213: 8676738540121531043
+    second: WaterWake_7
+  - first:
+      213: -909056621368360908
+    second: WaterWake_8
+  - first:
+      213: 8994480190577781371
+    second: WaterWake_9
+  - first:
+      213: -9139243857725579735
+    second: WaterWake_10
+  - first:
+      213: -4352565067667575838
+    second: WaterWake_11
+  - first:
+      213: 2235786335333572037
+    second: WaterWake_12
+  - first:
+      213: 4501533475333940490
+    second: WaterWake_13
+  - first:
+      213: 3808705572356224766
+    second: WaterWake_14
+  - first:
+      213: -2255777858284405954
+    second: WaterWake_15
+  - first:
+      213: 2014468867439904656
+    second: WaterWake_16
+  - first:
+      213: 4810624504398952496
+    second: WaterWake_17
+  - first:
+      213: 2671987869258358201
+    second: WaterWake_18
+  - first:
+      213: -4758206032193474269
+    second: WaterWake_19
+  - first:
+      213: -3272669474693977673
+    second: WaterWake_20
+  - first:
+      213: -5635175162136711276
+    second: WaterWake_21
+  - first:
+      213: 5210549650826090326
+    second: WaterWake_22
+  - first:
+      213: 6584871176967005428
+    second: WaterWake_23
+  - first:
+      213: 6596645510575301867
+    second: WaterWake_24
+  - first:
+      213: 4200415428022248672
+    second: WaterWake_25
+  - first:
+      213: 8263303564202024791
+    second: WaterWake_26
+  - first:
+      213: -299936696308480167
+    second: WaterWake_27
+  - first:
+      213: 4768616034954270788
+    second: WaterWake_28
+  - first:
+      213: -6501772789761713936
+    second: WaterWake_29
+  - first:
+      213: 9094298678253919240
+    second: WaterWake_30
+  - first:
+      213: 1566196393981077816
+    second: WaterWake_31
+  - first:
+      213: -7317641152739762563
+    second: WaterWake_32
+  - first:
+      213: -1979449910395341695
+    second: WaterWake_33
+  - first:
+      213: -8625315573104412870
+    second: WaterWake_34
+  - first:
+      213: 834751482125467507
+    second: WaterWake_35
+  - first:
+      213: -6416981637338146607
+    second: WaterWake_36
+  - first:
+      213: 550466453557367175
+    second: WaterWake_37
+  - first:
+      213: -7877857411853086735
+    second: WaterWake_38
+  - first:
+      213: 1102605529558530676
+    second: WaterWake_39
+  - first:
+      213: -3270594553538386134
+    second: WaterWake_40
+  - first:
+      213: 6445862752637102999
+    second: WaterWake_41
+  - first:
+      213: 6456163284772645728
+    second: WaterWake_42
+  - first:
+      213: -1634706525774560057
+    second: WaterWake_43
+  - first:
+      213: -6847704766459585243
+    second: WaterWake_44
+  - first:
+      213: -4011005512151738281
+    second: WaterWake_45
+  - first:
+      213: 4851146194883199145
+    second: WaterWake_46
+  - first:
+      213: -5880033152537396643
+    second: WaterWake_47
+  - first:
+      213: 9216612042248105256
+    second: WaterWake_48
+  - first:
+      213: -6426098941946740469
+    second: WaterWake_49
+  - first:
+      213: 7559808654439241776
+    second: WaterWake_50
+  - first:
+      213: -2248418431265051953
+    second: WaterWake_51
+  - first:
+      213: -4242120690238267478
+    second: WaterWake_52
+  - first:
+      213: -1740344874598782108
+    second: WaterWake_53
+  - first:
+      213: 2329131574846262829
+    second: WaterWake_54
+  - first:
+      213: 4225889103762412705
+    second: WaterWake_55
+  - first:
+      213: -2137092503752834637
+    second: WaterWake_56
+  - first:
+      213: -6291369980000187361
+    second: WaterWake_57
+  - first:
+      213: -6234025144512462597
+    second: WaterWake_58
+  - first:
+      213: -5200149225678057656
+    second: WaterWake_59
+  - first:
+      213: -2663371520807388332
+    second: WaterWake_60
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WaterWake_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0ecb0977ffc01470800000000000000
+      internalID: 8363413169821699597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_1
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cdcf23c5a4393970800000000000000
+      internalID: 8735070838810725831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_2
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c9f26ff64909c300800000000000000
+      internalID: 272759452969662915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_3
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed4b183508368c9f0800000000000000
+      internalID: -447998760115391266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_4
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1583eac422e0c710800000000000000
+      internalID: 1711616506051396891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_5
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b16cce8a83a436f70800000000000000
+      internalID: 9179262072723916315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_6
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd75a1c1eb8244730800000000000000
+      internalID: 3982352767482746844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_7
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a2a2ec1bb7f96870800000000000000
+      internalID: 8676738540121531043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_8
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4304f9ab1d16263f0800000000000000
+      internalID: -909056621368360908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_9
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7a2daa1410d2dc70800000000000000
+      internalID: 8994480190577781371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_10
+      rect:
+        serializedVersion: 2
+        x: 10000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92e98981222ea2180800000000000000
+      internalID: -9139243857725579735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_11
+      rect:
+        serializedVersion: 2
+        x: 11000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eb66efb1259893c0800000000000000
+      internalID: -4352565067667575838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterWake_12
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 0
+        width: 1000
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cdda3783db170f10800000000000000
+      internalID: 2235786335333572037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 963564b85f8ed064aa863c3ffa236a75
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":13.0,"y":1.0},"gridSpriteSize":{"x":1000.0,"y":600.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      WaterWake_0: 8363413169821699597
+      WaterWake_1: 8735070838810725831
+      WaterWake_10: -9139243857725579735
+      WaterWake_11: -4352565067667575838
+      WaterWake_12: 2235786335333572037
+      WaterWake_2: 272759452969662915
+      WaterWake_3: -447998760115391266
+      WaterWake_4: 1711616506051396891
+      WaterWake_5: 9179262072723916315
+      WaterWake_6: 3982352767482746844
+      WaterWake_7: 8676738540121531043
+      WaterWake_8: -909056621368360908
+      WaterWake_9: 8994480190577781371
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
