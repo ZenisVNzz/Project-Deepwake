@@ -11,7 +11,6 @@ public class CannonNavigation
     private readonly float recoilReturnSpeed = 0.9f;
 
     private float currentAngle = 0f;
-    private float targetAngle = 0f;
     private float rotateSpeed = 0f;
     private float recoilOffset = 0f;
     private float recoilVelocity = 0f;

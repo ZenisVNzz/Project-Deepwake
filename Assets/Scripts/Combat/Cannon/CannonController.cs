@@ -1,9 +1,11 @@
+using DG.Tweening;
 using EasyTextEffects.Editor.MyBoxCopy.Extensions;
 using System.Collections;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class CannonController : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class CannonController : MonoBehaviour
     [SerializeField] GameObject NavigateGuideObj;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform recoilPivot;
+    [SerializeField] GameObject cooldownSliderUI;
+    private Slider cooldownSlider;
 
     private Animator animator;
 
@@ -27,6 +31,8 @@ public class CannonController : MonoBehaviour
 
     private float cooldown = 1.5f;
     private float timer;
+    private Image fill;
+    private Image bg;
 
     private void Awake()
     {
@@ -36,6 +42,16 @@ public class CannonController : MonoBehaviour
         cannonNavigation = new CannonNavigation(RotateObj, NavigateGuideObj, recoilPivot);
         cannonShoot = new CannonShoot(cannonNavigation, shootPos);
         animator = GetComponent<Animator>();
+
+        if (cooldownSliderUI == null)
+        {
+            cooldownSliderUI = transform.Find("Canvas").transform.Find("CooldownUI").gameObject;
+        }
+        fill = cooldownSliderUI.transform.Find("Fill Area").transform.Find("Fill").GetComponent<Image>();
+        bg = cooldownSliderUI.transform.Find("Background").GetComponent<Image>();
+
+        cooldownSlider = cooldownSliderUI.GetComponent<Slider>();
+        cooldownSlider.maxValue = cooldown;
 
         inputActions = new InputSystem_Actions();
         inputActions.Cannon.Navigate.performed += OnMove;
@@ -107,7 +123,7 @@ public class CannonController : MonoBehaviour
     public void OnShoot()
     {
         if (timer >= cooldown)
-        {
+        {         
             cannonNavigation.ApplyRecoil();
             animator.Play("Cannon_Shoot");
             cannonShoot.Shoot();           
@@ -117,12 +133,29 @@ public class CannonController : MonoBehaviour
 
     private IEnumerator timerUpdate()
     {
+        bg.DOKill();
+        fill.DOKill();
+        fill.color = Color.white;
+        bg.color = Color.gray;
+
         timer = 0;
+        cooldownSlider.value = 0f;
+        cooldownSliderUI.SetActive(true);      
 
         while (timer < cooldown)
         {
             timer += Time.deltaTime;
+            cooldownSlider.value = timer;
             yield return null;
-        }
+        }    
+
+        if (timer >= cooldown && cooldownSlider.value >= cooldown)
+        {
+            bg.DOFade(0f, 0.4f);
+            fill.DOFade(0f, 0.5f).OnComplete(() =>
+            {
+                cooldownSliderUI.SetActive(false);              
+            });
+        }     
     }
 }

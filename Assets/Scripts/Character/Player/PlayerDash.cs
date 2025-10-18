@@ -4,8 +4,7 @@ using UnityEngine;
 public class PlayerDash : IDashable
 {
     private float _dashForce = 15f;
-    private float _dashDuration = 0.2f;
-    private float _dashCooldown = 1f;     
+    private float _dashDuration = 0.2f;   
     private float _staminaCost = 25f;
 
     private Rigidbody2D _rb;
