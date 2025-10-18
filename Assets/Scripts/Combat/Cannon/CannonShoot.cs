@@ -18,6 +18,7 @@ public class CannonShoot
 
     public void Shoot()
     {
+        CameraShake.Instance.ShakeCamera();
         GameObject bullet = GameObject.Instantiate(bulletPrefab);
         bullet.transform.position = spawnPos.position;
         bullet.AddComponent<CannonBulletRuntime>().Init(cannonNavigation.GetFireDirection());
