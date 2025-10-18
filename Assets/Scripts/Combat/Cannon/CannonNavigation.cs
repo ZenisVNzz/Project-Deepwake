@@ -62,7 +62,10 @@ public class CannonNavigation
         if (navigateGuideObject == null)
             return Vector2.right;
 
-        return -navigateGuideObject.transform.up.normalized;
+        var baseDir = -navigateGuideObject.transform.up;
+        var rotatedDir = Quaternion.Euler(0, 0, 4.2f) * baseDir;
+
+        return rotatedDir.normalized;
     }
 
     public void ApplyRecoil()
