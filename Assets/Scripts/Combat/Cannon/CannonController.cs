@@ -19,6 +19,7 @@ public class CannonController : MonoBehaviour
     [SerializeField] Transform shootPos;
     [SerializeField] Transform recoilPivot;
     [SerializeField] GameObject cooldownSliderUI;
+    [SerializeField] bool isFront;
     private Slider cooldownSlider;
 
     private Animator animator;
@@ -39,7 +40,7 @@ public class CannonController : MonoBehaviour
         Interactable = GetComponentInChildren<Interactable>();
         Interactable.Register(UseCannon);
 
-        cannonNavigation = new CannonNavigation(RotateObj, NavigateGuideObj, recoilPivot);
+        cannonNavigation = new CannonNavigation(RotateObj, NavigateGuideObj, recoilPivot, isFront);
         cannonShoot = new CannonShoot(cannonNavigation, shootPos);
         animator = GetComponent<Animator>();
 
@@ -79,7 +80,15 @@ public class CannonController : MonoBehaviour
         playerModifier.AttackModifier(false);
         playerModifier.DirectionModifier(true, playerLockDir);
         NavigateGuideObj.SetActive(true);
-        SetupCam(-3.5f);
+
+        if (isFront)
+        {
+            SetupCam(-3.5f);
+        }
+        else
+        {
+            SetupCam(3.5f);
+        }     
 
         inputActions.Cannon.Enable();
     }
@@ -125,7 +134,15 @@ public class CannonController : MonoBehaviour
         if (timer >= cooldown)
         {         
             cannonNavigation.ApplyRecoil();
-            animator.Play("Cannon_Shoot");
+            if (isFront)
+            {
+                animator.Play("Cannon_Shoot");
+            }
+            else
+            {
+                animator.Play("CannonBack_Shoot");
+            }
+            
             cannonShoot.Shoot();           
             StartCoroutine(timerUpdate());
         }    

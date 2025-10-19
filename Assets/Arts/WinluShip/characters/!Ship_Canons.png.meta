@@ -286,6 +286,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1173,12 +1186,12 @@ TextureImporter:
       name: '!Ship_Canons_40'
       rect:
         serializedVersion: 2
-        x: 53
-        y: 191
-        width: 39
-        height: 27
+        x: 47
+        y: 105
+        width: 46
+        height: 76
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1195,12 +1208,12 @@ TextureImporter:
       name: '!Ship_Canons_41'
       rect:
         serializedVersion: 2
-        x: 197
-        y: 191
-        width: 39
-        height: 27
+        x: 107
+        y: 105
+        width: 46
+        height: 76
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1341,94 +1354,6 @@ TextureImporter:
       bones: []
       spriteID: d620d235b094004f0800000000000000
       internalID: -864610815466208659
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: '!Ship_Canons_48'
-      rect:
-        serializedVersion: 2
-        x: 53
-        y: 95
-        width: 39
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f24563fd2912d10a0800000000000000
-      internalID: -6909329338622651345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: '!Ship_Canons_49'
-      rect:
-        serializedVersion: 2
-        x: 53
-        y: 0
-        width: 39
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 99bd833f9ee872810800000000000000
-      internalID: 1740516916461099929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: '!Ship_Canons_50'
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 95
-        width: 39
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: adeb9f49a30215d10800000000000000
-      internalID: 2112505136193060570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: '!Ship_Canons_51'
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 0
-        width: 39
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9a48aafce66566630800000000000000
-      internalID: 3919915559603045545
       vertices: []
       indices: 
       edges: []

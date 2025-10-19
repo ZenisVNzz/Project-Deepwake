@@ -20,12 +20,14 @@ public class CannonNavigation
 
     private GameObject rotateObject;
     private GameObject navigateGuideObject;
+    private bool isFront;
 
-    public CannonNavigation(GameObject rotateObject, GameObject navigateGuideObject, Transform recoilPivot)
+    public CannonNavigation(GameObject rotateObject, GameObject navigateGuideObject, Transform recoilPivot, bool isFront)
     {      
         this.rotateObject = rotateObject;
         this.navigateGuideObject = navigateGuideObject;
-        this.recoilPivot = recoilPivot;       
+        this.recoilPivot = recoilPivot;   
+        this.isFront = isFront;
     }
 
     public void UpdateNavigation(float input)
@@ -48,10 +50,20 @@ public class CannonNavigation
 
         if (rotateObject != null)
         {
-            rotateObject.transform.localRotation = Quaternion.Euler(0, 0, -currentAngle);
+            if (isFront)
+            {
+                rotateObject.transform.localRotation = Quaternion.Euler(0, 0, -currentAngle);
 
-            Vector3 recoilDir = rotateObject.transform.up * recoilOffset;
-            rotateObject.transform.position = rotateObjectStartPos + recoilDir;
+                Vector3 recoilDir = rotateObject.transform.up * recoilOffset;
+                rotateObject.transform.position = rotateObjectStartPos + recoilDir;
+            }
+            else
+            {
+                rotateObject.transform.localRotation = Quaternion.Euler(0, 0, currentAngle);
+
+                Vector3 recoilDir = rotateObject.transform.up * recoilOffset;
+                rotateObject.transform.position = rotateObjectStartPos + recoilDir;
+            }
         }
            
     }
@@ -61,14 +73,29 @@ public class CannonNavigation
         if (navigateGuideObject == null)
             return Vector2.right;
 
-        var baseDir = -navigateGuideObject.transform.up;
-        var rotatedDir = Quaternion.Euler(0, 0, 4.2f) * baseDir;
+        var baseDir = -navigateGuideObject.transform.up;      
 
-        return rotatedDir.normalized;
+        if (isFront)
+        {
+            var rotatedDir = Quaternion.Euler(0, 0, 4.2f) * baseDir;
+            return rotatedDir.normalized;
+        }
+        else
+        {
+            var rotatedDir = Quaternion.Euler(0, 0, -4.2f) * baseDir;
+            return -rotatedDir.normalized;
+        }
     }
 
     public void ApplyRecoil()
     {
-        recoilOffset = recoilDistance;
+        if (isFront)
+        {
+            recoilOffset = recoilDistance;
+        }
+        else
+        {
+            recoilOffset = -recoilDistance;
+        }
     }
 }

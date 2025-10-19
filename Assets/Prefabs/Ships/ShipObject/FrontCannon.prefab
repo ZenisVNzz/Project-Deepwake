@@ -425,6 +425,7 @@ MonoBehaviour:
   shootPos: {fileID: 5887866314005823947}
   recoilPivot: {fileID: 5442209721911577339}
   cooldownSliderUI: {fileID: 1787730996547274347}
+  isFront: 1
 --- !u!95 &7084368990104633465
 Animator:
   serializedVersion: 7
