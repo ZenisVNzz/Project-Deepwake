@@ -59,6 +59,7 @@ public class PlayerStateHandler : IStateHandler
         if (playerState.GetCurrentState() == CharacterStateType.Knockback)
         {
             playerState.ChangeState(CharacterStateType.Idle);
+            inputHandler.Player.Enable();
             IsWaitForKnockBack = false;
         }
     }
