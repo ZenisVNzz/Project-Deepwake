@@ -26,6 +26,11 @@ public class CharacterInstaller : MonoBehaviour
 
     protected CharacterData CharacterDataClone;
 
+    public void SetData(CharacterData data)
+    {
+        _characterData = data;
+    }
+
     protected void Awake()
     {
         InitCharacter();

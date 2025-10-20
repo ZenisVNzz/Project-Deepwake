@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c572b7451ea45b94094c50fb3353a0f0, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
+  characterID: 200001
+  prefab: {fileID: 8049365926704496716, guid: 672b1f5794111cd48b83feef02587ea9, type: 3}
+  level: 1
   HP: 35
   Stamina: 0
   AttackPower: 15

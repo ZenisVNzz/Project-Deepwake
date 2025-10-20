@@ -3,6 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterData", menuName = "Data/CharacterData", order = 1)]
 public class CharacterData : ScriptableObject
 {
+    public int characterID;
+    public GameObject prefab;
+
+    public int level;
     public float HP;
     public float Stamina;
     public float AttackPower;
