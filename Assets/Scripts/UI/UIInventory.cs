@@ -14,4 +14,8 @@ public class UIInventory : MonoBehaviour, IRuntimeUI
     {
         
     }
+    public void BindData(object data)
+    {
+
+    }
 }

@@ -16,9 +16,11 @@ public class StartupProcessor : MonoBehaviour
 
         var inventory = FindObjectOfType<UIInventory>();
         var statusBar = FindObjectOfType<UIStatusBar>();
+        var interactionPromptUI = FindObjectOfType<UIInteractionPrompt>();
 
         uiManager.RegisterUI("Inventory", inventory);
         uiManager.RegisterUI("StatusBar", statusBar);
+        uiManager.RegisterUI("InteractionPrompt", interactionPromptUI);
 
         inventory.Initialize();
         statusBar.Initialize();
