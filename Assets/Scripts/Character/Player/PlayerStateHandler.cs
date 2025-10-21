@@ -25,7 +25,7 @@ public class PlayerStateHandler : IStateHandler
     {
         if (playerState.GetCurrentState() == CharacterStateType.Attacking || playerState.GetCurrentState() == CharacterStateType.Death)
         {
-            inputHandler.Player.Disable();
+            inputHandler.Player.Move.Disable();
             return;
         }
         else if (playerState.GetCurrentState() == CharacterStateType.Knockback)
@@ -38,7 +38,7 @@ public class PlayerStateHandler : IStateHandler
         }
         else
         {
-            inputHandler.Player.Enable();
+            inputHandler.Player.Move.Enable();
             if (CheckIfMoving())
                 playerState.ChangeState(CharacterStateType.Running);
             else
@@ -59,6 +59,7 @@ public class PlayerStateHandler : IStateHandler
         if (playerState.GetCurrentState() == CharacterStateType.Knockback)
         {
             playerState.ChangeState(CharacterStateType.Idle);
+            inputHandler.Player.Enable();
             IsWaitForKnockBack = false;
         }
     }

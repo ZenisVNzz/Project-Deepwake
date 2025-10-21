@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 7af734e6b985b46409c6e352f0b25c78
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2559635227170288108
+    second: Fantasy_Ship1_X_haunted_0
+  - first:
+      213: -4424078180163147916
+    second: Fantasy_Ship1_X_haunted_1
+  - first:
+      213: -8153566032009063923
+    second: Fantasy_Ship1_X_haunted_2
+  - first:
+      213: 4356123344789260654
+    second: Fantasy_Ship1_X_haunted_3
+  - first:
+      213: -8786720268788259236
+    second: Fantasy_Ship1_X_haunted_4
+  - first:
+      213: 8196093437865021630
+    second: Fantasy_Ship1_X_haunted_5
+  - first:
+      213: 4427288948909131704
+    second: Fantasy_Ship1_X_haunted_6
+  - first:
+      213: 3141386180529540159
+    second: Fantasy_Ship1_X_haunted_7
+  - first:
+      213: -8967110397825992525
+    second: Fantasy_Ship1_X_haunted_8
+  - first:
+      213: -81851786268973833
+    second: Fantasy_Ship1_X_haunted_9
+  - first:
+      213: 6240337713336518517
+    second: Fantasy_Ship1_X_haunted_10
+  - first:
+      213: 978139389279200145
+    second: Fantasy_Ship1_X_haunted_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 575
+        width: 251
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41e40f982595a7cd0800000000000000
+      internalID: -2559635227170288108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_1
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 720
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 477a1dcb5548a92c0800000000000000
+      internalID: -4424078180163147916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_2
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 721
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d029861b4e6b8de80800000000000000
+      internalID: -8153566032009063923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_3
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 689
+        width: 83
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6943f33a1f047c30800000000000000
+      internalID: 4356123344789260654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_4
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 491
+        width: 338
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c56a626387c4f0680800000000000000
+      internalID: -8786720268788259236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_5
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 491
+        width: 145
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb0dad59e8f5eb170800000000000000
+      internalID: 8196093437865021630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 383
+        width: 481
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b7cdbd97d3e07d30800000000000000
+      internalID: 4427288948909131704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_7
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 590
+        width: 45
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3cc8c06612789b20800000000000000
+      internalID: 3141386180529540159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_8
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 431
+        width: 46
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b8bedb5a9c6e8380800000000000000
+      internalID: -8967110397825992525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_9
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 434
+        width: 46
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f4e43beb343ddef0800000000000000
+      internalID: -81851786268973833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_10
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 431
+        width: 118
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57785e966122a9650800000000000000
+      internalID: 6240337713336518517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_haunted_11
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 0
+        width: 742
+        height: 419
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 193edc6979c039d00800000000000000
+      internalID: 978139389279200145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Fantasy_Ship1_X_haunted_0: -2559635227170288108
+      Fantasy_Ship1_X_haunted_1: -4424078180163147916
+      Fantasy_Ship1_X_haunted_10: 6240337713336518517
+      Fantasy_Ship1_X_haunted_11: 978139389279200145
+      Fantasy_Ship1_X_haunted_2: -8153566032009063923
+      Fantasy_Ship1_X_haunted_3: 4356123344789260654
+      Fantasy_Ship1_X_haunted_4: -8786720268788259236
+      Fantasy_Ship1_X_haunted_5: 8196093437865021630
+      Fantasy_Ship1_X_haunted_6: 4427288948909131704
+      Fantasy_Ship1_X_haunted_7: 3141386180529540159
+      Fantasy_Ship1_X_haunted_8: -8967110397825992525
+      Fantasy_Ship1_X_haunted_9: -81851786268973833
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

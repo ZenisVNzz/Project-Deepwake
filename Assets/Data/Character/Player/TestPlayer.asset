@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c572b7451ea45b94094c50fb3353a0f0, type: 3}
   m_Name: TestPlayer
   m_EditorClassIdentifier: 
+  characterID: 100001
+  prefab: {fileID: 0}
+  level: 1
   HP: 100
   Stamina: 100
   AttackPower: 10

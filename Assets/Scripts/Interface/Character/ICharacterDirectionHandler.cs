@@ -15,4 +15,6 @@ public enum Direction
 public interface ICharacterDirectionHandler
 {
     Direction GetDirection();
+    public void EnableForceDir(Direction direction);
+    public void DisableForceDir();
 }

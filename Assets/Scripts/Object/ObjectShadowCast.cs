@@ -3,7 +3,11 @@ using UnityEngine;
 public class ObjectShadowCast : MonoBehaviour
 {
     private GameObject _shadowObject;
-    [SerializeField] private bool updateShadowSprite = false;
+    [SerializeField] private Vector3 _shadowOffset;
+    [SerializeField] private Vector3 _shadowRotate;
+    [SerializeField] private Vector3 _shadowScale;    
+    [SerializeField] private bool autoRotate = true;
+    [SerializeField] private bool updateShadowSprite = true;
 
     private void Awake()
     {
@@ -20,9 +24,16 @@ public class ObjectShadowCast : MonoBehaviour
         _shadowObject = new GameObject($"{name}_Shadow");
         _shadowObject.transform.SetParent(transform);
 
-        _shadowObject.transform.localScale = new Vector3(1f, 1.5f, 1f);
-        _shadowObject.transform.localPosition = new Vector3(0f, 0.04f, 0f);
-        _shadowObject.transform.localRotation = Quaternion.Euler(45f, 0f, -100f);
+        _shadowObject.transform.localScale = new Vector3(1f, -1f, 1f) + _shadowScale;
+        _shadowObject.transform.localPosition = new Vector3(0f, 0f, 0f) + _shadowOffset;
+        if (autoRotate)
+        {
+            _shadowObject.transform.localRotation = Quaternion.Euler(45f, -30f, 0f);
+        }
+        else
+        {
+            _shadowObject.transform.localRotation = Quaternion.Euler(0f + _shadowRotate.x, -30f + _shadowRotate.y, 0f + _shadowRotate.z);
+        }   
 
         SpriteRenderer shadowRenderer = _shadowObject.AddComponent<SpriteRenderer>();
         shadowRenderer.sprite = originalRenderer.sprite;
@@ -89,6 +100,17 @@ public class ObjectShadowCast : MonoBehaviour
             if (originalRenderer != null && shadowRenderer != null && shadowRenderer.sprite != originalRenderer.sprite)
             {
                 shadowRenderer.sprite = originalRenderer.sprite;
+            }
+
+            _shadowObject.transform.localScale = new Vector3(1f, -1f, 1f) + _shadowScale;
+            _shadowObject.transform.localPosition = new Vector3(0f, 0f, 0f) + _shadowOffset;
+            if (autoRotate)
+            {
+                _shadowObject.transform.localRotation = Quaternion.Euler(45f, -30f, 0f);
+            }
+            else
+            {
+                _shadowObject.transform.localRotation = Quaternion.Euler(0f + _shadowRotate.x, -30f + _shadowRotate.y, 0f + _shadowRotate.z);
             }
         }
     }

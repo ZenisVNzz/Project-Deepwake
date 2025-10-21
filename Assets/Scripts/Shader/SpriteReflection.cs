@@ -34,9 +34,11 @@ public class SpriteReflection : MonoBehaviour
         reflectionObj = new GameObject("Reflection")
         {
             layer = reflectionLayer
+
         };
         reflectionRenderer = reflectionObj.AddComponent<SpriteRenderer>();
         parent = transform.parent;
+        reflectionObj.transform.parent = parent;
         useParentAsPivot = parent != null && parent.TryGetComponent(out SpriteReflection _);
         DoReflection();
     }
@@ -64,14 +66,18 @@ public class SpriteReflection : MonoBehaviour
             axis.z * pivot.z
         );
 
-        // Transform
         Vector3 pos = Quaternion.Euler(180, 0, 0) * (transform.position - pivot) + pivot;
         reflectionObj.transform.SetPositionAndRotation(
             pos, transform.rotation * Quaternion.Euler(180, 0, 0)
         );
-        reflectionObj.transform.localScale = transform.localScale;
+        Vector3 offsetTrans = new Vector3(0f, 0f, 0f);
+        if (reflectionAxis == Axis.X) offsetTrans = new Vector3(reflectionOffset, 0f, 0f);
+        else if (reflectionAxis == Axis.Y) offsetTrans = new Vector3(0f, reflectionOffset, 0f);
+        else if (reflectionAxis == Axis.Z) offsetTrans = new Vector3(0f, 0f, reflectionOffset);
 
-        // Sprite Data
+        reflectionObj.transform.localScale = transform.localScale;
+        reflectionObj.transform.localPosition = transform.localPosition + offsetTrans;
+
         reflectionRenderer.sprite = reflectionSprite != null ? reflectionSprite : spriteRenderer.sprite;
         reflectionRenderer.flipX = spriteRenderer.flipX;
         reflectionRenderer.flipY = spriteRenderer.flipY;

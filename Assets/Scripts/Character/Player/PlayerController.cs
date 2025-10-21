@@ -18,17 +18,22 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private IDamageDealer playerAttack;
 
     private InputSystem_Actions inputHandler;
+    private IInteractionHandler interactionHandler;
     private CharacterData characterData;
 
     private SpriteRenderer spriteRenderer;
     private Collider2D cd2D;
     private Collider2D hurtBox;
 
+    private PlayerModifier playerModifier;
+    public PlayerModifier PlayerModifier => playerModifier;
+
     public void Initialize
     (
       IMovable movement,
       IDashable dash,
       IState state,
+      ICharacterDirectionHandler directionHandler,
       IDamageDealer attack,
       IAnimationHandler animation,
       IStateHandler stateHandler,
@@ -39,6 +44,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         this.playerMovement = movement;
         this.playerDash = dash;
         this.playerState = state;
+        this.directionHandler = directionHandler;
         this.playerAttack = attack;
         this.animationHandler = animation;
         this.stateHandler = stateHandler;
@@ -50,26 +56,47 @@ public class PlayerController : MonoBehaviour, IPlayerController
         inputHandler.Player.Move.performed += OnMove;
         inputHandler.Player.Move.canceled += OnMove;
         inputHandler.Player.Dash.performed += ctx => OnDash();
+        inputHandler.Player.Interact.performed += ctx => OnInteract();
+
+        interactionHandler = GetComponentInChildren<InteractionHandler>();
+        playerModifier = new PlayerModifier(directionHandler);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
         hurtBox = transform.Find("HurtBox").GetComponent<Collider2D>();
         stateHandler.Register("OnDeath", OnDead);
+
+    }
+
+    private void OnInteract()
+    {
+        interactionHandler.Interact();    
     }
 
     private void OnAttack()
     {
-        playerAttack.Attack(characterData.AttackPower);
+        if (playerModifier.CanAttack)
+        {
+            playerAttack.Attack(characterData.AttackPower);
+        }   
     }
 
     private void OnMove(InputAction.CallbackContext context)
     {
+        if (!playerModifier.CanMove)
+        {
+            return;
+        }
+
         playerInput = context.ReadValue<Vector2>();
     }    
 
     private void OnDash()
     {
-        playerDash.Dash();
+        if (playerModifier.CanDash)
+        {
+            playerDash.Dash();
+        }        
     }
 
     private void OnDead()
@@ -92,6 +119,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
     Vector2 playerInput;
     void FixedUpdate()
     {
+        if (!playerModifier.CanMove) playerInput = Vector2.zero;
+
         playerMovement.Move(playerInput, characterData.MoveSpeed);
         stateHandler.UpdateState();
     }

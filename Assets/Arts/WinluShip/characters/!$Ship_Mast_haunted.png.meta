@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 6a054ede5d56c1a47afbb5752aee36a6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4029290194976563906
+    second: '!$Ship_Mast_haunted_0'
+  - first:
+      213: -8769060222156457056
+    second: '!$Ship_Mast_haunted_1'
+  - first:
+      213: 6939140183179633298
+    second: '!$Ship_Mast_haunted_2'
+  - first:
+      213: -5349750730745231747
+    second: '!$Ship_Mast_haunted_3'
+  - first:
+      213: 9084544462309739397
+    second: '!$Ship_Mast_haunted_4'
+  - first:
+      213: 1968511268225397981
+    second: '!$Ship_Mast_haunted_5'
+  - first:
+      213: 8335131806988144841
+    second: '!$Ship_Mast_haunted_6'
+  - first:
+      213: -3124216020150972551
+    second: '!$Ship_Mast_haunted_7'
+  - first:
+      213: -6520814693379317829
+    second: '!$Ship_Mast_haunted_8'
+  - first:
+      213: 4154766139249595326
+    second: '!$Ship_Mast_haunted_9'
+  - first:
+      213: -886643867779867294
+    second: '!$Ship_Mast_haunted_10'
+  - first:
+      213: 5379773508226972062
+    second: '!$Ship_Mast_haunted_11'
+  - first:
+      213: -7722819655357513812
+    second: '!$Ship_Mast_haunted_12'
+  - first:
+      213: -2202917054363121179
+    second: '!$Ship_Mast_haunted_13'
+  - first:
+      213: 4449387217079288362
+    second: '!$Ship_Mast_haunted_14'
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_0'
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 2334
+        width: 140
+        height: 655
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3d157f6ae51518c0800000000000000
+      internalID: -4029290194976563906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_1'
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 2334
+        width: 141
+        height: 655
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ab3b5c303a0e4680800000000000000
+      internalID: -8769060222156457056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_2'
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 2334
+        width: 143
+        height: 655
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 292af014b37cc4060800000000000000
+      internalID: 6939140183179633298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_3'
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1583
+        width: 116
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d764b09fd0ed1c5b0800000000000000
+      internalID: -5349750730745231747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_4'
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1583
+        width: 117
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58bc6367e09c21e70800000000000000
+      internalID: 9084544462309739397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_5'
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1583
+        width: 118
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4bdee919e815b10800000000000000
+      internalID: 1968511268225397981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_6'
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 814
+        width: 135
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c0969f87365ca370800000000000000
+      internalID: 8335131806988144841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_7'
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 813
+        width: 134
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97f015d151e84a4d0800000000000000
+      internalID: -3124216020150972551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_8'
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 814
+        width: 133
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbf5afac5996185a0800000000000000
+      internalID: -6520814693379317829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_9'
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 48
+        width: 118
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb31bce6ac1b8a930800000000000000
+      internalID: 4154766139249595326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_10'
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 44
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26dd3b2991202b3f0800000000000000
+      internalID: -886643867779867294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_11'
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 48
+        width: 117
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e99fce1a08bc8aa40800000000000000
+      internalID: 5379773508226972062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_12'
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 44
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cafb202d07803d490800000000000000
+      internalID: -7722819655357513812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_13'
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 48
+        width: 116
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e949015c9aad61e0800000000000000
+      internalID: -2202917054363121179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!$Ship_Mast_haunted_14'
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 44
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a22cc2e99166fbd30800000000000000
+      internalID: 4449387217079288362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      '!$Ship_Mast_haunted_0': -4029290194976563906
+      '!$Ship_Mast_haunted_1': -8769060222156457056
+      '!$Ship_Mast_haunted_10': -886643867779867294
+      '!$Ship_Mast_haunted_11': 5379773508226972062
+      '!$Ship_Mast_haunted_12': -7722819655357513812
+      '!$Ship_Mast_haunted_13': -2202917054363121179
+      '!$Ship_Mast_haunted_14': 4449387217079288362
+      '!$Ship_Mast_haunted_2': 6939140183179633298
+      '!$Ship_Mast_haunted_3': -5349750730745231747
+      '!$Ship_Mast_haunted_4': 9084544462309739397
+      '!$Ship_Mast_haunted_5': 1968511268225397981
+      '!$Ship_Mast_haunted_6': 8335131806988144841
+      '!$Ship_Mast_haunted_7': -3124216020150972551
+      '!$Ship_Mast_haunted_8': -6520814693379317829
+      '!$Ship_Mast_haunted_9': 4154766139249595326
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

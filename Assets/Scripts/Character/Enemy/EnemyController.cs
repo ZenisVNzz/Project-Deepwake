@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
         hurtBox = transform.Find("HurtBox").GetComponent<Collider2D>();
         stateHandler.Register("OnDeath", OnDead);
-    }
+    }   
 
     private void OnAttack()
     {
