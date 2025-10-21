@@ -4,8 +4,9 @@ public class ObjectShadowCast : MonoBehaviour
 {
     private GameObject _shadowObject;
     [SerializeField] private Vector3 _shadowOffset;
-    [SerializeField] private Vector3 _shadowScale;
-    [SerializeField] private bool rotate = true;
+    [SerializeField] private Vector3 _shadowRotate;
+    [SerializeField] private Vector3 _shadowScale;    
+    [SerializeField] private bool autoRotate = true;
     [SerializeField] private bool updateShadowSprite = true;
 
     private void Awake()
@@ -25,13 +26,13 @@ public class ObjectShadowCast : MonoBehaviour
 
         _shadowObject.transform.localScale = new Vector3(1f, -1f, 1f) + _shadowScale;
         _shadowObject.transform.localPosition = new Vector3(0f, 0f, 0f) + _shadowOffset;
-        if (rotate)
+        if (autoRotate)
         {
             _shadowObject.transform.localRotation = Quaternion.Euler(45f, -30f, 0f);
         }
         else
         {
-            _shadowObject.transform.localRotation = Quaternion.Euler(0f, -30f, 0f);
+            _shadowObject.transform.localRotation = Quaternion.Euler(0f + _shadowRotate.x, -30f + _shadowRotate.y, 0f + _shadowRotate.z);
         }   
 
         SpriteRenderer shadowRenderer = _shadowObject.AddComponent<SpriteRenderer>();
@@ -103,13 +104,13 @@ public class ObjectShadowCast : MonoBehaviour
 
             _shadowObject.transform.localScale = new Vector3(1f, -1f, 1f) + _shadowScale;
             _shadowObject.transform.localPosition = new Vector3(0f, 0f, 0f) + _shadowOffset;
-            if (rotate)
+            if (autoRotate)
             {
                 _shadowObject.transform.localRotation = Quaternion.Euler(45f, -30f, 0f);
             }
             else
             {
-                _shadowObject.transform.localRotation = Quaternion.Euler(0f, -30f, 0f);
+                _shadowObject.transform.localRotation = Quaternion.Euler(0f + _shadowRotate.x, -30f + _shadowRotate.y, 0f + _shadowRotate.z);
             }
         }
     }
