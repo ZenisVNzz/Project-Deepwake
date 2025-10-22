@@ -55,6 +55,46 @@ MonoBehaviour:
     m_Key: UI_NoConnection
     m_Metadata:
       m_Items: []
+  - m_Id: 9501003866628096
+    m_Key: UI_Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504034343542784
+    m_Key: UI_Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504087816724480
+    m_Key: UI_Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504157790298112
+    m_Key: UI_Defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504255362392064
+    m_Key: UI_CritChance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504405044518912
+    m_Key: UI_CritDamage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504463672500224
+    m_Key: UI_MoveSpeed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9510799558762496
+    m_Key: UI_Attributes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9540071820288000
+    m_Key: UI_Confirm2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9558918874980352
+    m_Key: UI_Level
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

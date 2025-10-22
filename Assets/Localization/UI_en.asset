@@ -60,6 +60,46 @@ MonoBehaviour:
     m_Localized: No internet connection. Please check your internet and try again.
     m_Metadata:
       m_Items: []
+  - m_Id: 9501003866628096
+    m_Localized: Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504034343542784
+    m_Localized: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504087816724480
+    m_Localized: Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504157790298112
+    m_Localized: Defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504255362392064
+    m_Localized: Crit chance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504405044518912
+    m_Localized: Crit damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504463672500224
+    m_Localized: Move speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9510799558762496
+    m_Localized: Attributes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9540071820288000
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9558918874980352
+    m_Localized: Level
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
