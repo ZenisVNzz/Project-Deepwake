@@ -88,7 +88,7 @@ public class EnemyMovement : IAIMove
             currentWaypoint++;
     }
 
-    public void Move(Vector2 input, float moveSpeed) => Move(moveSpeed);
+    public void Move(Vector2 input, float moveSpeed, bool isMoveOnSlope) => Move(moveSpeed);
 
     public Vector2 GetDir()
     {

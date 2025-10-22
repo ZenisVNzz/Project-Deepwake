@@ -1,8 +1,4 @@
-using DG.Tweening;
-using Mirror.BouncyCastle.Crypto.Signers;
 using System.Collections;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +23,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private PlayerModifier playerModifier;
     public PlayerModifier PlayerModifier => playerModifier;
+
+    private bool isMoveOnSlope = false;
 
     public void Initialize
     (
@@ -116,12 +114,17 @@ public class PlayerController : MonoBehaviour, IPlayerController
         animationHandler.UpdateAnimation();   
     }
 
+    public void MoveOnSlope(bool moveOnSlope)
+    {
+        isMoveOnSlope = moveOnSlope;
+    }
+
     Vector2 playerInput;
     void FixedUpdate()
     {
         if (!playerModifier.CanMove) playerInput = Vector2.zero;
 
-        playerMovement.Move(playerInput, characterData.MoveSpeed);
+        playerMovement.Move(playerInput, characterData.MoveSpeed, isMoveOnSlope);
         stateHandler.UpdateState();
     }
 }

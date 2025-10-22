@@ -4,6 +4,8 @@ public interface IPlayerController
 {
     public PlayerModifier PlayerModifier { get; }
 
+    public void MoveOnSlope(bool moveOnSlope);
+
     void Initialize
     (
       IMovable movement,
