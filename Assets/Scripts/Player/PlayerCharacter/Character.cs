@@ -33,9 +33,12 @@ public class Character : MonoBehaviour
     public float CriticalChance => criticalChance + bonusCriticalChance;
     public float CriticalDamage => criticalDamage + bonusCriticalDamage;
 
+    [SerializeField] private UIManager uiManager;
+
     private void Start()
     {
         CurrentHealth = MaxHealth;
+        CurrentStamina = MaxStamina;
         var uiManager = FindObjectOfType<UIManager>();
         _statusBar = uiManager.GetUI<UIStatusBar>("StatusBar");
 
@@ -44,6 +47,9 @@ public class Character : MonoBehaviour
             _statusBar.BindData(this);
             _statusBar.Show();
         }
+        uiManager.Initialize(MaxHealth, MaxStamina);
+        uiManager.UpdateHealth(CurrentHealth);
+        uiManager.UpdateStamina(CurrentStamina);
     }
 
     private void Update()
@@ -51,4 +57,21 @@ public class Character : MonoBehaviour
         _statusBar?.UpdateUI();
     }
 
+    public void TakeDamage(float dmg)
+    {
+        CurrentHealth -= dmg;
+        uiManager.UpdateHealth(CurrentHealth);
+    }
+
+    public void UseStamina(float amount)
+    {
+        CurrentStamina -= amount;
+        uiManager.UpdateStamina(CurrentStamina);
+    }
+
+    public void RecoverStamina(float rate)
+    {
+        CurrentStamina = Mathf.Min(CurrentStamina + rate * Time.deltaTime, MaxStamina);
+        uiManager.UpdateStamina(CurrentStamina);
+    }
 }

@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIHealthBar : MonoBehaviour
+public class UIHealthBar :  ProgressBarBase
 {
-    [SerializeField] private Image fillImage;
-
-    public void SetValue(float current, float max)
+    public void UpdateStamina(float current)
     {
-        fillImage.fillAmount = current / max;
+        SetValue(current);
     }
 }

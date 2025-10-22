@@ -4,8 +4,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     private Dictionary<string, IRuntimeUI> _uiDictionary = new();
-    [SerializeField] private UIHealthBar healthBar;
-    [SerializeField] private UIStaminaBar staminaBar;
+
     [SerializeField] private UIInventory inventoryUI;
     public void RegisterUI(string key, IRuntimeUI ui)
     {
@@ -20,22 +19,40 @@ public class UIManager : MonoBehaviour
         return null;
     }
 
-    public void UpdateHealth(float current, float max)
-    {
-        healthBar.SetValue(current, max);
-    }
-
-    public void UpdateStamina(float current, float max)
-    {
-        staminaBar.SetValue(current, max);
-    }
-
     public void ToggleInventory(bool show)
     {
         if (show)
             inventoryUI.Show();
         else
             inventoryUI.Hide();
+    }
+
+    [SerializeField] private MonoBehaviour healthBarComponent;
+    [SerializeField] private MonoBehaviour staminaBarComponent;
+
+    private IProgressBar healthBar;
+    private IProgressBar staminaBar;
+
+    private void Awake()
+    {
+        healthBar = healthBarComponent as IProgressBar;
+        staminaBar = staminaBarComponent as IProgressBar;
+    }
+
+    public void Initialize(float maxHealth, float maxStamina)
+    {
+        healthBar?.Initialize(maxHealth);
+        staminaBar?.Initialize(maxStamina);
+    }
+
+    public void UpdateHealth(float current)
+    {
+        healthBar?.SetValue(current);
+    }
+
+    public void UpdateStamina(float current)
+    {
+        staminaBar?.SetValue(current);
     }
 
 }
