@@ -32,7 +32,16 @@ public class FloatingJoyStick : OnScreenControl, IPointerDownHandler, IPointerUp
         if (m_Canvas == null)
             m_Canvas = GetComponentInParent<Canvas>();
 
+        if (m_Background == null || m_Handle == null)
+            Debug.LogWarning("[FloatingJoyStick] Background or Handle is not assigned.");
+
         m_Background.gameObject.SetActive(false);
+    }
+
+    private Camera GetCanvasCamera()
+    {
+        if (m_Canvas == null) return null;
+        return m_Canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : m_Canvas.worldCamera;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -43,15 +52,32 @@ public class FloatingJoyStick : OnScreenControl, IPointerDownHandler, IPointerUp
         if (eventData.position.x > Screen.width / 2f)
             return;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            (RectTransform)transform,
-            eventData.position,
-            m_Canvas.worldCamera,
-            out m_PointerDownPos);
+        if (m_Canvas == null)
+        {
+            Debug.LogWarning("[FloatingJoyStick] Canvas reference missing.");
+            return;
+        }
 
-        m_Background.anchoredPosition = m_PointerDownPos;
-        m_Handle.anchoredPosition = Vector2.zero;
-        m_Background.gameObject.SetActive(true);
+        var canvasRect = m_Canvas.transform as RectTransform;
+        var cam = GetCanvasCamera();
+
+        Vector2 localPoint;
+        if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, cam, out localPoint))
+            localPoint = Vector2.zero;
+
+        if (m_Canvas.scaleFactor != 0f)
+            localPoint /= m_Canvas.scaleFactor;
+
+        m_PointerDownPos = localPoint;
+
+        if (m_Background != null)
+            m_Background.anchoredPosition = m_PointerDownPos;
+
+        if (m_Handle != null)
+            m_Handle.anchoredPosition = Vector2.zero;
+
+        if (m_Background != null)
+            m_Background.gameObject.SetActive(true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -62,16 +88,29 @@ public class FloatingJoyStick : OnScreenControl, IPointerDownHandler, IPointerUp
         if (eventData.position.x > Screen.width / 2f)
             return;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            m_Canvas.transform as RectTransform,
-            eventData.position,
-            m_Canvas.worldCamera,
-            out m_DragPos);
+        if (m_Canvas == null)
+        {
+            Debug.LogWarning("[FloatingJoyStick] Canvas reference missing.");
+            return;
+        }
+
+        var canvasRect = m_Canvas.transform as RectTransform;
+        var cam = GetCanvasCamera();
+
+        Vector2 localPoint;
+        if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, cam, out localPoint))
+            localPoint = Vector2.zero;
+
+        if (m_Canvas.scaleFactor != 0f)
+            localPoint /= m_Canvas.scaleFactor;
+
+        m_DragPos = localPoint;
 
         Vector2 delta = m_DragPos - m_PointerDownPos;
         delta = Vector2.ClampMagnitude(delta, m_MovementRange);
 
-        m_Handle.anchoredPosition = delta;
+        if (m_Handle != null)
+            m_Handle.anchoredPosition = delta;
 
         Vector2 newPos = new Vector2(delta.x / m_MovementRange, delta.y / m_MovementRange);
         SendValueToControl(newPos);
@@ -79,8 +118,12 @@ public class FloatingJoyStick : OnScreenControl, IPointerDownHandler, IPointerUp
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        m_Background.gameObject.SetActive(false);
-        m_Handle.anchoredPosition = Vector2.zero;
+        if (m_Background != null)
+            m_Background.gameObject.SetActive(false);
+
+        if (m_Handle != null)
+            m_Handle.anchoredPosition = Vector2.zero;
+
         SendValueToControl(Vector2.zero);
     }
 }
