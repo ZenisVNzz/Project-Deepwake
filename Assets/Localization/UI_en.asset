@@ -116,6 +116,14 @@ MonoBehaviour:
     m_Localized: LUCK
     m_Metadata:
       m_Items: []
+  - m_Id: 9659254197379072
+    m_Localized: Equipment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9667599331418112
+    m_Localized: Inventory
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

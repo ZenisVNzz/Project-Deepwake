@@ -111,6 +111,14 @@ MonoBehaviour:
     m_Key: UI_LUCK
     m_Metadata:
       m_Items: []
+  - m_Id: 9659254197379072
+    m_Key: UI_Equipment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9667599331418112
+    m_Key: UI_Inventory
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
