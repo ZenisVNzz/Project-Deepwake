@@ -119,6 +119,10 @@ MonoBehaviour:
     m_Key: UI_Inventory
     m_Metadata:
       m_Items: []
+  - m_Id: 9863147753758720
+    m_Key: UI_SkillTree
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -125,6 +125,10 @@ MonoBehaviour:
     m_Localized: "Kho \u0111\u1ED3"
     m_Metadata:
       m_Items: []
+  - m_Id: 9863147753758720
+    m_Localized: "C\xE2y k\u1EF9 n\u0103ng"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
