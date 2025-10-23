@@ -100,6 +100,22 @@ MonoBehaviour:
     m_Localized: Level
     m_Metadata:
       m_Items: []
+  - m_Id: 9654420828250112
+    m_Localized: VIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9654455372537856
+    m_Localized: DEF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9654482245443584
+    m_Localized: STR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9654517200773120
+    m_Localized: LUCK
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

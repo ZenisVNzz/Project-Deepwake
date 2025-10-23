@@ -9,7 +9,7 @@ public class EnemyMovement : IAIMove
     private Transform target;
     private float nextWaypointDistance = 0.3f;
     private float stopDistance = 0.9f;
-    private float chaseDistance = 5f;
+    private float chaseDistance = 15f;
 
     private Path path;
     private int currentWaypoint = 0;

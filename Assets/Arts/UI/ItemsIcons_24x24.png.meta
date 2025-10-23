@@ -378,8 +378,8 @@ TextureImporter:
       name: ItemsIcons_24x24_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 128
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -400,7 +400,7 @@ TextureImporter:
       name: ItemsIcons_24x24_10
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 64
         width: 32
         height: 32
@@ -422,7 +422,7 @@ TextureImporter:
       name: ItemsIcons_24x24_11
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 64
         width: 32
         height: 32
@@ -444,8 +444,8 @@ TextureImporter:
       name: ItemsIcons_24x24_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 64
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -466,7 +466,7 @@ TextureImporter:
       name: ItemsIcons_24x24_13
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 32
         width: 32
         height: 32
@@ -488,7 +488,7 @@ TextureImporter:
       name: ItemsIcons_24x24_14
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 32
         width: 32
         height: 32
@@ -510,7 +510,7 @@ TextureImporter:
       name: ItemsIcons_24x24_15
       rect:
         serializedVersion: 2
-        x: 96
+        x: 64
         y: 32
         width: 32
         height: 32
@@ -532,8 +532,8 @@ TextureImporter:
       name: ItemsIcons_24x24_16
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 96
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -554,7 +554,7 @@ TextureImporter:
       name: ItemsIcons_24x24_17
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 0
         width: 32
         height: 32
@@ -568,6 +568,28 @@ TextureImporter:
       bones: []
       spriteID: 6706efcc22578eab0800000000000000
       internalID: -4978600595729522570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemsIcons_24x24_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6320600b8c032748b535d0408b89101
+      internalID: -778772659
       vertices: []
       indices: 
       edges: []
@@ -598,6 +620,7 @@ TextureImporter:
       ItemsIcons_24x24_15: 7135621267109917034
       ItemsIcons_24x24_16: 5826433395528340879
       ItemsIcons_24x24_17: -4978600595729522570
+      ItemsIcons_24x24_18: -778772659
       ItemsIcons_24x24_2: 3975856693503291660
       ItemsIcons_24x24_3: 7489949008803148170
       ItemsIcons_24x24_4: 7344064870543569694
