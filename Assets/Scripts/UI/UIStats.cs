@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatsUI : MonoBehaviour
+public class UIStats : MonoBehaviour
 {
     [Header("Character Base Stats")]
     [SerializeField] private Text maxHealthText;

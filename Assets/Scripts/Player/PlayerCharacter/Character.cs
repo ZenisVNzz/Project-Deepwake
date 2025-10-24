@@ -11,6 +11,11 @@ public class Character : MonoBehaviour
     [SerializeField] private float criticalChance = 0.1f;
     [SerializeField] private float criticalDamage = 1.5f;
 
+    [Header("Character Attributes")]
+    [SerializeField] private float Vitality = 5;
+    [SerializeField] private float Strength = 5;
+    [SerializeField] private float Luck = 5;
+
     [Header("Character Bonus Stats")]
     public float bonusMaxHealth = 100;
     public float bonusStamina = 100;
@@ -19,6 +24,11 @@ public class Character : MonoBehaviour
     public float bonusSpeed = 5;
     public float bonusCriticalChance = 0.1f;
     public float bonusCriticalDamage = 1.5f;
+
+    [Header("Character Bonus Attributes")]
+    public float bonusVitality = 5;
+    public float bonusStrength = 5;
+    public float bonusLuck = 5;
 
     private UIStatusBar _statusBar;
 
