@@ -18,6 +18,9 @@ public class UIDottedLineDrawer : MonoBehaviour
         Vector2 endPos = end.anchoredPosition;
 
         Vector2 dir = (endPos - startPos).normalized;
+        startPos += dir * 100f;
+        endPos -= dir * 100f;
+
         float distance = Vector2.Distance(startPos, endPos);
         int dotCount = Mathf.FloorToInt(distance / dotSpacing);
 
