@@ -36,44 +36,49 @@
 
                 List<MapNode> layer = new List<MapNode>();
 
-                for (int row = 0; row < nodeCount; row++)
+            for (int row = 0; row < nodeCount; row++)
+            {
+                MapNodeData data = new MapNodeData();
+                data.gridPos = new Vector2Int(col, row);
+
+                if (col == 0)
+                    data.nodeType = Addressables.LoadAssetAsync<NodeType>("SeaNode").WaitForCompletion();
+                else if (col == (width / 2) - 1)
+                    data.nodeType = Addressables.LoadAssetAsync<NodeType>("BossNode").WaitForCompletion();
+                else
+                    data.nodeType = GetRandomMapNode();
+
+                GameObject nodeObj = Instantiate(nodePrefab, nodeContainer);
+
+                float totalHeight = (nodeCount - 1) * ySpacing;
+                float yOffset = -totalHeight / 2f;
+                nodeObj.transform.localPosition = new Vector2(col * xSpacing, row * ySpacing + yOffset);
+
+                MapNode mapNode = nodeObj.GetComponent<MapNode>();
+                mapNode.Init(data);
+                mapNode.OnNodeClicked += OnNodeClicked;
+
+                if (col == 0 && row == 0)
                 {
-                    MapNodeData data = new MapNodeData();
-                    data.gridPos = new Vector2Int(col, row);
-
-                    if (col == 0)
-                        data.nodeType = Addressables.LoadAssetAsync<NodeType>("SeaNode").WaitForCompletion();
-                    else if (col == (width / 2) - 1)
-                        data.nodeType = Addressables.LoadAssetAsync<NodeType>("BossNode").WaitForCompletion();
-                    else
-                        data.nodeType = GetRandomMapNode();
-
-                    GameObject nodeObj = Instantiate(nodePrefab, nodeContainer);
-                    nodeObj.transform.localPosition = new Vector2(col * xSpacing, row * ySpacing);
-                    MapNode mapNode = nodeObj.GetComponent<MapNode>();
-                    mapNode.Init(data);
-                    mapNode.OnNodeClicked += OnNodeClicked;
-
-                    if (col == 0 && row == 0)
-                    {
-                        mapNode.SetInteractable(false);                       
-                        currentNode = mapNode;
-                        currentNode.MarkAsCurrent(true);       
-                    }
-                    else if (col == 1)
-                    {
-                        mapNode.SetInteractable(true);
-                    }
-                    else
-                    {
-                        mapNode.SetInteractable(false);
-                        currentNode.MarkAsCurrent(true);
-                    }
-
-                    layer.Add(mapNode);
+                    mapNode.SetInteractable(false);
+                    currentNode = mapNode;
+                    currentNode.MarkAsCurrent(true);
+                }
+                else if (col == 1)
+                {
+                    mapNode.SetInteractable(true);
+                }
+                else
+                {
+                    mapNode.SetInteractable(false);
+                    currentNode.MarkAsCurrent(true);
                 }
 
-                layers.Add(layer);
+                layer.Add(mapNode);
+            }
+
+
+            layers.Add(layer);
             }
 
             for (int col = 0; col < layers.Count - 1; col++)
@@ -81,7 +86,7 @@
                 var currentColumn = layers[col];
                 var nextColumn = layers[col + 1];
 
-                float maxYDistance = 1.5f * ySpacing;
+                float maxYDistance = 0.75f * ySpacing;
 
                 foreach (var startNode in currentColumn)
                 {
@@ -186,7 +191,7 @@
     { 
         if (!node.IsInteractable) return;
 
-        currentNode.MarkAsCurrent(false);
+        //currentNode.MarkAsCurrent(false);
         currentNode = node;
         currentNode.MarkAsCurrent(true);
 

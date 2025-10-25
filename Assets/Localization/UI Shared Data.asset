@@ -123,6 +123,10 @@ MonoBehaviour:
     m_Key: UI_SkillTree
     m_Metadata:
       m_Items: []
+  - m_Id: 10620581669691392
+    m_Key: UI_WorldMap
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

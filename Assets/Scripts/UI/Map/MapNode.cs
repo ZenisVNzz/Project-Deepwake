@@ -48,6 +48,6 @@ public class MapNode : MonoBehaviour
     public void MarkAsCurrent(bool value)
     {
         if (OutlineImage != null)
-            OutlineImage.color = value ? Color.red : (IsInteractable ? Color.white : Color.gray);
+            OutlineImage.color = value ? Color.cyan : (IsInteractable ? Color.white : Color.gray);
     }
 }

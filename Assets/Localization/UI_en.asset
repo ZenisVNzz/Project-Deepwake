@@ -128,6 +128,10 @@ MonoBehaviour:
     m_Localized: Skill Tree
     m_Metadata:
       m_Items: []
+  - m_Id: 10620581669691392
+    m_Localized: World map
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
