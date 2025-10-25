@@ -24,8 +24,13 @@ public class UISkillTreePanel : MonoBehaviour
         LoadSkills();
     }
 
-    private void LoadSkills()
+    public void LoadSkills()
     {
+        foreach (Transform child in skillNodeParent)
+            Destroy(child.gameObject);
+        foreach (Transform child in skillListParent)
+            Destroy(child.gameObject);
+
         allSkills.AddRange(Resources.LoadAll<SkillData>("Skills"));
 
         foreach (var skill in allSkills)
@@ -45,4 +50,5 @@ public class UISkillTreePanel : MonoBehaviour
         skillDescriptionText.text = skill.description;
         skillCostText.text = $"Cost: {skill.pointCost}";
     }
+
 }

@@ -19,8 +19,8 @@ public class CharacterUIManager : MonoBehaviour
     { 
         attributesPanel.Bind(attributes);
         statsPanel.UpdateStats(stats);
-        equipmentPanel.UpdateEquipment(equipment);
-        skillPanel.UpdateSkills(skills);
+
+        skillPanel.LoadSkills();
     }
 
     private void Update()
