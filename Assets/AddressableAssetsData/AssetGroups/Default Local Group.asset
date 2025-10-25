@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ff1207baddb889741829269af6217c36
   m_SerializeEntries:
+  - m_GUID: 0578ccc092b39644dbd374737e5824d0
+    m_Address: NodeTypeList
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 066cefe94252b384fbad449ace9d6809
     m_Address: Player
     m_ReadOnly: 0
@@ -57,6 +63,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26fa9196513dca54fa98b250c7b0ffd4
+    m_Address: BossNode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2db960babd764e1428ab689e7e1dda48
     m_Address: PlayFabClient
@@ -134,6 +146,12 @@ MonoBehaviour:
     m_Address: AssetReferencesList
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9861473d96a49ad469914e0c3189bf72
+    m_Address: SeaNode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a33d88e093ea3b54da2efae9eae1258f
     m_Address: PopupContainer
