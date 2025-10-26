@@ -18,7 +18,7 @@ public class PlayerMovement : IMovable
         this.playerState = playerState;
     }
 
-    public void Move(Vector2 input, float moveSpeed)
+    public void Move(Vector2 input, float moveSpeed, bool isMoveOnSlope)
     {
         this.input = input;
 
@@ -28,9 +28,15 @@ public class PlayerMovement : IMovable
             return;
         }
 
-        Vector2 isoInput = ToIsometric(input.normalized);
-
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, isoInput * moveSpeed, acceleration * Time.fixedDeltaTime);
+        if (isMoveOnSlope)
+        {
+            MoveAlongSlope(new Vector2(1, 1), moveSpeed, 0.7f);
+        }
+        else
+        {
+            Vector2 isoInput = ToIsometric(input.normalized);
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, isoInput * moveSpeed, acceleration * Time.fixedDeltaTime);
+        }   
     }
 
     public void Move(float moveSpeed) => Debug.LogWarning("[PlayerMovement] input is missing.");
@@ -42,6 +48,29 @@ public class PlayerMovement : IMovable
         Vector2 iso = new Vector2(isoX, isoY);
 
         return iso.normalized;
+    }
+
+    private void MoveAlongSlope(Vector2 dir, float moveSpeed, float speedModifier)
+    {
+        const float epsilon = 0.0001f;
+
+        if (input.sqrMagnitude <= epsilon)
+        {
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
+            return;
+        }
+
+        Vector2 isoInput = ToIsometric(input.normalized);
+        Vector2 move = Vector2.Lerp(rb.linearVelocity, (isoInput * moveSpeed) * speedModifier, acceleration * Time.fixedDeltaTime);
+
+        if (move.x < 0)
+        {
+            rb.linearVelocity = new Vector2(move.x, move.y + dir.y * 0.32f);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(move.x, move.y - dir.y * 0.32f);
+        }
     }
 
     public Vector2 GetDir()

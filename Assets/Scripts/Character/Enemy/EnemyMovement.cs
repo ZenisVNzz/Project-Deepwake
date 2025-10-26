@@ -9,7 +9,7 @@ public class EnemyMovement : IAIMove
     private Transform target;
     private float nextWaypointDistance = 0.3f;
     private float stopDistance = 0.9f;
-    private float chaseDistance = 5f;
+    private float chaseDistance = 15f;
 
     private Path path;
     private int currentWaypoint = 0;
@@ -88,7 +88,7 @@ public class EnemyMovement : IAIMove
             currentWaypoint++;
     }
 
-    public void Move(Vector2 input, float moveSpeed) => Move(moveSpeed);
+    public void Move(Vector2 input, float moveSpeed, bool isMoveOnSlope) => Move(moveSpeed);
 
     public Vector2 GetDir()
     {

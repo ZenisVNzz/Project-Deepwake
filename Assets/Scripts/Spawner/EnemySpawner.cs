@@ -12,7 +12,7 @@ public class EnemySpawner
     private int difficultyMultiplier;
     private EnemyLevelModifier levelModifier;
 
-    private float minSpawnDistance = 10f;
+    private float minSpawnDistance = 11f;
     private float maxSpawnDistance = 13f;
 
     private List<GameObject> activeEnemies = new List<GameObject>();
@@ -45,8 +45,13 @@ public class EnemySpawner
     private Vector2 GetRandomSpawnPos()
     {
         float angle = Random.Range(0f, 360f);
-        float distance = Random.Range(minSpawnDistance, maxSpawnDistance);
-        Vector2 offset = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad) * distance);
+
+        float min2 = minSpawnDistance * minSpawnDistance;
+        float max2 = maxSpawnDistance * maxSpawnDistance;
+        float distance = Mathf.Sqrt(Random.Range(min2, max2));
+
+        float rad = angle * Mathf.Deg2Rad;
+        Vector2 offset = new Vector2(Mathf.Cos(rad) * distance, Mathf.Sin(rad) * distance);
         return (Vector2)ship.position + offset;
     }
 
