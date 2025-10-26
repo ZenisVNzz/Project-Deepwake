@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class UIInventory : MonoBehaviour, IRuntimeUI
+public class UIInventory : MonoBehaviour, IRuntimeUIService
 {
     public GameObject panel;
     public void Initialize() { Hide(); }
@@ -12,7 +12,7 @@ public class UIInventory : MonoBehaviour, IRuntimeUI
     {
 
     }
-    public void BindData(object data)
+    public void BindData(ICharacterRuntime data)
     {
 
     }

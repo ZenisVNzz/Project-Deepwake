@@ -49,12 +49,12 @@ public class Character : MonoBehaviour
     {
         CurrentHealth = MaxHealth;
         CurrentStamina = MaxStamina;
-        var uiManager = FindObjectOfType<UIManager2>();
+        var uiManager = FindAnyObjectByType<UIManager2>();
         _statusBar = uiManager.GetUI<UIStatusBar>("StatusBar");
 
         if (_statusBar != null)
         {
-            _statusBar.BindData(this);
+            //_statusBar.BindData(this);
             _statusBar.Show();
         }
         uiManager.Initialize(MaxHealth, MaxStamina);

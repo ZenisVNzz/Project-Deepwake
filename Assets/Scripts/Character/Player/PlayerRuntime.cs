@@ -4,33 +4,21 @@ using UnityEngine;
 
 [System.Serializable]
 public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
-{
-    [SerializeField] private float _stamina;
-    public float Stamina => _stamina;
-
-    private float _staminaRegenRate;
-    private float _staminaConsumptionMultiplier;
+{   
     private Coroutine _staminaRegenCoroutine;
 
     public override void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState)
     {
-        characterData = Instantiate(playerData);
-        hp = playerData.HP;
-        _stamina = playerData.Stamina;
-        _hpRegenRate = playerData.HPRegenRate;
-        _staminaRegenRate = playerData.StaminaRegenRate;
-        _staminaConsumptionMultiplier = playerData.StaminaConsumptionMultiplier;
-
-        rb = rigidbody2D;
-        characterState = PlayerState;
+        base.Init(playerData, rigidbody2D, PlayerState);
     }
 
     public bool UseStamina(float amount)
     {
         float adjustedAmount = amount * _staminaConsumptionMultiplier;
-        if (_stamina >= adjustedAmount)
+        if (stamina >= adjustedAmount)
         {
-            _stamina -= adjustedAmount;
+            stamina -= adjustedAmount;
+            _onStatusChanged?.Invoke();
 
             if (_staminaRegenCoroutine != null)
             {
@@ -46,13 +34,14 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     private IEnumerator RegenSatamina()
     {
         yield return new WaitForSeconds(2f);
-        while (_stamina < characterData.Stamina)
+        while (stamina < totalStamina)
         {
-            _stamina += _staminaRegenRate * Time.deltaTime;
-            if (_stamina > characterData.Stamina)
+            stamina += _staminaRegenRate * Time.deltaTime;           
+            if (stamina > totalStamina)
             {
-                _stamina = characterData.Stamina;
+                stamina = totalStamina;
             }
+            _onStatusChanged?.Invoke();
             yield return null;
         }
         _staminaRegenCoroutine = null;

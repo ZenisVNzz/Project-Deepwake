@@ -3,6 +3,7 @@ using UnityEngine;
 public class CharacterInstaller : MonoBehaviour
 {
     [SerializeField] protected CharacterData _characterData;
+    [SerializeField] protected UIStatusBar _uiStatusBar;
 
     protected IMovable _characterMovement;
     protected IAIMove _AIMovement;
@@ -72,5 +73,12 @@ public class CharacterInstaller : MonoBehaviour
         _characterRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState);
         _characterController = gameObject.AddComponent<PlayerController>();
         _characterController.Initialize(_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, CharacterDataClone);
+
+        if (_uiStatusBar != null)
+        {
+            var _UIManager = UIManager.Instance;
+            _uiStatusBar.BindData(_characterRuntime);
+            _UIManager.RuntimeUIServiceRegistry.Register<UIStatusBar>(_uiStatusBar);        
+        }
     }
 }
