@@ -43,13 +43,13 @@ public class Character : MonoBehaviour
     public float CriticalChance => criticalChance + bonusCriticalChance;
     public float CriticalDamage => criticalDamage + bonusCriticalDamage;
 
-    [SerializeField] private UIManager uiManager;
+    [SerializeField] private UIManager2 uiManager;
 
     private void Start()
     {
         CurrentHealth = MaxHealth;
         CurrentStamina = MaxStamina;
-        var uiManager = FindObjectOfType<UIManager>();
+        var uiManager = FindObjectOfType<UIManager2>();
         _statusBar = uiManager.GetUI<UIStatusBar>("StatusBar");
 
         if (_statusBar != null)

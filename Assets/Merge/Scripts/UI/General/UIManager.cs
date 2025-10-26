@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager2 : MonoBehaviour
 {
     private Dictionary<string, IRuntimeUI> _uiDictionary = new();
 
