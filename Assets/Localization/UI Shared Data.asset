@@ -127,6 +127,22 @@ MonoBehaviour:
     m_Key: UI_WorldMap
     m_Metadata:
       m_Items: []
+  - m_Id: 10824698933469184
+    m_Key: UI_Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10824761369878528
+    m_Key: UI_Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10824791644364800
+    m_Key: UI_ReturnToHub
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10824831116959744
+    m_Key: UI_Quit
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

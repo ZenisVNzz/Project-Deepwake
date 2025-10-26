@@ -132,6 +132,22 @@ MonoBehaviour:
     m_Localized: World map
     m_Metadata:
       m_Items: []
+  - m_Id: 10824698933469184
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10824761369878528
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10824791644364800
+    m_Localized: Return to hub
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10824831116959744
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
