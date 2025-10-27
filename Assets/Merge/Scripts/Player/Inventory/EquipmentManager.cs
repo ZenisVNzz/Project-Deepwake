@@ -9,12 +9,12 @@ public class EquipmentManager : MonoBehaviour
     public event Action<EquipmentType, EquipmentData> OnEquipmentChanged;
 
     private Dictionary<EquipmentType, EquipmentData> equippedItems = new();
-    private Character _characterStats;
+    private CharacterRuntime _characterStats;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
-        _characterStats = FindObjectOfType<Character>();
+        _characterStats = FindAnyObjectByType<CharacterRuntime>();
     }
 
     public void Equip(EquipmentData newEquip)
@@ -48,32 +48,32 @@ public class EquipmentManager : MonoBehaviour
     {
         if (_characterStats == null) return;
 
-        _characterStats.bonusMaxHealth += equip.maxHealthBonus;
-        _characterStats.bonusStamina += equip.maxStaminaBonus;
-        _characterStats.bonusAttackPower += equip.attackPowerBonus;
-        _characterStats.bonusDefense += equip.defenseBonus;
-        _characterStats.bonusSpeed += equip.speedBonus;
-        _characterStats.bonusCriticalChance += equip.criticalChanceBonus;
-        _characterStats.bonusCriticalDamage += equip.criticalDamageBonus;
-        _characterStats.bonusVitality += equip.vitBonus;
-        _characterStats.bonusStrength += equip.strBonus;
-        _characterStats.bonusLuck += equip.luckBonus;
+        //_characterStats.bonusMaxHealth += equip.maxHealthBonus;
+        //_characterStats.bonusStamina += equip.maxStaminaBonus;
+        //_characterStats.bonusAttackPower += equip.attackPowerBonus;
+        //_characterStats.bonusDefense += equip.defenseBonus;
+        //_characterStats.bonusSpeed += equip.speedBonus;
+        //_characterStats.bonusCriticalChance += equip.criticalChanceBonus;
+        //_characterStats.bonusCriticalDamage += equip.criticalDamageBonus;
+        //_characterStats.bonusVitality += equip.vitBonus;
+        //_characterStats.bonusStrength += equip.strBonus;
+        //_characterStats.bonusLuck += equip.luckBonus;
     }
 
     private void RemoveStats(EquipmentData equip)
     {
         if (_characterStats == null) return;
 
-        _characterStats.bonusMaxHealth -= equip.maxHealthBonus;
-        _characterStats.bonusStamina -= equip.maxStaminaBonus;
-        _characterStats.bonusAttackPower -= equip.attackPowerBonus;
-        _characterStats.bonusDefense -= equip.defenseBonus;
-        _characterStats.bonusSpeed -= equip.speedBonus;
-        _characterStats.bonusCriticalChance -= equip.criticalChanceBonus;
-        _characterStats.bonusCriticalDamage -= equip.criticalDamageBonus;
-        _characterStats.bonusVitality -= equip.vitBonus;
-        _characterStats.bonusStrength -= equip.strBonus;
-        _characterStats.bonusLuck -= equip.luckBonus;
+        //_characterStats.bonusMaxHealth -= equip.maxHealthBonus;
+        //_characterStats.bonusStamina -= equip.maxStaminaBonus;
+        //_characterStats.bonusAttackPower -= equip.attackPowerBonus;
+        //_characterStats.bonusDefense -= equip.defenseBonus;
+        //_characterStats.bonusSpeed -= equip.speedBonus;
+        //_characterStats.bonusCriticalChance -= equip.criticalChanceBonus;
+        //_characterStats.bonusCriticalDamage -= equip.criticalDamageBonus;
+        //_characterStats.bonusVitality -= equip.vitBonus;
+        //_characterStats.bonusStrength -= equip.strBonus;
+        //_characterStats.bonusLuck -= equip.luckBonus;
     }
 
     public EquipmentData GetEquipped(EquipmentType slot)

@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private PlayerModifier playerModifier;
     public PlayerModifier PlayerModifier => playerModifier;
 
+    private GameObject charMenuUI;
+    private GameObject gameMenuUI;
+
     private bool isMoveOnSlope = false;
 
     public void Initialize
@@ -36,7 +39,9 @@ public class PlayerController : MonoBehaviour, IPlayerController
       IAnimationHandler animation,
       IStateHandler stateHandler,
       InputSystem_Actions input,
-      CharacterData characterData
+      CharacterData characterData,
+      GameObject charMenuUI,
+      GameObject gameMenuUI
     )
     {
         this.playerMovement = movement;
@@ -48,6 +53,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
         this.stateHandler = stateHandler;
         this.inputHandler = input;
         this.characterData = characterData;
+        this.charMenuUI = charMenuUI;
+        this.gameMenuUI = gameMenuUI;
 
         inputHandler.Player.Enable();
         inputHandler.Player.Attack.performed += ctx => OnAttack();
@@ -55,6 +62,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
         inputHandler.Player.Move.canceled += OnMove;
         inputHandler.Player.Dash.performed += ctx => OnDash();
         inputHandler.Player.Interact.performed += ctx => OnInteract();
+        inputHandler.Player.OpenInventory.performed += ctx => OnOpenCharMenu();
+        inputHandler.Player.OpenOptions.performed += ctx => OnOpenGameMenu();
 
         interactionHandler = GetComponentInChildren<InteractionHandler>();
         playerModifier = new PlayerModifier(directionHandler);
@@ -69,6 +78,16 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private void OnInteract()
     {
         interactionHandler.Interact();    
+    }
+
+    private void OnOpenCharMenu()
+    {
+        charMenuUI.SetActive(!charMenuUI.activeSelf);
+    }
+
+    private void OnOpenGameMenu()
+    {
+        gameMenuUI.SetActive(!gameMenuUI.activeSelf);
     }
 
     private void OnAttack()

@@ -7,7 +7,7 @@ public class CharacterAttributes
     public int DEF; 
     public int STR; 
     public int LUCK; 
-    public int AvailablePoints = 10;
+    public int AvailablePoints = 0;
 
     public void AddPoint(string attr)
     {

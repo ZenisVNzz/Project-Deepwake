@@ -3,6 +3,8 @@ using UnityEngine;
 public class CharacterInstaller : MonoBehaviour
 {
     [SerializeField] protected CharacterData _characterData;
+    [SerializeField] protected GameObject _charMenuUI;
+    [SerializeField] protected GameObject _gameMenuUI;
     [SerializeField] protected UIStatusBar _uiStatusBar;
 
     protected IMovable _characterMovement;
@@ -72,7 +74,8 @@ public class CharacterInstaller : MonoBehaviour
         InitComponent();
         _characterRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState);
         _characterController = gameObject.AddComponent<PlayerController>();
-        _characterController.Initialize(_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, CharacterDataClone);
+        _characterController.Initialize
+            (_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, CharacterDataClone, _charMenuUI, _gameMenuUI);
 
         if (_uiStatusBar != null)
         {

@@ -24,15 +24,14 @@ public class UIStats : MonoBehaviour
 
 
 
-    public void UpdateStats(Character stats)
+    public void UpdateStats(CharacterRuntime stats)
     {
-        maxHealthText.text = $"Health: {stats.MaxHealth}";
-        maxStaminaText.text = $"Stamina: {stats.MaxStamina}";
-        attackPowerText.text = $"Attack: {stats.Attack}";
-        defenseText.text = $"Defense: {stats.Defense}";
-        speedText.text = $"Speed: {stats.Speed}";
-        criticalChanceText.text = $"Crit Chance: {stats.CriticalChance * 100}%";
-        criticalDamageText.text = $"Crit Damage: {stats.CriticalDamage * 100}%";
-
+        //maxHealthText.text = $"Health: {stats.MaxHealth}";
+        //maxStaminaText.text = $"Stamina: {stats.MaxStamina}";
+        //attackPowerText.text = $"Attack: {stats.Attack}";
+        //defenseText.text = $"Defense: {stats.Defense}";
+        //speedText.text = $"Speed: {stats.Speed}";
+        //criticalChanceText.text = $"Crit Chance: {stats.CriticalChance * 100}%";
+        //criticalDamageText.text = $"Crit Damage: {stats.CriticalDamage * 100}%";
     }
 }

@@ -10,7 +10,7 @@ public class CharacterUIManager : MonoBehaviour
     [SerializeField] private UISkillTreePanel skillPanel;
 
     [Header("Data")]
-    [SerializeField] private Character stats;
+    [SerializeField] private CharacterRuntime stats;
     [SerializeField] private CharacterAttributes attributes;
     [SerializeField] private Equipment equipment;
     [SerializeField] private List<SkillData> skills;
