@@ -6,6 +6,7 @@ public class CharacterInstaller : MonoBehaviour
     [SerializeField] protected GameObject _charMenuUI;
     [SerializeField] protected GameObject _gameMenuUI;
     [SerializeField] protected UIStatusBar _uiStatusBar;
+    [SerializeField] protected UIInventory _uiInventory;
 
     protected IMovable _characterMovement;
     protected IAIMove _AIMovement;
@@ -72,7 +73,8 @@ public class CharacterInstaller : MonoBehaviour
     {
         GetComponent();
         InitComponent();
-        _characterRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState);
+        Inventory playerInventory = new Inventory();
+        _characterRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState, playerInventory);
         _characterController = gameObject.AddComponent<PlayerController>();
         _characterController.Initialize
             (_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, CharacterDataClone, _charMenuUI, _gameMenuUI);
@@ -82,6 +84,14 @@ public class CharacterInstaller : MonoBehaviour
             var _UIManager = UIManager.Instance;
             _uiStatusBar.BindData(_characterRuntime);
             _UIManager.RuntimeUIServiceRegistry.Register<UIStatusBar>(_uiStatusBar);        
+        }
+
+        if (_uiInventory != null)
+        {
+            var _UIManager = UIManager.Instance;
+            _uiInventory.BindData(_characterRuntime);
+            _uiInventory.SetData(playerInventory);
+            _UIManager.RuntimeUIServiceRegistry.Register<UIInventory>(_uiInventory);
         }
     }
 }

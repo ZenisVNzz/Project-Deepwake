@@ -10,7 +10,7 @@ public class UIStatusBar : MonoBehaviour, IRuntimeUIService
     [SerializeField] private Slider mpBar;
     [SerializeField] private TextMeshProUGUI mpText;
 
-    private ICharacterRuntime _player;
+    private IPlayerRuntime _player;
 
     public void Initialize()
     {
@@ -20,7 +20,7 @@ public class UIStatusBar : MonoBehaviour, IRuntimeUIService
     public void Show() => gameObject.SetActive(true);
     public void Hide() => gameObject.SetActive(false);
 
-    public void BindData(ICharacterRuntime data)
+    public void BindData(IPlayerRuntime data)
     {
         if (_player != null)
             _player.OnStatusChanged -= UpdateUI; 

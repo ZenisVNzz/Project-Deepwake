@@ -6,5 +6,5 @@ public interface IRuntimeUIService
     void Show();         
     void Hide();         
     void UpdateUI();
-    void BindData(ICharacterRuntime data);
+    void BindData(IPlayerRuntime data);
 }

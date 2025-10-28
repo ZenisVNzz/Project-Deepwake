@@ -4,36 +4,27 @@ using UnityEngine;
 public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 {
     [Header("Character Attributes")]
-    [SerializeField] private float Level = 1;
-    [SerializeField] private float Vitality = 1;
-    [SerializeField] private float Defense = 1;
-    [SerializeField] private float Strength = 1;
-    [SerializeField] private float Luck = 1;
+    [SerializeField] protected float Level = 1;
+    [SerializeField] protected float Vitality = 1;
+    [SerializeField] protected float Defense = 1;
+    [SerializeField] protected float Strength = 1;
+    [SerializeField] protected float Luck = 1;
 
     [Header("Character Bonus Stats")]
-    protected float bonusMaxHealth = 0;
-    protected float bonusStamina = 0;
+    protected float bonusMaxHealth = 0;  
     protected float bonusAttackPower = 0;
     protected float bonusDefense = 0;
-    protected float bonusSpeed = 0;
-    protected float bonusCriticalChance = 0;
-    protected float bonusCriticalDamage = 0;
+    protected float bonusSpeed = 0;  
 
     [Header("Total Stats")]
     protected float totalHealth => characterData.HP + bonusMaxHealth + (5f * Vitality);
-    protected float totalStamina => characterData.Stamina + bonusStamina + (2f * Vitality);
     protected float totalAttack => characterData.AttackPower + bonusAttackPower + (2f * Strength);
     protected float totalDefense => characterData.Defense + bonusDefense + (1f * Defense);
     protected float totalSpeed => characterData.MoveSpeed + bonusSpeed;
-    protected float totalCriticalChance => characterData.CriticalChance + bonusCriticalChance + (0.01f * Luck);
-    protected float totalCriticalDamage => characterData.CriticalDamageMultiplier + bonusCriticalDamage;
     public float TotalHealth => totalHealth;
-    public float TotalStamina => totalStamina;
     public float TotalAttack => totalAttack;
     public float TotalDefense => totalDefense;
-    public float TotalSpeed => totalSpeed;
-    public float TotalCriticalChance => totalCriticalChance;
-    public float TotalCriticalDamage => totalCriticalDamage;
+    public float TotalSpeed => totalSpeed;    
 
     [Header("Reference")]
     protected Action _onStatusChanged;
@@ -45,12 +36,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 
     [SerializeField] protected float hp;
     public float HP => hp;
-    protected float _hpRegenRate;
-
-    [SerializeField] protected float stamina;
-    public float Stamina => stamina;
-    protected float _staminaRegenRate;
-    protected float _staminaConsumptionMultiplier;
+    protected float _hpRegenRate;   
 
     protected CharacterData characterData;
     public CharacterData CharacterData => characterData;
@@ -65,10 +51,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
     {
         characterData = CharacterData;
         hp = totalHealth;
-        stamina = totalStamina;
-        _hpRegenRate = characterData.HPRegenRate;
-        _staminaRegenRate = characterData.StaminaRegenRate;
-        _staminaConsumptionMultiplier = characterData.StaminaConsumptionMultiplier;
+        _hpRegenRate = characterData.HPRegenRate;    
 
         rb = rigidbody2D;  
         this.characterState = characterState;
