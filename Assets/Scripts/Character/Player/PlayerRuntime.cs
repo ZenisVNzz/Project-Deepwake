@@ -25,6 +25,7 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     private Coroutine _staminaRegenCoroutine;
 
     private Inventory playerInventory;
+    public Inventory PlayerInventory => playerInventory;
 
     public void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState, Inventory playerInventory)
     {

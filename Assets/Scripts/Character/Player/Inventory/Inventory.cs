@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,19 +8,23 @@ public class Inventory
     public List<InventorySlot> slots = new List<InventorySlot>();
     public int maxSlots = 12;
 
+    public Action<List<InventorySlot>> OnInventoryChanged;
+
     public Inventory(int slotCount = 12)
     {
         maxSlots = slotCount;
     }
 
-    public void AddItem(ItemData newItem, int amount = 1)
+    public bool AddItem(ItemData newItem, int amount = 1)
     {
         foreach (var slot in slots)
         {
             if (!slot.IsEmpty && slot.item == newItem && slot.quantity < newItem.maxStack)
             {
                 slot.quantity += amount;
-                return;
+                OnInventoryChanged?.Invoke(slots);
+                Debug.Log($"Added item {newItem.itemName} to existing stack.");
+                return true;
             }
         }
 
@@ -29,7 +34,9 @@ public class Inventory
             {
                 slot.item = newItem;
                 slot.quantity = amount;
-                return;
+                OnInventoryChanged?.Invoke(slots);
+                Debug.Log($"Added item {newItem.itemName} to new slot.");
+                return true;
             }
         }
 
@@ -41,9 +48,10 @@ public class Inventory
         {
             Debug.LogWarning("Inventory full!");
         }
+        return false;
     }
 
-    public void RemoveItem(ItemData item, int amount = 1)
+    public bool RemoveItem(ItemData item, int amount = 1)
     {
         foreach (var slot in slots)
         {
@@ -52,8 +60,11 @@ public class Inventory
                 slot.quantity -= amount;
                 if (slot.quantity <= 0)
                     slot.Clear();
-                return;
+                OnInventoryChanged?.Invoke(slots);
+                Debug.Log($"Removed item {item.itemName} from inventory.");
+                return true;
             }
         }
+        return false;
     }
 }

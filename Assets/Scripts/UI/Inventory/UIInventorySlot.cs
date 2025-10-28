@@ -17,7 +17,7 @@ public class UIInventorySlot : MonoBehaviour
         {
             icon.enabled = true;
             icon.sprite = slot.item.icon;
-            quantityText.text = slot.quantity > 1 ? slot.quantity.ToString() : "";
+            quantityText.text = slot.quantity > 0 ? slot.quantity.ToString() : "";
         }
         else
         {

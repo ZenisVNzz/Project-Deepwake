@@ -18,6 +18,7 @@ public class UIInventory : MonoBehaviour, IRuntimeUIService
     {
         this.playerInventory = playerInventory;
         slotCount = playerInventory.maxSlots;
+        playerInventory.OnInventoryChanged += RefreshUI;
         Initialize();
     }
 
@@ -59,5 +60,6 @@ public class UIInventory : MonoBehaviour, IRuntimeUIService
             slotUI.Bind(slotData);
             activeSlots.Add(slotUI);
         }
+        Debug.Log("Inventory UI refreshed.");
     }
 }
