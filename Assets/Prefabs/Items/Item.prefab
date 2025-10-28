@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8167268996060789668}
   - component: {fileID: 5502460777862584693}
   - component: {fileID: 6422938510216319632}
+  - component: {fileID: 5076752783860392724}
   - component: {fileID: 5961671642987014294}
   m_Layer: 0
   m_Name: Item
@@ -106,6 +107,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemDataRuntime
   _itemData: {fileID: 11400000, guid: 5884c9d13ae8b9d40b3eb1b7654e03ca, type: 2}
+--- !u!114 &5076752783860392724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197642000198578555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f678c5cd70c2847abfe1b7748ce0c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupToss
+  tossDistance: 0.8
+  jumpHeight: 1.2
+  bounceCount: 0
+  duration: 0.8
+  easeType: 6
+  fadeInOnLaunch: 1
+  fadeInTime: 0.12
+  squashAmount: 0.2
+  spinPerBounce: 0
+  dirJitterDegrees: 20
+  shadow: {fileID: 1379457606419242376}
+  shadowGroundYOffset: -0.25
+  shadowScaleAtGround: 1
+  shadowScaleAtApex: 0.6
+  shadowAlphaAtGround: 0.55
+  shadowAlphaAtApex: 0.15
 --- !u!61 &5961671642987014294
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,7 +179,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6, y: 0.6}
+  m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &3191916207717268394
 GameObject:
