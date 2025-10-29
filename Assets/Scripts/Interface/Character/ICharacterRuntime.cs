@@ -7,7 +7,7 @@ public interface ICharacterRuntime : IAttackable
     float TotalHealth { get; }
     CharacterData CharacterData { get; }
 
-    event Action OnStatusChanged;
+    event Action<float> OnHPChanged;
 
     void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState characterState);
 }

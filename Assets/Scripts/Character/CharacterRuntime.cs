@@ -4,38 +4,40 @@ using UnityEngine;
 public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 {
     [Header("Character Attributes")]
-    [SerializeField] protected float Level = 1;
-    [SerializeField] protected float Vitality = 0;
-    [SerializeField] protected float Defense = 0;
-    [SerializeField] protected float Strength = 0;
-    [SerializeField] protected float Luck = 0;
+    [SerializeField] protected float level = 1;
+    [SerializeField] protected float vitality = 0;
+    [SerializeField] protected float defense = 0;
+    [SerializeField] protected float strength = 0;
+    [SerializeField] protected float luck = 0;
+    public float Level => level;
+    public float Vitality => vitality;
+    public float Defense => defense;
+    public float Strength => strength;
+    public float Luck => luck;
 
     [Header("Character Bonus Stats")]
     protected float bonusMaxHealth = 0;  
     protected float bonusAttackPower = 0;
     protected float bonusDefense = 0;
-    protected float bonusSpeed = 0;  
+    protected float bonusSpeed = 0;
+    public float BonusMaxHealth => bonusMaxHealth;
+    public float BonusAttackPower => bonusAttackPower;
+    public float BonusDefense => bonusDefense;
+    public float BonusSpeed => bonusSpeed;
 
     [Header("Total Stats")]
-    protected float totalHealth => characterData.HP + bonusMaxHealth + (5f * Vitality);
-    protected float totalAttack => characterData.AttackPower + bonusAttackPower + (2f * Strength);
-    protected float totalDefense => characterData.Defense + bonusDefense + (1f * Defense);
+    protected float totalHealth => characterData.HP + bonusMaxHealth + (5f * vitality);
+    protected float totalAttack => characterData.AttackPower + bonusAttackPower + (2f * strength);
+    protected float totalDefense => characterData.Defense + bonusDefense + (1f * defense);
     protected float totalSpeed => characterData.MoveSpeed + bonusSpeed;
     public float TotalHealth => totalHealth;
     public float TotalAttack => totalAttack;
     public float TotalDefense => totalDefense;
     public float TotalSpeed => totalSpeed;    
 
-    [Header("Reference")]
-    protected Action _onStatusChanged;
-    public event Action OnStatusChanged
-    {
-        add { _onStatusChanged += value; }
-        remove { _onStatusChanged -= value; }
-    }
-
     [SerializeField] protected float hp;
     public float HP => hp;
+    public event Action<float> OnHPChanged;
     protected float _hpRegenRate;   
 
     protected CharacterData characterData;
@@ -47,14 +49,31 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
     private Material flashMaterial;
     private DamageFlash damageFlash;
 
+    // Simple attribute bag to bind with UI (kept in sync by CharacterUIManager)
+    public CharacterAttributes RuntimeAttributes { get; private set; } = new CharacterAttributes();
+
     public virtual void Init(CharacterData CharacterData, Rigidbody2D rigidbody2D, IState characterState)
     {
         characterData = CharacterData;
         hp = totalHealth;
         _hpRegenRate = characterData.HPRegenRate;    
+        OnHPChanged?.Invoke(hp);
 
         rb = rigidbody2D;  
         this.characterState = characterState;
+    }
+
+    // Allow manager to push attribute changes into runtime and recompute totals/HP clamp
+    public void ApplyAttributes(CharacterAttributes attributes)
+    {
+        RuntimeAttributes = attributes;
+        vitality = attributes.VIT;
+        defense = attributes.DEF;
+        strength = attributes.STR;
+        luck = attributes.LUCK;
+        // Clamp HP to new max
+        if (hp > TotalHealth) hp = TotalHealth;
+        OnHPChanged?.Invoke(hp);
     }
 
     public virtual void TakeDamage(float damage, Vector3 knockback)
@@ -76,8 +95,8 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
             UIManager.Instance.GetSingleUIService().Create
                 ("FloatingDamage", $"FloatingDamage{Time.time}_{UnityEngine.Random.Range(0, 99999)}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
 
-            hp -= FinalDamage;   
-            _onStatusChanged?.Invoke();
+            hp -= FinalDamage; 
+            OnHPChanged?.Invoke(hp);
 
             if (hp <= 0)
             {

@@ -9,10 +9,13 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     protected float bonusStamina = 0;
     protected float bonusCriticalChance = 0;
     protected float bonusCriticalDamage = 0;
+    public float BonusStamina => bonusStamina;
+    public float BonusCriticalChance => bonusCriticalChance;
+    public float BonusCriticalDamage => bonusCriticalDamage;
 
     [Header("Total Stats")]
-    protected float totalStamina => characterData.Stamina + bonusStamina + (2f * Vitality);
-    protected float totalCriticalChance => characterData.CriticalChance + bonusCriticalChance + (0.01f * Luck);
+    protected float totalStamina => characterData.Stamina + bonusStamina + (2f * vitality);
+    protected float totalCriticalChance => characterData.CriticalChance + bonusCriticalChance + (0.01f * luck);
     protected float totalCriticalDamage => characterData.CriticalDamageMultiplier + bonusCriticalDamage;
     public float TotalStamina => totalStamina;
     public float TotalCriticalChance => totalCriticalChance;
@@ -20,6 +23,7 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
 
     [SerializeField] protected float stamina;
     public float Stamina => stamina;
+    public event System.Action<float> OnStaminaChanged;
     protected float _staminaRegenRate;
     protected float _staminaConsumptionMultiplier;
     private Coroutine _staminaRegenCoroutine;
@@ -34,6 +38,7 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
         stamina = totalStamina;
         _staminaRegenRate = characterData.StaminaRegenRate;
         _staminaConsumptionMultiplier = characterData.StaminaConsumptionMultiplier;
+        OnStaminaChanged?.Invoke(stamina);
 
         this.playerInventory = playerInventory;
     }
@@ -44,7 +49,7 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
         if (stamina >= adjustedAmount)
         {
             stamina -= adjustedAmount;
-            _onStatusChanged?.Invoke();
+            OnStaminaChanged?.Invoke(stamina);
 
             if (_staminaRegenCoroutine != null)
             {
@@ -62,12 +67,12 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
         yield return new WaitForSeconds(2f);
         while (stamina < totalStamina)
         {
-            stamina += _staminaRegenRate * Time.deltaTime;           
+            stamina += _staminaRegenRate * Time.deltaTime; 
             if (stamina > totalStamina)
             {
                 stamina = totalStamina;
             }
-            _onStatusChanged?.Invoke();
+            OnStaminaChanged?.Invoke(stamina);
             yield return null;
         }
         _staminaRegenCoroutine = null;

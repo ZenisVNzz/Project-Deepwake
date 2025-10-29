@@ -1,5 +1,6 @@
-using UnityEngine;
+using System;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIAttributesPanel : MonoBehaviour
@@ -9,6 +10,9 @@ public class UIAttributesPanel : MonoBehaviour
 
     private CharacterAttributes attributes;
 
+    // Raised when user clicks a "+" button. Payload is attribute key: "VIT","DEF","STR","LUCK"
+    public event Action<string> OnAddPointRequested;
+
     public void Bind(CharacterAttributes attr)
     {
         attributes = attr;
@@ -17,11 +21,18 @@ public class UIAttributesPanel : MonoBehaviour
 
     private void Refresh()
     {
+        if (attributes == null) return;
         vitText.text = attributes.VIT.ToString();
         defText.text = attributes.DEF.ToString();
         strText.text = attributes.STR.ToString();
         luckText.text = attributes.LUCK.ToString();
         pointsText.text = attributes.AvailablePoints.ToString();
+
+        bool canAdd = attributes.AvailablePoints > 0;
+        vitPlus.interactable = canAdd;
+        defPlus.interactable = canAdd;
+        strPlus.interactable = canAdd;
+        luckPlus.interactable = canAdd;
     }
 
     private void OnEnable()
@@ -32,9 +43,19 @@ public class UIAttributesPanel : MonoBehaviour
         luckPlus.onClick.AddListener(() => AddPoint("LUCK"));
     }
 
+    private void OnDisable()
+    {
+        vitPlus.onClick.RemoveAllListeners();
+        defPlus.onClick.RemoveAllListeners();
+        strPlus.onClick.RemoveAllListeners();
+        luckPlus.onClick.RemoveAllListeners();
+    }
+
     private void AddPoint(string attr)
     {
-        attributes.AddPoint(attr);
+        // Delegate the logic to whoever manages gameplay (CharacterUIManager).
+        OnAddPointRequested?.Invoke(attr);
+        // After manager processes, re-sync view with bound data instance.
         Refresh();
     }
 }

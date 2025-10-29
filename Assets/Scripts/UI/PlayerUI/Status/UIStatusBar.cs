@@ -22,21 +22,20 @@ public class UIStatusBar : MonoBehaviour, IRuntimeUIService
 
     public void BindData(IPlayerRuntime data)
     {
-        if (_player != null)
-            _player.OnStatusChanged -= UpdateUI; 
-
         _player = data;
-
-        if (_player != null)
-            _player.OnStatusChanged += UpdateUI; 
-
+        // subscribe to runtime events
+        _player.OnHPChanged += OnHPChanged;
+        _player.OnStaminaChanged += OnStaminaChanged;
         UpdateUI();
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (_player != null)
-            _player.OnStatusChanged -= UpdateUI;
+        {
+            _player.OnHPChanged -= OnHPChanged;
+            _player.OnStaminaChanged -= OnStaminaChanged;
+        }
     }
 
     public void UpdateUI()
@@ -48,6 +47,20 @@ public class UIStatusBar : MonoBehaviour, IRuntimeUIService
 
         mpBar.value = _player.Stamina / _player.TotalStamina;
         mpText.text = $"{FormatNumber(_player.Stamina)} / {FormatNumber(_player.TotalStamina)}";
+    }
+
+    private void OnHPChanged(float newHp)
+    {
+        if (_player == null) return;
+        hpBar.value = newHp / _player.TotalHealth;
+        hpText.text = $"{FormatNumber(newHp)} / {FormatNumber(_player.TotalHealth)}";
+    }
+
+    private void OnStaminaChanged(float newStamina)
+    {
+        if (_player == null) return;
+        mpBar.value = newStamina / _player.TotalStamina;
+        mpText.text = $"{FormatNumber(newStamina)} / {FormatNumber(_player.TotalStamina)}";
     }
 
     private string FormatNumber(float value)

@@ -149,6 +149,10 @@ MonoBehaviour:
     m_Localized: "Tho\xE1t game"
     m_Metadata:
       m_Items: []
+  - m_Id: 12036607032614912
+    m_Localized: "Th\u1EC3 l\u1EF1c"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

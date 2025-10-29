@@ -71,6 +71,10 @@ MonoBehaviour:
     m_Key: UI_Defense
     m_Metadata:
       m_Items: []
+  - m_Id: 12036607032614912
+    m_Key: UI_Stamina
+    m_Metadata:
+      m_Items: []
   - m_Id: 9504255362392064
     m_Key: UI_CritChance
     m_Metadata:

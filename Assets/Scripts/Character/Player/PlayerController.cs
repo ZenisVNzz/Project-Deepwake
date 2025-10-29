@@ -24,10 +24,9 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private PlayerModifier playerModifier;
     public PlayerModifier PlayerModifier => playerModifier;
 
-    private GameObject charMenuUI;
-    private GameObject gameMenuUI;
-
     private bool isMoveOnSlope = false;
+
+    private CharacterUIManager _uiManager;
 
     public void Initialize
     (
@@ -39,9 +38,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
       IAnimationHandler animation,
       IStateHandler stateHandler,
       InputSystem_Actions input,
-      CharacterData characterData,
-      GameObject charMenuUI,
-      GameObject gameMenuUI
+      CharacterData characterData
     )
     {
         this.playerMovement = movement;
@@ -53,8 +50,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
         this.stateHandler = stateHandler;
         this.inputHandler = input;
         this.characterData = characterData;
-        this.charMenuUI = charMenuUI;
-        this.gameMenuUI = gameMenuUI;
 
         inputHandler.Player.Enable();
         inputHandler.Player.Attack.performed += ctx => OnAttack();
@@ -73,6 +68,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         hurtBox = transform.Find("HurtBox").GetComponent<Collider2D>();
         stateHandler.Register("OnDeath", OnDead);
 
+        _uiManager = FindAnyObjectByType<CharacterUIManager>();
     }
 
     private void OnInteract()
@@ -82,12 +78,18 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void OnOpenCharMenu()
     {
-        charMenuUI.SetActive(!charMenuUI.activeSelf);
+        if (_uiManager != null)
+        {
+            _uiManager.ToggleCharacterMenu();
+        }
     }
 
     private void OnOpenGameMenu()
     {
-        gameMenuUI.SetActive(!gameMenuUI.activeSelf);
+        if (_uiManager != null)
+        {
+            _uiManager.ToggleOptionsMenu();
+        }
     }
 
     private void OnAttack()

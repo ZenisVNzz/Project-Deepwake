@@ -16,8 +16,6 @@ public interface IPlayerController
       IAnimationHandler animation,
       IStateHandler stateHandler,
       InputSystem_Actions input,
-      CharacterData characterData,
-      GameObject charMenuUI,
-      GameObject gameMenuUI
+      CharacterData characterData
     );
 }
