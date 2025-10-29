@@ -15,7 +15,7 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
 
     [Header("Total Stats")]
     protected float totalStamina => characterData.Stamina + bonusStamina + (2f * vitality);
-    protected float totalCriticalChance => characterData.CriticalChance + bonusCriticalChance + (0.01f * luck);
+    protected float totalCriticalChance => characterData.CriticalChance + bonusCriticalChance + (0.4f * luck);
     protected float totalCriticalDamage => characterData.CriticalDamageMultiplier + bonusCriticalDamage;
     public float TotalStamina => totalStamina;
     public float TotalCriticalChance => totalCriticalChance;
@@ -41,6 +41,17 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
         OnStaminaChanged?.Invoke(stamina);
 
         this.playerInventory = playerInventory;
+    }
+
+    public override void ApplyAttributes(CharacterAttributes attributes)
+    {
+        base.ApplyAttributes(attributes);
+
+        if (_staminaRegenCoroutine != null)
+        {
+            StopCoroutine(_staminaRegenCoroutine);
+        }
+        _staminaRegenCoroutine = StartCoroutine(RegenSatamina());
     }
 
     public bool UseStamina(float amount)

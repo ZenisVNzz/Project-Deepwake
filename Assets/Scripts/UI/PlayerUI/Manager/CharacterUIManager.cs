@@ -33,26 +33,22 @@ public class CharacterUIManager : MonoBehaviour
             statsPanel.UpdateStats(player as PlayerRuntime);
         }
 
-        // Attributes panel: bind and handle add-point requests
         if (attributesPanel != null)
         {
-            // Keep attributes in sync with runtime (if PlayerRuntime has previous values)
+
             SyncAttributesFromRuntime();
             attributesPanel.Bind(attributes);
             attributesPanel.OnAddPointRequested += OnAddPointRequested;
         }
 
-        // Inventory
         if (inventoryPanel != null)
         {
             inventoryPanel.SetData(player.PlayerInventory);
             inventoryPanel.Hide();
         }
 
-        // Equipment panel listens to EquipmentManager events itself, nothing to bind here
         if (skillTreePanel != null)
         {
-            // UISkillTreePanel internally loads skills and wires UI
         }
     }
 
@@ -81,7 +77,6 @@ public class CharacterUIManager : MonoBehaviour
     public void GrantAttributePoints(int amount)
     {
         attributes.AvailablePoints += Math.Max(0, amount);
-        // Refresh attributes panel to reflect updated points
         if (attributesPanel != null)
         {
             attributesPanel.Bind(attributes);
@@ -93,12 +88,11 @@ public class CharacterUIManager : MonoBehaviour
         if (player is PlayerRuntime runtime)
         {
             runtime.ApplyAttributes(attributes);
-            // Push stat text update
             if (statsPanel != null)
             {
                 statsPanel.UpdateStats(runtime);
             }
-            // Status bar max health may change, update UI
+
             if (statusBar != null)
             {
                 statusBar.UpdateUI();

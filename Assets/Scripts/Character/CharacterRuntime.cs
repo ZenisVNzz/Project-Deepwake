@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
@@ -49,8 +50,9 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
     private Material flashMaterial;
     private DamageFlash damageFlash;
 
-    // Simple attribute bag to bind with UI (kept in sync by CharacterUIManager)
     public CharacterAttributes RuntimeAttributes { get; private set; } = new CharacterAttributes();
+
+    private Coroutine _hpRegenCoroutine;
 
     public virtual void Init(CharacterData CharacterData, Rigidbody2D rigidbody2D, IState characterState)
     {
@@ -63,17 +65,21 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
         this.characterState = characterState;
     }
 
-    // Allow manager to push attribute changes into runtime and recompute totals/HP clamp
-    public void ApplyAttributes(CharacterAttributes attributes)
+    public virtual void ApplyAttributes(CharacterAttributes attributes)
     {
         RuntimeAttributes = attributes;
         vitality = attributes.VIT;
         defense = attributes.DEF;
         strength = attributes.STR;
         luck = attributes.LUCK;
-        // Clamp HP to new max
+
         if (hp > TotalHealth) hp = TotalHealth;
         OnHPChanged?.Invoke(hp);
+        if (_hpRegenCoroutine != null)
+        {
+            StopCoroutine(_hpRegenCoroutine);
+        }
+        _hpRegenCoroutine = StartCoroutine(RegenHP());
     }
 
     public virtual void TakeDamage(float damage, Vector3 knockback)
@@ -97,6 +103,11 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 
             hp -= FinalDamage; 
             OnHPChanged?.Invoke(hp);
+            if (_hpRegenCoroutine != null)
+            {
+                StopCoroutine(_hpRegenCoroutine);
+            }
+            _hpRegenCoroutine = StartCoroutine(RegenHP());
 
             if (hp <= 0)
             {
@@ -117,5 +128,21 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
     {
         characterState.ChangeState(CharacterStateType.Death);
         Debug.Log($"{gameObject} has died.");
+    }
+
+    private IEnumerator RegenHP()
+    {
+        yield return new WaitForSeconds(2f);
+        while (hp < totalHealth)
+        {
+            hp += _hpRegenRate * Time.deltaTime;
+            if (hp > totalHealth)
+            {
+                hp = totalHealth;
+            }
+            OnHPChanged?.Invoke(hp);
+            yield return null;
+        }
+        _hpRegenCoroutine = null;
     }
 }
