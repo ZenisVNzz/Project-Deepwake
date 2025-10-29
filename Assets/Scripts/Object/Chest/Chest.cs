@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +12,8 @@ public class Chest : MonoBehaviour
 
     [Header("Loot Settings")]
     [SerializeField] private GameObject defaultPickupPrefab;
-    [SerializeField] private int minDrops = 1;
-    [SerializeField] private int maxDrops = 3;
+    [Min(0)] [SerializeField] private int minDrops = 1;  
+    [Min(0)] [SerializeField] private int maxDrops = 3; 
 
     [SerializeField] private Transform[] dropPoints;
     [SerializeField] private float spawnRadius = 0.5f;
@@ -24,22 +24,12 @@ public class Chest : MonoBehaviour
     [Header("Pickup Delay")]
     [SerializeField] private float pickupDelay = 0.35f;
 
-    [Header("Loot Table (weighted)")]
-    [SerializeField] private List<LootEntry> lootTable = new List<LootEntry>();
+    [Header("Loot Table (rate-based 0..1)")]
+    [SerializeField] private List<LootDefinition> lootTable = new List<LootDefinition>();
 
     private Interactable _interactable;
-    private bool _opened; 
-    private bool _lootSpawned; 
-    private float _totalWeight;
-
-    [Serializable]
-    public class LootEntry
-    {
-        public ItemData item;
-        [Min(0f)] public float weight = 1f;
-        public GameObject pickupPrefab;
-        public int quantity = 1;
-    }
+    private bool _opened;
+    private bool _lootSpawned;
 
     private void Awake()
     {
@@ -49,18 +39,8 @@ public class Chest : MonoBehaviour
         _interactable = GetComponentInChildren<Interactable>();
         if (animator == null) animator = GetComponent<Animator>();
 
-        _interactable.Register(OnInteractWithPlayer);
-
-        RecalculateWeights();
-    }
-
-    private void RecalculateWeights()
-    {
-        _totalWeight = 0f;
-        for (int i = 0; i < lootTable.Count; i++)
-        {
-            _totalWeight += Mathf.Max(0f, lootTable[i].weight);
-        }
+        if (_interactable != null)
+            _interactable.Register(OnInteractWithPlayer);
     }
 
     private void OnInteractWithPlayer(GameObject player)
@@ -93,68 +73,24 @@ public class Chest : MonoBehaviour
         if (!_opened || _lootSpawned) return;
         _lootSpawned = true;
 
-        if (lootTable == null || lootTable.Count == 0 || _totalWeight <= 0f)
+        if (lootTable == null || lootTable.Count == 0)
         {
-            Debug.LogWarning("[Chest] Loot table is empty or has zero total weight.");
+            Debug.LogWarning("[Chest] Loot table is empty.");
             return;
         }
 
-        int count = Mathf.Clamp(UnityEngine.Random.Range(minDrops, maxDrops + 1), 0, 99);
-        for (int i = 0; i < count; i++)
-        {
-            var entry = PickRandomEntry();
-            if (entry == null || entry.item == null) continue;
+        Vector3 GetCenter() => GetDropPoint();
 
-            int qty = Mathf.Max(1, entry.quantity);
-            for (int q = 0; q < qty; q++)
-                SpawnSinglePickup(entry);
-        }
-    }
-
-    private LootEntry PickRandomEntry()
-    {
-        if (_totalWeight <= 0f) return null;
-
-        float r = UnityEngine.Random.Range(0f, _totalWeight);
-        float cum = 0f;
-        for (int i = 0; i < lootTable.Count; i++)
-        {
-            var w = Mathf.Max(0f, lootTable[i].weight);
-            cum += w;
-            if (r <= cum) return lootTable[i];
-        }
-        return lootTable[lootTable.Count - 1];
-    }
-
-    private void SpawnSinglePickup(LootEntry entry)
-    {
-        var prefab = entry.pickupPrefab != null ? entry.pickupPrefab : defaultPickupPrefab;
-        if (prefab == null)
-        {
-            Debug.LogWarning("[Chest] No pickup prefab assigned for loot.");
-            return;
-        }
-
-        Vector3 basePos = GetDropPoint();
-        Vector2 offset = UnityEngine.Random.insideUnitCircle * spawnRadius;
-        Vector3 spawnPos = basePos + new Vector3(offset.x, offset.y, 0f);
-
-        var go = Instantiate(prefab, spawnPos, Quaternion.identity, prefabParent);
-
-        var dataRuntime = go.GetComponent<ItemDataRuntime>();
-        if (dataRuntime != null)
-        {
-            dataRuntime.SetData(entry.item);
-            dataRuntime.SetPickupDelay(pickupDelay);
-        }
-        else
-        {
-            Debug.LogWarning("[Chest] Spawned pickup has no ItemDataRuntime component.");
-        }
-
-        var toss = go.GetComponent<PickupToss>();
-        if (toss == null) toss = go.AddComponent<PickupToss>();
-        toss.Launch(transform.position);
+        LootSpawner.SpawnByRate(
+            table: lootTable,
+            parent: prefabParent != null ? prefabParent : transform,
+            getCenter: GetCenter,
+            radius: spawnRadius,
+            pickupDelay: pickupDelay,
+            launchFrom: transform.position,     
+            defaultPickupPrefab: defaultPickupPrefab,
+            minDrops: minDrops,
+            maxDrops: maxDrops);
     }
 
     private Vector3 GetDropPoint()

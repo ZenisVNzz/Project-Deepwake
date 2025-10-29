@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811ccbbabaf4dc844ad69b6654edc94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chest
-  prefabParent: {fileID: 0}
+  prefabParent: {fileID: 5971697492492590811}
   animator: {fileID: 7062509308614500834}
   lootSpawnDelay: 0.37
   defaultPickupPrefab: {fileID: 197642000198578555, guid: e68df3c504d10d14a8bdc3b303130793, type: 3}
@@ -80,7 +80,7 @@ MonoBehaviour:
   dropPoints: []
   spawnRadius: 0
   tossForce: 5
-  pickupDelay: 2
+  pickupDelay: 1.5
   lootTable:
   - item: {fileID: 11400000, guid: 5884c9d13ae8b9d40b3eb1b7654e03ca, type: 2}
     weight: 2
@@ -152,7 +152,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.20396176}
+  m_Offset: {x: 0, y: -0.16723788}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -162,7 +162,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5512686, y: 0.16176492}
+  m_Size: {x: 0.5512686, y: 0.23521267}
   m_EdgeRadius: 0
 --- !u!1 &5386226521937824815
 GameObject:

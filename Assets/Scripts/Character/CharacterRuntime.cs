@@ -5,10 +5,10 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 {
     [Header("Character Attributes")]
     [SerializeField] protected float Level = 1;
-    [SerializeField] protected float Vitality = 1;
-    [SerializeField] protected float Defense = 1;
-    [SerializeField] protected float Strength = 1;
-    [SerializeField] protected float Luck = 1;
+    [SerializeField] protected float Vitality = 0;
+    [SerializeField] protected float Defense = 0;
+    [SerializeField] protected float Strength = 0;
+    [SerializeField] protected float Luck = 0;
 
     [Header("Character Bonus Stats")]
     protected float bonusMaxHealth = 0;  
