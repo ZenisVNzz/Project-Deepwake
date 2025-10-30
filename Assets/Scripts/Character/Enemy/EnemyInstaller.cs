@@ -35,9 +35,15 @@ public class EnemyInstaller : CharacterInstaller
         _characterAttack = new EnemyAttack(_characterState, _hitBoxController);
 
         if (isFlyingEnemy)
-            _AIMovement = new EnemyFlyingMovement(_rigidbody2D, this, VerticalSide.Below, 2.5f, stopDistance);
+        {
+            VerticalSide side = Random.value < 0.5f ? VerticalSide.Above : VerticalSide.Below;
+            _AIMovement = new EnemyFlyingMovement(_rigidbody2D, this, side, 2.5f, stopDistance);
+        }
         else
+        {
             _AIMovement = new EnemyMovement(_seeker, _rigidbody2D, this);
+        }
+                
 
         if (isTwoDirEnemy)
         {

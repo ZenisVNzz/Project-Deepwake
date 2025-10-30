@@ -295,6 +295,7 @@ MonoBehaviour:
   _characterData: {fileID: 11400000, guid: 6dadd3ad7a857fb4aac599f4b75f2853, type: 2}
   isFlyingEnemy: 1
   isTwoDirEnemy: 1
+  stopDistance: 2.5
 --- !u!114 &3380793897104630607
 MonoBehaviour:
   m_ObjectHideFlags: 0

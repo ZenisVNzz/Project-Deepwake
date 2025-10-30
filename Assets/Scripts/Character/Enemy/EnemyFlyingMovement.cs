@@ -14,8 +14,8 @@ public class EnemyFlyingMovement : IAIMove
     private readonly float maxTurnForce = 25f;
     private readonly float damping = 2.5f; 
 
-    private readonly float horizSwayAmplitude = 1.8f; 
-    private readonly float horizSwayFrequency = 1.2f; 
+    private readonly float horizSwayAmplitude = 9f; 
+    private readonly float horizSwayFrequency = 1.8f; 
     private readonly float vertSwayAmplitude = 0.25f;
     private readonly float vertSwayFrequency = 0.9f;
     private readonly float swayPhase;

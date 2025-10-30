@@ -49,7 +49,7 @@ public class EnemyShooter : MonoBehaviour
             Vector2 direction = (player.position + Vector3.right * Random.Range(0.8f, 1.05f) - firePoint.position);
             direction = firePoint.InverseTransformDirection(direction); 
             direction.Normalize();
-            rb.linearVelocity = firePoint.TransformDirection(direction) * 3f;
+            rb.linearVelocity = firePoint.TransformDirection(direction) * 2.2f;
         }
 
         var proj = go.GetComponent<HitBoxHandler>();
