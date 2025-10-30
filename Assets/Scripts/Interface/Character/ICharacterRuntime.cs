@@ -5,6 +5,8 @@ public interface ICharacterRuntime : IAttackable
 {
     float HP { get; }
     float TotalHealth { get; }
+    float TotalAttack { get; }
+    float TotalSpeed { get; }
     CharacterData CharacterData { get; }
 
     event Action<float> OnHPChanged;

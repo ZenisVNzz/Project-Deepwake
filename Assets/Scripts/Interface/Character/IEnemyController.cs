@@ -9,6 +9,6 @@ public interface IEnemyController
       IDamageDealer attack,
       IAnimationHandler animation,
       IStateHandler stateHandler,
-      CharacterData characterData
+      ICharacterRuntime enemyRuntime
     );
 }

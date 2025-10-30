@@ -6,6 +6,7 @@ public class EnemyInstaller : CharacterInstaller
 {
     [SerializeField] private bool isFlyingEnemy = false;
     [SerializeField] private bool isTwoDirEnemy = false;
+    [SerializeField] private float stopDistance = 3f;
 
     private ICharacterRuntime _enemyRuntime;
     private IEnemyController _enemyController;
@@ -24,10 +25,17 @@ public class EnemyInstaller : CharacterInstaller
     {
         _enemyRuntime = gameObject.AddComponent<EnemyRuntime>();
         _characterState = new EnemyState();
+
+        if (GetComponent<EnemyShooter>() != null)
+        {
+            EnemyShooter enemyShooter = GetComponent<EnemyShooter>();
+            enemyShooter.Init(_enemyRuntime);
+        }
+
         _characterAttack = new EnemyAttack(_characterState, _hitBoxController);
 
         if (isFlyingEnemy)
-            _AIMovement = new EnemyFlyingMovement(_rigidbody2D, this, AttackStyle.Melee, VerticalSide.Below);
+            _AIMovement = new EnemyFlyingMovement(_rigidbody2D, this, VerticalSide.Below, 2.5f, stopDistance);
         else
             _AIMovement = new EnemyMovement(_seeker, _rigidbody2D, this);
 
@@ -51,6 +59,6 @@ public class EnemyInstaller : CharacterInstaller
         InitComponent();
         _enemyRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState);
         _enemyController = gameObject.AddComponent<EnemyController>();
-        _enemyController.Initialize(_AIMovement, _characterState, _characterAttack, _animationHandler, _stateHandler, CharacterDataClone);
+        _enemyController.Initialize(_AIMovement, _characterState, _characterAttack, _animationHandler, _stateHandler, _enemyRuntime);
     }
 }

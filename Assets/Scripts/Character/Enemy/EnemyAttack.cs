@@ -23,7 +23,11 @@ public class EnemyAttack : IDamageDealer
             return;
         }
 
-        _hitBoxController.SetStats(ATK, 8f);
+        if (_hitBoxController != null)
+        {
+            _hitBoxController.SetStats(ATK, 8f);
+        }
+        
         CharacterStateType state = _enemyState.GetCurrentState();
         if (state != CharacterStateType.Attacking)
         {

@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
     private Collider2D cd2D;
     private Collider2D hurtBox;
 
-    private CharacterData characterData;
+    private ICharacterRuntime enemyRuntime;
 
     public void Initialize
     (
@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
       IDamageDealer attack,
       IAnimationHandler animation,
       IStateHandler stateHandler,
-      CharacterData characterData
+      ICharacterRuntime enemyRuntime
     )
     {
         this.enemyMovement = movement;
@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
         this.enemyAttack = attack;
         this.animationHandler = animation;
         this.stateHandler = stateHandler;
-        this.characterData = characterData;
+        this.enemyRuntime = enemyRuntime;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
@@ -43,9 +43,9 @@ public class EnemyController : MonoBehaviour, IEnemyController
 
     private void OnAttack()
     {
-        if (enemyMovement.HaveReachedTarget() || enemyState.GetCurrentState() != CharacterStateType.Attacking)
+        if (enemyMovement.HaveReachedTarget())
         {
-            enemyAttack.Attack(characterData.AttackPower);
+            enemyAttack.Attack(enemyRuntime.TotalAttack);
         }      
     }
 
@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
     {
         if (enemyState.GetCurrentState() != CharacterStateType.Knockback && enemyState.GetCurrentState() != CharacterStateType.Death && enemyState.GetCurrentState() != CharacterStateType.Attacking)
         {
-            enemyMovement.Move(characterData.MoveSpeed);
+            enemyMovement.Move(enemyRuntime.TotalSpeed);
         }      
     }
 

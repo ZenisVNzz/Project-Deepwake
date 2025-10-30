@@ -18,9 +18,6 @@ public class Chest : MonoBehaviour
     [SerializeField] private Transform[] dropPoints;
     [SerializeField] private float spawnRadius = 0.5f;
 
-    [Tooltip("Impulse applied to spawned item if it has a Rigidbody2D.")]
-    [SerializeField] private float tossForce = 2.5f;
-
     [Header("Pickup Delay")]
     [SerializeField] private float pickupDelay = 0.35f;
 

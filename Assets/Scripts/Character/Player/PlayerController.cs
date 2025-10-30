@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private InputSystem_Actions inputHandler;
     private IInteractionHandler interactionHandler;
-    private CharacterData characterData;
+    private IPlayerRuntime playerRuntime;
 
     private SpriteRenderer spriteRenderer;
     private Collider2D cd2D;
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
       IAnimationHandler animation,
       IStateHandler stateHandler,
       InputSystem_Actions input,
-      CharacterData characterData
+      IPlayerRuntime playerRuntime
     )
     {
         this.playerMovement = movement;
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         this.animationHandler = animation;
         this.stateHandler = stateHandler;
         this.inputHandler = input;
-        this.characterData = characterData;
+        this.playerRuntime = playerRuntime;
 
         inputHandler.Player.Enable();
         inputHandler.Player.Attack.performed += ctx => OnAttack();
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         if (playerModifier.CanAttack)
         {
-            playerAttack.Attack(characterData.AttackPower);
+            playerAttack.Attack(playerRuntime.TotalAttack);
         }   
     }
 
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         if (!playerModifier.CanMove) playerInput = Vector2.zero;
 
-        playerMovement.Move(playerInput, characterData.MoveSpeed, isMoveOnSlope);
+        playerMovement.Move(playerInput, playerRuntime.TotalSpeed, isMoveOnSlope);
         stateHandler.UpdateState();
     }
 }

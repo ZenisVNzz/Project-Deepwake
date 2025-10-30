@@ -13,7 +13,14 @@ public class HitBoxHandler : MonoBehaviour
     public void Init(HitBoxController hitBoxController)
     {
         _controller = hitBoxController;
-    }    
+    }
+
+    public void SetData(float damage, string undamagedTag, float knockbackForce = 10f)
+    {
+        this.damage = damage;     
+        this.undamagedTag = undamagedTag;
+        this.knockbackForce = knockbackForce;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

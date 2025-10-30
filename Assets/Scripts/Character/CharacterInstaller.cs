@@ -42,12 +42,11 @@ public class CharacterInstaller : MonoBehaviour
         _hurtBox = gameObject.transform.Find("HurtBox").GetComponent<Collider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-        _hitBoxController = gameObject.transform.Find("HitBoxs_BaseAttack").GetComponent<HitBoxController>();
+        if (gameObject.transform.Find("HitBoxs_BaseAttack") != null)
+            _hitBoxController = gameObject.transform.Find("HitBoxs_BaseAttack").GetComponent<HitBoxController>();
 
         if (gameObject.transform.Find("HitBoxs_Skill") != null)
-        {
             _skillHitBoxController = gameObject.transform.Find("HitBoxs_Skill").GetComponent<HitBoxController>();
-        }
 
         CharacterDataClone = Instantiate(_characterData);
     }
@@ -73,7 +72,7 @@ public class CharacterInstaller : MonoBehaviour
         _characterRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState, playerInventory);
         _characterController = gameObject.AddComponent<PlayerController>();
         _characterController.Initialize
-            (_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, CharacterDataClone);
+            (_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, _characterRuntime);
 
         var uiManager = FindAnyObjectByType<CharacterUIManager>();
         if (uiManager != null)

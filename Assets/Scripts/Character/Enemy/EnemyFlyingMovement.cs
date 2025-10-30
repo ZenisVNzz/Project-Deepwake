@@ -3,14 +3,12 @@ using UnityEngine;
 public class EnemyFlyingMovement : IAIMove
 {
     public enum VerticalSide { Above, Below }
-    public enum AttackStyle { Melee, Ranged }
 
     private Transform target;
     private readonly Rigidbody2D rb;
 
     private readonly float chaseDistance = 30f; 
-    private readonly float stopDistance = 2.2f; 
-    private readonly float verticalSnapThreshold = 0.15f;
+    private readonly float stopDistance = 0.8f; 
 
     private readonly float acceleration = 16f; 
     private readonly float maxTurnForce = 25f;
@@ -24,26 +22,20 @@ public class EnemyFlyingMovement : IAIMove
 
     private readonly float desiredVerticalOffset;
     private readonly VerticalSide keepSide; 
-    private readonly AttackStyle attackStyle;
-
-    private readonly float rangedMin = 4f;
-    private readonly float rangedMax = 7f;
 
     private bool haveReachedTarget;
 
     public EnemyFlyingMovement(Rigidbody2D rb, MonoBehaviour runner)
-    : this(rb, runner, AttackStyle.Ranged, VerticalSide.Above, 2.5f, 4f, 7f)
+    : this(rb, runner, VerticalSide.Above, 2.5f, 0.8f)
     { }
 
-    public EnemyFlyingMovement(Rigidbody2D rb, MonoBehaviour runner, AttackStyle style, VerticalSide side,
-    float verticalOffset = 2.5f, float rangedMin = 4f, float rangedMax = 7f)
+    public EnemyFlyingMovement(Rigidbody2D rb, MonoBehaviour runner, VerticalSide side,
+    float verticalOffset = 2.5f, float stopDistance = 0.8f)
     {
         this.rb = rb;
-        this.attackStyle = style;
         this.keepSide = side;
         this.desiredVerticalOffset = Mathf.Abs(verticalOffset);
-        this.rangedMin = Mathf.Max(0.1f, rangedMin);
-        this.rangedMax = Mathf.Max(this.rangedMin + 0.1f, rangedMax);
+        this.stopDistance = stopDistance;
 
         swayPhase = Random.value * Mathf.PI * 2f;
 
@@ -74,31 +66,19 @@ public class EnemyFlyingMovement : IAIMove
         float desiredY = desiredLaneY + swayY;
 
         float dx = target.position.x - rb.position.x;
-        float desiredXCenter;
-        if (attackStyle == AttackStyle.Melee)
-        {
-            desiredXCenter = target.position.x;
-        }
-        else
-        {
-            float ideal = (rangedMin + rangedMax) * 0.5f;
-            float side = Mathf.Abs(dx) < 0.001f ? 1f : Mathf.Sign(dx); 
-            desiredXCenter = target.position.x + side * ideal;
-        }
+        float desiredXCenter = target.position.x;
+
         float swayX = Mathf.Sin(Time.time * horizSwayFrequency + swayPhase) * horizSwayAmplitude;
         float desiredX = desiredXCenter + swayX;
 
-        Vector2 desiredPos = new Vector2(desiredX, desiredY);
-        Vector2 toTarget = desiredPos - rb.position;
+        Vector2 toPlayer = (Vector2)target.position - rb.position;    
 
-        if (distToPlayer <= stopDistance)
-        {
-            haveReachedTarget = true;
-        }
-        else
-        {
-            haveReachedTarget = false;
-        }
+        Vector2 desiredPos = (Vector2)target.position - toPlayer.normalized * stopDistance;
+        desiredPos.y += (keepSide == VerticalSide.Above ? desiredVerticalOffset : -desiredVerticalOffset);
+        desiredPos.x += Mathf.Sin(Time.time * horizSwayFrequency + swayPhase) * horizSwayAmplitude;
+        desiredPos.y += Mathf.Sin(Time.time * vertSwayFrequency + swayPhase) * vertSwayAmplitude;
+
+        Vector2 toTarget = desiredPos - rb.position;
 
         Vector2 curVel = rb.linearVelocity;
         Vector2 desiredVel = toTarget.normalized * moveSpeed;
@@ -107,6 +87,15 @@ public class EnemyFlyingMovement : IAIMove
         newVel = Vector2.Lerp(newVel, Vector2.ClampMagnitude(newVel, moveSpeed), 1f - Mathf.Exp(-damping * Time.deltaTime));
 
         rb.linearVelocity = newVel;
+
+        if (distToPlayer / 2.1f <= stopDistance)
+        {
+            haveReachedTarget = true;
+        }
+        else
+        {
+            haveReachedTarget = false;
+        }
     }
 
     public void Move(Vector2 input, float moveSpeed, bool isMoveOnSlope) => Move(moveSpeed);
