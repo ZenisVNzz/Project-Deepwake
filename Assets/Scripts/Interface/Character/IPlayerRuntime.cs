@@ -8,7 +8,6 @@ public interface IPlayerRuntime : ICharacterRuntime
 
     Inventory PlayerInventory { get; }
 
-    // Raised whenever stamina value changes (consume or regen)
     event Action<float> OnStaminaChanged;
 
     bool UseStamina(float amount);

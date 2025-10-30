@@ -11,11 +11,14 @@ public class EnemyAnimationHandler : IAnimationHandler
     private string currentAnimName;
     private bool isDeath = false;
 
-    public EnemyAnimationHandler(Animator animator, IState enemyState, ICharacterDirectionHandler directionHander)
+    private readonly bool twoWayOnly; 
+
+    public EnemyAnimationHandler(Animator animator, IState enemyState, ICharacterDirectionHandler directionHander, bool twoWayOnly = false)
     {
         this.animator = animator;
         this.enemyState = enemyState;
         this.directionHandler = directionHander;
+        this.twoWayOnly = twoWayOnly;
     }
 
     public void UpdateAnimation()
@@ -47,8 +50,17 @@ public class EnemyAnimationHandler : IAnimationHandler
 
     private void IdleProcess()
     {
-        Direction dir = directionHandler.GetDirection();
-        string anim = dir switch
+        if (twoWayOnly)
+        {
+            Direction dir = directionHandler.GetDirection();
+            bool faceRight = dir != Direction.Left;
+            animator.transform.localScale = new Vector3(faceRight ?1f : -1f,1f,1f);
+            PlayAnimation("Enemy_Idle");
+            return;
+        }
+
+        Direction d = directionHandler.GetDirection();
+        string anim = d switch
         {
             Direction.UpLeft => "Enemy_UpLeft_Idle",
             Direction.UpRight => "Enemy_UpRight_Idle",
@@ -60,8 +72,17 @@ public class EnemyAnimationHandler : IAnimationHandler
 
     private void RunningProcess()
     {
-        Direction dir = directionHandler.GetDirection();
-        string anim = dir switch
+        if (twoWayOnly)
+        {
+            Direction dir = directionHandler.GetDirection();
+            bool faceRight = dir != Direction.Left;
+            animator.transform.localScale = new Vector3(faceRight ?1f : -1f,1f,1f);
+            PlayAnimation("Enemy_Idle");
+            return;
+        }
+
+        Direction d = directionHandler.GetDirection();
+        string anim = d switch
         {
             Direction.UpLeft => "Enemy_UpLeft_Run",
             Direction.UpRight => "Enemy_UpRight_Run",
@@ -73,18 +94,28 @@ public class EnemyAnimationHandler : IAnimationHandler
 
     private void AttackProcess()
     {
-        Direction dir = directionHandler.GetDirection();
-        string anim = dir switch
+        if (twoWayOnly)
         {
-            Direction.UpLeft => "Enemy_UpLeft_Attack1",
-            Direction.UpRight => "Enemy_UpRight_Attack1",
-            Direction.DownLeft => "Enemy_DownLeft_Attack1",
-            _ => "Enemy_DownRight_Attack1"
-        };
-        PlayAnimation(anim);
+            Direction dir = directionHandler.GetDirection();
+            bool faceRight = dir != Direction.Left;
+            animator.transform.localScale = new Vector3(faceRight ?1f : -1f,1f,1f);
+            PlayAnimation("Enemy_Attack1");
+        }
+        else
+        {
+            Direction d = directionHandler.GetDirection();
+            string anim = d switch
+            {
+                Direction.UpLeft => "Enemy_UpLeft_Attack1",
+                Direction.UpRight => "Enemy_UpRight_Attack1",
+                Direction.DownLeft => "Enemy_DownLeft_Attack1",
+                _ => "Enemy_DownRight_Attack1"
+            };
+            PlayAnimation(anim);
+        }
 
         var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (stateInfo.IsName(currentAnimName) && stateInfo.normalizedTime >= 1.0f)
+        if (stateInfo.IsName(currentAnimName) && stateInfo.normalizedTime >=1.0f)
         {
             enemyState.ChangeState(CharacterStateType.Idle);
         }
@@ -94,8 +125,18 @@ public class EnemyAnimationHandler : IAnimationHandler
     {
         if (!isDeath)
         {
-            Direction dir = directionHandler.GetDirection();
-            string anim = dir switch
+            if (twoWayOnly)
+            {
+                Direction dir = directionHandler.GetDirection();
+                bool faceRight = dir != Direction.Left;
+                animator.transform.localScale = new Vector3(faceRight ?1f : -1f,1f,1f);
+                PlayAnimation("Enemy_Death");
+                isDeath = true;
+                return;
+            }
+
+            Direction dir2 = directionHandler.GetDirection();
+            string anim = dir2 switch
             {
                 Direction.UpLeft => "Enemy_UpLeft_Death",
                 Direction.UpRight => "Enemy_UpRight_Death",
@@ -110,6 +151,7 @@ public class EnemyAnimationHandler : IAnimationHandler
     private void PlayAnimation(string animName)
     {
         if (currentAnimName == animName) return;
+
         animator.Play(animName);
         currentAnimName = animName;
     }

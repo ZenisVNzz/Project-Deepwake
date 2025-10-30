@@ -23,7 +23,6 @@ public class UIStatusBar : MonoBehaviour, IRuntimeUIService
     public void BindData(IPlayerRuntime data)
     {
         _player = data;
-        // subscribe to runtime events
         _player.OnHPChanged += OnHPChanged;
         _player.OnStaminaChanged += OnStaminaChanged;
         UpdateUI();

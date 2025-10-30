@@ -10,7 +10,6 @@ public class UIAttributesPanel : MonoBehaviour
 
     private CharacterAttributes attributes;
 
-    // Raised when user clicks a "+" button. Payload is attribute key: "VIT","DEF","STR","LUCK"
     public event Action<string> OnAddPointRequested;
 
     public void Bind(CharacterAttributes attr)
@@ -53,9 +52,7 @@ public class UIAttributesPanel : MonoBehaviour
 
     private void AddPoint(string attr)
     {
-        // Delegate the logic to whoever manages gameplay (CharacterUIManager).
         OnAddPointRequested?.Invoke(attr);
-        // After manager processes, re-sync view with bound data instance.
         Refresh();
     }
 }

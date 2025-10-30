@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c572b7451ea45b94094c50fb3353a0f0, type: 3}
+  m_Name: Fly
+  m_EditorClassIdentifier: 
+  characterID: 200001
+  prefab: {fileID: 3853017518195124916, guid: 6a1658a00f4ca204185c0f943275764f, type: 3}
+  level: 1
+  HP: 35
+  Stamina: 0
+  AttackPower: 15
+  Defense: 2
+  MoveSpeed: 2
+  CriticalChance: 0
+  CriticalDamageMultiplier: 0
+  HPRegenRate: 0
+  StaminaRegenRate: 0
+  StaminaConsumptionMultiplier: 0
+  skill: {fileID: 0}
+  Passive1: {fileID: 0}
+  Passive2: {fileID: 0}

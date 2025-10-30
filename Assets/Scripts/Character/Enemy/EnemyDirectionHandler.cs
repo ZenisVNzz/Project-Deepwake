@@ -11,9 +11,17 @@ public class EnemyDirectionHandler : ICharacterDirectionHandler
     private float deadzone = 0.3f;
     private float directionChangeThreshold = 25f;
 
-    public EnemyDirectionHandler(IAIMove enemyMovement)
+    private readonly bool twoWayOnly; 
+
+    public EnemyDirectionHandler(IAIMove enemyMovement, bool twoWayOnly = false)
     {
         this.enemyMovement = enemyMovement;
+        this.twoWayOnly = twoWayOnly;
+        if (twoWayOnly)
+        {
+            lastDirection = Direction.Right; 
+            lastDirVector = Vector2.right;
+        }
     }
 
     public void EnableForceDir(Direction direction)
@@ -51,6 +59,16 @@ public class EnemyDirectionHandler : ICharacterDirectionHandler
                     dir = Vector2.zero;
                     break;
             }
+        }
+
+        if (twoWayOnly)
+        {
+            if (Mathf.Abs(dir.x) < deadzone)
+                return lastDirection;
+
+            lastDirection = dir.x >= 0 ? Direction.Right : Direction.Left;
+            lastDirVector = new Vector2(Mathf.Sign(dir.x), 0f);
+            return lastDirection;
         }
 
         if (dir.sqrMagnitude < deadzone * deadzone)
