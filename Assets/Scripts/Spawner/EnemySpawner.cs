@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,7 +18,7 @@ public class EnemySpawner
 
     private List<GameObject> activeEnemies = new List<GameObject>();
 
-    public EnemySpawner(EnemySpawnTable enemySpawnTable, Transform ship, int difficultyMultiplier)
+    public EnemySpawner(EnemySpawnTable enemySpawnTable, Transform ship, int difficultyMultiplier = 1)
     {
         this.enemySpawnTable = enemySpawnTable;
         this.ship = ship;
@@ -25,9 +26,16 @@ public class EnemySpawner
         levelModifier = new EnemyLevelModifier();
     }
 
+    public void IncreaseDifficulty()
+    {
+        difficultyMultiplier++;
+    }
+
     public IEnumerator SpawnEnemy()
     {
+        activeEnemies.Clear();
         int count = Random.Range(enemySpawnTable.minSpawn, enemySpawnTable.maxSpawn + 1);
+        yield return new WaitForSeconds(3f);
 
         for (int i = 0; i < count; i++)
         {
@@ -37,6 +45,7 @@ public class EnemySpawner
             enemy.transform.SetParent(ship, worldPositionStays: true);
             var CharInstaller = enemy.GetComponent<CharacterInstaller>();
             CharInstaller.SetData(enemyData);
+            CharInstaller.InitCharacter();
             activeEnemies.Add(enemy);
             yield return new WaitForSeconds(2f);
         }
@@ -55,5 +64,14 @@ public class EnemySpawner
         return (Vector2)ship.position + offset;
     }
 
-    public bool AreAllEnemiesDead() => activeEnemies.TrueForAll(e => e == null);
+    public bool AreAllEnemiesDead()
+    {
+        activeEnemies.RemoveAll(e => e == null);
+
+        return activeEnemies.All(e =>
+        {
+            var controller = e.GetComponent<IEnemyController>();
+            return controller == null || controller.IsDead;
+        });
+    }
 }

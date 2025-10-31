@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2388166297021625394}
   - component: {fileID: 1340950854184633087}
   - component: {fileID: 6362445506761285762}
+  - component: {fileID: -3869250702922705748}
   m_Layer: 0
   m_Name: EnemyProjectile
   m_TagString: Untagged
@@ -211,11 +212,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b377adcc03526724e88db2a73cd88cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteReflection
-  reflectionAxis: 2
-  reflectionOffset: 0
+  reflectionAxis: 1
+  reflectionOffset: -0.5
   reflectionLayer: 3
   reflectionSprite: {fileID: 0}
   updatePerFrame: 1
+--- !u!114 &-3869250702922705748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289687652989030670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c21a25d59845cf499aea3e7435fa94f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletRuntime
 --- !u!1 &5371396307911390438
 GameObject:
   m_ObjectHideFlags: 0

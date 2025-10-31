@@ -9,20 +9,36 @@ public class Interactable : MonoBehaviour, IInteractable
 
     private Outline currentOutline;
 
+    private bool isActive = true;
+
+    public void SetActive()
+    {
+        isActive = true;
+    }
+
+    public void SetInactive()
+    {
+        isActive = false;
+    }
+
     public void OnEnter(GameObject player)
     {
+        if (isActive == false) return;
         currentOutline = GetComponent<Outline>();
         currentOutline.ActiveOutline();
     }
 
     public void OnExit(GameObject player)
     {
+        if (isActive == false) return;
         currentOutline.DeactiveOutline();
         currentOutline = null;
     }
 
     public void OnInteract(GameObject player)
     {
+        if (isActive == false) return;
+
         if (registeredPlayerAction != null)
         {
             foreach (var action in registeredPlayerAction)

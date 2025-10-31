@@ -33,7 +33,10 @@ public class CharacterInstaller : MonoBehaviour
 
     protected void Awake()
     {
-        InitCharacter();
+        if (_characterData != null)
+        {
+            InitCharacter();
+        }
     }
 
     public virtual void GetComponent()

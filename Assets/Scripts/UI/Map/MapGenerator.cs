@@ -1,40 +1,45 @@
 ﻿    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
 
-    public class MapGenerator : MonoBehaviour
+public class MapGenerator : MonoBehaviour
+{
+    [Header("Map Settings")]
+    [SerializeField] private int width = 8;
+    [SerializeField] private int height = 5;
+    [SerializeField] private float xSpacing = 3f;
+    [SerializeField] private float ySpacing = 3f;
+    [SerializeField] private int minNodeCanSpawn = 2;
+
+    [Header("References")]
+    [SerializeField] private GameObject nodePrefab;
+    [SerializeField] private Transform nodeContainer;
+    [SerializeField] private UIDottedLineDrawer lineDrawer;
+    [SerializeField] private Transform dotLineContainer;
+
+    [SerializeField] private Button confirmButton;
+
+    private MapNode currentNode;
+    private MapNode currentSelectedNode;
+    private List<List<MapNode>> layers = new();
+
+    private void Start()
     {
-        [Header("Map Settings")]
-        [SerializeField] private int width = 8;
-        [SerializeField] private int height = 5; 
-        [SerializeField] private float xSpacing = 3f;
-        [SerializeField] private float ySpacing = 3f;
-        [SerializeField] private int minNodeCanSpawn = 2;
+        GenerateMap();
+        confirmButton.onClick.AddListener(OnConfirmButtonPressed);
+    }
 
-        [Header("References")]
-        [SerializeField] private GameObject nodePrefab;
-        [SerializeField] private Transform nodeContainer;
-        [SerializeField] private UIDottedLineDrawer lineDrawer;
-        [SerializeField] private Transform dotLineContainer;
+    private void GenerateMap()
+    {
+        layers.Clear();
 
-        private MapNode currentNode;
-        private List<List<MapNode>> layers = new(); 
-
-        private void Start()
+        for (int col = 0; col < width / 2; col++)
         {
-            GenerateMap();
-        }
+            int nodeCount = Random.Range(minNodeCanSpawn, height + 1);
+            if (col == 0 || col == (width / 2) - 1) nodeCount = 1;
 
-        private void GenerateMap()
-        {
-            layers.Clear();
-
-            for (int col = 0; col < width / 2; col++)
-            {
-                int nodeCount = Random.Range(minNodeCanSpawn, height + 1);
-                if (col == 0 || col == (width / 2) - 1) nodeCount = 1;
-
-                List<MapNode> layer = new List<MapNode>();
+            List<MapNode> layer = new List<MapNode>();
 
             for (int row = 0; row < nodeCount; row++)
             {
@@ -79,119 +84,140 @@
 
 
             layers.Add(layer);
-            }
+        }
 
-            for (int col = 0; col < layers.Count - 1; col++)
+        for (int col = 0; col < layers.Count - 1; col++)
+        {
+            var currentColumn = layers[col];
+            var nextColumn = layers[col + 1];
+
+            float maxYDistance = 0.75f * ySpacing;
+
+            foreach (var startNode in currentColumn)
             {
-                var currentColumn = layers[col];
-                var nextColumn = layers[col + 1];
-
-                float maxYDistance = 0.75f * ySpacing;
-
-                foreach (var startNode in currentColumn)
+                List<MapNode> validNext = new List<MapNode>();
+                foreach (var endNode in nextColumn)
                 {
-                    List<MapNode> validNext = new List<MapNode>();
+                    float dy = Mathf.Abs(startNode.transform.localPosition.y - endNode.transform.localPosition.y);
+                    if (dy <= maxYDistance)
+                        validNext.Add(endNode);
+                }
+
+                if (validNext.Count == 0)
+                {
+                    MapNode closest = nextColumn[0];
+                    float minDy = Mathf.Abs(startNode.transform.localPosition.y - closest.transform.localPosition.y);
                     foreach (var endNode in nextColumn)
                     {
                         float dy = Mathf.Abs(startNode.transform.localPosition.y - endNode.transform.localPosition.y);
-                        if (dy <= maxYDistance)
-                            validNext.Add(endNode);
-                    }
-
-                    if (validNext.Count == 0)
-                    {
-                        MapNode closest = nextColumn[0];
-                        float minDy = Mathf.Abs(startNode.transform.localPosition.y - closest.transform.localPosition.y);
-                        foreach (var endNode in nextColumn)
+                        if (dy < minDy)
                         {
-                            float dy = Mathf.Abs(startNode.transform.localPosition.y - endNode.transform.localPosition.y);
-                            if (dy < minDy)
-                            {
-                                minDy = dy;
-                                closest = endNode;
-                            }
-                        }
-                        validNext.Add(closest);
-                    }
-
-                    var shuffled = new List<MapNode>(validNext);
-                    Shuffle(shuffled);
-                    int connectionCount = Mathf.Min(Random.Range(1, 2), shuffled.Count);
-
-                    for (int i = 0; i < connectionCount; i++)
-                    {
-                        var endNode = shuffled[i];
-                        if (!startNode.linkedNode.Contains(endNode))
-                        {
-                            startNode.linkedNode.Add(endNode);
-                            lineDrawer.DrawDottedLine(startNode.GetComponent<RectTransform>(),
-                                                      endNode.GetComponent<RectTransform>());
+                            minDy = dy;
+                            closest = endNode;
                         }
                     }
+                    validNext.Add(closest);
                 }
 
-                foreach (var endNode in nextColumn)
+                var shuffled = new List<MapNode>(validNext);
+                Shuffle(shuffled);
+                int connectionCount = Mathf.Min(Random.Range(1, 2), shuffled.Count);
+
+                for (int i = 0; i < connectionCount; i++)
                 {
-                    bool hasIncoming = false;
-                    foreach (var startNode in currentColumn)
-                        if (startNode.linkedNode.Contains(endNode))
-                            hasIncoming = true;
-
-                    if (!hasIncoming)
+                    var endNode = shuffled[i];
+                    if (!startNode.linkedNode.Contains(endNode))
                     {
-                        MapNode closest = currentColumn[0];
-                        float minDy = Mathf.Abs(currentColumn[0].transform.localPosition.y - endNode.transform.localPosition.y);
-                        foreach (var startNode in currentColumn)
-                        {
-                            float dy = Mathf.Abs(startNode.transform.localPosition.y - endNode.transform.localPosition.y);
-                            if (dy < minDy)
-                            {
-                                minDy = dy;
-                                closest = startNode;
-                            }
-                        }
-
-                        closest.linkedNode.Add(endNode);
-                        lineDrawer.DrawDottedLine(closest.GetComponent<RectTransform>(),
+                        startNode.linkedNode.Add(endNode);
+                        lineDrawer.DrawDottedLine(startNode.GetComponent<RectTransform>(),
                                                   endNode.GetComponent<RectTransform>());
                     }
                 }
             }
-        }
 
-        private NodeType GetRandomMapNode()
+            foreach (var endNode in nextColumn)
+            {
+                bool hasIncoming = false;
+                foreach (var startNode in currentColumn)
+                    if (startNode.linkedNode.Contains(endNode))
+                        hasIncoming = true;
+
+                if (!hasIncoming)
+                {
+                    MapNode closest = currentColumn[0];
+                    float minDy = Mathf.Abs(currentColumn[0].transform.localPosition.y - endNode.transform.localPosition.y);
+                    foreach (var startNode in currentColumn)
+                    {
+                        float dy = Mathf.Abs(startNode.transform.localPosition.y - endNode.transform.localPosition.y);
+                        if (dy < minDy)
+                        {
+                            minDy = dy;
+                            closest = startNode;
+                        }
+                    }
+
+                    closest.linkedNode.Add(endNode);
+                    lineDrawer.DrawDottedLine(closest.GetComponent<RectTransform>(),
+                                              endNode.GetComponent<RectTransform>());
+                }
+            }
+        }
+    }
+
+    private NodeType GetRandomMapNode()
+    {
+        NodeTypeList nodeTypeList = Addressables.LoadAssetAsync<NodeTypeList>("NodeTypeList").WaitForCompletion();
+        int index = Random.Range(0, nodeTypeList.NodeTypes.Count);
+        NodeType node = nodeTypeList.NodeTypes[index];
+        int Ran = Random.Range(0, 101);
+        if (Ran <= node.rate)
         {
-            NodeTypeList nodeTypeList = Addressables.LoadAssetAsync<NodeTypeList>("NodeTypeList").WaitForCompletion();
-            int index = Random.Range(0, nodeTypeList.NodeTypes.Count);
-            NodeType node = nodeTypeList.NodeTypes[index];
-            int Ran = Random.Range(0, 101);
-            if (Ran <= node.rate)
-            {
-                return node;
-            }
-            else
-            {
-                node = GetRandomMapNode();
-            }
             return node;
         }
-
-        private void Shuffle<T>(List<T> list)
+        else
         {
-            for (int i = 0; i < list.Count; i++)
-            {
-                int rnd = Random.Range(i, list.Count);
-                T temp = list[i];
-                list[i] = list[rnd];
-                list[rnd] = temp;
-            }
+            node = GetRandomMapNode();
         }
+        return node;
+    }
+
+    private void Shuffle<T>(List<T> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            int rnd = Random.Range(i, list.Count);
+            T temp = list[i];
+            list[i] = list[rnd];
+            list[rnd] = temp;
+        }
+    }
 
     private void OnNodeClicked(MapNode node)
-    { 
+    {
         if (!node.IsInteractable) return;
 
-        //currentNode.MarkAsCurrent(false);
+        if (currentSelectedNode != null)
+            currentSelectedNode.MaskAsSelected(false);
+
+        node.MaskAsSelected(true);
+        currentSelectedNode = node;
+        confirmButton.gameObject.SetActive(true);
+    }
+
+    private void OnConfirmButtonPressed()
+    {
+        if (currentSelectedNode != null)
+        {
+            OnNodeConfirm(currentSelectedNode);
+            currentSelectedNode.OnSelect();
+            currentSelectedNode = null;
+        }
+    }
+
+    private void OnNodeConfirm(MapNode node)
+    {
+        confirmButton.gameObject.SetActive(false);
+
         currentNode = node;
         currentNode.MarkAsCurrent(true);
 
@@ -208,5 +234,8 @@
                     next.SetInteractable(true);
             }
         }
+
+        gameObject.transform.parent.gameObject.SetActive(false);
+        GameController.Instance.gameStateMachine.ChangeState<BattleState>();
     }
 }

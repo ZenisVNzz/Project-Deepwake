@@ -3,6 +3,8 @@ using UnityEngine;
 
 public interface IInteractable
 {
+    public void SetActive();
+    public void SetInactive();
     public void OnEnter(GameObject player);
     public void OnExit(GameObject player);
     public void OnInteract(GameObject player);

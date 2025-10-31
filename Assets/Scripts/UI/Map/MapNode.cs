@@ -19,19 +19,23 @@ public class MapNode : MonoBehaviour
     {
         this.nodeData = nodeData;
         button = GetComponent<Button>();
-        button.onClick.AddListener(OnSelect);
+        button.onClick.AddListener(OnPreSelect);
         OutlineImage = GetComponent<Image>();
         IconImage = transform.Find("Icon").GetComponent<Image>();
         IconImage.sprite = nodeData.nodeType.image;
     }
 
-    public void OnSelect()
+    public void OnPreSelect()
     {
         if (IsInteractable)
         {
-            OnNodeClicked?.Invoke(this);
-            nodeData.OnSelect();
+            OnNodeClicked?.Invoke(this);         
         }    
+    }
+
+    public void OnSelect()
+    {
+        nodeData.OnSelect();
     }
 
     public void SetInteractable(bool value)
@@ -49,5 +53,11 @@ public class MapNode : MonoBehaviour
     {
         if (OutlineImage != null)
             OutlineImage.color = value ? Color.cyan : (IsInteractable ? Color.white : Color.gray);
+    }
+
+    public void MaskAsSelected(bool value)
+    {
+        if (OutlineImage != null)
+            OutlineImage.color = value ? Color.orange : (IsInteractable ? Color.white : Color.gray);
     }
 }

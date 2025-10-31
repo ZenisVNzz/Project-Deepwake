@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 5175213537615338078}
   - component: {fileID: 3380793897104630607}
   - component: {fileID: 9155886222308715731}
+  - component: {fileID: 5474676802259660572}
   m_Layer: 7
   m_Name: Fly
   m_TagString: Enemy
@@ -292,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c187325dea6b274a9762eddd41353fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterData: {fileID: 11400000, guid: 6dadd3ad7a857fb4aac599f4b75f2853, type: 2}
+  _characterData: {fileID: 0}
   isFlyingEnemy: 1
   isTwoDirEnemy: 1
   stopDistance: 2.5
@@ -332,6 +333,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5474676802259660572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b377adcc03526724e88db2a73cd88cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteReflection
+  reflectionAxis: 1
+  reflectionOffset: -1
+  reflectionLayer: 3
+  reflectionSprite: {fileID: 0}
+  updatePerFrame: 1
 --- !u!1 &4779864766893373958
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,11 +8,11 @@ public class EnemyAttack : IDamageDealer
     private float _cooldown;
     private float _nextAttackTime;
 
-    public EnemyAttack(IState playerState, HitBoxController hitBoxController, float attackCooldown = 4f)
+    public EnemyAttack(IState playerState, HitBoxController hitBoxController, float attackCooldown = 5f)
     {
         _enemyState = playerState;
         _hitBoxController = hitBoxController;
-        _cooldown = Random.Range(attackCooldown * 0.8f, attackCooldown * 1.2f);
+        _cooldown = Random.Range(attackCooldown * 0.8f, attackCooldown * 1.8f);
         _nextAttackTime = 0f;
     }
 

@@ -18,6 +18,9 @@ public class EnemyController : MonoBehaviour, IEnemyController
 
     private ICharacterRuntime enemyRuntime;
 
+    private bool isDead = false;
+    public bool IsDead => isDead;
+
     public void Initialize
     (
       IAIMove movement,
@@ -60,6 +63,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
     private void OnDead()
     {
         StartCoroutine(DeathProcess());
+        isDead = true;
     }
 
     private IEnumerator DeathProcess()

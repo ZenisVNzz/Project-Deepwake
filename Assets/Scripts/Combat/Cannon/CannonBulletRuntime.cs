@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CannonBulletRuntime : MonoBehaviour
+public class CannonBulletRuntime : BulletRuntime
 {
     private Rigidbody2D rb;
     private float speed = 6f;
@@ -10,11 +10,6 @@ public class CannonBulletRuntime : MonoBehaviour
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
     }
 
     public void Init(Vector2 dir)

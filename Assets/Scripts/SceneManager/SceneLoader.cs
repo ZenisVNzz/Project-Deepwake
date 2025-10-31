@@ -7,6 +7,8 @@ public class SceneLoader : MonoBehaviour
     public static SceneLoader Instance;
     [SerializeField] private Animator transitionAnimator;
 
+    private ResourceManager _resourceManager;
+
     private void Awake()
     {
         if (Instance == null)
@@ -17,6 +19,11 @@ public class SceneLoader : MonoBehaviour
         else
         {
             Destroy(this);
+        }
+
+        if (_resourceManager == null)
+        {
+            _resourceManager = ResourceManager.Instance;
         }
     }
 

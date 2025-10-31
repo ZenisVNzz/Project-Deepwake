@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private CharacterUIManager _uiManager;
 
+    private bool isDead = false;
+    public bool IsDead => isDead;
+
     public void Initialize
     (
       IMovable movement,
@@ -121,6 +124,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private void OnDead()
     {
         StartCoroutine(DeathProcess());
+        isDead = true;
     }
 
     private IEnumerator DeathProcess()
