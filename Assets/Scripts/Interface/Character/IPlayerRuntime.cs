@@ -9,7 +9,10 @@ public interface IPlayerRuntime : ICharacterRuntime
     Inventory PlayerInventory { get; }
 
     event Action<float> OnStaminaChanged;
+    event Action<float, float> OnExpChanged;
+    event Action<int> OnLevelUp;
 
     bool UseStamina(float amount);
     void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState, Inventory playerInventory);
+    void GainExp(float amount);
 }

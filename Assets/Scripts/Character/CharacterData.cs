@@ -6,6 +6,8 @@ public class CharacterData : ScriptableObject
     public int characterID;
     public GameObject prefab;
 
+    public float ExpOnKill;
+
     public int level;
     public float HP;
     public float Stamina;

@@ -3,65 +3,68 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyProjectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 8f;
-    [SerializeField] private float damage = 8f;
-    [SerializeField] private float knockbackForce = 6f;
-    [SerializeField] private float lifeTime = 5f;
+    //[SerializeField] private float speed = 8f;
+    //[SerializeField] private float damage = 8f;
+    //[SerializeField] private float knockbackForce = 6f;
+    //[SerializeField] private float lifeTime = 5f;
 
-    private Rigidbody2D rb;
-    private Vector2 dir;
+    //private Rigidbody2D rb;
+    //private Vector2 dir;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    //private ICharacterRuntime characterRuntime;
 
-    private void OnEnable()
-    {
-        if (lifeTime > 0f)
-        {
-            Destroy(gameObject, lifeTime);
-        }
-    }
+    //private void Awake()
+    //{
+    //    rb = GetComponent<Rigidbody2D>();
+    //}
 
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+    //private void OnEnable()
+    //{
+    //    if (lifeTime > 0f)
+    //    {
+    //        Destroy(gameObject, lifeTime);
+    //    }
+    //}
 
-    public void SetStats(float speed, float damage, float knockback)
-    {
-        this.speed = speed;
-        this.damage = damage;
-        this.knockbackForce = knockback;
-    }
+    //private void OnBecameInvisible()
+    //{
+    //    Destroy(gameObject);
+    //}
 
-    public void Init(Vector2 direction)
-    {
-        dir = direction.sqrMagnitude > 0.0001f ? direction.normalized : Vector2.right;
-        if (rb != null)
-        {
-            rb.linearVelocity = dir * speed;
-        }
-    }
+    //public void SetStats(float speed, float damage, float knockback, ICharacterRuntime characterRuntime)
+    //{
+    //    this.speed = speed;
+    //    this.damage = damage;
+    //    this.knockbackForce = knockback;
+    //    this.characterRuntime = characterRuntime;
+    //}
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy") || other.gameObject == gameObject)
-            return;
+    //public void Init(Vector2 direction)
+    //{
+    //    dir = direction.sqrMagnitude > 0.0001f ? direction.normalized : Vector2.right;
+    //    if (rb != null)
+    //    {
+    //        rb.linearVelocity = dir * speed;
+    //    }
+    //}
 
-        var attackable = other.GetComponent<IAttackable>();
-        if (attackable != null)
-        {
-            Vector3 knockback = (Vector3)(dir * knockbackForce);
-            attackable.TakeDamage(damage, knockback);
-            Destroy(gameObject);
-            return;
-        }
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("Enemy") || other.gameObject == gameObject)
+    //        return;
 
-        if (!other.isTrigger)
-        {
-            Destroy(gameObject);
-        }
-    }
+    //    var attackable = other.GetComponent<IAttackable>();
+    //    if (attackable != null)
+    //    {
+    //        Vector3 knockback = (Vector3)(dir * knockbackForce);
+    //        attackable.TakeDamage(damage, knockback, characterRuntime);
+    //        Destroy(gameObject);
+    //        return;
+    //    }
+
+    //    if (!other.isTrigger)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

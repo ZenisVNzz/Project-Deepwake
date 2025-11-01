@@ -45,6 +45,7 @@ public class CharacterInstaller : MonoBehaviour
         _hurtBox = gameObject.transform.Find("HurtBox").GetComponent<Collider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+
         if (gameObject.transform.Find("HitBoxs_BaseAttack") != null)
             _hitBoxController = gameObject.transform.Find("HitBoxs_BaseAttack").GetComponent<HitBoxController>();
 
@@ -64,7 +65,7 @@ public class CharacterInstaller : MonoBehaviour
         _directionHandler = new PlayerDirectionHandler(_characterMovement);
         _animationHandler = new PlayerAnimationHandler(_animator, _characterState, _directionHandler);
         _stateHandler = new PlayerStateHandler(_characterState, _rigidbody2D, _inputHandler);
-        _characterAttack = new PlayerAttack( _characterState, _hitBoxController);
+        _characterAttack = new PlayerAttack( _characterState, _hitBoxController);    
     }
 
     public virtual void InitCharacter()
@@ -81,6 +82,11 @@ public class CharacterInstaller : MonoBehaviour
         if (uiManager != null)
         {
             uiManager.Init(_characterRuntime);
+        }
+
+        if (_hitBoxController != null)
+        {
+            _hitBoxController.Init(_characterRuntime);
         }
     }
 }

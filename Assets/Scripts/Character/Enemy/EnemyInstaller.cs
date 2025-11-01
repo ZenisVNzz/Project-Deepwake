@@ -31,7 +31,7 @@ public class EnemyInstaller : CharacterInstaller
             EnemyShooter enemyShooter = GetComponent<EnemyShooter>();
             enemyShooter.Init(_enemyRuntime);
         }
-
+    
         _characterAttack = new EnemyAttack(_characterState, _hitBoxController);
 
         if (isFlyingEnemy)
@@ -66,5 +66,10 @@ public class EnemyInstaller : CharacterInstaller
         _enemyRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState);
         _enemyController = gameObject.AddComponent<EnemyController>();
         _enemyController.Initialize(_AIMovement, _characterState, _characterAttack, _animationHandler, _stateHandler, _enemyRuntime);
+
+        if (_hitBoxController != null)
+        {
+            _hitBoxController.Init(_enemyRuntime);
+        }
     }
 }

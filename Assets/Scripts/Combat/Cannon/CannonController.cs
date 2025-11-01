@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class CannonController : MonoBehaviour
 {
     private GameObject currentPlayer;
+    public GameObject CurPlayer => currentPlayer;
 
     private IInteractable Interactable;
     [SerializeField] Transform playerLockPos;
@@ -41,7 +42,7 @@ public class CannonController : MonoBehaviour
         Interactable.Register(UseCannon);
 
         cannonNavigation = new CannonNavigation(RotateObj, NavigateGuideObj, recoilPivot, isFront);
-        cannonShoot = new CannonShoot(cannonNavigation, shootPos);
+        cannonShoot = new CannonShoot(cannonNavigation, shootPos, this);
         animator = GetComponent<Animator>();
 
         if (cooldownSliderUI == null)

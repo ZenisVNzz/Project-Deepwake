@@ -57,6 +57,6 @@ public class EnemyShooter : MonoBehaviour
         {
             proj = go.AddComponent<HitBoxHandler>();
         }
-        proj.SetData(characterRuntime.TotalAttack, gameObject.tag);
+        proj.SetData(characterRuntime.TotalAttack, gameObject.tag, characterRuntime);
     }
 }

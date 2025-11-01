@@ -6,24 +6,28 @@ using UnityEngine;
 public class HitBoxController : MonoBehaviour
 {
     private List<HitBoxHandler> _hitBoxHandlers = new List<HitBoxHandler>();
-    private float _damage = 10f;
-    private float _knockbackForce = 10f;
+    private ICharacterRuntime _owner;
 
-    public float Damage => _damage;
-    public float KnockbackForce => _knockbackForce;
-
-    public void SetStats(float damage, float knockbackForce)
+    public void Init(ICharacterRuntime owner)
     {
-        _damage = damage;
-        _knockbackForce = knockbackForce;
-    }
+        _owner = owner;
 
-    private void Awake()
-    {
         foreach (Transform child in transform)
         {
             HitBoxHandler handler = child.AddComponent<HitBoxHandler>();
-            handler.Init(this);
+            handler.SetData(gameObject.tag, _owner);
+            _hitBoxHandlers.Add(handler);
+        }
+    }
+
+    public void Init(ICharacterRuntime owner, float damage)
+    {
+        _owner = owner;
+
+        foreach (Transform child in transform)
+        {
+            HitBoxHandler handler = child.AddComponent<HitBoxHandler>();
+            handler.SetData(damage, gameObject.tag, _owner);
             _hitBoxHandlers.Add(handler);
         }
     }

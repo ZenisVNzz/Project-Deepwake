@@ -35,7 +35,7 @@ public class CharacterUIManager : MonoBehaviour
 
         if (attributesPanel != null)
         {
-
+            player.OnLevelUp += GrantAttributePoints;
             SyncAttributesFromRuntime();
             attributesPanel.Bind(attributes);
             attributesPanel.OnAddPointRequested += OnAddPointRequested;
@@ -74,9 +74,11 @@ public class CharacterUIManager : MonoBehaviour
         ApplyAttributesToRuntime();
     }
 
-    public void GrantAttributePoints(int amount)
+    public void GrantAttributePoints(int level)
     {
-        attributes.AvailablePoints += Math.Max(0, amount);
+        if (level <= 100)
+            attributes.AvailablePoints += Math.Max(0, 5);
+
         if (attributesPanel != null)
         {
             attributesPanel.Bind(attributes);

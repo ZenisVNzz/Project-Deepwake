@@ -27,10 +27,10 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
     public float BonusSpeed => bonusSpeed;
 
     [Header("Total Stats")]
-    protected float totalHealth => characterData.HP + bonusMaxHealth + (5f * vitality);
-    protected float totalAttack => characterData.AttackPower + bonusAttackPower + (2f * strength);
-    protected float totalDefense => characterData.Defense + bonusDefense + (1f * defense);
-    protected float totalSpeed => characterData.MoveSpeed + bonusSpeed;
+    [SerializeField] protected float totalHealth => characterData.HP + bonusMaxHealth + (5f * vitality);
+    [SerializeField] protected float totalAttack => characterData.AttackPower + bonusAttackPower + (2f * strength);
+    [SerializeField] protected float totalDefense => characterData.Defense + bonusDefense + (1f * defense);
+    [SerializeField] protected float totalSpeed => characterData.MoveSpeed + bonusSpeed;
     public float TotalHealth => totalHealth;
     public float TotalAttack => totalAttack;
     public float TotalDefense => totalDefense;
@@ -82,7 +82,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
         _hpRegenCoroutine = StartCoroutine(RegenHP());
     }
 
-    public virtual void TakeDamage(float damage, Vector3 knockback)
+    public virtual void TakeDamage(float damage, Vector3 knockback, Action<float> expGainCall)
     {
         if (characterState.GetCurrentState() != CharacterStateType.Death)
         {
@@ -112,6 +112,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
             if (hp <= 0)
             {
                 Die();
+                expGainCall?.Invoke(characterData.ExpOnKill);
             }
 
             if (characterState.GetCurrentState() != CharacterStateType.Attacking && characterState.GetCurrentState() != CharacterStateType.Death)
@@ -122,6 +123,11 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 
             Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");
         }   
+    }
+
+    public virtual void TakeDamage(float damage, Vector3 knockback)
+    {
+        TakeDamage(damage, knockback, null);
     }
 
     protected void Die()
@@ -144,5 +150,10 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
             yield return null;
         }
         _hpRegenCoroutine = null;
+    }
+
+    protected void InvokeHPChanged(float newHP)
+    {
+        OnHPChanged?.Invoke(newHP);
     }
 }

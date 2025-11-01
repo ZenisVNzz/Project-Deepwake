@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,14 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
 {
+    [Header("Experience System")]
+    [SerializeField] protected float currentExp = 0;
+    [SerializeField] protected float expToNextLevel = 100;
+    public float CurrentExp => currentExp;
+    public float ExpToNextLevel => expToNextLevel;
+    public event Action<float, float> OnExpChanged;
+    public event Action<int> OnLevelUp;
+
     [Header("Character Bonus Stats")]
     protected float bonusStamina = 0;
     protected float bonusCriticalChance = 0;
@@ -41,6 +50,33 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
         OnStaminaChanged?.Invoke(stamina);
 
         this.playerInventory = playerInventory;
+    }
+
+    public virtual void GainExp(float amount)
+    {
+        if (amount <= 0) return;
+
+        currentExp += amount;
+        OnExpChanged?.Invoke(currentExp, expToNextLevel);
+
+        while (currentExp >= expToNextLevel)
+        {
+            currentExp -= expToNextLevel;
+            LevelUp();
+        }
+    }
+
+    protected virtual void LevelUp()
+    {
+        level++;
+        OnLevelUp?.Invoke((int)level);
+
+        expToNextLevel = Mathf.Round(expToNextLevel * 1.25f);
+
+        hp = TotalHealth;
+        InvokeHPChanged(hp);
+
+        Debug.Log($"{gameObject.name} leveled up to {level}!");
     }
 
     public override void ApplyAttributes(CharacterAttributes attributes)
