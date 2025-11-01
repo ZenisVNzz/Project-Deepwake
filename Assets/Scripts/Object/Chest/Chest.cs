@@ -1,4 +1,5 @@
-    using System;
+using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,12 +52,14 @@ public class Chest : MonoBehaviour
         if (lootSpawnDelay > 0f)
         {
             Invoke(nameof(SpawnLootOnce), lootSpawnDelay);
+            Invoke(nameof(DestroySelf), lootSpawnDelay + 1f);
         }
         else
         {
             var clips = animator != null ? animator.GetCurrentAnimatorClipInfo(0) : null;
             float delay = (clips != null && clips.Length > 0 && clips[0].clip != null) ? clips[0].clip.length : 0.7f;
             Invoke(nameof(SpawnLootOnce), delay);
+            Invoke(nameof(DestroySelf), delay + 1f);
         }
     }
 
@@ -98,6 +101,12 @@ public class Chest : MonoBehaviour
             if (p != null) return p.position;
         }
         return transform.position;
+    }
+
+    private void DestroySelf()
+    {
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+        sr.DOFade(0f, 3f).OnComplete(() => Destroy(gameObject));
     }
 
 #if UNITY_EDITOR

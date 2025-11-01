@@ -76,6 +76,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2dfe47f5b8182b34c9d4f8f7161984db
+    m_Address: ChestPrefabList
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Prefab
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3138bb231e946134f868987a05e4062c
     m_Address: UI_Loading
     m_ReadOnly: 0

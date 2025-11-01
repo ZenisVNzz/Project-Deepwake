@@ -8,6 +8,7 @@ public class WaveController : MonoBehaviour
     private EnemySpawner enemySpawner;
 
     private int currentWave = 0;
+    public int CurrentWave => currentWave;
 
     private void Awake()
     {

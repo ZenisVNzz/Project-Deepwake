@@ -47,9 +47,9 @@ public class MapGenerator : MonoBehaviour
                 data.gridPos = new Vector2Int(col, row);
 
                 if (col == 0)
-                    data.nodeType = Addressables.LoadAssetAsync<NodeType>("SeaNode").WaitForCompletion();
+                    data.nodeType = ResourceManager.Instance.GetAsset<NodeType>("SeaNode");
                 else if (col == (width / 2) - 1)
-                    data.nodeType = Addressables.LoadAssetAsync<NodeType>("BossNode").WaitForCompletion();
+                    data.nodeType = ResourceManager.Instance.GetAsset<NodeType>("BossNode");
                 else
                     data.nodeType = GetRandomMapNode();
 
@@ -166,7 +166,7 @@ public class MapGenerator : MonoBehaviour
 
     private NodeType GetRandomMapNode()
     {
-        NodeTypeList nodeTypeList = Addressables.LoadAssetAsync<NodeTypeList>("NodeTypeList").WaitForCompletion();
+        NodeTypeList nodeTypeList = ResourceManager.Instance.GetAsset<NodeTypeList>("NodeTypeList");
         int index = Random.Range(0, nodeTypeList.NodeTypes.Count);
         NodeType node = nodeTypeList.NodeTypes[index];
         int Ran = Random.Range(0, 101);

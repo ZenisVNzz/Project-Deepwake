@@ -55,11 +55,12 @@ public class PlayerStateHandler : IStateHandler
     {
         IsWaitForKnockBack = true;
         inputHandler.Player.Disable();
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.3f);
+        inputHandler.Player.Enable();
+        yield return new WaitForSeconds(0.4f);
         if (playerState.GetCurrentState() == CharacterStateType.Knockback)
         {
             playerState.ChangeState(CharacterStateType.Idle);
-            inputHandler.Player.Enable();
             IsWaitForKnockBack = false;
         }
     }
