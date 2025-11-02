@@ -147,6 +147,10 @@ MonoBehaviour:
     m_Key: UI_Quit
     m_Metadata:
       m_Items: []
+  - m_Id: 13179594760445952
+    m_Key: UI_LevelUp
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

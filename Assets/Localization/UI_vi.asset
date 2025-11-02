@@ -153,6 +153,10 @@ MonoBehaviour:
     m_Localized: "Th\u1EC3 l\u1EF1c"
     m_Metadata:
       m_Items: []
+  - m_Id: 13179594760445952
+    m_Localized: "L\xEAn c\u1EA5p!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

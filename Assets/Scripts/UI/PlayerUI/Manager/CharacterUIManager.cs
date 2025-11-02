@@ -12,6 +12,7 @@ public class CharacterUIManager : MonoBehaviour
     [SerializeField] private UIInventory inventoryPanel;
     [SerializeField] private UIEquipmentPanel equipmentPanel;
     [SerializeField] private UISkillTreePanel skillTreePanel;
+    [SerializeField] private CurrencyUI currencyUI;
 
     private IPlayerRuntime player;
 
@@ -50,6 +51,11 @@ public class CharacterUIManager : MonoBehaviour
         if (skillTreePanel != null)
         {
         }
+
+        if (currencyUI != null)
+        {
+            currencyUI.Bind(player);
+        }
     }
 
     private void OnDestroy()
@@ -83,6 +89,8 @@ public class CharacterUIManager : MonoBehaviour
         {
             attributesPanel.Bind(attributes);
         }
+
+        ApplyAttributesToRuntime();
     }
 
     private void ApplyAttributesToRuntime()

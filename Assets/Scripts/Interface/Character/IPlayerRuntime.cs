@@ -7,6 +7,7 @@ public interface IPlayerRuntime : ICharacterRuntime
     float TotalStamina { get; }
 
     Inventory PlayerInventory { get; }
+    CurrencyWallet CurrencyWallet { get; }
 
     event Action<float> OnStaminaChanged;
     event Action<float, float> OnExpChanged;

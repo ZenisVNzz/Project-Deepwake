@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 [System.Serializable]
 public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
@@ -40,6 +41,9 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     private Inventory playerInventory;
     public Inventory PlayerInventory => playerInventory;
 
+    private CurrencyWallet currencyWallet = new CurrencyWallet();
+    public CurrencyWallet CurrencyWallet => currencyWallet;
+
     public void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState, Inventory playerInventory)
     {
         base.Init(playerData, rigidbody2D, PlayerState);
@@ -66,6 +70,7 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
         }
     }
 
+    LocalizedString localizedText = new LocalizedString("UI", "UI_LevelUp");
     protected virtual void LevelUp()
     {
         level++;
@@ -75,6 +80,9 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
 
         hp = TotalHealth;
         InvokeHPChanged(hp);
+
+        UIManager.Instance.GetSingleUIService().Create
+            ("FloatingText", Guid.NewGuid().ToString(), localizedText, transform.position + Vector3.up * 1.1f, true);
 
         Debug.Log($"{gameObject.name} leveled up to {level}!");
     }

@@ -4,6 +4,6 @@ public class CannonDamageCal
 {
 	public float Calculate(ICharacterRuntime characterRuntime)
 	{
-		return (18f + (characterRuntime.TotalAttack * 0.3f));
+		return (8f + (characterRuntime.TotalAttack * 1.4f));
 	}
 }
