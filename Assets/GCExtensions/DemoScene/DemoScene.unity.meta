@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8be73981c751b574692389d78981534f
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177350
+  packageName: Extensions for Playfab
+  packageVersion: 1.1
+  assetPath: Assets/GCExtensions/DemoScene/DemoScene.unity
+  uploadId: 389402
