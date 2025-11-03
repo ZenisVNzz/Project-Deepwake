@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -18,7 +19,24 @@ public class CurrencyUI : MonoBehaviour
     {
         if (type == CurrencyType.Gold && goldCurrencyText != null)
         {
-            goldCurrencyText.text = ammount.ToString();
+            StartCoroutine(UpdateCurrencyAnimation(goldCurrencyText, ammount));
         }
+    }
+
+    private IEnumerator UpdateCurrencyAnimation(TextMeshProUGUI text, int ammount)
+    {
+        int startValue = int.Parse(text.text);
+        int endValue = ammount;
+        float duration = 1f;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            int currentValue = Mathf.RoundToInt(Mathf.Lerp(startValue, endValue, t));
+            text.text = currentValue.ToString();
+            yield return null;
+        }
+        text.text = endValue.ToString();
     }
 }

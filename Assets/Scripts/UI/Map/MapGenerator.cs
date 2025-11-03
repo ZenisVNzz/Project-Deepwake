@@ -1,5 +1,6 @@
 ﻿    using System.Collections.Generic;
-    using UnityEngine;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
+using UnityEngine;
     using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
@@ -52,6 +53,14 @@ public class MapGenerator : MonoBehaviour
                     data.nodeType = ResourceManager.Instance.GetAsset<NodeType>("BossNode");
                 else
                     data.nodeType = GetRandomMapNode();
+
+                if (col == 1)
+                {
+                    while (data.nodeType.NodeTypes == NodeTypes.Shop)
+                    {
+                        data.nodeType = GetRandomMapNode();
+                    }
+                }   
 
                 GameObject nodeObj = Instantiate(nodePrefab, nodeContainer);
 

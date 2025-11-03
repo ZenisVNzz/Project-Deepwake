@@ -82,7 +82,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
         _hpRegenCoroutine = StartCoroutine(RegenHP());
     }
 
-    public virtual void TakeDamage(float damage, Vector3 knockback, Action<float> expGainCall)
+    public virtual void TakeDamage(float damage, Vector3 knockback, ICharacterRuntime characterRuntime)
     {
         if (characterState.GetCurrentState() != CharacterStateType.Death)
         {
@@ -112,7 +112,11 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
             if (hp <= 0)
             {
                 Die();
-                expGainCall?.Invoke(characterData.ExpOnKill);
+                if (characterRuntime is IPlayerRuntime playerRuntime)
+                {
+                    playerRuntime.GainExp(characterData.ExpOnKill);
+                    playerRuntime.CurrencyWallet.Add(CurrencyType.Gold, characterData.GoldOnKill);
+                }
             }
 
             if (characterState.GetCurrentState() != CharacterStateType.Attacking && characterState.GetCurrentState() != CharacterStateType.Death)

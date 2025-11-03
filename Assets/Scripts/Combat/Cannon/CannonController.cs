@@ -31,7 +31,7 @@ public class CannonController : MonoBehaviour
     private CannonNavigation cannonNavigation;
     private CannonShoot cannonShoot;
 
-    private float cooldown = 1.5f;
+    private float cooldown = 1f;
     private float timer;
     private Image fill;
     private Image bg;
@@ -84,11 +84,11 @@ public class CannonController : MonoBehaviour
 
         if (isFront)
         {
-            SetupCam(-3.5f);
+            CameraOffset.Instance.Move(-3.5f);
         }
         else
         {
-            SetupCam(3.5f);
+            CameraOffset.Instance.Move(3.5f);
         }     
 
         inputActions.Cannon.Enable();
@@ -103,26 +103,9 @@ public class CannonController : MonoBehaviour
         playerModifier.AttackModifier(true);
         playerModifier.DirectionModifier(false, playerLockDir);
         NavigateGuideObj.SetActive(false);
-        SetupCam(0f);
+        CameraOffset.Instance.Move(0f);
 
         inputActions.Cannon.Disable();
-    }
-
-    private void SetupCam(float offset)
-    {
-        var cinemachine = Camera.main?.GetComponent<CinemachineBrain>();
-        if (cinemachine != null)
-        {
-            var acticeCam = cinemachine.ActiveVirtualCamera as CinemachineCamera;
-            if (acticeCam != null)
-            {
-                var component = acticeCam.GetCinemachineComponent(CinemachineCore.Stage.Body);
-                if (component is CinemachinePositionComposer composer)
-                {
-                    composer.TargetOffset = new Vector3(0f, offset, 0f);
-                }
-            }
-        }
     }
 
     public void OnMove(InputAction.CallbackContext context)

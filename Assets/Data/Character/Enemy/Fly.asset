@@ -15,6 +15,7 @@ MonoBehaviour:
   characterID: 200001
   prefab: {fileID: 3853017518195124916, guid: 6a1658a00f4ca204185c0f943275764f, type: 3}
   ExpOnKill: 25
+  GoldOnKill: 10
   level: 1
   HP: 35
   Stamina: 0

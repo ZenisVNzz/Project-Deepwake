@@ -12,7 +12,7 @@ public enum NodeTypes
 {
     Sea,
     Shop,
-    Island,
+    Monster,
     Treasure,
     Boss
 }

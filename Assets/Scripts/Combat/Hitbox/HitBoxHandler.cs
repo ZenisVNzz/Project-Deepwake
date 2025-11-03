@@ -39,7 +39,7 @@ public class HitBoxHandler : MonoBehaviour
 
                 if (damageable is EnemyRuntime enemyRuntime && _characterRuntime is IPlayerRuntime playerRuntime)
                 {
-                    damageable.TakeDamage(isOwnerDmg? _characterRuntime.TotalAttack : damage, knockbackDirection * knockbackForce, playerRuntime.GainExp);
+                    damageable.TakeDamage(isOwnerDmg? _characterRuntime.TotalAttack : damage, knockbackDirection * knockbackForce, _characterRuntime);
                 }
                 else
                 {
