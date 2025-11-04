@@ -245,6 +245,5 @@ public class MapGenerator : MonoBehaviour
         }
 
         gameObject.transform.parent.gameObject.SetActive(false);
-        GameController.Instance.gameStateMachine.ChangeState<BattleState>();
     }
 }

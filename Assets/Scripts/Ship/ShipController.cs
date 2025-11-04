@@ -1,0 +1,133 @@
+using UnityEngine;
+
+[RequireComponent(typeof(ObjectMove))]
+public class ShipController : MonoBehaviour
+{
+    public static ShipController Instance { get; private set; }
+
+    [Header("Movement Settings")]
+    [SerializeField] private float maxSpeed = 5f;
+    [SerializeField] private float acceleration = 5f;
+    [SerializeField] private float deceleration = 6f;
+    [SerializeField] private float smoothStopDistance = 2.5f;
+    [SerializeField] private GameObject background;
+
+    private ObjectMove shipMover;
+    private ObjectMove bgMover;
+
+    private bool moving;
+    private bool stopping;
+    private bool movingToTarget;
+    private float targetStopX;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
+        shipMover = GetOrAddComponent<ObjectMove>(gameObject);
+        bgMover = background != null ? GetOrAddComponent<ObjectMove>(background) : null;
+
+        if (bgMover == null && background != null)
+            Debug.LogWarning("ShipController: Background assigned but has no ObjectMove.");
+    }
+
+    private void Update()
+    {
+        if (moving) HandleAcceleration();
+        if (movingToTarget) HandleMoveToTarget();
+        if (stopping) HandleDeceleration();
+    }
+
+    private void HandleAcceleration()
+    {
+        float newSpeed = Mathf.MoveTowards(shipMover.Speed, maxSpeed, acceleration * Time.deltaTime);
+        SetSpeed(newSpeed);
+    }
+
+    private void HandleMoveToTarget()
+    {
+        float remainingX = targetStopX - transform.position.x;
+        float absRemaining = Mathf.Abs(remainingX);
+
+        if (absRemaining < smoothStopDistance)
+        {
+            float t = absRemaining / smoothStopDistance;
+            float targetSpeed = Mathf.Lerp(0f, maxSpeed, t);
+            float newSpeed = Mathf.MoveTowards(shipMover.Speed, targetSpeed, deceleration * Time.deltaTime);
+            SetSpeed(newSpeed);
+
+            if (absRemaining < 0.05f)
+            {
+                StopImmediately();
+            }
+        }
+        else
+        {
+            float newSpeed = Mathf.MoveTowards(shipMover.Speed, maxSpeed, acceleration * Time.deltaTime);
+            SetSpeed(newSpeed);
+        }
+    }
+
+    private void HandleDeceleration()
+    {
+        float remainingX = targetStopX - transform.position.x;
+        float absRemaining = Mathf.Abs(remainingX);
+
+        float newSpeed = Mathf.MoveTowards(shipMover.Speed, 0f, deceleration * Time.deltaTime);
+        SetSpeed(newSpeed);
+
+        if (absRemaining < 0.05f || Mathf.Approximately(newSpeed, 0f))
+            StopImmediately();
+    }
+
+    private void StopImmediately()
+    {
+        SetSpeed(0f);
+        moving = false;
+        stopping = false;
+        movingToTarget = false;
+
+        Vector3 pos = transform.position;
+        pos.x = targetStopX;
+        transform.position = pos;
+    }
+
+    public void StartMove()
+    {
+        moving = true;
+        stopping = false;
+        movingToTarget = false;
+    }
+
+    public void StopAtX(float x)
+    {
+        targetStopX = x;
+        moving = false;
+        movingToTarget = false;
+        stopping = true;
+    }
+
+    public void MoveToX(float x)
+    {
+        targetStopX = x;
+        moving = false;
+        stopping = false;
+        movingToTarget = true;
+    }
+
+    private void SetSpeed(float newSpeed)
+    {
+        shipMover.Speed = Mathf.Sign(targetStopX - transform.position.x) * newSpeed;
+
+        if (bgMover != null)
+            bgMover.Speed = shipMover.Speed;
+    }
+
+    private T GetOrAddComponent<T>(GameObject obj) where T : Component =>
+        obj.TryGetComponent(out T comp) ? comp : obj.AddComponent<T>();
+}

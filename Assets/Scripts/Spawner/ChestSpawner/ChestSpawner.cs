@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum ChestTier
@@ -27,7 +28,11 @@ public class ChestSpawner
             chestPrefab[chestData.tier] = chestData.prefab;
         }
 
-        shipSpawnPoints.AddRange(GameObject.Find("ChestSpawnPoints").GetComponentsInChildren<Transform>());
+        Transform chestParent = GameObject.Find("ChestSpawnPoints").transform;
+        shipSpawnPoints.AddRange(
+            chestParent.GetComponentsInChildren<Transform>()
+                       .Where(t => t != chestParent)
+        );
 
         Tier1Chance = 0.5f;
         Tier2Chance = 0.3f;

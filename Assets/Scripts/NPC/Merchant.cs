@@ -12,9 +12,11 @@ public class Merchant : MonoBehaviour
         interactable.RegisterOnExit(OnExit);
     }
 
-    private void OnInteract()
+    private void OnInteract(GameObject player)
     {
-
+        ShopUI shopUI = UIManager.Instance.RuntimeUIServiceRegistry.Get<ShopUI>();
+        shopUI.BindData(player.GetComponent<IPlayerRuntime>());
+        shopUI.Show();
     }
 
     private void OnEnter()
