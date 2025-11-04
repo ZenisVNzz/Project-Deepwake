@@ -157,6 +157,18 @@ MonoBehaviour:
     m_Localized: "L\xEAn c\u1EA5p!"
     m_Metadata:
       m_Items: []
+  - m_Id: 14007818138607616
+    m_Localized: "Th\u01B0\u01A1ng nh\xE2n b\xED \u1EA9n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14014629763801088
+    m_Localized: Mua
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14175324241321984
+    m_Localized: "V\xE0ng\n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

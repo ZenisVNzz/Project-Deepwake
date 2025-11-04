@@ -151,6 +151,18 @@ MonoBehaviour:
     m_Key: UI_LevelUp
     m_Metadata:
       m_Items: []
+  - m_Id: 14007818138607616
+    m_Key: UI_Merchant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14014629763801088
+    m_Key: UI_Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14175324241321984
+    m_Key: UI_Gold
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

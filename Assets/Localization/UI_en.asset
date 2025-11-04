@@ -156,6 +156,18 @@ MonoBehaviour:
     m_Localized: Level Up!
     m_Metadata:
       m_Items: []
+  - m_Id: 14007818138607616
+    m_Localized: Mystery Merchant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14014629763801088
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14175324241321984
+    m_Localized: Gold
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
