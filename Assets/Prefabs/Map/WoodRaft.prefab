@@ -402,8 +402,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2310165c21ef3b4cba019a379118389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloatingObject
-  floatAmplitude: 0.25
-  floatDuration: 2
+  floatAmplitude: 0.15
+  floatDuration: 1.25
 --- !u!1 &2235382150750327800
 GameObject:
   m_ObjectHideFlags: 0

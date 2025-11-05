@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class UIEquipmentPanel : MonoBehaviour
 {
     [SerializeField] private Image weaponIcon;
-    [SerializeField] private Image helmetIcon;
+    [SerializeField] private Image specialIcon;
     [SerializeField] private Image chestplateIcon;
     [SerializeField] private Image ringIcon;
     [SerializeField] private Image necklaceIcon;
@@ -24,7 +24,7 @@ public class UIEquipmentPanel : MonoBehaviour
         Image target = type switch
         {
             EquipmentType.Weapon => weaponIcon,
-            EquipmentType.Helmet => helmetIcon,
+            EquipmentType.Special => specialIcon,
             EquipmentType.Chestplate => chestplateIcon,
             EquipmentType.Ring => ringIcon,
             EquipmentType.Necklace => necklaceIcon,

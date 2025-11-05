@@ -12,7 +12,7 @@ public class ShopStage : GameState
             return;
         }
 
-        shipWheel.SetInactive();
+        shipWheel.SetActive();
 
         EnvironmentSpawner environmentSpawner = EnvironmentSpawner.Instance;
         environmentSpawner.Spawn("WoodRaft", new Vector3(20f, -6f, 0f), true);

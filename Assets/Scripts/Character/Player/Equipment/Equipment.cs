@@ -2,7 +2,7 @@
 public class Equipment
 {
     public EquipmentData Weapon;
-    public EquipmentData Helmet;
+    public EquipmentData Special;
     public EquipmentData Chestplate;
     public EquipmentData Ring;
     public EquipmentData Necklace;
@@ -21,8 +21,8 @@ public class Equipment
                 Weapon = equip;
                 break;
 
-            case EquipmentType.Helmet:
-                Helmet = equip;
+            case EquipmentType.Special:
+                Special = equip;
                 break;
             case EquipmentType.Chestplate:
                 Chestplate = equip;
