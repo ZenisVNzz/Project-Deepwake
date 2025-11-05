@@ -6,7 +6,8 @@ public class ShipController : MonoBehaviour
     public static ShipController Instance { get; private set; }
 
     [Header("Movement Settings")]
-    [SerializeField] private float maxSpeed = 5f;
+    [SerializeField] private float normalSpeed = 0.5f;
+    [SerializeField] private float maxSpeed = 5f; 
     [SerializeField] private float acceleration = 5f;
     [SerializeField] private float deceleration = 6f;
     [SerializeField] private float smoothStopDistance = 2.5f;
@@ -18,6 +19,7 @@ public class ShipController : MonoBehaviour
     private bool moving;
     private bool stopping;
     private bool movingToTarget;
+    private bool continueAfterStop;
     private float targetStopX;
 
     private void Awake()
@@ -45,7 +47,7 @@ public class ShipController : MonoBehaviour
 
     private void HandleAcceleration()
     {
-        float newSpeed = Mathf.MoveTowards(shipMover.Speed, maxSpeed, acceleration * Time.deltaTime);
+        float newSpeed = Mathf.MoveTowards(Mathf.Abs(shipMover.Speed), normalSpeed, acceleration * Time.deltaTime);
         SetSpeed(newSpeed);
     }
 
@@ -57,18 +59,31 @@ public class ShipController : MonoBehaviour
         if (absRemaining < smoothStopDistance)
         {
             float t = absRemaining / smoothStopDistance;
-            float targetSpeed = Mathf.Lerp(0f, maxSpeed, t);
-            float newSpeed = Mathf.MoveTowards(shipMover.Speed, targetSpeed, deceleration * Time.deltaTime);
+
+            float targetSpeed = continueAfterStop
+                ? Mathf.Lerp(normalSpeed, maxSpeed, t)
+                : Mathf.Lerp(0f, maxSpeed, t);
+
+            float newSpeed = Mathf.MoveTowards(Mathf.Abs(shipMover.Speed), targetSpeed, deceleration * Time.deltaTime);
             SetSpeed(newSpeed);
 
             if (absRemaining < 0.05f)
             {
-                StopImmediately();
+                if (continueAfterStop)
+                {
+                    continueAfterStop = false;
+                    movingToTarget = false;
+                    moving = true;
+                }
+                else
+                {
+                    StopImmediately();
+                }
             }
         }
         else
         {
-            float newSpeed = Mathf.MoveTowards(shipMover.Speed, maxSpeed, acceleration * Time.deltaTime);
+            float newSpeed = Mathf.MoveTowards(Mathf.Abs(shipMover.Speed), maxSpeed, acceleration * Time.deltaTime);
             SetSpeed(newSpeed);
         }
     }
@@ -78,7 +93,7 @@ public class ShipController : MonoBehaviour
         float remainingX = targetStopX - transform.position.x;
         float absRemaining = Mathf.Abs(remainingX);
 
-        float newSpeed = Mathf.MoveTowards(shipMover.Speed, 0f, deceleration * Time.deltaTime);
+        float newSpeed = Mathf.MoveTowards(Mathf.Abs(shipMover.Speed), 0f, deceleration * Time.deltaTime);
         SetSpeed(newSpeed);
 
         if (absRemaining < 0.05f || Mathf.Approximately(newSpeed, 0f))
@@ -102,6 +117,7 @@ public class ShipController : MonoBehaviour
         moving = true;
         stopping = false;
         movingToTarget = false;
+        continueAfterStop = false;
     }
 
     public void StopAtX(float x)
@@ -110,19 +126,29 @@ public class ShipController : MonoBehaviour
         moving = false;
         movingToTarget = false;
         stopping = true;
+        continueAfterStop = false;
     }
 
-    public void MoveToX(float x)
+    public void MoveToX(float x, bool moveAfterStop)
     {
         targetStopX = x;
         moving = false;
         stopping = false;
         movingToTarget = true;
+        continueAfterStop = moveAfterStop;
     }
 
     private void SetSpeed(float newSpeed)
     {
-        shipMover.Speed = Mathf.Sign(targetStopX - transform.position.x) * newSpeed;
+        if (movingToTarget || stopping)
+        {
+            float dir = Mathf.Sign(targetStopX - transform.position.x);
+            shipMover.Speed = dir * Mathf.Abs(newSpeed);
+        }
+        else
+        {
+            shipMover.Speed = Mathf.Abs(newSpeed);
+        }
 
         if (bgMover != null)
             bgMover.Speed = shipMover.Speed;

@@ -41,3 +41,4 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _labels:
   - m_LabelString: ShipAssets
+  - m_LabelString: ShopData

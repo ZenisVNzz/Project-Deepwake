@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02638c19aa4b6694ba6b2fed46aa056e, type: 3}
+  m_Name: WeaponCategory
+  m_EditorClassIdentifier: Assembly-CSharp::Category
+  itemCategories:
+  - ItemData: {fileID: 11400000, guid: e5ea0b607c80ede4dbdf7b2eed8aa1f4, type: 2}
+    rate: 0.8
+    stock: 1
+    price: 50
+  - ItemData: {fileID: 11400000, guid: 9a7f16978fbf99541b5caedb39bcdf02, type: 2}
+    rate: 0.45
+    stock: 1
+    price: 200
+  - ItemData: {fileID: 11400000, guid: 60370b44ff852244fb999d65cfa6bcac, type: 2}
+    rate: 0.15
+    stock: 1
+    price: 550
+  - ItemData: {fileID: 11400000, guid: ba787279e818d6040a65ccf35a8f8620, type: 2}
+    rate: 0.05
+    stock: 1
+    price: 1445

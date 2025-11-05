@@ -20,7 +20,8 @@ public class BattleState : GameState
             Debug.LogError("[BattleState] WaveController not found in the scene.");
             return;
         }
-
+        
+        ShipController.Instance.MoveToX(ShipController.Instance.gameObject.transform.position.x + 20f, true);
         waveController.SpawnNextWave();
     }
     public override void Update() { }

@@ -142,6 +142,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - EnemyPrefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a4c35ba003c0b44e91638adf97abcde
+    m_Address: WeaponCategory
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShopData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7a53a98db98edaf42ba9ca2546f3ba43
     m_Address: Assets/Data/Startup Task/InitConfigTask.asset
     m_ReadOnly: 0
@@ -177,6 +183,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Material
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8f0c2a1113edcf44bbdd87aa65be4c2
+    m_Address: ChestplateCategory
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShopData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aa9bdcda775f36949b2bc92509a912ff
     m_Address: StartupTaskList

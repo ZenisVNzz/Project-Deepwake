@@ -33,7 +33,7 @@ public class EnvironmentSpawner : MonoBehaviour
         if (stopShip)
         {
             ShipController shipController = ShipController.Instance;
-            shipController.MoveToX(position.x + 1.5f);
+            shipController.MoveToX(position.x + 1.5f, false);
         }
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: ff1207baddb889741829269af6217c36
   m_currentHash:
     serializedVersion: 2
-    Hash: df8b49c13ff62dd906f3447df77842d2
+    Hash: cbf2dde9a015bfc941561de37d50c1eb
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
     - Material
     - ShipAssets
     - MapData
+    - ShopData
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: e502e0a3f9200af40b86405639d86598, type: 2}
