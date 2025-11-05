@@ -89,6 +89,7 @@ public static class LootSpawner
         {
             dataRuntime.SetData(item);
             dataRuntime.SetPickupDelay(pickupDelay);
+            SpriteRenderer spriteRenderer = go.GetComponent<SpriteRenderer>();
         }
         else
         {

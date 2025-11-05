@@ -10,15 +10,20 @@ public class UIInventory : MonoBehaviour, IRuntimeUIService
     [SerializeField] private int slotCount;
 
     private Inventory playerInventory;
+    private IPlayerRuntime playerRuntime;
+    public IPlayerRuntime PlayerRuntime => playerRuntime;
 
     private readonly List<UIInventorySlot> activeSlots = new();
     private readonly Queue<UIInventorySlot> pool = new();
 
-    public void SetData(Inventory playerInventory)
+    public void SetData(IPlayerRuntime playerRuntime)
     {
-        this.playerInventory = playerInventory;
+        playerInventory = playerRuntime.PlayerInventory;
         slotCount = playerInventory.maxSlots;
         playerInventory.OnInventoryChanged += RefreshUI;
+
+        this.playerRuntime = playerRuntime;
+
         Initialize();
     }
 

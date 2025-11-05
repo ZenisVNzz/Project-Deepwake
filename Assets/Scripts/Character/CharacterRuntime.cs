@@ -2,6 +2,17 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+public enum BonusStat
+{
+    Health,
+    AttackPower,
+    Defense,
+    Speed,
+    Stamina,
+    CriticalChance,
+    CriticalDmg
+}
+
 public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 {
     [Header("Character Attributes")]
@@ -80,6 +91,21 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
             StopCoroutine(_hpRegenCoroutine);
         }
         _hpRegenCoroutine = StartCoroutine(RegenHP());
+    }
+
+    public virtual void ApplyBonusStat(BonusStat bonusStat, float amount)
+    {
+        switch (bonusStat)
+        {
+            case BonusStat.Health:
+                bonusMaxHealth = amount; break;
+            case BonusStat.Defense:
+                bonusDefense = amount; break;
+            case BonusStat.Speed:
+                bonusSpeed = amount; break;
+            case BonusStat.AttackPower:
+                bonusAttackPower = amount; break;
+        }
     }
 
     public virtual void TakeDamage(float damage, Vector3 knockback, ICharacterRuntime characterRuntime)

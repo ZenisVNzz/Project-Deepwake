@@ -8,6 +8,7 @@ public class UIInventorySlot : MonoBehaviour
     [SerializeField] private TMP_Text quantityText;
 
     private InventorySlot slot;
+    public InventorySlot Slot => slot;
 
     public void Bind(InventorySlot data)
     {

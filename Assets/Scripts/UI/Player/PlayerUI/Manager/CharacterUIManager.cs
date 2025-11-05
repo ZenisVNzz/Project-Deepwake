@@ -44,8 +44,14 @@ public class CharacterUIManager : MonoBehaviour
 
         if (inventoryPanel != null)
         {
-            inventoryPanel.SetData(player.PlayerInventory);
+            inventoryPanel.SetData(player);
             inventoryPanel.Hide();
+        }
+
+        if (equipmentPanel != null)
+        {
+            equipmentPanel.BindData(player);
+            player.PlayerEquipment.OnEquipmentChanged += OnEquipmentChanged;
         }
 
         if (skillTreePanel != null)
@@ -116,6 +122,12 @@ public class CharacterUIManager : MonoBehaviour
         {
             attributes = runtime.RuntimeAttributes;
         }
+    }
+
+    private void OnEquipmentChanged(Equipment equipment)
+    {
+        equipmentPanel.UpdateSlot(equipment);
+        ApplyAttributesToRuntime();
     }
 
     public void ToggleCharacterMenu()

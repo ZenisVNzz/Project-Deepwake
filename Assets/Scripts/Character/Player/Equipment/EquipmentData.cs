@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public enum EquipmentType { Special, Chestplate, Weapon, Ring, Necklace }
-public enum EquipmentTier { Common, Rare, Epic, Legendary }
 
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
 public class EquipmentData : ItemData

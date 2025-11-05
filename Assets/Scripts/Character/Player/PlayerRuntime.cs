@@ -41,8 +41,11 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     private Inventory playerInventory;
     public Inventory PlayerInventory => playerInventory;
 
-    private CurrencyWallet currencyWallet = new CurrencyWallet();
+    private CurrencyWallet currencyWallet;
     public CurrencyWallet CurrencyWallet => currencyWallet;
+
+    private Equipment equipment;
+    public Equipment PlayerEquipment => equipment;
 
     public void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState, Inventory playerInventory)
     {
@@ -54,6 +57,8 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
         OnStaminaChanged?.Invoke(stamina);
 
         this.playerInventory = playerInventory;
+        currencyWallet = new CurrencyWallet();
+        equipment = new Equipment(this);
     }
 
     public virtual void GainExp(float amount)
@@ -96,6 +101,20 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
             StopCoroutine(_staminaRegenCoroutine);
         }
         _staminaRegenCoroutine = StartCoroutine(RegenSatamina());
+    }
+
+    public override void ApplyBonusStat(BonusStat bonusStat, float amount)
+    {
+        base.ApplyBonusStat(bonusStat, amount);
+        switch (bonusStat)
+        {
+            case BonusStat.Stamina:
+                bonusStamina = amount; break;
+            case BonusStat.CriticalChance:
+                bonusCriticalChance = amount; break;
+            case BonusStat.CriticalDmg:
+                bonusCriticalDamage = amount; break;
+        }
     }
 
     public bool UseStamina(float amount)

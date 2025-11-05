@@ -11,5 +11,11 @@ public interface ICharacterRuntime : IAttackable
 
     event Action<float> OnHPChanged;
 
+    float BonusMaxHealth { get; }
+    float BonusAttackPower { get; }
+    float BonusDefense { get; }
+    float BonusSpeed { get; }
+
     void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState characterState);
+    void ApplyBonusStat(BonusStat bonusStat, float amount);
 }

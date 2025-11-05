@@ -12,6 +12,7 @@ public class ItemDataRuntime : MonoBehaviour
     public void SetData(ItemData data)
     {
         _itemData = data;
+        GetComponent<SpriteRenderer>().sprite = data.icon;
     }
 
     public void SetPickupDelay(float seconds)
