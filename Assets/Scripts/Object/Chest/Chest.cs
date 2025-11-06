@@ -83,7 +83,7 @@ public class Chest : MonoBehaviour
 
         LootSpawner.SpawnByRate(
             table: lootTable,
-            parent: prefabParent != null ? prefabParent : transform,
+            parent: prefabParent != null ? prefabParent.transform.parent : transform,
             getCenter: GetCenter,
             radius: spawnRadius,
             pickupDelay: pickupDelay,

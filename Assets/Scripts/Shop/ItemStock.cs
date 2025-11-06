@@ -68,5 +68,6 @@ public class ItemStock : MonoBehaviour
     private void OnSelected()
     {
         shop.SelectItem(this);
+        shop.ItemDetail.ToggleDetail();
     }
 }

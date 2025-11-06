@@ -200,6 +200,10 @@ MonoBehaviour:
     m_Localized: Legendary
     m_Metadata:
       m_Items: []
+  - m_Id: 14984984657584128
+    m_Localized: Rarity
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

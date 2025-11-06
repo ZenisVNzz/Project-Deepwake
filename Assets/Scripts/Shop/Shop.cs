@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private Button buyButton;
+    [SerializeField] private ItemDetail itemDetail;
+    public ItemDetail ItemDetail => itemDetail;
 
     private ShopCategory shopCategory;
     public ShopCategory ShopCategory => shopCategory;
@@ -25,6 +27,8 @@ public class Shop : MonoBehaviour
     public List<ItemCategory> CurrentOtherInShop => currentOtherInShop;
 
     private ItemStock currentItemSelected;
+    public ItemStock CurrentItemSelected => currentItemSelected;
+
     private ShopCategories currentCategory;
     public Action<ItemStock> OnCurrentItemChanged;
     public Action OnItemBuyed;
@@ -49,7 +53,6 @@ public class Shop : MonoBehaviour
         currentItemSelected = itemStock;
         OnCurrentItemChanged?.Invoke(currentItemSelected);
 
-
         Image buttonImage = buyButton.GetComponent<Image>();
         if (itemStock != null)
         {
@@ -66,6 +69,7 @@ public class Shop : MonoBehaviour
     public void SetCurrentCategory(ShopCategories category)
     {
         currentCategory = category;
+        ItemDetail.ToggleDetail();
     }
 
     private void OnBuyClicked()

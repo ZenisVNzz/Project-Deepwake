@@ -195,6 +195,10 @@ MonoBehaviour:
     m_Key: UI_Legendary
     m_Metadata:
       m_Items: []
+  - m_Id: 14984984657584128
+    m_Key: UI_Rarity
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

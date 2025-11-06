@@ -1,6 +1,7 @@
 using NUnit.Framework.Interfaces;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 public class ItemDetail : MonoBehaviour
@@ -9,7 +10,12 @@ public class ItemDetail : MonoBehaviour
     public GameObject DetailPanel => detailPanel;
     private bool isVisible => detailPanel.activeSelf;
 
+    [SerializeField] private Shop shopData;
+    [SerializeField] private Button button;
+
     [SerializeField] private LocalizationText itemName;
+    [SerializeField] private LocalizationText itemRarity;
+    [SerializeField] private LocalizationText attributeText;
     [SerializeField] private Image statIcon;
     [SerializeField] private TextMeshProUGUI statIndex;
     [SerializeField] private LocalizationText description;
@@ -29,13 +35,32 @@ public class ItemDetail : MonoBehaviour
 
     private void Start()
     {
-        Button button = GetComponent<Button>();
-        button.onClick.AddListener(ToggleDetail);
+        if (button == null)
+        {
+            Button button = GetComponent<Button>();
+            if (button != null)
+            {
+                button.onClick.AddListener(ToggleDetail);
+            }
+        }  
     }
 
-    private void ToggleDetail()
+    public void ToggleDetail()
     {
-        if (GetComponent<UIInventorySlot>() != null)
+        if (shopData != null)
+        {
+            if (shopData.CurrentItemSelected == null)
+            {
+                detailPanel.SetActive(false);      
+            }
+            else
+            {
+                detailPanel.SetActive(true);
+                Initialize();
+            }
+            return;
+        }
+        else if (GetComponent<UIInventorySlot>() != null)
         {
             if (GetComponent<UIInventorySlot>().Slot.item == null)
                 return;
@@ -55,16 +80,61 @@ public class ItemDetail : MonoBehaviour
 
     private void Initialize()
     {
-        ItemData itemData = GetComponent<UIInventorySlot>() ? GetComponent<UIInventorySlot>().Slot.item : GetComponent<UIEquipmentSlot>().EquipmentData;
-        itemName.ChangeText(itemData.itemName);
-        itemName.GetComponent<TextMeshProUGUI>().colorGradientPreset = itemData.itemTier switch
+        ItemData itemData = new ItemData();
+        if (shopData != null)
         {
-            ItemTier.Common => commonColor,
-            ItemTier.Rare => rareColor,
-            ItemTier.Epic => epicColor,
-            ItemTier.Legendary => legendaryColor,
-            _ => commonColor,
-        };
+            itemData = shopData.CurrentItemSelected.ItemData.ItemData;  
+        }
+        else
+        {
+            itemData = GetComponent<UIInventorySlot>() ? GetComponent<UIInventorySlot>().Slot.item : GetComponent<UIEquipmentSlot>().EquipmentData;
+        }
+
+        itemName.ChangeText(itemData.itemName);
+
+        if (shopData == null)
+        {
+            itemName.GetComponent<TextMeshProUGUI>().colorGradientPreset = itemData.itemTier switch
+            {
+                ItemTier.Common => commonColor,
+                ItemTier.Rare => rareColor,
+                ItemTier.Epic => epicColor,
+                ItemTier.Legendary => legendaryColor,
+                _ => commonColor,
+            };
+        }
+        else
+        {
+            if (itemData is EquipmentData equipmentData)
+            {
+                if (equipmentData.equipmentType == EquipmentType.Weapon)
+                {
+                    attributeText.ChangeText(new LocalizedString("UI", "UI_Attack"));
+                }
+                else
+                {
+                    attributeText.ChangeText(new LocalizedString("UI", "UI_Defense"));
+                }
+            }
+
+            itemRarity.ChangeText(itemData.itemTier switch
+            {
+                ItemTier.Common => new LocalizedString("UI", "UI_Common"),
+                ItemTier.Rare => new LocalizedString("UI", "UI_Rare"),
+                ItemTier.Epic => new LocalizedString("UI", "UI_Epic"),
+                ItemTier.Legendary => new LocalizedString("UI", "UI_Legendary"),
+                _ => new LocalizedString("UI", "UI_Common"),
+            });
+            itemRarity.GetComponent<TextMeshProUGUI>().colorGradientPreset = itemData.itemTier switch
+            {
+                ItemTier.Common => commonColor,
+                ItemTier.Rare => rareColor,
+                ItemTier.Epic => epicColor,
+                ItemTier.Legendary => legendaryColor,
+                _ => commonColor,
+            };
+        }
+        
         description.ChangeText(itemData.itemDescription);
 
         if (itemData.itemType == ItemType.Material)
