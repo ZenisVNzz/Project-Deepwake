@@ -179,6 +179,22 @@ MonoBehaviour:
     m_Key: UI_Drop
     m_Metadata:
       m_Items: []
+  - m_Id: 14741817152692224
+    m_Key: UI_Common
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14741929769754624
+    m_Key: UI_Rare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14741986334138368
+    m_Key: UI_Epic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14742038188318720
+    m_Key: UI_Legendary
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

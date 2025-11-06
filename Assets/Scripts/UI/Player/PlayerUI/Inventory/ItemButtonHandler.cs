@@ -9,8 +9,12 @@ public class ItemButtonHandler : MonoBehaviour
     [SerializeField] private Button DropButton;
 
     private UIInventory inventory;
-    private UIInventorySlot currentSlot;
-    private UIEquipmentSlot equipmentSlot;
+    private UIEquipmentPanel equipmentPanel;
+
+    [SerializeField] private UIInventorySlot currentSlot;
+    [SerializeField] private UIEquipmentSlot equipmentSlot;
+
+    private IPlayerRuntime playerRuntime;
 
     private void Start()
     {
@@ -32,6 +36,16 @@ public class ItemButtonHandler : MonoBehaviour
         }
 
         inventory = GetComponentInParent<UIInventory>();
+        if (inventory == null)
+        {
+            equipmentPanel = GetComponentInParent<UIEquipmentPanel>();
+            playerRuntime = equipmentPanel.PlayerRuntime;
+        }
+        else
+        {
+            playerRuntime = inventory.PlayerRuntime;
+        }
+
         if (GetComponentInParent<UIInventorySlot>() != null )
         {
             currentSlot = GetComponentInParent<UIInventorySlot>();
@@ -44,22 +58,22 @@ public class ItemButtonHandler : MonoBehaviour
 
     private void OnEquipClicked()
     {
-        inventory.PlayerRuntime.PlayerEquipment.Equip(currentSlot.Slot.item);
+        playerRuntime.PlayerEquipment.Equip(currentSlot.Slot.item);
         if (currentSlot != null)
         {
-            inventory.PlayerRuntime.PlayerInventory.RemoveItem(currentSlot.Slot.item, 1);
-            currentSlot.transform.GetComponent<ItemDetail>().DetailPanel.SetActive(false);
+            playerRuntime.PlayerInventory.RemoveItem(currentSlot.Slot.item, 1);
+            currentSlot.GetComponent<ItemDetail>().DetailPanel.SetActive(false);
         }
     }
 
     private void OnUnEquipClicked()
-    {
-        inventory.PlayerRuntime.PlayerEquipment.Unequip(currentSlot.Slot.item);
+    {    
         if (equipmentSlot != null)
         {
+            playerRuntime.PlayerInventory.AddItem(equipmentSlot.EquipmentData, 1);
+            playerRuntime.PlayerEquipment.Unequip(equipmentSlot.EquipmentData);
             equipmentSlot.SetEquipmentData(null);
-            inventory.PlayerRuntime.PlayerInventory.AddItem(equipmentSlot.EquipmentData, 1);
-            equipmentSlot.transform.GetComponent<ItemDetail>().DetailPanel.SetActive(false);
+            equipmentSlot.GetComponent<ItemDetail>().DetailPanel.SetActive(false);
         }
     }
 

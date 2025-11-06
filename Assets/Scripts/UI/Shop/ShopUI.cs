@@ -16,6 +16,8 @@ public class ShopUI : MonoBehaviour, IRuntimeUIService
     [SerializeField] private Button otherCategoryButton;
 
     [SerializeField] private Shop shop;
+    public Shop Shop => shop;
+
     [SerializeField] private GameObject itemStockPrefab;
     [SerializeField] private Transform itemStockContainer;
 
@@ -71,27 +73,15 @@ public class ShopUI : MonoBehaviour, IRuntimeUIService
             Destroy(child.gameObject);
         }
 
-        Category categoryToChange = new Category();
+        List<ItemCategory> itemToAdd = new();
         switch  (category)
         {
             case ShopCategories.Weapon:
-                categoryToChange = shop.ShopCategory.weaponCategoryData;
+                itemToAdd = shop.CurrentWeaponInShop;
                 break;
             case ShopCategories.Chestplate:
-                categoryToChange = shop.ShopCategory.chestplateCategoryData;
+                itemToAdd = shop.CurrentChestplateInShop;
                 break;
-        }
-
-        List<ItemCategory> itemToAdd = new();
-        int count = categoryToChange.itemCategories.Count;
-
-        for (int i = 0;  i < count; i++)
-        {
-            float randomIndex = Random.Range(0f, 1f);
-            if (randomIndex <= categoryToChange.itemCategories[i].rate)
-            {
-                itemToAdd.Add(categoryToChange.itemCategories[i]);
-            }
         }
 
         foreach (ItemCategory itemCategory in itemToAdd)

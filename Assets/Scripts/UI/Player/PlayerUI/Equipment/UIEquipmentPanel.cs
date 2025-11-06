@@ -10,6 +10,7 @@ public class UIEquipmentPanel : MonoBehaviour
     [SerializeField] private Image necklaceIcon;
 
     private IPlayerRuntime playerRuntime;
+    public IPlayerRuntime PlayerRuntime => playerRuntime;
 
     public void BindData(IPlayerRuntime runtime)
     {

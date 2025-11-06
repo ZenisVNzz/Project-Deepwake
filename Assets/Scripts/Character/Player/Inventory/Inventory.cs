@@ -17,6 +17,12 @@ public class Inventory
 
     public bool AddItem(ItemData newItem, int amount = 1)
     {
+        if (newItem == null)
+        {
+            Debug.LogWarning("Attempted to add null item to inventory.");
+            return false;
+        }
+
         foreach (var slot in slots)
         {
             if (!slot.IsEmpty && slot.item == newItem && slot.quantity < newItem.maxStack)

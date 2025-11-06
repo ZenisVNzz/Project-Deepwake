@@ -403,13 +403,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -564,13 +564,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -969,13 +969,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1523,6 +1523,8 @@ MonoBehaviour:
   UnEquipButton: {fileID: 2070665228702776327}
   UseButton: {fileID: 4709514582174630895}
   DropButton: {fileID: 9080352451353067792}
+  currentSlot: {fileID: 0}
+  equipmentSlot: {fileID: 8611268379982759492}
 --- !u!1 &6105619383737630244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,6 +2096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d54b640827d70749abbc76e9662a7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIEquipmentSlot
+  equipmentData: {fileID: 0}
   blankIcon: {fileID: 6991520944403353579}
   itemIcon: {fileID: 5203291186176391016}
 --- !u!114 &5272975072413164373
@@ -2110,7 +2113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemDetail
   detailPanel: {fileID: 516277448702018890}
   itemName: {fileID: 3996092926994647631}
-  statIcon: {fileID: 6423831885748861325}
+  statIcon: {fileID: 6982628962324810110}
   statIndex: {fileID: 8795272010006091167}
   description: {fileID: 1358982799943535718}
   EquipButton: {fileID: 0}

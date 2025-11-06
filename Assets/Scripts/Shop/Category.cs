@@ -16,7 +16,7 @@ public enum ShopCategories
 [CreateAssetMenu(fileName = "NewCategory", menuName = "Data/Shop/Category")]
 public class Category : ScriptableObject
 {
-    public List<ItemCategory> itemCategories;
+    public List<ItemCategory> itemCategories = new();
 }
 
 [Serializable]

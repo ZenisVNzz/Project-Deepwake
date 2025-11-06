@@ -184,6 +184,22 @@ MonoBehaviour:
     m_Localized: Drop
     m_Metadata:
       m_Items: []
+  - m_Id: 14741817152692224
+    m_Localized: Common
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14741929769754624
+    m_Localized: Rare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14741986334138368
+    m_Localized: Epic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14742038188318720
+    m_Localized: Legendary
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

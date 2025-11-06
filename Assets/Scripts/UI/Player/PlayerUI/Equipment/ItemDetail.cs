@@ -7,7 +7,7 @@ public class ItemDetail : MonoBehaviour
 {
     [SerializeField] private GameObject detailPanel;
     public GameObject DetailPanel => detailPanel;
-    private bool isVisible = false;
+    private bool isVisible => detailPanel.activeSelf;
 
     [SerializeField] private LocalizationText itemName;
     [SerializeField] private Image statIcon;
@@ -35,10 +35,18 @@ public class ItemDetail : MonoBehaviour
 
     private void ToggleDetail()
     {
-        if (GetComponent<UIInventorySlot>().Slot.item == null && GetComponent<UIEquipmentSlot>().EquipmentData == null) return;
+        if (GetComponent<UIInventorySlot>() != null)
+        {
+            if (GetComponent<UIInventorySlot>().Slot.item == null)
+                return;
+        }
+        else if (GetComponent<UIEquipmentSlot>() != null)
+        {
+            if (GetComponent<UIEquipmentSlot>().EquipmentData == null)
+                return;
+        }
 
-        isVisible = !isVisible;
-        detailPanel.SetActive(isVisible);
+        detailPanel.SetActive(!isVisible);
         if (detailPanel.activeSelf)
         {
             Initialize();
@@ -47,7 +55,7 @@ public class ItemDetail : MonoBehaviour
 
     private void Initialize()
     {
-        ItemData itemData = GetComponent<UIInventorySlot>().Slot.item ? GetComponent<UIInventorySlot>().Slot.item : GetComponent<UIEquipmentSlot>().EquipmentData;
+        ItemData itemData = GetComponent<UIInventorySlot>() ? GetComponent<UIInventorySlot>().Slot.item : GetComponent<UIEquipmentSlot>().EquipmentData;
         itemName.ChangeText(itemData.itemName);
         itemName.GetComponent<TextMeshProUGUI>().colorGradientPreset = itemData.itemTier switch
         {
@@ -61,7 +69,7 @@ public class ItemDetail : MonoBehaviour
 
         if (itemData.itemType == ItemType.Material)
         {
-            statIcon.enabled = false;
+            statIcon.transform.parent.gameObject.SetActive(false);
             statIndex.enabled = false;
             EquipButton.SetActive(false);
             UseButton.SetActive(false);
@@ -69,7 +77,7 @@ public class ItemDetail : MonoBehaviour
         }
         else if (itemData.itemType == ItemType.Consumable)
         {
-            statIcon.enabled = false;
+            statIcon.transform.parent.gameObject.SetActive(true);
             statIndex.enabled = false;
             EquipButton.SetActive(false);
             UseButton.SetActive(true);
@@ -91,7 +99,7 @@ public class ItemDetail : MonoBehaviour
                 }
             }
 
-            statIcon.enabled = true;
+            statIcon.transform.parent.gameObject.SetActive(true);
             statIndex.enabled = true;
             if (EquipButton != null)
             {

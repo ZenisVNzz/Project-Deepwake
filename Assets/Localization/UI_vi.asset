@@ -185,6 +185,22 @@ MonoBehaviour:
     m_Localized: "S\u1EED d\u1EE5ng"
     m_Metadata:
       m_Items: []
+  - m_Id: 14741817152692224
+    m_Localized: "Th\u01B0\u1EDDng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14741929769754624
+    m_Localized: "Hi\u1EBFm"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14741986334138368
+    m_Localized: "S\u1EED thi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14742038188318720
+    m_Localized: "Huy\u1EC3n tho\u1EA1i"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
