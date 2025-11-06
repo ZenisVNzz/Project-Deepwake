@@ -29,20 +29,45 @@ public class Equipment
         switch (equip.equipmentType)
         {
             case EquipmentType.Weapon:
+                if (Weapon != null)
+                {
+                    playerRuntime.PlayerInventory.AddItem(Weapon, 1);
+                }
+
                 Weapon = equip;
                 break;
 
             case EquipmentType.Special:
+                if (Special != null)
+                {
+                    playerRuntime.PlayerInventory.AddItem(Special, 1);
+                }
+
                 Special = equip;
                 break;
             case EquipmentType.Chestplate:
+                if (Chestplate != null)
+                {
+                    playerRuntime.PlayerInventory.AddItem(Chestplate, 1);
+                }
+
                 Chestplate = equip;
                 break;
 
             case EquipmentType.Ring:
+                if (Ring != null)
+                {
+                    playerRuntime.PlayerInventory.AddItem(Ring, 1);
+                }
+
                 Ring = equip;
                 break;
             case EquipmentType.Necklace:
+                if (Necklace != null)
+                {
+                    playerRuntime.PlayerInventory.AddItem(Necklace, 1);
+                }
+
                 Necklace = equip;
                 break;
         }

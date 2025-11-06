@@ -1,9 +1,13 @@
-using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Shop : MonoBehaviour
 {
+    [SerializeField] private Button buyButton;
+
     private ShopCategory shopCategory;
     public ShopCategory ShopCategory => shopCategory;
 
@@ -20,10 +24,109 @@ public class Shop : MonoBehaviour
     public List<ItemCategory> CurrentSpecialInShop => currentSpecialInShop;
     public List<ItemCategory> CurrentOtherInShop => currentOtherInShop;
 
+    private ItemStock currentItemSelected;
+    private ShopCategories currentCategory;
+    public Action<ItemStock> OnCurrentItemChanged;
+    public Action OnItemBuyed;
+
+    private IPlayerRuntime playerRuntime;
+
+    public void BindPlayer(IPlayerRuntime data)
+    {
+        playerRuntime = data;
+    }
+
     private void Awake()
     {
         shopCategory = new ShopCategory();
         shopCategory.Init();
+
+        buyButton.onClick.AddListener(OnBuyClicked);
+    }
+
+    public void SelectItem(ItemStock itemStock)
+    {
+        currentItemSelected = itemStock;
+        OnCurrentItemChanged?.Invoke(currentItemSelected);
+
+
+        Image buttonImage = buyButton.GetComponent<Image>();
+        if (itemStock != null)
+        {
+            buyButton.interactable = true;
+            buttonImage.color = Color.white;
+        }
+        else
+        {
+            buyButton.interactable = false;
+            buttonImage.color = Color.gray;
+        }
+    }
+
+    public void SetCurrentCategory(ShopCategories category)
+    {
+        currentCategory = category;
+    }
+
+    private void OnBuyClicked()
+    {
+        Inventory playerInventory = playerRuntime.PlayerInventory;
+        if (playerInventory != null)
+        {
+            if (currentItemSelected != null)
+            {
+                ItemCategory itemData = currentItemSelected.ItemData;
+                if (itemData != null)
+                {
+                    int price = itemData.price;
+                    if (playerRuntime.CurrencyWallet.TrySpend(itemData.currencyType, price, true))
+                    {
+                        bool added = playerInventory.AddItem(itemData.ItemData, 1);
+                        if (added)
+                        {
+                            Debug.Log($"Purchased item {itemData.ItemData.itemName} for {price} {itemData.currencyType}.");
+                            itemData.stock--;
+                            
+                            if (itemData.stock <= 0)
+                            {
+                                switch (currentCategory)
+                                {
+                                    case ShopCategories.Weapon:
+                                        currentWeaponInShop.Remove(itemData);
+                                        break;
+                                    case ShopCategories.Chestplate:
+                                        currentChestplateInShop.Remove(itemData);
+                                        break;
+                                    case ShopCategories.Ring:
+                                        currentRingInShop.Remove(itemData);
+                                        break;
+                                    case ShopCategories.Necklace:
+                                        currentNecklaceInShop.Remove(itemData);
+                                        break;
+                                    case ShopCategories.Special:
+                                        currentSpecialInShop.Remove(itemData);
+                                        break;
+                                    case ShopCategories.Other:
+                                        currentOtherInShop.Remove(itemData);
+                                        break;
+                                }
+                            }
+
+                            OnItemBuyed?.Invoke();
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Could not add item to inventory. Purchase failed.");
+                            playerRuntime.CurrencyWallet.Add(itemData.currencyType, price, true);
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Not enough currency to purchase item.");
+                    }
+                }
+            }
+        }
     }
 
     public void InitCategory()

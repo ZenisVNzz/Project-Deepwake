@@ -22,6 +22,7 @@ public class ShopUI : MonoBehaviour, IRuntimeUIService
     [SerializeField] private Transform itemStockContainer;
 
     private IPlayerRuntime playerRuntime;
+    private ShopCategories currentCategory;
 
     private void Awake()
     {
@@ -37,6 +38,8 @@ public class ShopUI : MonoBehaviour, IRuntimeUIService
     public void Initialize()
     {
         CurrencyUI.Bind(playerRuntime);
+        shop.BindPlayer(playerRuntime);
+        shop.OnItemBuyed += UpdateUI;
     }
 
     public void Show()
@@ -58,6 +61,7 @@ public class ShopUI : MonoBehaviour, IRuntimeUIService
 
     public void UpdateUI()
     {
+        ChangeCategory(currentCategory);
     }
 
     public void BindData(IPlayerRuntime data)
@@ -68,6 +72,9 @@ public class ShopUI : MonoBehaviour, IRuntimeUIService
 
     public void ChangeCategory(ShopCategories category)
     {
+        shop.SelectItem(null);
+        shop.SetCurrentCategory(category);
+
         foreach (Transform child in itemStockContainer)
         {
             Destroy(child.gameObject);
@@ -88,7 +95,9 @@ public class ShopUI : MonoBehaviour, IRuntimeUIService
         {
             GameObject itemStockGO = Instantiate(itemStockPrefab, itemStockContainer);
             ItemStock itemStock = itemStockGO.GetComponent<ItemStock>();
-            itemStock.SetData(itemCategory);
+            itemStock.SetData(itemCategory, shop);
         }
+
+        currentCategory = category;
     }
 }

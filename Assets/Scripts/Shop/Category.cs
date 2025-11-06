@@ -26,4 +26,5 @@ public class ItemCategory
     public float rate;
     public int stock;
     public int price;
+    public CurrencyType currencyType;
 }

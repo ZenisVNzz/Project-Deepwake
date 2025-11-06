@@ -55,13 +55,13 @@ public class WeaponDetail : MonoBehaviour
 
             weaponNameText.transform.gameObject.SetActive(true);
             weaponTierText.transform.gameObject.SetActive(true);
-            weaponDamageText.transform.gameObject.SetActive(true);
+            weaponDamageText.transform.parent.gameObject.SetActive(true);
         }
         else
         {
             weaponNameText.transform.gameObject.SetActive(false);
             weaponTierText.transform.gameObject.SetActive(false);
-            weaponDamageText.transform.gameObject.SetActive(false);
+            weaponDamageText.transform.parent.gameObject.SetActive(false);
         }
     }
 }
