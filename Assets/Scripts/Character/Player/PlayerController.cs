@@ -1,8 +1,4 @@
-using DG.Tweening;
-using Mirror.BouncyCastle.Crypto.Signers;
 using System.Collections;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,7 +15,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private InputSystem_Actions inputHandler;
     private IInteractionHandler interactionHandler;
-    private CharacterData characterData;
+    private IPlayerRuntime playerRuntime;
 
     private SpriteRenderer spriteRenderer;
     private Collider2D cd2D;
@@ -27,6 +23,13 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private PlayerModifier playerModifier;
     public PlayerModifier PlayerModifier => playerModifier;
+
+    private bool isMoveOnSlope = false;
+
+    private CharacterUIManager _uiManager;
+
+    private bool isDead = false;
+    public bool IsDead => isDead;
 
     public void Initialize
     (
@@ -38,7 +41,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
       IAnimationHandler animation,
       IStateHandler stateHandler,
       InputSystem_Actions input,
-      CharacterData characterData
+      IPlayerRuntime playerRuntime
     )
     {
         this.playerMovement = movement;
@@ -49,7 +52,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         this.animationHandler = animation;
         this.stateHandler = stateHandler;
         this.inputHandler = input;
-        this.characterData = characterData;
+        this.playerRuntime = playerRuntime;
 
         inputHandler.Player.Enable();
         inputHandler.Player.Attack.performed += ctx => OnAttack();
@@ -57,6 +60,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
         inputHandler.Player.Move.canceled += OnMove;
         inputHandler.Player.Dash.performed += ctx => OnDash();
         inputHandler.Player.Interact.performed += ctx => OnInteract();
+        inputHandler.Player.OpenInventory.performed += ctx => OnOpenCharMenu();
+        inputHandler.Player.OpenOptions.performed += ctx => OnOpenGameMenu();
 
         interactionHandler = GetComponentInChildren<InteractionHandler>();
         playerModifier = new PlayerModifier(directionHandler);
@@ -66,6 +71,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         hurtBox = transform.Find("HurtBox").GetComponent<Collider2D>();
         stateHandler.Register("OnDeath", OnDead);
 
+        _uiManager = FindAnyObjectByType<CharacterUIManager>();
     }
 
     private void OnInteract()
@@ -73,11 +79,27 @@ public class PlayerController : MonoBehaviour, IPlayerController
         interactionHandler.Interact();    
     }
 
+    private void OnOpenCharMenu()
+    {
+        if (_uiManager != null)
+        {
+            _uiManager.ToggleCharacterMenu();
+        }
+    }
+
+    private void OnOpenGameMenu()
+    {
+        if (_uiManager != null)
+        {
+            _uiManager.ToggleOptionsMenu();
+        }
+    }
+
     private void OnAttack()
     {
         if (playerModifier.CanAttack)
         {
-            playerAttack.Attack(characterData.AttackPower);
+            playerAttack.Attack(playerRuntime.TotalAttack);
         }   
     }
 
@@ -102,6 +124,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private void OnDead()
     {
         StartCoroutine(DeathProcess());
+        isDead = true;
     }
 
     private IEnumerator DeathProcess()
@@ -116,12 +139,17 @@ public class PlayerController : MonoBehaviour, IPlayerController
         animationHandler.UpdateAnimation();   
     }
 
+    public void MoveOnSlope(bool moveOnSlope)
+    {
+        isMoveOnSlope = moveOnSlope;
+    }
+
     Vector2 playerInput;
     void FixedUpdate()
     {
         if (!playerModifier.CanMove) playerInput = Vector2.zero;
 
-        playerMovement.Move(playerInput, characterData.MoveSpeed);
+        playerMovement.Move(playerInput, playerRuntime.TotalSpeed, isMoveOnSlope);
         stateHandler.UpdateState();
     }
 }

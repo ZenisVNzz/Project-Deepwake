@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ff1207baddb889741829269af6217c36
   m_SerializeEntries:
+  - m_GUID: 0578ccc092b39644dbd374737e5824d0
+    m_Address: NodeTypeList
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 066cefe94252b384fbad449ace9d6809
     m_Address: Player
     m_ReadOnly: 0
@@ -58,11 +64,23 @@ MonoBehaviour:
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26fa9196513dca54fa98b250c7b0ffd4
+    m_Address: BossNode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2db960babd764e1428ab689e7e1dda48
     m_Address: PlayFabClient
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2dfe47f5b8182b34c9d4f8f7161984db
+    m_Address: ChestPrefabList
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Prefab
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3138bb231e946134f868987a05e4062c
     m_Address: UI_Loading
@@ -124,16 +142,34 @@ MonoBehaviour:
     m_SerializedLabels:
     - EnemyPrefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a4c35ba003c0b44e91638adf97abcde
+    m_Address: WeaponCategory
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShopData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7a53a98db98edaf42ba9ca2546f3ba43
     m_Address: Assets/Data/Startup Task/InitConfigTask.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93a776db3a3493142bdda2ad1ef9f666
+    m_Address: EnvironmentList
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Prefab
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 943c9d1c8e9d1a148842b991cb1f90fa
     m_Address: AssetReferencesList
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9861473d96a49ad469914e0c3189bf72
+    m_Address: SeaNode
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a33d88e093ea3b54da2efae9eae1258f
     m_Address: PopupContainer
@@ -147,6 +183,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Material
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8f0c2a1113edcf44bbdd87aa65be4c2
+    m_Address: ChestplateCategory
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShopData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aa9bdcda775f36949b2bc92509a912ff
     m_Address: StartupTaskList

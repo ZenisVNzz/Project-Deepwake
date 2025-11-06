@@ -36,7 +36,32 @@ public class FloatingTextService : IFloatingTextService
         _activeUI.Add(instanceID, uiGO);
     }
 
-    public void Create(string prefabID, string instanceID, LocalizedString content) => Create(prefabID, instanceID, content.GetLocalizedString(), new Vector3(0, 0));
+    public void Create(string prefabID, string instanceID, LocalizedString content, Vector3 position, bool Moving)
+    {
+        if (canvas == null)
+        {
+            CanvasCreator canvasCreator = new CanvasCreator();
+            canvas = canvasCreator.Create(true);
+        }
+
+        GameObject uiGO = GameObject.Instantiate(_uiPrefab[prefabID], canvas.transform);
+        uiGO.transform.position = position;
+
+        if (uiGO.GetComponent<FloatingText>())
+        {
+            uiGO.GetComponent<FloatingText>().SetText(content.GetLocalizedString());
+        }
+
+        if (Moving)
+        {
+            uiGO.AddComponent<ObjectMove>();
+        }
+
+        _activeUI.Add(instanceID, uiGO);
+    }
+
+    public void Create(string prefabID, string instanceID, LocalizedString content, Vector3 position) => Create(prefabID, instanceID, content.GetLocalizedString(), position);
+    public void Create(string prefabID, string instanceID, LocalizedString content) => Create(prefabID, instanceID, content.GetLocalizedString(), Vector3.zero);
 
     public void Show(string instanceID)
     {

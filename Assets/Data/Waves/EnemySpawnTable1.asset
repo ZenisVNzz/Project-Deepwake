@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EnemySpawnTable1
   m_EditorClassIdentifier: 
   characterData:
-  - {fileID: 11400000, guid: 098d9d2e804edfc42baf230e7d2efea1, type: 2}
-  minSpawn: 6
-  maxSpawn: 8
+  - {fileID: 11400000, guid: 6dadd3ad7a857fb4aac599f4b75f2853, type: 2}
+  minSpawn: 3
+  maxSpawn: 5

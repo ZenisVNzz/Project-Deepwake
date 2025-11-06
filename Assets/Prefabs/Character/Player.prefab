@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 2880308357983605153}
   - component: {fileID: 8266354149152324300}
   - component: {fileID: 8054341816088807579}
+  - component: {fileID: 7350098737542870374}
   - component: {fileID: 2670889412528637174}
+  - component: {fileID: 2614238347761736227}
   - component: {fileID: 5220222964460864711}
   m_Layer: 8
   m_Name: Player
@@ -61,6 +63,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,6 +86,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
@@ -145,6 +150,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7350098737542870374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abc96583af5aa04ea11bf305bf72bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCheat
 --- !u!114 &2670889412528637174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +175,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterData: {fileID: 11400000, guid: 1f0f23958af3ab5499b66085211e1a3a, type: 2}
+--- !u!114 &2614238347761736227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc179be6009eaf47a02b953a1dae394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterUIManager
+  CharMenu: {fileID: 0}
+  OptionsMenu: {fileID: 0}
+  statusBar: {fileID: 0}
+  statsPanel: {fileID: 0}
+  attributesPanel: {fileID: 0}
+  inventoryPanel: {fileID: 0}
+  equipmentPanel: {fileID: 0}
+  skillTreePanel: {fileID: 0}
 --- !u!114 &5220222964460864711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +420,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -404,6 +443,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1

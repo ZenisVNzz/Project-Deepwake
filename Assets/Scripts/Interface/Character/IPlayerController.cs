@@ -3,6 +3,9 @@ using UnityEngine;
 public interface IPlayerController
 {
     public PlayerModifier PlayerModifier { get; }
+    public bool IsDead { get; }
+
+    public void MoveOnSlope(bool moveOnSlope);
 
     void Initialize
     (
@@ -14,6 +17,6 @@ public interface IPlayerController
       IAnimationHandler animation,
       IStateHandler stateHandler,
       InputSystem_Actions input,
-      CharacterData characterData
+      IPlayerRuntime playerRuntime
     );
 }

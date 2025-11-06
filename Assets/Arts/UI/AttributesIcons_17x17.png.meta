@@ -49,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -87,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -144,7 +144,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 17
-        height: 16
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +163,10 @@ TextureImporter:
       name: AttributesIcons_17x17_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 5
-        width: 13
-        height: 12
+        x: 17
+        y: 0
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,10 +185,10 @@ TextureImporter:
       name: AttributesIcons_17x17_2
       rect:
         serializedVersion: 2
-        x: 20
+        x: 34
         y: 0
-        width: 11
-        height: 6
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,10 +207,10 @@ TextureImporter:
       name: AttributesIcons_17x17_3
       rect:
         serializedVersion: 2
-        x: 33
+        x: 51
         y: 0
-        width: 19
-        height: 16
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,7 +229,7 @@ TextureImporter:
       name: AttributesIcons_17x17_4
       rect:
         serializedVersion: 2
-        x: 51
+        x: 68
         y: 0
         width: 17
         height: 17
@@ -239,10 +239,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e6ef1594a06826860800000000000000
-      internalID: 7521721706400054894
+      spriteID: 74b6cded2839cdd43bb47dcf76e8f227
+      internalID: -381482215
       vertices: []
       indices: 
       edges: []
@@ -251,7 +251,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 89006322608275b4980a4ffb8a095ed4
     internalID: 0
     vertices: []
     indices: 
@@ -259,13 +259,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":17.0,"y":17.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       AttributesIcons_17x17_0: 3667972855911813075
       AttributesIcons_17x17_1: -6218800866747058548
       AttributesIcons_17x17_2: -3259120870623028467
       AttributesIcons_17x17_3: 3989928707797667292
-      AttributesIcons_17x17_4: 7521721706400054894
+      AttributesIcons_17x17_4: -381482215
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

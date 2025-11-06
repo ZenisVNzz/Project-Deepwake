@@ -2,6 +2,8 @@ using UnityEngine;
 
 public interface IEnemyController
 {
+    public bool IsDead { get; }
+
     void Initialize
     (
       IAIMove movement,
@@ -9,6 +11,6 @@ public interface IEnemyController
       IDamageDealer attack,
       IAnimationHandler animation,
       IStateHandler stateHandler,
-      CharacterData characterData
+      ICharacterRuntime enemyRuntime
     );
 }

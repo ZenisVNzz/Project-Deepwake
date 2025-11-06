@@ -480,7 +480,7 @@ MonoBehaviour:
   - {fileID: 1138150033}
   _preloadKeys:
   - Startup
-  - Ship
+  - InGame
   _loadSceneOnLoadDone: Game
 --- !u!114 &1138150032
 MonoBehaviour:

@@ -60,6 +60,150 @@ MonoBehaviour:
     m_Localized: No internet connection. Please check your internet and try again.
     m_Metadata:
       m_Items: []
+  - m_Id: 9501003866628096
+    m_Localized: Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504034343542784
+    m_Localized: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504087816724480
+    m_Localized: Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504157790298112
+    m_Localized: Defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504255362392064
+    m_Localized: Crit chance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504405044518912
+    m_Localized: Crit damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9504463672500224
+    m_Localized: Move speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9510799558762496
+    m_Localized: Attributes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9540071820288000
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9558918874980352
+    m_Localized: Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9654420828250112
+    m_Localized: VIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9654455372537856
+    m_Localized: DEF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9654482245443584
+    m_Localized: STR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9654517200773120
+    m_Localized: LUCK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9659254197379072
+    m_Localized: Equipment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9667599331418112
+    m_Localized: Inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9863147753758720
+    m_Localized: Skill Tree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10620581669691392
+    m_Localized: World map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10824698933469184
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10824761369878528
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10824791644364800
+    m_Localized: Return to hub
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10824831116959744
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12036607032614912
+    m_Localized: Stamina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13179594760445952
+    m_Localized: Level Up!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14007818138607616
+    m_Localized: Mystery Merchant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14014629763801088
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14175324241321984
+    m_Localized: Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14446008309833728
+    m_Localized: Equip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14446070339395584
+    m_Localized: Unequip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14446111682650112
+    m_Localized: Use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14446126161387520
+    m_Localized: Drop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14741817152692224
+    m_Localized: Common
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14741929769754624
+    m_Localized: Rare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14741986334138368
+    m_Localized: Epic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14742038188318720
+    m_Localized: Legendary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14984984657584128
+    m_Localized: Rarity
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
