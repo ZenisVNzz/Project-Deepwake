@@ -66,7 +66,9 @@ public class CharacterUIManager : MonoBehaviour
             currencyUI.Bind(player);
         }
 
+        UICanvas.transform.SetParent(null, false);
         UICanvas.SetActive(true);
+        PopupCanvas.transform.SetParent(null, false);
         PopupCanvas.SetActive(true);
     }
 
