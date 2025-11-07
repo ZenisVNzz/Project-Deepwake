@@ -3624,7 +3624,7 @@ RectTransform:
   m_Father: {fileID: 3618012657331904834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 5.66}
   m_SizeDelta: {x: 0, y: -8.46}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6383,6 +6383,8 @@ GameObject:
   - component: {fileID: 2614238347761736227}
   - component: {fileID: 5220222964460864711}
   - component: {fileID: 2832459845338404151}
+  - component: {fileID: 8295288514469523120}
+  - component: {fileID: 7865655492519659668}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -6544,6 +6546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8a831c2b8be5847ab13e153b76c27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   _characterData: {fileID: 11400000, guid: 1f0f23958af3ab5499b66085211e1a3a, type: 2}
 --- !u!114 &2614238347761736227
 MonoBehaviour:
@@ -6557,6 +6562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc179be6009eaf47a02b953a1dae394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterUIManager
+  UICanvas: {fileID: 5901335733662786718}
+  PopupCanvas: {fileID: 5404708478749858275}
   CharMenu: {fileID: 5443389954707748558}
   OptionsMenu: {fileID: 581567910048813430}
   mapUI: {fileID: 3924529107693946203}
@@ -6601,6 +6608,57 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!114 &8295288514469523120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkTransformReliable
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 5290127179865208800}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  timelineOffset: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  useFixedUpdate: 0
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
+--- !u!114 &7865655492519659668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkAnimator
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 1
+  animator: {fileID: 8054341816088807579}
 --- !u!1 &2059629113541717755
 GameObject:
   m_ObjectHideFlags: 0
@@ -18595,7 +18653,7 @@ RectTransform:
   m_Father: {fileID: 6382945271030761314}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.6800003}
   m_SizeDelta: {x: 0, y: -10.41}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19055,7 +19113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &210620246269933592
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20962,7 +21020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &27193300824416646
 RectTransform:
   m_ObjectHideFlags: 0

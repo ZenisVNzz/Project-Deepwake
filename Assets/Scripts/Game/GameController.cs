@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        sceneLoader = new SceneLoader();
+        sceneLoader = SceneLoader.Instance;
         gameStateMachine = new GameStateMachine(sceneLoader);
     }
 

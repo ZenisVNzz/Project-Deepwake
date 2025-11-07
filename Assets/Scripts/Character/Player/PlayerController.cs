@@ -32,6 +32,8 @@ public class PlayerController : NetworkBehaviour, IPlayerController
     private bool isDead = false;
     public bool IsDead => isDead;
 
+    public bool IsLocalPlayer;
+
     public void Initialize
     (
       IMovable movement,
@@ -42,7 +44,8 @@ public class PlayerController : NetworkBehaviour, IPlayerController
       IAnimationHandler animation,
       IStateHandler stateHandler,
       InputSystem_Actions input,
-      IPlayerRuntime playerRuntime
+      IPlayerRuntime playerRuntime,
+      bool isLocalPlayer
     )
     {
         this.playerMovement = movement;
@@ -54,15 +57,19 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         this.stateHandler = stateHandler;
         this.inputHandler = input;
         this.playerRuntime = playerRuntime;
+        this.IsLocalPlayer = isLocalPlayer;
 
-        inputHandler.Player.Enable();
-        inputHandler.Player.Attack.performed += ctx => OnAttack();
-        inputHandler.Player.Move.performed += OnMove;
-        inputHandler.Player.Move.canceled += OnMove;
-        inputHandler.Player.Dash.performed += ctx => OnDash();
-        inputHandler.Player.Interact.performed += ctx => OnInteract();
-        inputHandler.Player.OpenInventory.performed += ctx => OnOpenCharMenu();
-        inputHandler.Player.OpenOptions.performed += ctx => OnOpenGameMenu();
+        if (IsLocalPlayer)
+        {
+            inputHandler.Player.Enable();
+            inputHandler.Player.Attack.performed += ctx => OnAttack();
+            inputHandler.Player.Move.performed += OnMove;
+            inputHandler.Player.Move.canceled += OnMove;
+            inputHandler.Player.Dash.performed += ctx => OnDash();
+            inputHandler.Player.Interact.performed += ctx => OnInteract();
+            inputHandler.Player.OpenInventory.performed += ctx => OnOpenCharMenu();
+            inputHandler.Player.OpenOptions.performed += ctx => OnOpenGameMenu();
+        }
 
         interactionHandler = GetComponentInChildren<InteractionHandler>();
         playerModifier = new PlayerModifier(directionHandler);
@@ -145,12 +152,12 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         isMoveOnSlope = moveOnSlope;
     }
 
-    Vector2 playerInput;
+    Vector2 playerInput = new Vector2();
     void FixedUpdate()
     {
         if (!playerModifier.CanMove) playerInput = Vector2.zero;
-
         playerMovement.Move(playerInput, playerRuntime.TotalSpeed, isMoveOnSlope);
+
         stateHandler.UpdateState();
     }
 }

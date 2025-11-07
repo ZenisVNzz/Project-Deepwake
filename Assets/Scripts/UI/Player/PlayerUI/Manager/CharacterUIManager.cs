@@ -4,6 +4,8 @@ using UnityEngine;
 public class CharacterUIManager : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private GameObject UICanvas;
+    [SerializeField] private GameObject PopupCanvas;
     [SerializeField] private GameObject CharMenu;
     [SerializeField] private GameObject OptionsMenu;
     [SerializeField] private GameObject mapUI;
@@ -63,6 +65,9 @@ public class CharacterUIManager : MonoBehaviour
         {
             currencyUI.Bind(player);
         }
+
+        UICanvas.SetActive(true);
+        PopupCanvas.SetActive(true);
     }
 
     private void OnDestroy()

@@ -1,6 +1,7 @@
+using Mirror;
 using UnityEngine;
 
-public class CharacterInstaller : MonoBehaviour
+public class CharacterInstaller : NetworkBehaviour
 {
     [SerializeField] protected CharacterData _characterData;
 
@@ -33,10 +34,6 @@ public class CharacterInstaller : MonoBehaviour
 
     protected void Awake()
     {
-        if (_characterData != null)
-        {
-            InitCharacter();
-        }
     }
 
     public virtual void GetComponent()
@@ -68,6 +65,21 @@ public class CharacterInstaller : MonoBehaviour
         _characterAttack = new PlayerAttack( _characterState, _hitBoxController);    
     }
 
+    public override void OnStartLocalPlayer()
+    {
+        Debug.Log($"[CharacterInstaller] OnStartLocalPlayer for {gameObject.name}");
+        InitCharacter();
+    }
+
+    public override void OnStartClient()
+    {
+        if (!isLocalPlayer)
+        {
+            Debug.Log($"[CharacterInstaller] OnStartClient for remote player {gameObject.name}");
+            InitCharacter();
+        }
+    }
+
     public virtual void InitCharacter()
     {
         GetComponent();
@@ -76,13 +88,19 @@ public class CharacterInstaller : MonoBehaviour
         _characterRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState, playerInventory);
         _characterController = gameObject.AddComponent<PlayerController>();
         _characterController.Initialize
-            (_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, _characterRuntime);
+            (_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, _characterRuntime, isLocalPlayer);
 
         var uiManager = FindAnyObjectByType<CharacterUIManager>();
-        if (uiManager != null)
+
+        if (isLocalPlayer)
         {
-            uiManager.Init(_characterRuntime);
-        }
+            if (uiManager != null)
+            {
+                uiManager.Init(_characterRuntime);
+            }
+
+            CameraController.Instance.SetTarget(this.transform);
+        }   
 
         if (_hitBoxController != null)
         {
@@ -90,6 +108,5 @@ public class CharacterInstaller : MonoBehaviour
         }
 
         ShipController.Instance.SetChild(this.transform);
-        CameraController.Instance.SetTarget(this.transform);
     }
 }
