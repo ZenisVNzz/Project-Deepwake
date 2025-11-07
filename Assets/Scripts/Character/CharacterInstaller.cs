@@ -88,5 +88,8 @@ public class CharacterInstaller : MonoBehaviour
         {
             _hitBoxController.Init(_characterRuntime);
         }
+
+        ShipController.Instance.SetChild(this.transform);
+        CameraController.Instance.SetTarget(this.transform);
     }
 }

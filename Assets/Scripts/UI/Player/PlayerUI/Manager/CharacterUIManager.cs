@@ -6,6 +6,7 @@ public class CharacterUIManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject CharMenu;
     [SerializeField] private GameObject OptionsMenu;
+    [SerializeField] private GameObject mapUI;
     [SerializeField] private UIStatusBar statusBar;
     [SerializeField] private UIStats statsPanel;
     [SerializeField] private UIAttributesPanel attributesPanel;
@@ -140,6 +141,12 @@ public class CharacterUIManager : MonoBehaviour
     {
         if (OptionsMenu == null) return;
         OptionsMenu.SetActive(!OptionsMenu.activeSelf);
+    }
+
+    public void ToggleMapUI()
+    {
+        if (mapUI == null) return;
+        mapUI.SetActive(!mapUI.activeSelf);
     }
 
     public void ToggleInventory()

@@ -1,9 +1,10 @@
+using Mirror;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [System.Serializable]
-public class PlayerController : MonoBehaviour, IPlayerController
+public class PlayerController : NetworkBehaviour, IPlayerController
 {
     private IMovable playerMovement;
     private IDashable playerDash;

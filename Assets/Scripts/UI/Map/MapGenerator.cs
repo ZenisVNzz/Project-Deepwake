@@ -1,7 +1,5 @@
-﻿    using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
+﻿using System.Collections.Generic;
 using UnityEngine;
-    using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour

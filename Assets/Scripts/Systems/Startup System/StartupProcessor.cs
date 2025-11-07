@@ -15,6 +15,10 @@ public class StartupProcessor : MonoBehaviour
     private CancellationTokenSource _cts;
     [SerializeField] private float _timeout = 10f;
 
+    private InputSystem_Actions inputActions;
+    private bool isCompleted = false;
+    private bool isLoadingScene = false;
+
     private async void Awake()
     {
         if (Instance == null)
@@ -26,6 +30,10 @@ public class StartupProcessor : MonoBehaviour
         {
             Destroy(this);
         }
+
+        inputActions = new InputSystem_Actions();
+        inputActions.UI.Enable();
+        inputActions.UI.Click.performed += ctx => WaitForClick();
 
         AsyncOperationHandle<StartupTaskList> handle = Addressables.LoadAssetAsync<StartupTaskList>("StartupTaskList");
         _taskList = await handle.Task;
@@ -39,7 +47,7 @@ public class StartupProcessor : MonoBehaviour
             Debug.Log("[Startup] Startup success.");
             ResourceManager.Instance.ReleaseAssetReferences("Startup");
             EventManager.Instance.Trigger("UI_NextProgress");
-            await WaitForClick();
+            isCompleted = true;
         }
         else
         {
@@ -90,13 +98,17 @@ public class StartupProcessor : MonoBehaviour
         return true;
     }  
 
-    private async Task WaitForClick()
+    private async void WaitForClick()
     {   
-        while (!Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+        if (isCompleted)
         {
-            await Task.Yield();
-        }
-        await SceneLoader.Instance.LoadScene("Title");
+            if (!isLoadingScene)
+            {
+                isLoadingScene = true;
+                await SceneLoader.Instance.LoadScene("Loading");
+                inputActions.UI.Disable();
+            }      
+        }     
     }
     
     public Tservice GetService<Tservice>()

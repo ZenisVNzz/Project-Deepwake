@@ -26,8 +26,14 @@ public class ShipWheel : MonoBehaviour
         SetInactive();
     }
 
-    private void OpenMap()
+    private void OpenMap(GameObject player)
     {
+        if (map == null)
+        {
+            player.GetComponent<CharacterUIManager>().ToggleMapUI();
+            return;
+        }
+
         map.SetActive(true);
     }
 }
