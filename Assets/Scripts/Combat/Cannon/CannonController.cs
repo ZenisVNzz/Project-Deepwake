@@ -1,5 +1,6 @@
 using DG.Tweening;
 using EasyTextEffects.Editor.MyBoxCopy.Extensions;
+using Mirror;
 using System.Collections;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
@@ -7,10 +8,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class CannonController : MonoBehaviour
+public class CannonController : NetworkBehaviour
 {
-    private GameObject currentPlayer;
-    public GameObject CurPlayer => currentPlayer;
+    [SyncVar] private NetworkIdentity currentPlayer;
+    public NetworkIdentity CurPlayer => currentPlayer;
 
     private IInteractable Interactable;
     [SerializeField] Transform playerLockPos;
@@ -24,8 +25,6 @@ public class CannonController : MonoBehaviour
     private Slider cooldownSlider;
 
     private Animator animator;
-
-    private InputSystem_Actions inputActions;
     private Vector2 input;
 
     private CannonNavigation cannonNavigation;
@@ -55,12 +54,6 @@ public class CannonController : MonoBehaviour
         cooldownSlider = cooldownSliderUI.GetComponent<Slider>();
         cooldownSlider.maxValue = cooldown;
 
-        inputActions = new InputSystem_Actions();
-        inputActions.Cannon.Navigate.performed += OnMove;
-        inputActions.Cannon.Navigate.canceled += OnMove;
-        inputActions.Cannon.Shoot.performed += ctx => OnShoot();
-        inputActions.Cannon.Exit.performed += ctx => ExitCannon();
-
         timer = cooldown;     
     }
 
@@ -69,43 +62,93 @@ public class CannonController : MonoBehaviour
         cannonNavigation.UpdateNavigation(input.x);
     }
 
-    private void UseCannon(GameObject player)
+    [Server]
+    private void UseCannon(NetworkConnectionToClient player)
     {
-        currentPlayer = player;
+        if (currentPlayer != null) return;
+        currentPlayer = player.identity;
 
-        IPlayerController playerController = player.GetComponent<IPlayerController>();
+        if (!isOwned)
+            netIdentity.AssignClientAuthority(player);
+
+        GivePlayerCannonAccess(player);
+    }
+
+    [TargetRpc]
+    private void GivePlayerCannonAccess(NetworkConnection target)
+    {
+        GameObject playerObj = NetworkClient.localPlayer.gameObject;
+        IPlayerController playerController = playerObj.GetComponent<IPlayerController>();
+        IInteractionHandler interactionHandler = playerObj.GetComponentInChildren<IInteractionHandler>();
         PlayerModifier playerModifier = playerController.PlayerModifier;
 
-        player.transform.position = playerLockPos.transform.position;
+        playerObj.transform.position = playerLockPos.position;
         playerModifier.MoveModifier(false);
         playerModifier.AttackModifier(false);
         playerModifier.DirectionModifier(true, playerLockDir);
+        interactionHandler.SetInactive();
         NavigateGuideObj.SetActive(true);
 
         if (isFront)
-        {
             CameraOffset.Instance.Move(-3.5f);
-        }
         else
-        {
             CameraOffset.Instance.Move(3.5f);
-        }     
 
-        inputActions.Cannon.Enable();
+        InputSystem_Actions playerInput = playerController.InputHandler;
+        playerInput.Cannon.Enable();
+        playerInput.Cannon.Navigate.performed += OnMove;
+        playerInput.Cannon.Navigate.canceled += OnMove;
+        playerInput.Cannon.Shoot.performed += ctx => OnShoot();
+        playerInput.Cannon.Exit.performed += ctx => ExitCannon();
     }
 
     private void ExitCannon()
+    {   
+        CameraOffset.Instance.Move(0f);
+
+        RequestExitCannon();    
+    }
+
+    [Command]
+    private void RequestExitCannon()
     {
-        IPlayerController playerController = currentPlayer.GetComponent<IPlayerController>();
+        ProcessExitCannon();
+    }
+
+    [Server]
+    private void ProcessExitCannon()
+    {
+        NotifyExitCannon(currentPlayer.connectionToClient);
+        netIdentity.RemoveClientAuthority();
+        currentPlayer = null;
+    }
+
+    [TargetRpc]
+    private void NotifyExitCannon(NetworkConnection target)
+    {
+        GameObject playerObj = NetworkClient.localPlayer.gameObject;
+        IPlayerController playerController = playerObj.GetComponent<IPlayerController>();
+        IInteractionHandler interactionHandler = playerObj.GetComponentInChildren<IInteractionHandler>();
         PlayerModifier playerModifier = playerController.PlayerModifier;
 
         playerModifier.MoveModifier(true);
         playerModifier.AttackModifier(true);
         playerModifier.DirectionModifier(false, playerLockDir);
         NavigateGuideObj.SetActive(false);
-        CameraOffset.Instance.Move(0f);
 
-        inputActions.Cannon.Disable();
+        InputSystem_Actions playerInput = playerController.InputHandler;
+        playerInput.Cannon.Navigate.performed -= OnMove;
+        playerInput.Cannon.Navigate.canceled -= OnMove;
+        playerInput.Cannon.Shoot.performed -= ctx => OnShoot();
+        playerInput.Cannon.Exit.performed -= ctx => ExitCannon();
+        playerInput.Cannon.Disable();
+        StartCoroutine(UnlockInteract(interactionHandler));
+    }
+
+    private IEnumerator UnlockInteract(IInteractionHandler interactionHandler)
+    {
+        yield return new WaitForEndOfFrame();
+        interactionHandler.SetActive();
     }
 
     public void OnMove(InputAction.CallbackContext context)

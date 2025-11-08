@@ -1,3 +1,4 @@
+using Mirror;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public static class LootSpawner
         int minDrops = -1,
         int maxDrops = -1)
     {
+        if (NetworkServer.active == false) return;
+
         if (table == null || table.Count == 0)
         {
             Debug.LogWarning("[LootSpawner] Table is empty.");
@@ -89,12 +92,13 @@ public static class LootSpawner
         {
             dataRuntime.SetData(item);
             dataRuntime.SetPickupDelay(pickupDelay);
-            SpriteRenderer spriteRenderer = go.GetComponent<SpriteRenderer>();
+            dataRuntime.SetParent(parent.GetComponent<NetworkIdentity>());
+            NetworkServer.Spawn(go);
         }
         else
         {
             Debug.LogWarning("[LootSpawner] Spawned pickup has no ItemDataRuntime component.");
-        }
+        }   
 
         var toss = go.GetComponent<PickupToss>();
         if (toss == null) toss = go.AddComponent<PickupToss>();

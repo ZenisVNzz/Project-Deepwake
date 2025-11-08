@@ -1,3 +1,4 @@
+using Mirror;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,7 +13,6 @@ public enum ChestTier
 
 public class ChestSpawner
 {
-    private List<Transform> shipSpawnPoints = new();
     private Dictionary<ChestTier, GameObject> chestPrefab = new();
 
     private float Tier1Chance = 0.5f;
@@ -27,12 +27,6 @@ public class ChestSpawner
         {
             chestPrefab[chestData.tier] = chestData.prefab;
         }
-
-        Transform chestParent = GameObject.Find("ChestSpawnPoints").transform;
-        shipSpawnPoints.AddRange(
-            chestParent.GetComponentsInChildren<Transform>()
-                       .Where(t => t != chestParent)
-        );
 
         Tier1Chance = 0.5f;
         Tier2Chance = 0.3f;
@@ -62,11 +56,15 @@ public class ChestSpawner
 
     public void SpawnChestOnShip(int spawnCount = 1)
     {
+        if (!NetworkServer.active) return;
+
         for (int i = 0; i < spawnCount; i++)
         {
             ChestTier tier = GetRandomTier();
             GameObject chest = chestPrefab[tier];
-            GameObject chestInstance = GameObject.Instantiate(chest, shipSpawnPoints[i]);
+            GameObject chestInstance = GameObject.Instantiate(chest);
+            chestInstance.GetComponent<Chest>().parentIndex = i;
+            NetworkServer.Spawn(chestInstance);
         }
     }
 

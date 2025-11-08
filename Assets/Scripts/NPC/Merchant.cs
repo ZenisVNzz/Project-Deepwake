@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 
 public class Merchant : MonoBehaviour
@@ -12,10 +13,10 @@ public class Merchant : MonoBehaviour
         interactable.RegisterOnExit(OnExit);
     }
 
-    private void OnInteract(GameObject player)
+    private void OnInteract(NetworkConnectionToClient player)
     {
         ShopUI shopUI = UIManager.Instance.RuntimeUIServiceRegistry.Get<ShopUI>();
-        shopUI.BindData(player.GetComponent<IPlayerRuntime>());
+        shopUI.BindData(player.identity.gameObject.GetComponent<IPlayerRuntime>());
         shopUI.Show();
     }
 

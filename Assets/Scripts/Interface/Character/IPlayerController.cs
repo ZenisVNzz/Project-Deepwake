@@ -2,6 +2,7 @@ using UnityEngine;
 
 public interface IPlayerController
 {
+    public InputSystem_Actions InputHandler { get; }
     public PlayerModifier PlayerModifier { get; }
     public bool IsDead { get; }
 

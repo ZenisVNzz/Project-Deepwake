@@ -15,6 +15,8 @@ public class PlayerController : NetworkBehaviour, IPlayerController
     private IDamageDealer playerAttack;
 
     private InputSystem_Actions inputHandler;
+    public InputSystem_Actions InputHandler => inputHandler;
+
     private IInteractionHandler interactionHandler;
     private IPlayerRuntime playerRuntime;
 

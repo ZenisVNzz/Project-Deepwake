@@ -1,16 +1,17 @@
+using Mirror;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour, IInteractable
+public class Interactable : NetworkBehaviour, IInteractable
 {
-    private List<Action<GameObject>> registeredPlayerAction = new List<Action<GameObject>>();
+    private List<Action<NetworkConnectionToClient>> registeredPlayerAction = new List<Action<NetworkConnectionToClient>>();
     private List<Action> registeredAction = new List<Action>();
 
-    private List<Action<GameObject>> registeredPlayerActionEnter = new List<Action<GameObject>>();
+    private List<Action<NetworkConnectionToClient>> registeredPlayerActionEnter = new List<Action<NetworkConnectionToClient>>();
     private List<Action> registeredActionEnter = new List<Action>();
 
-    private List<Action<GameObject>> registeredPlayerActionExit = new List<Action<GameObject>>();
+    private List<Action<NetworkConnectionToClient>> registeredPlayerActionExit = new List<Action<NetworkConnectionToClient>>();
     private List<Action> registeredActionExit = new List<Action>();
 
     private Outline currentOutline;
@@ -27,11 +28,10 @@ public class Interactable : MonoBehaviour, IInteractable
         isActive = false;
     }
 
-    public void OnEnter(GameObject player)
+    public void OnEnter(NetworkConnectionToClient player)
     {
         if (isActive == false) return;
-        currentOutline = GetComponent<Outline>();
-        currentOutline.ActiveOutline();
+        ActiveOutline(player);
 
         if (registeredPlayerActionEnter != null)
         {
@@ -49,11 +49,17 @@ public class Interactable : MonoBehaviour, IInteractable
         }
     }
 
-    public void OnExit(GameObject player)
+    [TargetRpc]
+    private void ActiveOutline(NetworkConnection target)
+    {
+        currentOutline = GetComponent<Outline>();
+        currentOutline.ActiveOutline();
+    }
+
+    public void OnExit(NetworkConnectionToClient player)
     {
         if (isActive == false) return;
-        currentOutline.DeactiveOutline();
-        currentOutline = null;
+        DeactiveOutline(player);
 
         if (registeredPlayerActionExit != null)
         {
@@ -71,7 +77,17 @@ public class Interactable : MonoBehaviour, IInteractable
         }
     }
 
-    public void OnInteract(GameObject player)
+    [TargetRpc]
+    private void DeactiveOutline(NetworkConnection target)
+    {
+        if (currentOutline != null)
+        {
+            currentOutline.DeactiveOutline();
+            currentOutline = null;
+        }
+    }
+
+    public void OnInteract(NetworkConnectionToClient player)
     {
         if (isActive == false) return;
 
@@ -80,7 +96,7 @@ public class Interactable : MonoBehaviour, IInteractable
             foreach (var action in registeredPlayerAction)
             {
                 action?.Invoke(player);
-                currentOutline.DeactiveOutline();
+                DeactiveOutline(player);
             }
         }
         if (registeredAction != null)
@@ -88,12 +104,12 @@ public class Interactable : MonoBehaviour, IInteractable
             foreach (var action in registeredAction)
             {
                 action?.Invoke();
-                currentOutline.DeactiveOutline();
+                DeactiveOutline(player);
             }
         }
     }
 
-    public void Register(Action<GameObject> action)
+    public void Register(Action<NetworkConnectionToClient> action)
     {
         registeredPlayerAction.Add(action);
     }
@@ -103,7 +119,7 @@ public class Interactable : MonoBehaviour, IInteractable
         registeredAction.Add(action);
     }
 
-    public void RegisterOnEnter(Action<GameObject> action)
+    public void RegisterOnEnter(Action<NetworkConnectionToClient> action)
     {
         registeredPlayerActionEnter.Add(action);
     }
@@ -113,7 +129,7 @@ public class Interactable : MonoBehaviour, IInteractable
         registeredActionEnter.Add(action);
     }
 
-    public void RegisterOnExit(Action<GameObject> action)
+    public void RegisterOnExit(Action<NetworkConnectionToClient> action)
     {
         registeredPlayerActionExit.Add(action);
     }

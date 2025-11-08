@@ -148,6 +148,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ShopData
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6fb6e5be14137e8428f8708e131204d5
+    m_Address: ItemDatabase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - DataBase
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7a53a98db98edaf42ba9ca2546f3ba43
     m_Address: Assets/Data/Startup Task/InitConfigTask.asset
     m_ReadOnly: 0

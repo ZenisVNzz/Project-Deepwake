@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 
 public class ShipWheel : MonoBehaviour
@@ -26,11 +27,11 @@ public class ShipWheel : MonoBehaviour
         SetInactive();
     }
 
-    private void OpenMap(GameObject player)
+    private void OpenMap(NetworkConnectionToClient player)
     {
         if (map == null)
         {
-            player.GetComponent<CharacterUIManager>().ToggleMapUI();
+            player.identity.gameObject.GetComponent<CharacterUIManager>().ToggleMapUI();
             return;
         }
 

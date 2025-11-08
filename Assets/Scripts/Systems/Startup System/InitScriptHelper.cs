@@ -9,7 +9,6 @@ public class InitScriptHelper : MonoBehaviour
     [SerializeField] private List<string> _preloadKeys;
     [SerializeField] private string _loadSceneOnLoadDone;  
 
-    private bool isCompleted = false;
     private SceneLoader _sceneLoader;
 
     private async void Awake()
@@ -69,7 +68,6 @@ public class InitScriptHelper : MonoBehaviour
 
         if (preloadDone == totalPreload)
         {
-            isCompleted = true;
             Debug.Log("[InitScriptHelper] All assets preloaded successfully.");
             await LoadScene();
         }

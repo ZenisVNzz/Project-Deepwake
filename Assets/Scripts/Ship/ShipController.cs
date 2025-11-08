@@ -44,6 +44,11 @@ public class ShipController : MonoBehaviour
     {
         if (follower == null) return;
         child.SetParent(follower, worldPositionStay);
+
+        if (!worldPositionStay)
+        {
+            child.localPosition = Vector3.zero;
+        }
     }
 
     private void Update()

@@ -921,6 +921,7 @@ MonoBehaviour:
   deceleration: 6
   smoothStopDistance: 2.5
   background: {fileID: 0}
+  follower: {fileID: 0}
 --- !u!114 &305417854864301393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1545,7 +1546,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.42811355}
-    oldSize: {x: 2.59, y: 1.6}
+    oldSize: {x: 2.59, y: 1.6005583}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1777,7 +1778,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.16366301}
-    oldSize: {x: 0.32, y: 0.61}
+    oldSize: {x: 0.32, y: 0.6102128}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2909,7 +2910,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.07, y: 0.18}
+    oldSize: {x: 0.07, y: 0.1800628}
     newSize: {x: 8.74, y: 3.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
