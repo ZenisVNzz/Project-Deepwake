@@ -40,11 +40,10 @@ public class ShipController : MonoBehaviour
             Debug.LogWarning("ShipController: Background assigned but has no ObjectMove.");
     }
 
-    public void SetChild(Transform child)
+    public void SetChild(Transform child, bool worldPositionStay)
     {
         if (follower == null) return;
-        child.SetParent(follower, false);
-        child.localPosition = Vector3.zero;
+        child.SetParent(follower, worldPositionStay);
     }
 
     private void Update()

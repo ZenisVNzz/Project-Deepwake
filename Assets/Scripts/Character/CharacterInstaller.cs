@@ -107,6 +107,6 @@ public class CharacterInstaller : NetworkBehaviour
             _hitBoxController.Init(_characterRuntime);
         }
 
-        ShipController.Instance.SetChild(this.transform);
+        ShipController.Instance.SetChild(this.transform, false);
     }
 }

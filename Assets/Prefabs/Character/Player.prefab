@@ -6385,6 +6385,7 @@ GameObject:
   - component: {fileID: 2832459845338404151}
   - component: {fileID: 8295288514469523120}
   - component: {fileID: 7865655492519659668}
+  - component: {fileID: 1297593478178200814}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -6659,6 +6660,22 @@ MonoBehaviour:
   syncInterval: 0
   clientAuthority: 1
   animator: {fileID: 8054341816088807579}
+--- !u!114 &1297593478178200814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50af2821be191224f90f9898c428470f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerNet
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  playerName: Zenis
 --- !u!1 &2059629113541717755
 GameObject:
   m_ObjectHideFlags: 0
@@ -9124,6 +9141,7 @@ MonoBehaviour:
   nodeContainer: {fileID: 7321399296209428376}
   lineDrawer: {fileID: 28645639949331909}
   dotLineContainer: {fileID: 4292488911882123026}
+  playerNet: {fileID: 1297593478178200814}
   confirmButton: {fileID: 1536721282188071272}
 --- !u!114 &28645639949331909
 MonoBehaviour:
@@ -19113,7 +19131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &210620246269933592
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19227,7 +19245,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7010042020852537883}
   - {fileID: 565431518107357595}

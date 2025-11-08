@@ -71,5 +71,7 @@ public class EnemyInstaller : CharacterInstaller
         {
             _hitBoxController.Init(_enemyRuntime);
         }
+
+        ShipController.Instance.SetChild(this.transform, true);
     }
 }

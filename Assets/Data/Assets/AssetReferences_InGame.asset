@@ -42,3 +42,4 @@ MonoBehaviour:
   _labels:
   - m_LabelString: ShipAssets
   - m_LabelString: ShopData
+  - m_LabelString: Material
