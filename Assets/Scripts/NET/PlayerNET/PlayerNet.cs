@@ -4,7 +4,9 @@ using UnityEngine;
 public class PlayerNet : NetworkBehaviour
 {
     [SyncVar]
-    public string playerName = "Zenis";
+    private string playerName = "Zenis";
+    private PlayerController playerController;
+
 
     [Server]
     public void ChangeGameMapRequest(NodeTypes MapType)

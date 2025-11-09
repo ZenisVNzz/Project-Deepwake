@@ -31,7 +31,7 @@ public class CannonController : NetworkBehaviour
     private CannonShoot cannonShoot;
 
     private float cooldown = 1f;
-    private float timer;
+    [SyncVar] private float timer;
     private Image fill;
     private Image bg;
 
@@ -59,6 +59,8 @@ public class CannonController : NetworkBehaviour
 
     private void Update()
     {
+        if (!isServer) return;
+
         cannonNavigation.UpdateNavigation(input.x);
     }
 
@@ -68,8 +70,10 @@ public class CannonController : NetworkBehaviour
         if (currentPlayer != null) return;
         currentPlayer = player.identity;
 
-        if (!isOwned)
-            netIdentity.AssignClientAuthority(player);
+        netIdentity.AssignClientAuthority(player);
+
+        GameObject playerObj = player.identity.gameObject;
+        playerObj.transform.position = playerLockPos.position;
 
         GivePlayerCannonAccess(player);
     }
@@ -81,8 +85,7 @@ public class CannonController : NetworkBehaviour
         IPlayerController playerController = playerObj.GetComponent<IPlayerController>();
         IInteractionHandler interactionHandler = playerObj.GetComponentInChildren<IInteractionHandler>();
         PlayerModifier playerModifier = playerController.PlayerModifier;
-
-        playerObj.transform.position = playerLockPos.position;
+        
         playerModifier.MoveModifier(false);
         playerModifier.AttackModifier(false);
         playerModifier.DirectionModifier(true, playerLockDir);
@@ -98,11 +101,11 @@ public class CannonController : NetworkBehaviour
         playerInput.Cannon.Enable();
         playerInput.Cannon.Navigate.performed += OnMove;
         playerInput.Cannon.Navigate.canceled += OnMove;
-        playerInput.Cannon.Shoot.performed += ctx => OnShoot();
-        playerInput.Cannon.Exit.performed += ctx => ExitCannon();
+        playerInput.Cannon.Shoot.performed += OnShoot;
+        playerInput.Cannon.Exit.performed += ExitCannon;
     }
 
-    private void ExitCannon()
+    private void ExitCannon(InputAction.CallbackContext ctx)
     {   
         CameraOffset.Instance.Move(0f);
 
@@ -118,9 +121,16 @@ public class CannonController : NetworkBehaviour
     [Server]
     private void ProcessExitCannon()
     {
-        NotifyExitCannon(currentPlayer.connectionToClient);
-        netIdentity.RemoveClientAuthority();
-        currentPlayer = null;
+        if (currentPlayer != null)
+        {
+            if (currentPlayer.connectionToClient != null)
+            {
+                NotifyExitCannon(currentPlayer.connectionToClient);
+            }
+
+            netIdentity.RemoveClientAuthority();
+            currentPlayer = null;
+        }
     }
 
     [TargetRpc]
@@ -139,8 +149,8 @@ public class CannonController : NetworkBehaviour
         InputSystem_Actions playerInput = playerController.InputHandler;
         playerInput.Cannon.Navigate.performed -= OnMove;
         playerInput.Cannon.Navigate.canceled -= OnMove;
-        playerInput.Cannon.Shoot.performed -= ctx => OnShoot();
-        playerInput.Cannon.Exit.performed -= ctx => ExitCannon();
+        playerInput.Cannon.Shoot.performed -= OnShoot;
+        playerInput.Cannon.Exit.performed += ExitCannon;
         playerInput.Cannon.Disable();
         StartCoroutine(UnlockInteract(interactionHandler));
     }
@@ -153,14 +163,38 @@ public class CannonController : NetworkBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        input = context.ReadValue<Vector2>();
+        Vector2 clientInput = context.ReadValue<Vector2>();
+        CmdMove(clientInput);
     }
 
-    public void OnShoot()
+    [Command]
+    private void CmdMove(Vector2 input)
+    {
+        this.input = input;
+    }
+
+    public void OnShoot(InputAction.CallbackContext ctx)
     {
         if (timer >= cooldown)
-        {         
-            cannonNavigation.ApplyRecoil();
+        {
+            CameraShake.Instance.ShakeCamera();
+        }
+            
+        CmdShoot();
+    }
+
+    [Command]
+    private void CmdShoot()
+    {
+        ShootProcess();
+    }
+
+    [Server]
+    private void ShootProcess()
+    {
+        if (timer >= cooldown)
+        {
+            RpcApplyRecoil();
             if (isFront)
             {
                 animator.Play("Cannon_Shoot");
@@ -169,37 +203,59 @@ public class CannonController : NetworkBehaviour
             {
                 animator.Play("CannonBack_Shoot");
             }
-            
-            cannonShoot.Shoot();           
+            cannonShoot.Shoot();
             StartCoroutine(timerUpdate());
-        }    
+        }   
     }
 
+    [ClientRpc]
+    private void RpcApplyRecoil()
+    {
+        cannonNavigation.ApplyRecoil();  
+    }
+
+    [Server]
     private IEnumerator timerUpdate()
+    {
+        timer = 0;
+        RpcStartCooldownUI(cooldown); 
+
+        while (timer < cooldown)
+        {
+            timer += Time.deltaTime;
+            RpcSetCooldownValue(timer);
+            yield return null;
+        }
+
+        RpcEndCooldownUI();
+    }
+
+    [ClientRpc]
+    private void RpcStartCooldownUI(float maxValue)
     {
         bg.DOKill();
         fill.DOKill();
         fill.color = Color.white;
         bg.color = Color.gray;
 
-        timer = 0;
         cooldownSlider.value = 0f;
-        cooldownSliderUI.SetActive(true);      
+        cooldownSlider.maxValue = maxValue;
+        cooldownSliderUI.SetActive(true);
+    }
 
-        while (timer < cooldown)
-        {
-            timer += Time.deltaTime;
-            cooldownSlider.value = timer;
-            yield return null;
-        }    
+    [ClientRpc]
+    private void RpcSetCooldownValue(float value)
+    {
+        cooldownSlider.value = value;
+    }
 
-        if (timer >= cooldown && cooldownSlider.value >= cooldown)
+    [ClientRpc]
+    private void RpcEndCooldownUI()
+    {
+        bg.DOFade(0f, 0.4f);
+        fill.DOFade(0f, 0.5f).OnComplete(() =>
         {
-            bg.DOFade(0f, 0.4f);
-            fill.DOFade(0f, 0.5f).OnComplete(() =>
-            {
-                cooldownSliderUI.SetActive(false);              
-            });
-        }     
+            cooldownSliderUI.SetActive(false);
+        });
     }
 }

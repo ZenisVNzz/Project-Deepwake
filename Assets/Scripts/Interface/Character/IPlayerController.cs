@@ -18,7 +18,6 @@ public interface IPlayerController
       IAnimationHandler animation,
       IStateHandler stateHandler,
       InputSystem_Actions input,
-      IPlayerRuntime playerRuntime,
-      bool isLocalPlayer
+      IPlayerRuntime playerRuntime
     );
 }

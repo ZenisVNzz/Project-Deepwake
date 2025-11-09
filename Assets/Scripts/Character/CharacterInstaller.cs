@@ -54,7 +54,7 @@ public class CharacterInstaller : NetworkBehaviour
 
     public virtual void InitComponent()
     {
-        _characterRuntime = gameObject.AddComponent<PlayerRuntime>();
+        _characterRuntime = GetComponent<PlayerRuntime>();
         _inputHandler = new InputSystem_Actions();
         _characterState = new PlayerState();
         _characterMovement = new PlayerMovement(_rigidbody2D, _characterState);
@@ -86,9 +86,9 @@ public class CharacterInstaller : NetworkBehaviour
         InitComponent();
         Inventory playerInventory = new Inventory();
         _characterRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState, playerInventory);
-        _characterController = gameObject.AddComponent<PlayerController>();
+        _characterController = GetComponent<PlayerController>();
         _characterController.Initialize
-            (_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, _characterRuntime, isLocalPlayer);
+            (_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, _characterRuntime);
 
         var uiManager = FindAnyObjectByType<CharacterUIManager>();
 

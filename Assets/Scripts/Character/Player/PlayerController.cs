@@ -17,6 +17,8 @@ public class PlayerController : NetworkBehaviour, IPlayerController
     private InputSystem_Actions inputHandler;
     public InputSystem_Actions InputHandler => inputHandler;
 
+    [SyncVar] Vector2 playerInput = new Vector2();
+
     private IInteractionHandler interactionHandler;
     private IPlayerRuntime playerRuntime;
 
@@ -34,8 +36,6 @@ public class PlayerController : NetworkBehaviour, IPlayerController
     private bool isDead = false;
     public bool IsDead => isDead;
 
-    public bool IsLocalPlayer;
-
     public void Initialize
     (
       IMovable movement,
@@ -46,8 +46,7 @@ public class PlayerController : NetworkBehaviour, IPlayerController
       IAnimationHandler animation,
       IStateHandler stateHandler,
       InputSystem_Actions input,
-      IPlayerRuntime playerRuntime,
-      bool isLocalPlayer
+      IPlayerRuntime playerRuntime
     )
     {
         this.playerMovement = movement;
@@ -59,9 +58,8 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         this.stateHandler = stateHandler;
         this.inputHandler = input;
         this.playerRuntime = playerRuntime;
-        this.IsLocalPlayer = isLocalPlayer;
 
-        if (IsLocalPlayer)
+        if (isLocalPlayer)
         {
             inputHandler.Player.Enable();
             inputHandler.Player.Attack.performed += ctx => OnAttack();
@@ -86,7 +84,7 @@ public class PlayerController : NetworkBehaviour, IPlayerController
 
     private void OnInteract()
     {
-        interactionHandler.Interact();    
+        interactionHandler.Interact();
     }
 
     private void OnOpenCharMenu()
@@ -109,26 +107,42 @@ public class PlayerController : NetworkBehaviour, IPlayerController
     {
         if (playerModifier.CanAttack)
         {
-            playerAttack.Attack(playerRuntime.TotalAttack);
-        }   
+            CmdAttack();
+        }
+    }
+
+    [Command]
+    private void CmdAttack()
+    {
+        playerAttack.Attack(playerRuntime.TotalAttack);
     }
 
     private void OnMove(InputAction.CallbackContext context)
     {
-        if (!playerModifier.CanMove)
-        {
-            return;
-        }
+        if (!playerModifier.CanMove) return;
 
-        playerInput = context.ReadValue<Vector2>();
-    }    
+        Vector2 clientInput = context.ReadValue<Vector2>();
+        CmdMove(clientInput);
+    }
+
+    [Command]
+    private void CmdMove(Vector2 input)
+    {
+        playerInput = input;
+    }
 
     private void OnDash()
     {
         if (playerModifier.CanDash)
         {
-            playerDash.Dash();
-        }        
+            CmdDash();
+        }
+    }
+
+    [Command]
+    private void CmdDash()
+    {
+        playerDash.Dash();
     }
 
     private void OnDead()
@@ -144,17 +158,18 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         yield return null;
     }
 
-    void Update()
-    {       
-        animationHandler.UpdateAnimation();   
-    }
-
     public void MoveOnSlope(bool moveOnSlope)
     {
         isMoveOnSlope = moveOnSlope;
     }
 
-    Vector2 playerInput = new Vector2();
+    [ServerCallback]
+    void Update()
+    {
+        animationHandler.UpdateAnimation();
+    }  
+
+    [ServerCallback]
     void FixedUpdate()
     {
         if (!playerModifier.CanMove) playerInput = Vector2.zero;

@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 6196223022115805974}
   - component: {fileID: 8802465659448177902}
   - component: {fileID: 404441429363661507}
-  - component: {fileID: 3828441919418337859}
+  - component: {fileID: 9181632578467836507}
   - component: {fileID: 4524306885963599017}
   - component: {fileID: 108595813640741774}
   m_Layer: 0
@@ -672,6 +672,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c30dd4b3fd0049ac63b28f35ed200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   playerLockPos: {fileID: 5216012667989137682}
   playerLockDir: 0
   RotateObj: {fileID: 8886842541572835276}
@@ -702,7 +705,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3828441919418337859
+--- !u!114 &9181632578467836507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -731,7 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkTransformReliable
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0
   target: {fileID: 7135735406786117496}
@@ -765,7 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkAnimator
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0
   clientAuthority: 0
@@ -1049,6 +1052,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286b97bd2e86f9d4fa2b0da928cf4941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!114 &4896710841944884648
 MonoBehaviour:
   m_ObjectHideFlags: 0
