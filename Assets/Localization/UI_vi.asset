@@ -205,6 +205,28 @@ MonoBehaviour:
     m_Localized: "Ph\u1EA9m ch\u1EA5t"
     m_Metadata:
       m_Items: []
+  - m_Id: 15864134171811840
+    m_Localized: "Ch\u1EBF \u0111\u1ED9 ngo\u1EA1i tuy\u1EBFn"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15866087882809344
+    m_Localized: "Th\u1EED l\u1EA1i"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15870804054695936
+    m_Localized: "C\xF3 l\u1ED7i kh\xF4ng x\xE1c \u0111\u1ECBnh x\u1EA3y ra khi ki\u1EC3m
+      tra k\u1EBFt n\u1ED1i m\u1EA1ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15871803465064448
+    m_Localized: "L\u1ED7i kh\xF4ng x\xE1c \u0111\u1ECBnh"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872294668394496
+    m_Localized: "B\u1EA1n \u0111ang d\xF9ng phi\xEAn b\u1EA3n tr\xF2 ch\u01A1i \u0111\xE3
+      c\u0169, vui l\xF2ng c\u1EADp nh\u1EADt ho\u1EB7c ti\u1EBFp t\u1EE5c"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

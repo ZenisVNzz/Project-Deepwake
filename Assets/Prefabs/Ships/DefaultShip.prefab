@@ -2766,6 +2766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286b97bd2e86f9d4fa2b0da928cf4941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!114 &7535548521183170721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3854,6 +3857,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrontCannon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7663268805818519907, guid: a358330d15154254e9b5adb29c2152df, type: 3}
+      propertyPath: _assetId
+      value: 4019771106
+      objectReference: {fileID: 0}
     - target: {fileID: 8805124297540229275, guid: a358330d15154254e9b5adb29c2152df, type: 3}
       propertyPath: cooldownSliderUI
       value: 
@@ -4069,6 +4076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrontCannon
       objectReference: {fileID: 0}
+    - target: {fileID: 7663268805818519907, guid: a358330d15154254e9b5adb29c2152df, type: 3}
+      propertyPath: _assetId
+      value: 4019771106
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4087,6 +4098,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4266494211753127829}
     m_Modifications:
+    - target: {fileID: 3828441919418337859, guid: 7253ee4e3777b30448ca91663f1d8507, type: 3}
+      propertyPath: _assetId
+      value: 4019771106
+      objectReference: {fileID: 0}
     - target: {fileID: 6325296811636879925, guid: 7253ee4e3777b30448ca91663f1d8507, type: 3}
       propertyPath: m_Name
       value: BackCannon
@@ -4479,6 +4494,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4266494211753127829}
     m_Modifications:
+    - target: {fileID: 3828441919418337859, guid: 7253ee4e3777b30448ca91663f1d8507, type: 3}
+      propertyPath: _assetId
+      value: 4019771106
+      objectReference: {fileID: 0}
     - target: {fileID: 6325296811636879925, guid: 7253ee4e3777b30448ca91663f1d8507, type: 3}
       propertyPath: m_Name
       value: BackCannon (1)

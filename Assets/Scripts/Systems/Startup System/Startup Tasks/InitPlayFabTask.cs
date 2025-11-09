@@ -9,10 +9,11 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class InitPlayFabTask : StartupTask
 {
     public override bool HasTimeout { get { return true; } }
+    public override bool RequiresNetwork => true;
+    public override bool isMainProgressTask => true;
 
-    public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
+    public override async Task<StartupTaskResult> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
-        EventManager.Instance.Trigger("UI_NextProgress");
         IServiceRegistry SR = new ServiceRegistry();
 
         PlayFabServiceList playFabServiceList = ResourceManager.Instance.GetAsset<PlayFabServiceList>("PlayFabServiceList");
@@ -30,18 +31,18 @@ public class InitPlayFabTask : StartupTask
                     if (!o)
                     {
                         Debug.Log($"[Network] Initialize service failed: {ServiceName}");
-                        return false;
+                        return StartupTaskResult.Fail("PLAYFAB_SERVICE_INIT_FAILED", $"Failed to initialize PlayFab service: {ServiceName}");
                     }
                 }
                 catch (OperationCanceledException)
                 {
                     Debug.LogWarning($"[Network] Initialize timeout or cancelled: {ServiceName}");
-                    return false;
+                    return StartupTaskResult.Fail("PLAYFAB_SERVICE_INIT_TIMEOUT", $"PlayFab service initialization timed out: {ServiceName}");
                 }
                 catch (Exception ex)
                 {
                     Debug.LogException(ex);
-                    return false;
+                    return StartupTaskResult.Fail("PLAYFAB_SERVICE_INIT_EXCEPTION", $"Exception while initializing PlayFab service: {ServiceName}");
                 }
             }
         }
@@ -52,6 +53,7 @@ public class InitPlayFabTask : StartupTask
 
         await playFabServiceMg.InitAsync(serviceRegistry, ct);
 
-        return true;
+        EventManager.Instance.Trigger("UI_NextProgress");
+        return StartupTaskResult.Ok();
     }
 }

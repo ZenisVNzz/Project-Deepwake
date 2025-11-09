@@ -29,12 +29,12 @@ public class ItemDataRuntime : NetworkBehaviour
         transform.SetParent(parent != null ? parent.transform : null, false);
     }
 
-    void OnParentChanged(NetworkIdentity _, NetworkIdentity newParent)
+    private void OnParentChanged(NetworkIdentity _, NetworkIdentity newParent)
     {
         transform.SetParent(newParent != null ? newParent.transform : null, false);
     }
 
-    void OnItemIdChanged(string _, string newId)
+    private void OnItemIdChanged(string _, string newId)
     {
         var db = ResourceManager.Instance.GetAsset<ItemDatabase>("ItemDatabase");
         SetData(db.Get(newId));
@@ -60,7 +60,7 @@ public class ItemDataRuntime : NetworkBehaviour
         bool added = player.PlayerInventory != null && player.PlayerInventory.AddItem(_itemData);
         if (added)
         {
-            Destroy(gameObject);
+            NetworkServer.Destroy(gameObject);
         }
         else
         {

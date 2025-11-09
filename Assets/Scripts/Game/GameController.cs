@@ -33,6 +33,9 @@ public class GameController : NetworkBehaviour
 
     private void Update()
     {
-        gameStateMachine.CurrentState.Update();
+        if (gameStateMachine.CurrentState != null)
+        {
+            gameStateMachine.CurrentState.Update();
+        }             
     }
 }

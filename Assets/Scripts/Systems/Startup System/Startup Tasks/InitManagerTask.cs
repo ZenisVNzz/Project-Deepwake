@@ -21,13 +21,13 @@ public class InitManagerTask : StartupTask
 
     public override bool HasTimeout => true;
 
-    public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
+    public override async Task<StartupTaskResult> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
         Transform managerRoot = GameObject.Find(_managersRoot)?.transform;
         if (managerRoot == null)
         {
             Debug.LogError("[InitManagerTask] ManagersRoot is not assigned.");
-            return false;
+            return StartupTaskResult.Fail("MANAGERS_ROOT_NOT_FOUND", "ManagersRoot is not assigned.");
         }
 
         foreach (string typeName in _managerTypeNames)
@@ -48,7 +48,7 @@ public class InitManagerTask : StartupTask
             serviceRegistry.Register(component);
         }
 
-        return true;
+        return StartupTaskResult.Ok();
     }
 
 #if UNITY_EDITOR
