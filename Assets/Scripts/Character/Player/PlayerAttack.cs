@@ -1,18 +1,21 @@
+using Mirror;
 using Mirror.BouncyCastle.Math.Field;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
-[System.Serializable]
-public class PlayerAttack : IDamageDealer
+public class PlayerAttack : NetworkBehaviour, IDamageDealer
 {
     private IState _playerState;
     private HitBoxController _hitBoxController;
 
-    public PlayerAttack(IState playerState, HitBoxController hitBoxController)
+    private PlayerNet PlayerNet;
+
+    private void Awake()
     {
-        _playerState = playerState;
-        _hitBoxController = hitBoxController;
+        _playerState = GetComponent<PlayerController>().playerState;
+        _hitBoxController = GetComponent<HitBoxController>();
+        PlayerNet = GetComponent<PlayerNet>();
     }
 
     public void Attack(float ATK)
@@ -20,7 +23,7 @@ public class PlayerAttack : IDamageDealer
         CharacterStateType state = _playerState.GetCurrentState();
         if (state != CharacterStateType.Attacking)
         {
-            _playerState.ChangeState(CharacterStateType.Attacking);
+            PlayerNet.CmdChangeState(CharacterStateType.Attacking);
         }
     }
 }

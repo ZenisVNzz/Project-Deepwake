@@ -5,40 +5,34 @@ using UnityEngine.InputSystem;
 
 public class EnemyController : MonoBehaviour, IEnemyController
 {
-    private IAIMove enemyMovement;
-    private IState enemyState;
-    private ICharacterDirectionHandler directionHandler;
-    private IAnimationHandler animationHandler;
-    private IStateHandler stateHandler;
-    private IDamageDealer enemyAttack;
+    public IAIMove enemyMovement;
+    public IState enemyState;
+    public ICharacterDirectionHandler directionHandler;
+    public IAnimationHandler animationHandler;
+    public IStateHandler stateHandler;
+    public IDamageDealer enemyAttack;
 
     private SpriteRenderer spriteRenderer;
     private Collider2D cd2D;
     private Collider2D hurtBox;
 
-    private ICharacterRuntime enemyRuntime;
+    public ICharacterRuntime enemyRuntime;
 
     private bool isDead = false;
     public bool IsDead => isDead;
 
-    public void Initialize
-    (
-      IAIMove movement,
-      IState state,
-      IDamageDealer attack,
-      IAnimationHandler animation,
-      IStateHandler stateHandler,
-      ICharacterRuntime enemyRuntime
-    )
+    public void Init()
     {
-        this.enemyMovement = movement;
-        this.enemyState = state;
-        this.enemyAttack = attack;
-        this.animationHandler = animation;
-        this.stateHandler = stateHandler;
-        this.enemyRuntime = enemyRuntime;
+        enemyMovement = GetComponent<IAIMove>();
+        enemyState = GetComponent<IState>();
+        directionHandler = GetComponent<ICharacterDirectionHandler>();
+        animationHandler = GetComponent<IAnimationHandler>();
+        stateHandler = GetComponent<IStateHandler>();
+        enemyAttack = GetComponent<IDamageDealer>();
 
+        enemyRuntime = GetComponent<ICharacterRuntime>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
         hurtBox = transform.Find("HurtBox").GetComponent<Collider2D>();
         stateHandler.Register("OnDeath", OnDead);

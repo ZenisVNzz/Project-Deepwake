@@ -82,9 +82,9 @@ public class CannonController : NetworkBehaviour
     private void GivePlayerCannonAccess(NetworkConnection target)
     {
         GameObject playerObj = NetworkClient.localPlayer.gameObject;
-        IPlayerController playerController = playerObj.GetComponent<IPlayerController>();
+        PlayerController playerController = playerObj.GetComponent<PlayerController>();
         IInteractionHandler interactionHandler = playerObj.GetComponentInChildren<IInteractionHandler>();
-        PlayerModifier playerModifier = playerController.PlayerModifier;
+        PlayerModifier playerModifier = playerController.playerModifier;
         
         playerModifier.MoveModifier(false);
         playerModifier.AttackModifier(false);
@@ -137,9 +137,9 @@ public class CannonController : NetworkBehaviour
     private void NotifyExitCannon(NetworkConnection target)
     {
         GameObject playerObj = NetworkClient.localPlayer.gameObject;
-        IPlayerController playerController = playerObj.GetComponent<IPlayerController>();
+        PlayerController playerController = playerObj.GetComponent<PlayerController>();
         IInteractionHandler interactionHandler = playerObj.GetComponentInChildren<IInteractionHandler>();
-        PlayerModifier playerModifier = playerController.PlayerModifier;
+        PlayerModifier playerModifier = playerController.playerModifier;
 
         playerModifier.MoveModifier(true);
         playerModifier.AttackModifier(true);

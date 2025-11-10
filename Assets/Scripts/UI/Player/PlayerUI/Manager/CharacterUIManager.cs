@@ -1,7 +1,8 @@
+using Mirror;
 using System;
 using UnityEngine;
 
-public class CharacterUIManager : MonoBehaviour
+public class CharacterUIManager : NetworkBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject UICanvas;

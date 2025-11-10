@@ -47,16 +47,15 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     private Equipment equipment;
     public Equipment PlayerEquipment => equipment;
 
-    public void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState, Inventory playerInventory)
+    public override void Init()
     {
-        base.Init(playerData, rigidbody2D, PlayerState);
-
+        base.Init();
         stamina = totalStamina;
         _staminaRegenRate = characterData.StaminaRegenRate;
         _staminaConsumptionMultiplier = characterData.StaminaConsumptionMultiplier;
         OnStaminaChanged?.Invoke(stamina);
 
-        this.playerInventory = playerInventory;
+        this.playerInventory = new Inventory();
         currencyWallet = new CurrencyWallet();
         equipment = new Equipment(this);
     }

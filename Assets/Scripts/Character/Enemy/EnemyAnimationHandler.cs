@@ -2,7 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyAnimationHandler : IAnimationHandler
+public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
 {
     private Animator animator;
     private IState enemyState;
@@ -11,14 +11,13 @@ public class EnemyAnimationHandler : IAnimationHandler
     private string currentAnimName;
     private bool isDeath = false;
 
-    private readonly bool twoWayOnly; 
+    private readonly bool twoWayOnly;
 
-    public EnemyAnimationHandler(Animator animator, IState enemyState, ICharacterDirectionHandler directionHander, bool twoWayOnly = false)
+    private void Awake()
     {
-        this.animator = animator;
-        this.enemyState = enemyState;
-        this.directionHandler = directionHander;
-        this.twoWayOnly = twoWayOnly;
+        animator = GetComponent<Animator>();
+        enemyState = GetComponent<IState>();
+        directionHandler = GetComponent<ICharacterDirectionHandler>();
     }
 
     public void UpdateAnimation()

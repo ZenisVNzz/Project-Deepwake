@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerDirectionHandler : ICharacterDirectionHandler
+public class PlayerDirectionHandler : MonoBehaviour, ICharacterDirectionHandler
 {
     private IMovable playerMovement;
     private Direction lastDirection = Direction.Down;
@@ -9,9 +9,9 @@ public class PlayerDirectionHandler : ICharacterDirectionHandler
 
     private float deadzone = 0.3f;
 
-    public PlayerDirectionHandler(IMovable playerMovement)
+    private void Awake()
     {
-        this.playerMovement = playerMovement;
+        playerMovement = GetComponent<IMovable>();
     }
 
     public void EnableForceDir(Direction direction)

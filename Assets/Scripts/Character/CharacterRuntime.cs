@@ -1,3 +1,4 @@
+using Mirror;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -13,7 +14,7 @@ public enum BonusStat
     CriticalDmg
 }
 
-public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
+public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
 {
     [Header("Character Attributes")]
     [SerializeField] protected float level = 1;
@@ -53,7 +54,6 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
     protected float _hpRegenRate;   
 
     protected CharacterData characterData;
-    public CharacterData CharacterData => characterData;
 
     protected Rigidbody2D rb;
     protected IState characterState;
@@ -65,15 +65,17 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 
     private Coroutine _hpRegenCoroutine;
 
-    public virtual void Init(CharacterData CharacterData, Rigidbody2D rigidbody2D, IState characterState)
+    private PlayerNet PlayerNet => NetworkClient.connection.identity.GetComponent<PlayerNet>();
+
+    public virtual void Init()
     {
-        characterData = CharacterData;
+        characterData = GetComponent<CharacterInstaller>()._characterData;
         hp = totalHealth;
         _hpRegenRate = characterData.HPRegenRate;    
         OnHPChanged?.Invoke(hp);
 
-        rb = rigidbody2D;  
-        this.characterState = characterState;
+        rb = GetComponent<Rigidbody2D>();
+        this.characterState = GetComponent<PlayerController>().playerState;
     }
 
     public virtual void ApplyAttributes(CharacterAttributes attributes)
@@ -148,7 +150,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
             if (characterState.GetCurrentState() != CharacterStateType.Attacking && characterState.GetCurrentState() != CharacterStateType.Death)
             {
                 rb.AddForce(knockback, ForceMode2D.Impulse);
-                characterState.ChangeState(CharacterStateType.Knockback);
+                PlayerNet.CmdChangeState(CharacterStateType.Knockback);
             }
 
             Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");
@@ -162,7 +164,7 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
 
     protected void Die()
     {
-        characterState.ChangeState(CharacterStateType.Death);
+        PlayerNet.CmdChangeState(CharacterStateType.Death);
         Debug.Log($"{gameObject} has died.");
     }
 

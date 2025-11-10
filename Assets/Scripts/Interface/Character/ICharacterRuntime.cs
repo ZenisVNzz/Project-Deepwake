@@ -7,7 +7,6 @@ public interface ICharacterRuntime : IAttackable
     float TotalHealth { get; }
     float TotalAttack { get; }
     float TotalSpeed { get; }
-    CharacterData CharacterData { get; }
 
     event Action<float> OnHPChanged;
 
@@ -16,6 +15,6 @@ public interface ICharacterRuntime : IAttackable
     float BonusDefense { get; }
     float BonusSpeed { get; }
 
-    void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState characterState);
+    void Init();
     void ApplyBonusStat(BonusStat bonusStat, float amount);
 }

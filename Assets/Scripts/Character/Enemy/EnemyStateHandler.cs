@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateHandler : IStateHandler
+public class EnemyStateHandler : MonoBehaviour, IStateHandler
 {
     private IState enemyState;
     private Rigidbody2D rb;
@@ -16,10 +16,10 @@ public class EnemyStateHandler : IStateHandler
     private bool IsWaitForKnockBack = false;
 
 
-    public EnemyStateHandler(IState state, Rigidbody2D rigidbody2D)
+    private void Awake()
     {
-        enemyState = state;
-        this.rb = rigidbody2D;
+        enemyState = GetComponent<EnemyController>().enemyState;
+        this.rb = GetComponent<Rigidbody2D>();
     }
 
     public void UpdateState()

@@ -1,12 +1,32 @@
-using Mirror;
+﻿using Mirror;
 using UnityEngine;
 
 public class PlayerNet : NetworkBehaviour
 {
+    private IState playerState;
+
     [SyncVar]
     private string playerName = "Zenis";
-    private PlayerController playerController;
 
+    [SyncVar(hook = nameof(OnCharacterStateChanged))]
+    [SerializeField] private CharacterStateType characterStateType = CharacterStateType.Idle;
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        playerState = GetComponent<PlayerController>().playerState;
+    }
+
+    [Command]
+    public void CmdChangeState(CharacterStateType newState)
+    {
+        characterStateType = newState;
+    }
+
+    private void OnCharacterStateChanged(CharacterStateType oldState, CharacterStateType newState)
+    {
+        playerState.ChangeState(newState);
+    }
 
     [Server]
     public void ChangeGameMapRequest(NodeTypes MapType)

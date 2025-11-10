@@ -6389,6 +6389,12 @@ GameObject:
   - component: {fileID: 9117324732779500466}
   - component: {fileID: 1297593478178200814}
   - component: {fileID: 943918870436601819}
+  - component: {fileID: 8548296308678827752}
+  - component: {fileID: 2669530749929499118}
+  - component: {fileID: 7641394675960307006}
+  - component: {fileID: 6993958671799342744}
+  - component: {fileID: 5996433640564924404}
+  - component: {fileID: 2598622195544407424}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -6602,6 +6608,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc179be6009eaf47a02b953a1dae394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterUIManager
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   UICanvas: {fileID: 5901335733662786718}
   PopupCanvas: {fileID: 5404708478749858275}
   CharMenu: {fileID: 5443389954707748558}
@@ -6711,9 +6720,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50af2821be191224f90f9898c428470f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNet
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  characterStateType: 0
 --- !u!114 &943918870436601819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6729,6 +6739,83 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+--- !u!114 &8548296308678827752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b592e7a246123384a95f097294cf3663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  acceleration: 15
+  deceleration: 20
+--- !u!114 &2669530749929499118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4531260d7d91647bfad2b74bbf40d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDash
+--- !u!114 &7641394675960307006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d218e50bb7e7147aae3c6418bf4852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDirectionHandler
+--- !u!114 &6993958671799342744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d74e8535b1afd43881e1d6025d2da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationHandler
+--- !u!114 &5996433640564924404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3483a4417f702364982d6b57df0d9da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStateHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+--- !u!114 &2598622195544407424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7912d0ad5a4b8479ae64ca62809c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
 --- !u!1 &2059629113541717755
 GameObject:
   m_ObjectHideFlags: 0

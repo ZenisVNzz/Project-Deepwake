@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerStateHandler : IStateHandler
+public class PlayerStateHandler : NetworkBehaviour, IStateHandler
 {
     private IState playerState;
     private Rigidbody2D rb;
@@ -15,11 +15,14 @@ public class PlayerStateHandler : IStateHandler
 
     private bool IsWaitForKnockBack = false;
 
-    public PlayerStateHandler(IState state, Rigidbody2D rigidbody2D, InputSystem_Actions inputHandler)
+    private PlayerNet PlayerNet;
+
+    private void Awake()
     {
-        playerState = state;
-        rb = rigidbody2D;
-        this.inputHandler = inputHandler;
+        playerState = GetComponent<PlayerController>().playerState;
+        rb = GetComponent<Rigidbody2D>();
+        inputHandler = GetComponent<PlayerController>().InputHandler;
+        PlayerNet = GetComponent<PlayerNet>();
     }
 
     public void UpdateState()
@@ -41,9 +44,9 @@ public class PlayerStateHandler : IStateHandler
         {
             inputHandler.Player.Move.Enable();
             if (CheckIfMoving())
-                playerState.ChangeState(CharacterStateType.Running);
+                PlayerNet.CmdChangeState(CharacterStateType.Running);
             else
-                playerState.ChangeState(CharacterStateType.Idle);
+                PlayerNet.CmdChangeState(CharacterStateType.Idle);
         }   
     }
 
@@ -61,7 +64,7 @@ public class PlayerStateHandler : IStateHandler
         yield return new WaitForSeconds(0.4f);
         if (playerState.GetCurrentState() == CharacterStateType.Knockback)
         {
-            playerState.ChangeState(CharacterStateType.Idle);
+            PlayerNet.CmdChangeState(CharacterStateType.Idle);
             IsWaitForKnockBack = false;
         }
     }

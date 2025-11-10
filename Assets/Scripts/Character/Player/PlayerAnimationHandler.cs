@@ -1,19 +1,22 @@
+using Mirror;
 using System;
 using UnityEngine;
 
-public class PlayerAnimationHandler : IAnimationHandler
+public class PlayerAnimationHandler : NetworkBehaviour, IAnimationHandler
 {
-    private readonly Animator animator;
-    private readonly IState playerState;
-    private readonly ICharacterDirectionHandler directionHandler;
+    private Animator animator;
+    private IState playerState;
+    private ICharacterDirectionHandler directionHandler;
+    private PlayerNet PlayerNet;
 
     private string currentAnimName;
 
-    public PlayerAnimationHandler(Animator animator, IState playerState, ICharacterDirectionHandler directionHandler)
+    private void Awake()
     {
-        this.animator = animator;
-        this.playerState = playerState;
-        this.directionHandler = directionHandler;
+        animator = GetComponent<Animator>();
+        playerState = GetComponent<PlayerController>().playerState;
+        directionHandler = GetComponent<ICharacterDirectionHandler>();
+        PlayerNet = GetComponent<PlayerNet>();
     }
 
     public void UpdateAnimation()
@@ -93,7 +96,7 @@ public class PlayerAnimationHandler : IAnimationHandler
         var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName(currentAnimName) && stateInfo.normalizedTime >= 1.0f)
         {
-            playerState.ChangeState(CharacterStateType.Idle);
+            PlayerNet.CmdChangeState(CharacterStateType.Idle);
         }
     }
 

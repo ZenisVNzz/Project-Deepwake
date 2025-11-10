@@ -3,31 +3,117 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[System.Serializable]
+[RequireComponent(typeof(IMovable))]
+[RequireComponent(typeof(IDashable))]
+[RequireComponent(typeof(ICharacterDirectionHandler))]
+[RequireComponent(typeof(IAnimationHandler))]
+[RequireComponent(typeof(IStateHandler))]
+[RequireComponent(typeof(IDamageDealer))]
 public class PlayerController : NetworkBehaviour, IPlayerController
 {
-    private IMovable playerMovement;
-    private IDashable playerDash;
-    private IState playerState;
-    private ICharacterDirectionHandler directionHandler;
-    private IAnimationHandler animationHandler;
-    private IStateHandler stateHandler;
-    private IDamageDealer playerAttack;
+    public IMovable playerMovement
+    {
+        get
+        {
+            return GetComponent<IMovable>();
+        }
+    }
+
+    public IDashable playerDash
+    {
+        get
+        {
+            return GetComponent<IDashable>();
+        }
+    }
+
+    private IState _playerState;
+    public IState playerState
+    {
+        get
+        {
+            if (_playerState == null)
+                _playerState = new PlayerState();
+            return _playerState;
+        }
+        set => _playerState = value;
+    }
+
+    public ICharacterDirectionHandler directionHandler
+    {
+        get
+        {
+            return GetComponent<ICharacterDirectionHandler>();
+        }
+    }
+
+    public IAnimationHandler animationHandler
+    {
+        get
+        {
+            return GetComponent<IAnimationHandler>();
+        }
+    }
+
+    public IStateHandler stateHandler
+    {
+        get
+        {
+            return GetComponent<IStateHandler>();
+        }
+    }
+
+    public IDamageDealer playerAttack
+    {
+        get
+        {
+            return GetComponent<IDamageDealer>();
+        }
+    }
+
+    public IPlayerRuntime playerRuntime
+    {
+        get
+        {
+            return GetComponent<IPlayerRuntime>();
+        }
+    }
 
     private InputSystem_Actions inputHandler;
-    public InputSystem_Actions InputHandler => inputHandler;
+    public InputSystem_Actions InputHandler
+    {
+        get
+        {
+            if (inputHandler == null)
+            {
+                inputHandler = new InputSystem_Actions();
+            }
+            return inputHandler;
+        }
+        set => inputHandler = value;
+    }
 
-    [SyncVar] Vector2 playerInput = new Vector2();
+    private PlayerModifier _playerModifier;
+    public PlayerModifier playerModifier
+    {
+        get
+        {
+            if (_playerModifier == null)
+            {
+                _playerModifier = new PlayerModifier(directionHandler);
+            }
+            return _playerModifier;
+        }
+        set => _playerModifier = value;
+    }
+
+    Vector2 playerInput = new Vector2();
 
     private IInteractionHandler interactionHandler;
-    private IPlayerRuntime playerRuntime;
 
     private SpriteRenderer spriteRenderer;
     private Collider2D cd2D;
     private Collider2D hurtBox;
-
-    private PlayerModifier playerModifier;
-    public PlayerModifier PlayerModifier => playerModifier;
 
     private bool isMoveOnSlope = false;
 
@@ -36,43 +122,9 @@ public class PlayerController : NetworkBehaviour, IPlayerController
     private bool isDead = false;
     public bool IsDead => isDead;
 
-    public void Initialize
-    (
-      IMovable movement,
-      IDashable dash,
-      IState state,
-      ICharacterDirectionHandler directionHandler,
-      IDamageDealer attack,
-      IAnimationHandler animation,
-      IStateHandler stateHandler,
-      InputSystem_Actions input,
-      IPlayerRuntime playerRuntime
-    )
+    public void Init()
     {
-        this.playerMovement = movement;
-        this.playerDash = dash;
-        this.playerState = state;
-        this.directionHandler = directionHandler;
-        this.playerAttack = attack;
-        this.animationHandler = animation;
-        this.stateHandler = stateHandler;
-        this.inputHandler = input;
-        this.playerRuntime = playerRuntime;
-
-        if (isLocalPlayer)
-        {
-            inputHandler.Player.Enable();
-            inputHandler.Player.Attack.performed += ctx => OnAttack();
-            inputHandler.Player.Move.performed += OnMove;
-            inputHandler.Player.Move.canceled += OnMove;
-            inputHandler.Player.Dash.performed += ctx => OnDash();
-            inputHandler.Player.Interact.performed += ctx => OnInteract();
-            inputHandler.Player.OpenInventory.performed += ctx => OnOpenCharMenu();
-            inputHandler.Player.OpenOptions.performed += ctx => OnOpenGameMenu();
-        }
-
-        interactionHandler = GetComponentInChildren<InteractionHandler>();
-        playerModifier = new PlayerModifier(directionHandler);
+        interactionHandler = GetComponentInChildren<InteractionHandler>();    
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
@@ -80,6 +132,24 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         stateHandler.Register("OnDeath", OnDead);
 
         _uiManager = FindAnyObjectByType<CharacterUIManager>();
+
+        ShipController.Instance.SetChild(this.transform, false);
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        playerModifier = new PlayerModifier(directionHandler);
+
+        InputHandler.Player.Enable();
+
+        InputHandler.Player.Attack.performed += ctx => OnAttack();
+        InputHandler.Player.Move.performed += OnMove;
+        InputHandler.Player.Move.canceled += OnMove;
+        InputHandler.Player.Dash.performed += ctx => OnDash();
+        InputHandler.Player.Interact.performed += ctx => OnInteract();
+        InputHandler.Player.OpenInventory.performed += ctx => OnOpenCharMenu();
+        InputHandler.Player.OpenOptions.performed += ctx => OnOpenGameMenu();
     }
 
     private void OnInteract()
@@ -105,15 +175,13 @@ public class PlayerController : NetworkBehaviour, IPlayerController
 
     private void OnAttack()
     {
-        if (playerModifier.CanAttack)
-        {
-            CmdAttack();
-        }
+        CmdAttack();
     }
 
     [Command]
     private void CmdAttack()
     {
+        if (!playerModifier.CanAttack) return;
         playerAttack.Attack(playerRuntime.TotalAttack);
     }
 
@@ -133,15 +201,14 @@ public class PlayerController : NetworkBehaviour, IPlayerController
 
     private void OnDash()
     {
-        if (playerModifier.CanDash)
-        {
-            CmdDash();
-        }
+        CmdDash();
     }
 
     [Command]
     private void CmdDash()
     {
+        if (!playerModifier.CanDash) return;
+
         playerDash.Dash();
     }
 

@@ -1,17 +1,19 @@
 using UnityEngine;
 
-public class EnemyAttack : IDamageDealer
+public class EnemyAttack : MonoBehaviour, IDamageDealer
 {
+    private float attackCooldown = 5f;
+
     private IState _enemyState;
     private HitBoxController _hitBoxController;
 
     private float _cooldown;
     private float _nextAttackTime;
 
-    public EnemyAttack(IState playerState, HitBoxController hitBoxController, float attackCooldown = 5f)
+    private void Awake()
     {
-        _enemyState = playerState;
-        _hitBoxController = hitBoxController;
+        _enemyState = GetComponent<IState>();
+        _hitBoxController = GetComponent<HitBoxController>();
         _cooldown = Random.Range(attackCooldown * 0.8f, attackCooldown * 1.8f);
         _nextAttackTime = 0f;
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerMovement : IMovable
+public class PlayerMovement : MonoBehaviour, IMovable
 {
     [Header("Movement Settings")]
     [SerializeField] private float acceleration = 15f;
@@ -12,10 +12,10 @@ public class PlayerMovement : IMovable
 
     private IState playerState;
 
-    public PlayerMovement(Rigidbody2D rigidbody, IState playerState)
+    private void Awake()
     {
-        this.rb = rigidbody;
-        this.playerState = playerState;
+        rb = GetComponent<Rigidbody2D>();
+        playerState = GetComponent<PlayerController>().playerState;
     }
 
     public void Move(Vector2 input, float moveSpeed, bool isMoveOnSlope)

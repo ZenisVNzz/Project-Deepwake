@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyDirectionHandler : ICharacterDirectionHandler
+public class EnemyDirectionHandler : MonoBehaviour, ICharacterDirectionHandler
 {
     private IAIMove enemyMovement;
     private Direction lastDirection = Direction.DownLeft;
@@ -11,12 +11,11 @@ public class EnemyDirectionHandler : ICharacterDirectionHandler
     private float deadzone = 0.3f;
     private float directionChangeThreshold = 25f;
 
-    private readonly bool twoWayOnly; 
+    public bool twoWayOnly; 
 
-    public EnemyDirectionHandler(IAIMove enemyMovement, bool twoWayOnly = false)
+    private void Awake()
     {
-        this.enemyMovement = enemyMovement;
-        this.twoWayOnly = twoWayOnly;
+        this.enemyMovement = GetComponent<IAIMove>();
         if (twoWayOnly)
         {
             lastDirection = Direction.Right; 

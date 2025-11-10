@@ -6,7 +6,7 @@ public class SlopedStair : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            var controller = collision.GetComponentInParent<IPlayerController>();
+            var controller = collision.GetComponentInParent<PlayerController>();
             controller.MoveOnSlope(true);
         }
     }
@@ -15,7 +15,7 @@ public class SlopedStair : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            var controller = collision.GetComponentInParent<IPlayerController>();
+            var controller = collision.GetComponentInParent<PlayerController>();
             controller.MoveOnSlope(false);
         }
     }
