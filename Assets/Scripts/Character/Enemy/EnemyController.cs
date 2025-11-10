@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
     {
         if (enemyMovement.HaveReachedTarget())
         {
-            enemyAttack.Attack(enemyRuntime.TotalAttack);
+            enemyAttack.CmdAttack(enemyRuntime.TotalAttack);
         }      
     }
 

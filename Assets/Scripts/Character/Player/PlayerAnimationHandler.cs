@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimationHandler : NetworkBehaviour, IAnimationHandler
 {
+    private NetworkAnimator netAnimator;
     private Animator animator;
     private IState playerState;
     private ICharacterDirectionHandler directionHandler;
@@ -14,6 +15,7 @@ public class PlayerAnimationHandler : NetworkBehaviour, IAnimationHandler
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        netAnimator = GetComponent<NetworkAnimator>();
         playerState = GetComponent<PlayerController>().playerState;
         directionHandler = GetComponent<ICharacterDirectionHandler>();
         PlayerNet = GetComponent<PlayerNet>();
@@ -21,6 +23,8 @@ public class PlayerAnimationHandler : NetworkBehaviour, IAnimationHandler
 
     public void UpdateAnimation()
     {
+        if (playerState == null) return;
+
         CharacterStateType currentState = playerState.GetCurrentState();
 
         switch (currentState)
@@ -96,8 +100,14 @@ public class PlayerAnimationHandler : NetworkBehaviour, IAnimationHandler
         var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName(currentAnimName) && stateInfo.normalizedTime >= 1.0f)
         {
-            PlayerNet.CmdChangeState(CharacterStateType.Idle);
+            CmdRequestChangeState(CharacterStateType.Idle);
         }
+    }
+
+    [Command]
+    private void CmdRequestChangeState(CharacterStateType newState)
+    {
+        PlayerNet.ChangeState(newState);
     }
 
     private void PlayAnimation(string animName)

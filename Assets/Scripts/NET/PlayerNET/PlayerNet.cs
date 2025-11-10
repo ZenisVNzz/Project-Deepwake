@@ -9,7 +9,7 @@ public class PlayerNet : NetworkBehaviour
     private string playerName = "Zenis";
 
     [SyncVar(hook = nameof(OnCharacterStateChanged))]
-    [SerializeField] private CharacterStateType characterStateType = CharacterStateType.Idle;
+    public CharacterStateType characterStateType = CharacterStateType.Idle;
 
     public override void OnStartLocalPlayer()
     {
@@ -17,14 +17,19 @@ public class PlayerNet : NetworkBehaviour
         playerState = GetComponent<PlayerController>().playerState;
     }
 
-    [Command]
-    public void CmdChangeState(CharacterStateType newState)
+    [Server]
+    public void ChangeState(CharacterStateType newState)
     {
         characterStateType = newState;
     }
 
     private void OnCharacterStateChanged(CharacterStateType oldState, CharacterStateType newState)
     {
+        if (playerState == null)
+        {
+            playerState = GetComponent<PlayerController>().playerState;
+        }    
+
         playerState.ChangeState(newState);
     }
 

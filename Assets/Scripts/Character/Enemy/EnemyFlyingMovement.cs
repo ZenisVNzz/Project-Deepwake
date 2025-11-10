@@ -92,7 +92,7 @@ public class EnemyFlyingMovement : MonoBehaviour, IAIMove
         }
     }
 
-    public void Move(Vector2 input, float moveSpeed, bool isMoveOnSlope) => Move(moveSpeed);
+    public void CmdMove(Vector2 input, float moveSpeed, bool isMoveOnSlope) => Move(moveSpeed);
 
     public Vector2 GetDir()
     {

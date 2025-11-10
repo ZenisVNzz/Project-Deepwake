@@ -17,7 +17,7 @@ public class PlayerStateHandler : NetworkBehaviour, IStateHandler
 
     private PlayerNet PlayerNet;
 
-    private void Awake()
+    public void Awake()
     {
         playerState = GetComponent<PlayerController>().playerState;
         rb = GetComponent<Rigidbody2D>();
@@ -25,8 +25,14 @@ public class PlayerStateHandler : NetworkBehaviour, IStateHandler
         PlayerNet = GetComponent<PlayerNet>();
     }
 
+    [Command]
     public void UpdateState()
     {
+        if (playerState == null)
+        {
+            playerState = GetComponent<PlayerController>().playerState;
+        }
+
         if (playerState.GetCurrentState() == CharacterStateType.Attacking || playerState.GetCurrentState() == CharacterStateType.Death)
         {
             inputHandler.Player.Move.Disable();
@@ -44,9 +50,9 @@ public class PlayerStateHandler : NetworkBehaviour, IStateHandler
         {
             inputHandler.Player.Move.Enable();
             if (CheckIfMoving())
-                PlayerNet.CmdChangeState(CharacterStateType.Running);
+                PlayerNet.ChangeState(CharacterStateType.Running);
             else
-                PlayerNet.CmdChangeState(CharacterStateType.Idle);
+                PlayerNet.ChangeState(CharacterStateType.Idle);
         }   
     }
 
@@ -64,7 +70,7 @@ public class PlayerStateHandler : NetworkBehaviour, IStateHandler
         yield return new WaitForSeconds(0.4f);
         if (playerState.GetCurrentState() == CharacterStateType.Knockback)
         {
-            PlayerNet.CmdChangeState(CharacterStateType.Idle);
+            PlayerNet.ChangeState(CharacterStateType.Idle);
             IsWaitForKnockBack = false;
         }
     }

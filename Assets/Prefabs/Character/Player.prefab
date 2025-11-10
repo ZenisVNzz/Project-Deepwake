@@ -6385,8 +6385,8 @@ GameObject:
   - component: {fileID: 2614238347761736227}
   - component: {fileID: 5220222964460864711}
   - component: {fileID: 2832459845338404151}
-  - component: {fileID: 8295288514469523120}
   - component: {fileID: 9117324732779500466}
+  - component: {fileID: 3010712401073575981}
   - component: {fileID: 1297593478178200814}
   - component: {fileID: 943918870436601819}
   - component: {fileID: 8548296308678827752}
@@ -6587,6 +6587,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c606b19ddba5d3747a2ffcd5b4cfd685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRuntime
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   level: 1
   vitality: 0
   defense: 0
@@ -6657,7 +6660,7 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
---- !u!114 &8295288514469523120
+--- !u!114 &9117324732779500466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6666,9 +6669,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2053339638299214103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkTransformReliable
+  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkAnimator
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 1
+  animator: {fileID: 8054341816088807579}
+--- !u!114 &3010712401073575981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec4f7556ca1e4b55a3381fc6a02b1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkRigidbodyReliable2D
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
@@ -6691,23 +6711,6 @@ MonoBehaviour:
   rotationSensitivity: 0.01
   positionPrecision: 0.01
   scalePrecision: 0.01
---- !u!114 &9117324732779500466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053339638299214103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkAnimator
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  clientAuthority: 0
-  animator: {fileID: 8054341816088807579}
 --- !u!114 &1297593478178200814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6751,6 +6754,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b592e7a246123384a95f097294cf3663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   acceleration: 15
   deceleration: 20
 --- !u!114 &2669530749929499118
@@ -6789,6 +6795,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d74e8535b1afd43881e1d6025d2da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!114 &5996433640564924404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6816,6 +6825,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7912d0ad5a4b8479ae64ca62809c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!1 &2059629113541717755
 GameObject:
   m_ObjectHideFlags: 0

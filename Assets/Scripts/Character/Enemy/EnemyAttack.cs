@@ -18,7 +18,7 @@ public class EnemyAttack : MonoBehaviour, IDamageDealer
         _nextAttackTime = 0f;
     }
 
-    public void Attack(float ATK)
+    public void CmdAttack(float ATK)
     {
         if (Time.time < _nextAttackTime || _enemyState.GetCurrentState() == CharacterStateType.Attacking)
         {

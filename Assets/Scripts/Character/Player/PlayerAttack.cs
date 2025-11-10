@@ -11,19 +11,22 @@ public class PlayerAttack : NetworkBehaviour, IDamageDealer
 
     private PlayerNet PlayerNet;
 
-    private void Awake()
+    public void Awake()
     {
         _playerState = GetComponent<PlayerController>().playerState;
         _hitBoxController = GetComponent<HitBoxController>();
         PlayerNet = GetComponent<PlayerNet>();
     }
 
-    public void Attack(float ATK)
+    [Command]
+    public void CmdAttack(float ATK)
     {
+        if (!GetComponent<PlayerController>().playerModifier.CanAttack) return;
+
         CharacterStateType state = _playerState.GetCurrentState();
         if (state != CharacterStateType.Attacking)
         {
-            PlayerNet.CmdChangeState(CharacterStateType.Attacking);
+            PlayerNet.ChangeState(CharacterStateType.Attacking);
         }
     }
 }
