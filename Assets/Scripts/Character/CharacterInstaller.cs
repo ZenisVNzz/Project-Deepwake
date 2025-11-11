@@ -4,6 +4,7 @@ using UnityEngine;
 public class CharacterInstaller : NetworkBehaviour
 {
     public CharacterData _characterData;
+    public MultiplayerStatusUI multiplayerStatusUI;
 
     protected PlayerController _characterController;
     protected IPlayerRuntime _characterRuntime;
@@ -45,19 +46,35 @@ public class CharacterInstaller : NetworkBehaviour
     {
         GetComponent();
         InitComponent();
-        
+
         if (isLocalPlayer)
         {
-            var uiManager = FindAnyObjectByType<CharacterUIManager>();
+            PlayerRuntime local = _characterRuntime as PlayerRuntime;
+
+            var uiManager = GetComponent<CharacterUIManager>();
 
             if (uiManager != null)
             {
                 uiManager.Init(_characterRuntime);
             }
 
-            CameraController.Instance.SetTarget(this.transform);
+            multiplayerStatusUI.BindLocalPlayer(local);
+
+            PlayerNetManager playerNetManager = PlayerNetManager.Instance;
+            playerNetManager.localCharacterRuntime = local;
+            CmdRegisterCharacterRuntime();
+
+            multiplayerStatusUI.AutoBindData();
+
+            CameraController.Instance.SetTarget(this.transform);        
         }
 
         ShipController.Instance.SetChild(this.transform, false);
+    }
+
+    [Command]
+    private void CmdRegisterCharacterRuntime()
+    {
+        PlayerNetManager.Instance.RegisterCharacterRuntime(_characterRuntime as PlayerRuntime);
     }
 }

@@ -10,7 +10,7 @@ public class UIStatusBar : MonoBehaviour, IRuntimeUIService
     [SerializeField] private Slider mpBar;
     [SerializeField] private TextMeshProUGUI mpText;
 
-    private IPlayerRuntime _player;
+    public IPlayerRuntime _player;
 
     public void Initialize()
     {

@@ -12,7 +12,7 @@ public class EnemyAttack : MonoBehaviour, IDamageDealer
 
     private void Awake()
     {
-        _enemyState = GetComponent<IState>();
+        _enemyState = GetComponent<EnemyController>().enemyState;
         _hitBoxController = GetComponent<HitBoxController>();
         _cooldown = Random.Range(attackCooldown * 0.8f, attackCooldown * 1.8f);
         _nextAttackTime = 0f;

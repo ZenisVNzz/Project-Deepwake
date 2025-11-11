@@ -10,13 +10,10 @@ public class EnemyShooter : MonoBehaviour
 
     private Transform player;
 
-    public void Init(ICharacterRuntime characterRuntime)
-    {
-        this.characterRuntime = characterRuntime;
-    }
-
     private void Awake()
     {
+        characterRuntime = GetComponent<ICharacterRuntime>();
+
         if (firePoint == null)
         {
             var fp = new GameObject("FirePoint");
