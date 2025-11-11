@@ -11,12 +11,12 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
     private string currentAnimName;
     private bool isDeath = false;
 
-    private readonly bool twoWayOnly;
+    public bool twoWayOnly;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        enemyState = GetComponent<IState>();
+        enemyState = GetComponent<EnemyController>().enemyState;
         directionHandler = GetComponent<ICharacterDirectionHandler>();
     }
 

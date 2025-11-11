@@ -11,11 +11,11 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(IDamageDealer))]
 public class PlayerController : NetworkBehaviour, IPlayerController
 {
-    public IMovable playerMovement
+    public PlayerMovement playerMovement
     {
         get
         {
-            return GetComponent<IMovable>();
+            return GetComponent<PlayerMovement>();
         }
     }
 
@@ -116,6 +116,7 @@ public class PlayerController : NetworkBehaviour, IPlayerController
     private Collider2D hurtBox;
 
     private bool isMoveOnSlope = false;
+    public bool reverseSlope = false;
 
     private CharacterUIManager _uiManager;
 

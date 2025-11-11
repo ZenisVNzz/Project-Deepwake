@@ -219,6 +219,26 @@ MonoBehaviour:
     m_Key: UI_GAME_OUTDATED
     m_Metadata:
       m_Items: []
+  - m_Id: 16470511487475712
+    m_Key: UI_Singleplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16470559923298304
+    m_Key: UI_Multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16470579623944192
+    m_Key: UI_Quitgame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16476327208738816
+    m_Key: UI_CreateRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16476401057849344
+    m_Key: UI_Join
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

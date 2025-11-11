@@ -58,6 +58,8 @@ public class PlayerMovement : NetworkBehaviour, IMovable
     [Server]
     private void MoveAlongSlope(Vector2 dir, float moveSpeed, float speedModifier)
     {
+        bool isReverse = GetComponent<PlayerController>().reverseSlope;
+
         const float epsilon = 0.0001f;
 
         if (input.sqrMagnitude <= epsilon)
@@ -71,11 +73,17 @@ public class PlayerMovement : NetworkBehaviour, IMovable
 
         if (move.x < 0)
         {
-            rb.linearVelocity = new Vector2(move.x, move.y + dir.y * 0.32f);
+            if (isReverse)
+                rb.linearVelocity = new Vector2(move.x, move.y - dir.y * 0.32f);
+            else
+                rb.linearVelocity = new Vector2(move.x, move.y + dir.y * 0.32f);
         }
         else
         {
-            rb.linearVelocity = new Vector2(move.x, move.y - dir.y * 0.32f);
+            if (isReverse)
+                rb.linearVelocity = new Vector2(move.x, move.y + dir.y * 0.32f);
+            else
+                rb.linearVelocity = new Vector2(move.x, move.y - dir.y * 0.32f);
         }
     }
 

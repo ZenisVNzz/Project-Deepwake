@@ -12,23 +12,26 @@ public class EnemyInstaller : CharacterInstaller
 
     public override void GetComponent()
     {
-        base.GetComponent();
         if (!isFlyingEnemy)
         {
             _seeker = GetComponent<Seeker>();
         }    
+
+        _enemyRuntime = GetComponent<EnemyRuntime>();
+        _enemyController = GetComponent<EnemyController>();
     }
 
     public override void InitComponent()
     {
+        base.InitComponent();
+        _enemyRuntime.Init();
+        _enemyController.Init();
     }
 
     public override void InitCharacter()
     {
         GetComponent();
         InitComponent();
-        _enemyRuntime.Init();
-        _enemyController.Init();
 
         ShipController.Instance.SetChild(this.transform, true);
     }

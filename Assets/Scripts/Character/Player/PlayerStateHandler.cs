@@ -50,9 +50,19 @@ public class PlayerStateHandler : NetworkBehaviour, IStateHandler
         {
             inputHandler.Player.Move.Enable();
             if (CheckIfMoving())
-                PlayerNet.ChangeState(CharacterStateType.Running);
+            {
+                if (playerState.GetCurrentState() != CharacterStateType.Running)
+                {
+                    PlayerNet.ChangeState(CharacterStateType.Running);
+                }
+            } 
             else
-                PlayerNet.ChangeState(CharacterStateType.Idle);
+            {
+                if (playerState.GetCurrentState() != CharacterStateType.Idle)
+                {
+                    PlayerNet.ChangeState(CharacterStateType.Idle);
+                }
+            }
         }   
     }
 

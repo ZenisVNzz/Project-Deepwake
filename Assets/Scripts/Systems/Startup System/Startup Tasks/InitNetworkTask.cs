@@ -2,8 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using Deepwake.NetworkSystem;
 
 [CreateAssetMenu(fileName = "InitNetworkTask", menuName = "StartupSystem/InitNetworkTask")]
 public class InitNetworkTask : StartupTask

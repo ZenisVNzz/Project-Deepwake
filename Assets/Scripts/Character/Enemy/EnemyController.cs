@@ -5,32 +5,75 @@ using UnityEngine.InputSystem;
 
 public class EnemyController : MonoBehaviour, IEnemyController
 {
-    public IAIMove enemyMovement;
-    public IState enemyState;
-    public ICharacterDirectionHandler directionHandler;
-    public IAnimationHandler animationHandler;
-    public IStateHandler stateHandler;
-    public IDamageDealer enemyAttack;
+    public IAIMove enemyMovement
+    {
+        get
+        {
+            return GetComponent<IAIMove>();
+        }
+    }
+
+    private IState _enemyState;
+    public IState enemyState
+    {
+        get
+        {
+            if (_enemyState == null)
+                _enemyState = new EnemyState();
+            return _enemyState;
+        }
+        set => _enemyState = value;
+    }
+
+    public ICharacterDirectionHandler directionHandler
+    {
+        get
+        {
+            return GetComponent<ICharacterDirectionHandler>();
+        }
+    }
+
+    public IAnimationHandler animationHandler
+    {
+        get
+        {
+            return GetComponent<IAnimationHandler>();
+        }
+    }
+
+    public IStateHandler stateHandler
+    {
+         get
+        {
+            return GetComponent<IStateHandler>();
+        }
+    }
+
+    public IDamageDealer enemyAttack
+    {
+        get
+        {
+            return GetComponent<IDamageDealer>();
+        }
+    }
+
+    public ICharacterRuntime enemyRuntime
+    {
+        get
+        {
+            return GetComponent<ICharacterRuntime>();
+        }
+    }
 
     private SpriteRenderer spriteRenderer;
     private Collider2D cd2D;
     private Collider2D hurtBox;
-
-    public ICharacterRuntime enemyRuntime;
 
     private bool isDead = false;
     public bool IsDead => isDead;
 
     public void Init()
     {
-        enemyMovement = GetComponent<IAIMove>();
-        enemyState = GetComponent<IState>();
-        directionHandler = GetComponent<ICharacterDirectionHandler>();
-        animationHandler = GetComponent<IAnimationHandler>();
-        stateHandler = GetComponent<IStateHandler>();
-        enemyAttack = GetComponent<IDamageDealer>();
-
-        enemyRuntime = GetComponent<ICharacterRuntime>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();

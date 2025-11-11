@@ -27,6 +27,8 @@ public class EnemyFlyingMovement : MonoBehaviour, IAIMove
 
     private void Awake()
     {
+        keepSide = (Random.value < 0.5f) ? VerticalSide.Above : VerticalSide.Below;
+
         this.rb = GetComponent<Rigidbody2D>();
         this.desiredVerticalOffset = Mathf.Abs(2.5f);
         this.stopDistance = 0.8f;

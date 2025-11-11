@@ -224,6 +224,26 @@ MonoBehaviour:
     m_Localized: You are using an outdated game version. Please update or continue
     m_Metadata:
       m_Items: []
+  - m_Id: 16470511487475712
+    m_Localized: Singleplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16470559923298304
+    m_Localized: Multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16470579623944192
+    m_Localized: Quit game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16476327208738816
+    m_Localized: Create room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16476401057849344
+    m_Localized: Join
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

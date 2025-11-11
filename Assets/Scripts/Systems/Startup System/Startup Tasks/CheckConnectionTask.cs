@@ -1,8 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Localization;
-
+using Deepwake.NetworkSystem;
 
 [CreateAssetMenu(fileName = "CheckConnectionTask", menuName = "StartupSystem/CheckConnectionTask")]
 

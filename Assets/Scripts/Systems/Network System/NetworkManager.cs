@@ -2,29 +2,32 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-public class NetworkManager : IGameService
+namespace Deepwake.NetworkSystem
 {
-    private IServiceRegistry _serviceRegistry;
-
-    public NetworkManager(IServiceRegistry serviceRegistry)
+    public class NetworkManager : IGameService
     {
-        _serviceRegistry = serviceRegistry;
-    }
+        private IServiceRegistry _serviceRegistry;
 
-    public async Task<bool> InitAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
-    {
-        serviceRegistry.Register<NetworkManager>(this);
-        await Task.CompletedTask;
-        return true;
-    }
+        public NetworkManager(IServiceRegistry serviceRegistry)
+        {
+            _serviceRegistry = serviceRegistry;
+        }
 
-    public Tservice GetService<Tservice>()
-    {
-        return _serviceRegistry.Get<Tservice>();
-    }
+        public async Task<bool> InitAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
+        {
+            serviceRegistry.Register<NetworkManager>(this);
+            await Task.CompletedTask;
+            return true;
+        }
 
-    public bool GetService<Tservice>(out Tservice service)
-    {
-        return _serviceRegistry.TryGet<Tservice>(out service);
+        public Tservice GetService<Tservice>()
+        {
+            return _serviceRegistry.Get<Tservice>();
+        }
+
+        public bool GetService<Tservice>(out Tservice service)
+        {
+            return _serviceRegistry.TryGet<Tservice>(out service);
+        }
     }
 }
