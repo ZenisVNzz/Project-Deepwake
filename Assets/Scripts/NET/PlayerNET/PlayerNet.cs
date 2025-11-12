@@ -1,20 +1,60 @@
 ﻿using Mirror;
+using TMPro;
 using UnityEngine;
 
 public class PlayerNet : NetworkBehaviour
 {
-    private IState playerState;
+    [SyncVar(hook = nameof(UpdatePlayerName))]
+    public string playerName = "Zenis";
+    public TextMeshProUGUI playerNameText;
+    public TextMeshProUGUI player2NameText;
+    public TextMeshProUGUI player3NameText;
 
-    [SyncVar]
-    private string playerName = "Zenis";
+    private IState playerState;
 
     [SyncVar(hook = nameof(OnCharacterStateChanged))]
     public CharacterStateType characterStateType = CharacterStateType.Idle;
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        if (playerNameText == null)
+        {
+            playerNameText = GetComponentInChildren<TextMeshProUGUI>(true);
+        }
+
+        if (playerNameText != null)
+        {
+            playerNameText.text = playerName;
+        }
+    }
 
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
         playerState = GetComponent<PlayerController>().playerState;
+    }
+
+    private void UpdatePlayerName(string oldname, string newname)
+    {
+        if (playerNameText == null)
+        {
+            playerNameText = GetComponentInChildren<TextMeshProUGUI>(true);
+        }
+
+        if (playerNameText != null)
+        {
+            playerNameText.text = newname;
+        }
+    }
+
+    public void SetActivePlayerNameUI(bool active)
+    {
+        if (playerNameText != null)
+        {
+            playerNameText.gameObject.SetActive(active);
+        }
     }
 
     [Server]
@@ -28,7 +68,7 @@ public class PlayerNet : NetworkBehaviour
         if (playerState == null)
         {
             playerState = GetComponent<PlayerController>().playerState;
-        }    
+        }
 
         playerState.ChangeState(newState);
     }

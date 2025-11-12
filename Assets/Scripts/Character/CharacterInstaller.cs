@@ -52,21 +52,23 @@ public class CharacterInstaller : NetworkBehaviour
             PlayerRuntime local = _characterRuntime as PlayerRuntime;
 
             var uiManager = GetComponent<CharacterUIManager>();
+            PlayerNetManager playerNetManager = PlayerNetManager.Instance;
+            PlayerNet localPlayerNet = GetComponent<PlayerNet>();
+            PlayerDataProvider playerDataProvider = PlayerDataProvider.Instance;
+            multiplayerStatusUI.BindLocalPlayer(local);
+            playerNetManager.localCharacterRuntime = local;           
+            CmdSetPlayerName(playerDataProvider.playerName);
+
+            multiplayerStatusUI.AutoBindData();
+
+            CameraController.Instance.SetTarget(this.transform);
 
             if (uiManager != null)
             {
                 uiManager.Init(_characterRuntime);
             }
 
-            multiplayerStatusUI.BindLocalPlayer(local);
-
-            PlayerNetManager playerNetManager = PlayerNetManager.Instance;
-            playerNetManager.localCharacterRuntime = local;
             CmdRegisterCharacterRuntime();
-
-            multiplayerStatusUI.AutoBindData();
-
-            CameraController.Instance.SetTarget(this.transform);        
         }
 
         ShipController.Instance.SetChild(this.transform, false);
@@ -76,5 +78,15 @@ public class CharacterInstaller : NetworkBehaviour
     private void CmdRegisterCharacterRuntime()
     {
         PlayerNetManager.Instance.RegisterCharacterRuntime(_characterRuntime as PlayerRuntime);
+    }
+
+    [Command]
+    private void CmdSetPlayerName(string playerName)
+    {
+        var net = GetComponent<PlayerNet>();
+        if (net != null)
+        {
+            net.playerName = playerName;
+        }
     }
 }

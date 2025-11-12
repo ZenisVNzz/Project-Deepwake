@@ -34,7 +34,7 @@ public class MultiplayerStatusUI : MonoBehaviour
         boundPlayer.Add(localPlayer);
     }
 
-    public void BindData(PlayerRuntime playerData)
+    public void BindData(PlayerRuntime playerData, bool state)
     {
         foreach (var statusBar in statusBars)
         {

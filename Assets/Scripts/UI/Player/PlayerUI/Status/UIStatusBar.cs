@@ -9,6 +9,7 @@ public class UIStatusBar : MonoBehaviour, IRuntimeUIService
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private Slider mpBar;
     [SerializeField] private TextMeshProUGUI mpText;
+    [SerializeField] private TextMeshProUGUI playerNameText;
 
     public IPlayerRuntime _player;
 
@@ -25,6 +26,11 @@ public class UIStatusBar : MonoBehaviour, IRuntimeUIService
         _player = data;
         _player.OnHPChanged += OnHPChanged;
         _player.OnStaminaChanged += OnStaminaChanged;
+        PlayerRuntime playerRuntime = data as PlayerRuntime;
+        if (playerNameText != null )
+        {
+            playerNameText.text = playerRuntime.gameObject.TryGetComponent<PlayerNet>(out var pc) ? pc.playerName : "Null";
+        }    
         UpdateUI();
     }
 

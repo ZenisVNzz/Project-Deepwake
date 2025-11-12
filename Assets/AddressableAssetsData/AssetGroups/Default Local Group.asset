@@ -25,6 +25,7 @@ MonoBehaviour:
     m_Address: Player
     m_ReadOnly: 0
     m_SerializedLabels:
+    - Core
     - PlayerPrefab
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 068713747145d9c4d9158f06f1526fbc
