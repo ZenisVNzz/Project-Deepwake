@@ -1,31 +1,38 @@
+using Mirror;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class HitBoxController : MonoBehaviour
+public class HitBoxController : NetworkBehaviour
 {
     private List<HitBoxHandler> _hitBoxHandlers = new List<HitBoxHandler>();
-    private ICharacterRuntime _owner;
+    private CharacterRuntime _owner;
 
-    public void Init(ICharacterRuntime owner)
+    private void Awake()
+    {
+        CharacterRuntime owner = GetComponentInParent<CharacterRuntime>();
+        Init(owner);
+    }
+
+    public void Init(CharacterRuntime owner)
     {
         _owner = owner;
 
         foreach (Transform child in transform)
         {
-            HitBoxHandler handler = child.AddComponent<HitBoxHandler>();
+            HitBoxHandler handler = child.GetComponent<HitBoxHandler>();
             handler.SetData(gameObject.tag, _owner);
             _hitBoxHandlers.Add(handler);
         }
     }
 
-    public void Init(ICharacterRuntime owner, float damage)
+    public void Init(CharacterRuntime owner, float damage)
     {
         _owner = owner;
 
         foreach (Transform child in transform)
         {
-            HitBoxHandler handler = child.AddComponent<HitBoxHandler>();
+            HitBoxHandler handler = child.GetComponent<HitBoxHandler>();
             handler.SetData(damage, gameObject.tag, _owner);
             _hitBoxHandlers.Add(handler);
         }

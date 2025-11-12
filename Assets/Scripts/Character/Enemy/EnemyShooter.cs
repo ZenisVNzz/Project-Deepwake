@@ -6,13 +6,13 @@ public class EnemyShooter : MonoBehaviour
     [Header("Refs")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectilePrefab;
-    private ICharacterRuntime characterRuntime;
+    private CharacterRuntime characterRuntime;
 
     private Transform player;
 
     private void Awake()
     {
-        characterRuntime = GetComponent<ICharacterRuntime>();
+        characterRuntime = GetComponent<CharacterRuntime>();
 
         if (firePoint == null)
         {

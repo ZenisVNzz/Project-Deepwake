@@ -6874,10 +6874,8 @@ MonoBehaviour:
   defense: 0
   strength: 0
   luck: 0
-  hp: 0
   currentExp: 0
   expToNextLevel: 100
-  stamina: 0
 --- !u!114 &2614238347761736227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7349,6 +7347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5462769955525067466}
   - component: {fileID: 3908582227813009348}
+  - component: {fileID: 6660060511409015570}
   m_Layer: 11
   m_Name: HitBox_UpLeft
   m_TagString: Hitbox
@@ -7417,6 +7416,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1029631, y: 1.1401514}
   m_EdgeRadius: 0
+--- !u!114 &6660060511409015570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146374056329021464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c940153b0ffacd419410e620fe750b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBoxHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  damage: 10
+  knockbackForce: 10
+  undamagedTag: 
+  destroyThisOnHit: 0
+  _characterRuntime: {fileID: 0}
+  isOwnerDmg: 0
 --- !u!1 &2151226022214458651
 GameObject:
   m_ObjectHideFlags: 0
@@ -9214,6 +9234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1581798494009005525}
   - component: {fileID: 5936145623696268676}
+  - component: {fileID: 2447267467000833564}
   m_Layer: 11
   m_Name: HitBox_Down
   m_TagString: Hitbox
@@ -9282,6 +9303,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1209223, y: 0.9999995}
   m_EdgeRadius: 0
+--- !u!114 &2447267467000833564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563004485363715114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c940153b0ffacd419410e620fe750b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBoxHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  damage: 10
+  knockbackForce: 10
+  undamagedTag: 
+  destroyThisOnHit: 0
+  _characterRuntime: {fileID: 0}
+  isOwnerDmg: 0
 --- !u!1 &2584971585331496908
 GameObject:
   m_ObjectHideFlags: 0
@@ -14155,6 +14197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3823285501523445784}
   - component: {fileID: 1814609856874317486}
+  - component: {fileID: 731955862758956843}
   m_Layer: 11
   m_Name: HitBox_UpRight
   m_TagString: Hitbox
@@ -14223,6 +14266,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0751803, y: 1.1401514}
   m_EdgeRadius: 0
+--- !u!114 &731955862758956843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4071841220041535201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c940153b0ffacd419410e620fe750b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBoxHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  damage: 10
+  knockbackForce: 10
+  undamagedTag: 
+  destroyThisOnHit: 0
+  _characterRuntime: {fileID: 0}
+  isOwnerDmg: 0
 --- !u!1 &4104597947781560007
 GameObject:
   m_ObjectHideFlags: 0
@@ -21062,6 +21126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5715104214939550173}
   - component: {fileID: 7481684800980324495}
+  - component: {fileID: 4935634742035628543}
   m_Layer: 11
   m_Name: HitBox_Up
   m_TagString: Hitbox
@@ -21130,6 +21195,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.125241, y: 1.1943392}
   m_EdgeRadius: 0
+--- !u!114 &4935634742035628543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772438015194850097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c940153b0ffacd419410e620fe750b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBoxHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  damage: 10
+  knockbackForce: 10
+  undamagedTag: 
+  destroyThisOnHit: 0
+  _characterRuntime: {fileID: 0}
+  isOwnerDmg: 0
 --- !u!1 &5787474179659567342
 GameObject:
   m_ObjectHideFlags: 0
@@ -21526,6 +21612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3972793991545549032}
   - component: {fileID: 4496011738798204468}
+  - component: {fileID: 1654998450922477829}
   m_Layer: 11
   m_Name: HitBox_DownLeft
   m_TagString: Hitbox
@@ -21594,6 +21681,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1449313, y: 1.059535}
   m_EdgeRadius: 0
+--- !u!114 &1654998450922477829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893253327991677147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c940153b0ffacd419410e620fe750b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBoxHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  damage: 10
+  knockbackForce: 10
+  undamagedTag: 
+  destroyThisOnHit: 0
+  _characterRuntime: {fileID: 0}
+  isOwnerDmg: 0
 --- !u!1 &5901335733662786718
 GameObject:
   m_ObjectHideFlags: 0
@@ -21711,6 +21819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2269486522007881072}
   - component: {fileID: 5516063867986948265}
+  - component: {fileID: 5805067143529690436}
   m_Layer: 11
   m_Name: HitBox_Right
   m_TagString: Hitbox
@@ -21779,6 +21888,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.3188957, y: 0.43621105}
   m_EdgeRadius: 0
+--- !u!114 &5805067143529690436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906023580802198536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c940153b0ffacd419410e620fe750b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBoxHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  damage: 10
+  knockbackForce: 10
+  undamagedTag: 
+  destroyThisOnHit: 0
+  _characterRuntime: {fileID: 0}
+  isOwnerDmg: 0
 --- !u!1 &5947942414574779321
 GameObject:
   m_ObjectHideFlags: 0
@@ -23308,6 +23438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 924298170457325360}
   - component: {fileID: 7370267595933122317}
+  - component: {fileID: 1604550160424188240}
   m_Layer: 11
   m_Name: 'HitBox_Left '
   m_TagString: Hitbox
@@ -23376,6 +23507,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.3491261, y: 0.38438725}
   m_EdgeRadius: 0
+--- !u!114 &1604550160424188240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199379289771470663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c940153b0ffacd419410e620fe750b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBoxHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  damage: 10
+  knockbackForce: 10
+  undamagedTag: 
+  destroyThisOnHit: 0
+  _characterRuntime: {fileID: 0}
+  isOwnerDmg: 0
 --- !u!1 &6209404444525505312
 GameObject:
   m_ObjectHideFlags: 0
@@ -29125,6 +29277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8350108528114398066}
   - component: {fileID: 8391723351008339365}
+  - component: {fileID: 2542931237348965729}
   m_Layer: 11
   m_Name: HitBox_DownRight
   m_TagString: Hitbox
@@ -29193,6 +29346,27 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1194963, y: 1.1028898}
   m_EdgeRadius: 0
+--- !u!114 &2542931237348965729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7743427000722654290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c940153b0ffacd419410e620fe750b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitBoxHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  damage: 10
+  knockbackForce: 10
+  undamagedTag: 
+  destroyThisOnHit: 0
+  _characterRuntime: {fileID: 0}
+  isOwnerDmg: 0
 --- !u!1 &7750537755811150907
 GameObject:
   m_ObjectHideFlags: 0
@@ -31721,6 +31895,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2c1a71a17f9a743ae2a9da1a4a5acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!1 &8673283501635057989
 GameObject:
   m_ObjectHideFlags: 0

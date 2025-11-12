@@ -8,7 +8,7 @@ public class BulletRuntime : NetworkBehaviour
 
     protected void OnBecameInvisible()
     {
-        if (!NetworkServer.active) return;
+        if (!NetworkServer.active || !gameObject.activeInHierarchy) return;
         StartCoroutine(DestroyAfterDelay());
     }
 

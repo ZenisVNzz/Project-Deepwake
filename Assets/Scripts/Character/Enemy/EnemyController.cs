@@ -1,9 +1,10 @@
 using DG.Tweening;
+using Mirror;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class EnemyController : MonoBehaviour, IEnemyController
+public class EnemyController : NetworkBehaviour, IEnemyController
 {
     public IAIMove enemyMovement
     {
@@ -97,18 +98,38 @@ public class EnemyController : MonoBehaviour, IEnemyController
         }      
     }
 
+    [Server]
     private void OnDead()
     {
-        StartCoroutine(DeathProcess());
+        if (isDead) return;
         isDead = true;
+
+        RpcDeathEffect();
+        StartCoroutine(ServerDeathProcess());
     }
 
-    private IEnumerator DeathProcess()
+    [ClientRpc]
+    private void RpcDeathEffect()
+    {
+        StartCoroutine(ClientDeathCoroutine());
+    }
+
+    private IEnumerator ClientDeathCoroutine()
     {
         cd2D.enabled = false;
         hurtBox.enabled = false;
-        yield return new WaitForSeconds(3);
-        spriteRenderer.DOFade(0f, 3f).OnComplete(() => Destroy(gameObject));
+
+        yield return new WaitForSeconds(3f);
+
+        spriteRenderer.DOFade(0f, 3f);
+    }
+
+    private IEnumerator ServerDeathProcess()
+    {
+        yield return new WaitForSeconds(6f);
+
+        if (NetworkServer.active)
+            NetworkServer.Destroy(gameObject);
     }
 
     void Update()

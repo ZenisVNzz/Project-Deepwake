@@ -17,11 +17,11 @@ public enum BonusStat
 public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
 {
     [Header("Character Attributes")]
-    [SerializeField] protected float level = 1;
-    [SerializeField] protected float vitality = 0;
-    [SerializeField] protected float defense = 0;
-    [SerializeField] protected float strength = 0;
-    [SerializeField] protected float luck = 0;
+    [SerializeField][SyncVar] protected float level = 1;
+    [SerializeField][SyncVar] protected float vitality = 0;
+    [SerializeField][SyncVar] protected float defense = 0;
+    [SerializeField][SyncVar] protected float strength = 0;
+    [SerializeField][SyncVar] protected float luck = 0;
     public float Level => level;
     public float Vitality => vitality;
     public float Defense => defense;
@@ -29,26 +29,26 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
     public float Luck => luck;
 
     [Header("Character Bonus Stats")]
-    protected float bonusMaxHealth = 0;  
-    protected float bonusAttackPower = 0;
-    protected float bonusDefense = 0;
-    protected float bonusSpeed = 0;
+    [SyncVar] protected float bonusMaxHealth = 0;
+    [SyncVar] protected float bonusAttackPower = 0;
+    [SyncVar] protected float bonusDefense = 0;
+    [SyncVar] protected float bonusSpeed = 0;
     public float BonusMaxHealth => bonusMaxHealth;
     public float BonusAttackPower => bonusAttackPower;
     public float BonusDefense => bonusDefense;
     public float BonusSpeed => bonusSpeed;
 
     [Header("Total Stats")]
-    [SerializeField] protected float totalHealth => characterData.HP + bonusMaxHealth + (5f * vitality);
-    [SerializeField] protected float totalAttack => characterData.AttackPower + bonusAttackPower + (2f * strength);
-    [SerializeField] protected float totalDefense => characterData.Defense + bonusDefense + (1f * defense);
+    [SerializeField] protected float totalHealth => characterData.HP + bonusMaxHealth + (2f * vitality);
+    [SerializeField] protected float totalAttack => characterData.AttackPower + bonusAttackPower + (1f * strength);
+    [SerializeField] protected float totalDefense => characterData.Defense + bonusDefense + (0.5f * defense);
     [SerializeField] protected float totalSpeed => characterData.MoveSpeed + bonusSpeed;
     public float TotalHealth => totalHealth;
     public float TotalAttack => totalAttack;
     public float TotalDefense => totalDefense;
     public float TotalSpeed => totalSpeed;    
 
-    [SerializeField] protected float hp;
+    [SyncVar(hook = nameof(HPSync))] protected float hp;
     public float HP => hp;
     public event Action<float> OnHPChanged;
     protected float _hpRegenRate;   
@@ -76,6 +76,11 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
 
         rb = GetComponent<Rigidbody2D>();
         this.characterState = GetComponent<PlayerController>().playerState;
+    }
+
+    private void HPSync(float oldHP, float newHP)
+    {
+        OnHPChanged?.Invoke(newHP);
     }
 
     public virtual void ApplyAttributes(CharacterAttributes attributes)
@@ -110,6 +115,7 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
         }
     }
 
+    [Server]
     public virtual void TakeDamage(float damage, Vector3 knockback, ICharacterRuntime characterRuntime)
     {
         if (characterState.GetCurrentState() != CharacterStateType.Death)
@@ -119,15 +125,7 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
             DamageReduceCal damageReduceCal = new DamageReduceCal();
             float FinalDamage = damageReduceCal.Calculate(damage, characterData.Defense);
 
-            if (flashMaterial == null)
-            {
-                flashMaterial = ResourceManager.Instance.GetAsset<Material>("DamageFlashMaterial");
-                damageFlash = new DamageFlash(GetComponent<SpriteRenderer>(), flashMaterial);
-            }
-
-            damageFlash.TriggerFlash();
-            UIManager.Instance.GetSingleUIService().Create
-                ("FloatingDamage", $"FloatingDamage{Time.time}_{UnityEngine.Random.Range(0, 99999)}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
+            OnTakeDamage(FinalDamage);
 
             hp -= FinalDamage; 
             OnHPChanged?.Invoke(hp);
@@ -157,6 +155,21 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
         }   
     }
 
+    [ClientRpc]
+    private void OnTakeDamage(float damage)
+    {
+        if (flashMaterial == null)
+        {
+            flashMaterial = ResourceManager.Instance.GetAsset<Material>("DamageFlashMaterial");
+            damageFlash = new DamageFlash(GetComponent<SpriteRenderer>(), flashMaterial);
+        }
+
+        damageFlash.TriggerFlash();
+        UIManager.Instance.GetSingleUIService().Create
+                ("FloatingDamage", $"FloatingDamage{Time.time}_{UnityEngine.Random.Range(0, 99999)}", damage.ToString("F1"), transform.position + Vector3.up * 0.8f);
+    }
+
+    [Server]
     public virtual void TakeDamage(float damage, Vector3 knockback)
     {
         TakeDamage(damage, knockback, null);
@@ -164,7 +177,15 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
 
     protected void Die()
     {
-        PlayerNet.ChangeState(CharacterStateType.Death);
+        if (this is PlayerRuntime player)
+        {
+            PlayerNet.ChangeState(CharacterStateType.Death);
+        }
+        else
+        {
+            characterState.ChangeState(CharacterStateType.Death);
+        }
+        
         Debug.Log($"{gameObject} has died.");
     }
 
