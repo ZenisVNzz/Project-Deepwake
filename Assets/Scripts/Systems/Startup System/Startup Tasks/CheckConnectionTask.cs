@@ -1,46 +1,61 @@
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Localization;
-
+using Deepwake.NetworkSystem;
 
 [CreateAssetMenu(fileName = "CheckConnectionTask", menuName = "StartupSystem/CheckConnectionTask")]
 
 public class CheckConnectionTask : StartupTask
 {
     public override bool HasTimeout { get { return true; } }
+    public override bool RequiresNetwork => true;
+    public override bool isMainProgressTask => true;
 
-    public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
+    public override async Task<StartupTaskResult> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
-        EventManager.Instance.Trigger("UI_NextProgress");
         if (serviceRegistry.TryGet<NetworkManager>(out var networkManager))
         {
             var networkMonitor = networkManager.GetService<NetworkMonitor>();
             if (networkMonitor != null)
             {
-                bool isOnline = await networkMonitor.CheckConnectionAsync();
+                bool isOnline;
+                try
+                {
+                    isOnline = await networkMonitor.CheckConnectionAsync();
+                }
+                catch(TaskCanceledException)
+                {
+                    Debug.LogWarning("[CheckConnectionTask] Connection check task was canceled.");
+                    return StartupTaskResult.Fail("NET_CHECK_CANCELED", "Connection check task was canceled.");
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogWarning($"[CheckConnectionTask] Exception while checking connection: {ex.Message}");
+                    return StartupTaskResult.Fail("NET_CHECK_EXCEPTION", "Exception while checking network connection.");
+                }
+
                 if (isOnline)
                 {
                     Debug.Log("[CheckConnectionTask] Network is online.");
-                    return true;
+                    EventManager.Instance.Trigger("UI_NextProgress");
+                    return StartupTaskResult.Ok();
                 }
                 else
                 {
-                    Debug.LogWarning("[CheckConnectionTask] Network is offline.");
-                    UIManager.Instance.GetPopupService().Create("Popup", "NetworkError", new LocalizedString("UI", "UI_NoConnection"));
-                    return false;
+                    Debug.LogWarning("[CheckConnectionTask] Network is offline.");                
+                    return StartupTaskResult.Fail("NET_NO_CONNECTION", "Network is offline.");
                 }
             }    
             else
             {
                 Debug.LogWarning("[CheckConnectionTask] NetworkMonitor service not found.");
-                return false;
+                return StartupTaskResult.Fail("NET_NO_MONITOR", "NetworkMonitor service not found.");
             }
         }
         else
         {
             Debug.LogWarning("[CheckConnectionTask] NetworkManager service not found.");
-            return false;
+            return StartupTaskResult.Fail("NET_NO_MANAGER", "NetworkManager service not found.");
         }
     }    
 }

@@ -8,17 +8,19 @@ using UnityEngine;
 public class CheckUpdateTask : StartupTask
 {
     public override bool HasTimeout { get { return true; } }
+    public override bool RequiresNetwork => true;
+    public override bool isMainProgressTask => true;
 
-    public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
+    public override async Task<StartupTaskResult> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
-        EventManager.Instance.Trigger("UI_NextProgress");
         Debug.Log($"[CheckUpdateTask] Check for Update.");        
         bool checkResult = await CheckGameVersionAsync();
         if (checkResult)
         {
-            return true;
+            EventManager.Instance.Trigger("UI_NextProgress");
+            return StartupTaskResult.Ok();
         }    
-        return false;
+        return StartupTaskResult.Fail("GAME_OUTDATED", "The game version is outdated.");
     }    
 
     private async Task<bool> CheckGameVersionAsync()

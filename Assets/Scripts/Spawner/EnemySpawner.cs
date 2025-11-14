@@ -1,5 +1,4 @@
-using NUnit.Framework;
-using System;
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,19 +32,24 @@ public class EnemySpawner
 
     public IEnumerator SpawnEnemy()
     {
+        if (!NetworkServer.active) yield break;
+
         activeEnemies.Clear();
         int count = Random.Range(enemySpawnTable.minSpawn, enemySpawnTable.maxSpawn + 1);
         yield return new WaitForSeconds(3f);
 
         for (int i = 0; i < count; i++)
         {
-            var enemyData = levelModifier.ModifyStats(enemySpawnTable.GetRandomEnemy(), difficultyMultiplier);
+            var enemyData = enemySpawnTable.GetRandomEnemy();
+            var enemyDataRuntime = levelModifier.ModifyStats(enemyData, difficultyMultiplier);
             var spawnPos = GetRandomSpawnPos();
-            var enemy = GameObject.Instantiate(enemyData.prefab, spawnPos, Quaternion.identity);
-            enemy.transform.SetParent(ship, worldPositionStays: true);
-            var CharInstaller = enemy.GetComponent<CharacterInstaller>();
-            CharInstaller.SetData(enemyData);
-            CharInstaller.InitCharacter();
+            var enemy = GameObject.Instantiate(enemyData.prefab, spawnPos, Quaternion.identity);   
+            CharacterInstaller characterInstaller = enemy.GetComponent<CharacterInstaller>();
+            characterInstaller.SetData(enemyDataRuntime);
+            characterInstaller.InitCharacter(); 
+
+            NetworkServer.Spawn(enemy);
+
             activeEnemies.Add(enemy);
             yield return new WaitForSeconds(2f);
         }

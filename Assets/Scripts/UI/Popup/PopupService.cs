@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +20,11 @@ public class PopupService : IPopupService
 
     public void Create(string prefabID, string instanceID, LocalizedString content, Action button1, Action button2)
     {
+        if (_activePopups.ContainsKey(instanceID))
+        {
+            Destroy(instanceID);
+        }
+
         if (canvas == null)
         {
             CanvasCreator canvasCreator = new CanvasCreator();
@@ -29,7 +33,7 @@ public class PopupService : IPopupService
 
         GameObject popupGO = GameObject.Instantiate(_popupsPrefab[prefabID], canvas.transform);
         Popup popup = popupGO.GetComponent<Popup>();
-        popup.Setup(content, button1, button2);
+        popup.Setup(instanceID , content, button1, button2);
         _activePopups.Add(instanceID, popupGO);
     }
 

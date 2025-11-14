@@ -4,7 +4,7 @@ using PlayFab.MultiplayerModels;
 using System.Collections;
 using UnityEngine;
 
-public class EnemyMovement : IAIMove
+public class EnemyMovement : MonoBehaviour, IAIMove
 {
     private Transform target;
     private float nextWaypointDistance = 0.3f;
@@ -15,15 +15,13 @@ public class EnemyMovement : IAIMove
     private int currentWaypoint = 0;
     private Seeker seeker;
     private Rigidbody2D rb;
-    private MonoBehaviour runner;
 
     private bool haveReachedTarget = false;
 
-    public EnemyMovement(Seeker seeker, Rigidbody2D rb, MonoBehaviour runner)
+    private void Awake()
     {
-        this.seeker = seeker;
-        this.rb = rb;
-        this.runner = runner;
+        this.seeker = GetComponent<Seeker>();
+        this.rb = GetComponent<Rigidbody2D>();
        
         target = GameObject.FindGameObjectWithTag("Player").transform;
         InitPath();
@@ -32,7 +30,7 @@ public class EnemyMovement : IAIMove
     private void InitPath()
     {
         UpdatePath();
-        runner.StartCoroutine(UpdatePathCour());
+        StartCoroutine(UpdatePathCour());
     }
 
     private IEnumerator UpdatePathCour()
@@ -88,7 +86,7 @@ public class EnemyMovement : IAIMove
             currentWaypoint++;
     }
 
-    public void Move(Vector2 input, float moveSpeed, bool isMoveOnSlope) => Move(moveSpeed);
+    public void CmdMove(Vector2 input, float moveSpeed, bool isMoveOnSlope) => Move(moveSpeed);
 
     public Vector2 GetDir()
     {

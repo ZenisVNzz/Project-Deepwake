@@ -1,11 +1,15 @@
+using Mirror;
 using System;
 using UnityEngine;
 
-public class CharacterUIManager : MonoBehaviour
+public class CharacterUIManager : NetworkBehaviour
 {
     [Header("References")]
+    [SerializeField] private GameObject UICanvas;
+    [SerializeField] private GameObject PopupCanvas;
     [SerializeField] private GameObject CharMenu;
     [SerializeField] private GameObject OptionsMenu;
+    [SerializeField] private GameObject mapUI;
     [SerializeField] private UIStatusBar statusBar;
     [SerializeField] private UIStats statsPanel;
     [SerializeField] private UIAttributesPanel attributesPanel;
@@ -62,6 +66,11 @@ public class CharacterUIManager : MonoBehaviour
         {
             currencyUI.Bind(player);
         }
+
+        UICanvas.transform.SetParent(null, false);
+        UICanvas.SetActive(true);
+        PopupCanvas.transform.SetParent(null, false);
+        PopupCanvas.SetActive(true);
     }
 
     private void OnDestroy()
@@ -140,6 +149,12 @@ public class CharacterUIManager : MonoBehaviour
     {
         if (OptionsMenu == null) return;
         OptionsMenu.SetActive(!OptionsMenu.activeSelf);
+    }
+
+    public void ToggleMapUI()
+    {
+        if (mapUI == null) return;
+        mapUI.SetActive(!mapUI.activeSelf);
     }
 
     public void ToggleInventory()

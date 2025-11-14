@@ -1,28 +1,13 @@
+using Mirror;
 using UnityEngine;
 
-public class CharacterInstaller : MonoBehaviour
+public class CharacterInstaller : NetworkBehaviour
 {
-    [SerializeField] protected CharacterData _characterData;
+    public CharacterData _characterData;
+    public MultiplayerStatusUI multiplayerStatusUI;
 
-    protected IMovable _characterMovement;
-    protected IAIMove _AIMovement;
-    private IDashable _characterDash;
-    protected IState _characterState;
-    protected ICharacterDirectionHandler _directionHandler;
-    protected IAnimationHandler _animationHandler;
-    protected IStateHandler _stateHandler;
-    protected IDamageDealer _characterAttack;
-
-    protected IPlayerController _characterController;
+    protected PlayerController _characterController;
     protected IPlayerRuntime _characterRuntime;
-
-    protected Rigidbody2D _rigidbody2D;
-    protected Collider2D _hurtBox;
-    protected SpriteRenderer _spriteRenderer;
-    protected Animator _animator;
-    protected HitBoxController _hitBoxController;
-    protected HitBoxController _skillHitBoxController;
-    private InputSystem_Actions _inputHandler;
 
     protected CharacterData CharacterDataClone;
 
@@ -33,60 +18,75 @@ public class CharacterInstaller : MonoBehaviour
 
     protected void Awake()
     {
-        if (_characterData != null)
-        {
-            InitCharacter();
-        }
     }
 
     public virtual void GetComponent()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _hurtBox = gameObject.transform.Find("HurtBox").GetComponent<Collider2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
-
-        if (gameObject.transform.Find("HitBoxs_BaseAttack") != null)
-            _hitBoxController = gameObject.transform.Find("HitBoxs_BaseAttack").GetComponent<HitBoxController>();
-
-        if (gameObject.transform.Find("HitBoxs_Skill") != null)
-            _skillHitBoxController = gameObject.transform.Find("HitBoxs_Skill").GetComponent<HitBoxController>();
-
-        CharacterDataClone = Instantiate(_characterData);
+        _characterRuntime = GetComponent<PlayerRuntime>();
+        _characterController = GetComponent<PlayerController>();
+        _characterRuntime.Init();
+        _characterController.Init();
     }
 
     public virtual void InitComponent()
     {
-        _characterRuntime = gameObject.AddComponent<PlayerRuntime>();
-        _inputHandler = new InputSystem_Actions();
-        _characterState = new PlayerState();
-        _characterMovement = new PlayerMovement(_rigidbody2D, _characterState);
-        _characterDash = new PlayerDash(_rigidbody2D, _characterRuntime);
-        _directionHandler = new PlayerDirectionHandler(_characterMovement);
-        _animationHandler = new PlayerAnimationHandler(_animator, _characterState, _directionHandler);
-        _stateHandler = new PlayerStateHandler(_characterState, _rigidbody2D, _inputHandler);
-        _characterAttack = new PlayerAttack( _characterState, _hitBoxController);    
+        CharacterDataClone = Instantiate(_characterData);
     }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        Debug.Log($"[CharacterInstaller] OnStartClient for {gameObject.name}");
+
+        InitCharacter();
+    }
+
 
     public virtual void InitCharacter()
     {
         GetComponent();
         InitComponent();
-        Inventory playerInventory = new Inventory();
-        _characterRuntime.Init(CharacterDataClone, _rigidbody2D, _characterState, playerInventory);
-        _characterController = gameObject.AddComponent<PlayerController>();
-        _characterController.Initialize
-            (_characterMovement, _characterDash, _characterState, _directionHandler, _characterAttack, _animationHandler, _stateHandler, _inputHandler, _characterRuntime);
 
-        var uiManager = FindAnyObjectByType<CharacterUIManager>();
-        if (uiManager != null)
+        if (isLocalPlayer)
         {
-            uiManager.Init(_characterRuntime);
+            PlayerRuntime local = _characterRuntime as PlayerRuntime;
+
+            var uiManager = GetComponent<CharacterUIManager>();
+            PlayerNetManager playerNetManager = PlayerNetManager.Instance;
+            PlayerNet localPlayerNet = GetComponent<PlayerNet>();
+            PlayerDataProvider playerDataProvider = PlayerDataProvider.Instance;
+            multiplayerStatusUI.BindLocalPlayer(local);
+            playerNetManager.localCharacterRuntime = local;           
+            CmdSetPlayerName(playerDataProvider.playerName);
+
+            multiplayerStatusUI.AutoBindData();
+
+            CameraController.Instance.SetTarget(this.transform);
+
+            if (uiManager != null)
+            {
+                uiManager.Init(_characterRuntime);
+            }
+
+            CmdRegisterCharacterRuntime();
         }
 
-        if (_hitBoxController != null)
+        ShipController.Instance.SetChild(this.transform, false);
+    }
+
+    [Command]
+    private void CmdRegisterCharacterRuntime()
+    {
+        PlayerNetManager.Instance.RegisterCharacterRuntime(_characterRuntime as PlayerRuntime);
+    }
+
+    [Command]
+    private void CmdSetPlayerName(string playerName)
+    {
+        var net = GetComponent<PlayerNet>();
+        if (net != null)
         {
-            _hitBoxController.Init(_characterRuntime);
+            net.playerName = playerName;
         }
     }
 }

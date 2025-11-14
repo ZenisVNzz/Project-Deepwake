@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -44,6 +45,17 @@ public class CannonNavigation
         }
 
         currentAngle += rotateSpeed * Time.deltaTime;
+        if (currentAngle >= maxAngle)
+        {
+            currentAngle = maxAngle;
+            if (rotateSpeed > 0) rotateSpeed = 0;
+        }
+        else if (currentAngle <= -maxAngle)
+        {
+            currentAngle = -maxAngle;
+            if (rotateSpeed < 0) rotateSpeed = 0;
+        }
+
         currentAngle = Mathf.Clamp(currentAngle, -maxAngle, maxAngle);
 
         recoilOffset = Mathf.SmoothDamp(recoilOffset, 0, ref recoilVelocity, 1f / recoilReturnSpeed);

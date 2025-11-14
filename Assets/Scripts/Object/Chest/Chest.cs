@@ -1,10 +1,14 @@
 using DG.Tweening;
+using Mirror;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Chest : MonoBehaviour
+public class Chest : NetworkBehaviour
 {
+    [SyncVar] public int parentIndex;
+
     [SerializeField] private Transform prefabParent;
 
     [Header("Animation")]
@@ -26,8 +30,24 @@ public class Chest : MonoBehaviour
     [SerializeField] private List<LootDefinition> lootTable = new List<LootDefinition>();
 
     private Interactable _interactable;
-    private bool _opened;
+    [SyncVar] private bool _opened;
     private bool _lootSpawned;
+
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        Transform chestParent = GameObject.Find("ChestSpawnPoints").transform;
+
+        List<Transform> shipSpawnPoints = new();
+        for (int i = 0; i < chestParent.childCount; i++)
+        {
+            shipSpawnPoints.Add(chestParent.GetChild(i));
+        }
+
+        gameObject.transform.SetParent(shipSpawnPoints[parentIndex], false);
+    }
 
     private void Awake()
     {
@@ -41,7 +61,8 @@ public class Chest : MonoBehaviour
             _interactable.Register(OnInteractWithPlayer);
     }
 
-    private void OnInteractWithPlayer(GameObject player)
+    [Server]
+    private void OnInteractWithPlayer(NetworkConnectionToClient player)
     {
         if (_opened) return;
         _opened = true;
@@ -103,10 +124,19 @@ public class Chest : MonoBehaviour
         return transform.position;
     }
 
+    [Server]
     private void DestroySelf()
     {
+        RpcFadeAndDestroy();
+        NetworkServer.Destroy(gameObject);
+    }
+
+    [ClientRpc]
+    private void RpcFadeAndDestroy()
+    {
         SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
-        sr.DOFade(0f, 3f).OnComplete(() => Destroy(gameObject));
+        if (sr != null)
+            sr.DOFade(0f, 3f).OnComplete(() => Destroy(gameObject)); 
     }
 
 #if UNITY_EDITOR

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using EasyTextEffects.Editor.MyBoxCopy.Extensions;
+using Mirror;
 using System.Collections;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
@@ -7,10 +8,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class CannonController : MonoBehaviour
+public class CannonController : NetworkBehaviour
 {
-    private GameObject currentPlayer;
-    public GameObject CurPlayer => currentPlayer;
+    [SyncVar] private NetworkIdentity currentPlayer;
+    public NetworkIdentity CurPlayer => currentPlayer;
 
     private IInteractable Interactable;
     [SerializeField] Transform playerLockPos;
@@ -24,15 +25,13 @@ public class CannonController : MonoBehaviour
     private Slider cooldownSlider;
 
     private Animator animator;
-
-    private InputSystem_Actions inputActions;
     private Vector2 input;
 
     private CannonNavigation cannonNavigation;
     private CannonShoot cannonShoot;
 
     private float cooldown = 1f;
-    private float timer;
+    [SyncVar] private float timer;
     private Image fill;
     private Image bg;
 
@@ -55,69 +54,147 @@ public class CannonController : MonoBehaviour
         cooldownSlider = cooldownSliderUI.GetComponent<Slider>();
         cooldownSlider.maxValue = cooldown;
 
-        inputActions = new InputSystem_Actions();
-        inputActions.Cannon.Navigate.performed += OnMove;
-        inputActions.Cannon.Navigate.canceled += OnMove;
-        inputActions.Cannon.Shoot.performed += ctx => OnShoot();
-        inputActions.Cannon.Exit.performed += ctx => ExitCannon();
-
         timer = cooldown;     
     }
 
     private void Update()
     {
+        if (!isServer) return;
+
         cannonNavigation.UpdateNavigation(input.x);
     }
 
-    private void UseCannon(GameObject player)
+    [Server]
+    private void UseCannon(NetworkConnectionToClient player)
     {
-        currentPlayer = player;
+        if (currentPlayer != null) return;
+        currentPlayer = player.identity;
 
-        IPlayerController playerController = player.GetComponent<IPlayerController>();
-        PlayerModifier playerModifier = playerController.PlayerModifier;
+        netIdentity.AssignClientAuthority(player);
 
-        player.transform.position = playerLockPos.transform.position;
+        GameObject playerObj = player.identity.gameObject;
+        playerObj.transform.position = playerLockPos.position;
+
+        GivePlayerCannonAccess(player);
+    }
+
+    [TargetRpc]
+    private void GivePlayerCannonAccess(NetworkConnection target)
+    {
+        GameObject playerObj = NetworkClient.localPlayer.gameObject;
+        PlayerController playerController = playerObj.GetComponent<PlayerController>();
+        IInteractionHandler interactionHandler = playerObj.GetComponentInChildren<IInteractionHandler>();
+        PlayerModifier playerModifier = playerController.playerModifier;
+        
         playerModifier.MoveModifier(false);
         playerModifier.AttackModifier(false);
         playerModifier.DirectionModifier(true, playerLockDir);
+        interactionHandler.SetInactive();
         NavigateGuideObj.SetActive(true);
 
         if (isFront)
-        {
             CameraOffset.Instance.Move(-3.5f);
-        }
         else
-        {
             CameraOffset.Instance.Move(3.5f);
-        }     
 
-        inputActions.Cannon.Enable();
+        InputSystem_Actions playerInput = playerController.InputHandler;
+        playerInput.Cannon.Enable();
+        playerInput.Cannon.Navigate.performed += OnMove;
+        playerInput.Cannon.Navigate.canceled += OnMove;
+        playerInput.Cannon.Shoot.performed += OnShoot;
+        playerInput.Cannon.Exit.performed += ExitCannon;
     }
 
-    private void ExitCannon()
+    private void ExitCannon(InputAction.CallbackContext ctx)
+    {   
+        CameraOffset.Instance.Move(0f);
+
+        RequestExitCannon();    
+    }
+
+    [Command]
+    private void RequestExitCannon()
     {
-        IPlayerController playerController = currentPlayer.GetComponent<IPlayerController>();
-        PlayerModifier playerModifier = playerController.PlayerModifier;
+        ProcessExitCannon();
+    }
+
+    [Server]
+    private void ProcessExitCannon()
+    {
+        if (currentPlayer != null)
+        {
+            if (currentPlayer.connectionToClient != null)
+            {
+                NotifyExitCannon(currentPlayer.connectionToClient);
+            }
+
+            netIdentity.RemoveClientAuthority();
+            currentPlayer = null;
+        }
+    }
+
+    [TargetRpc]
+    private void NotifyExitCannon(NetworkConnection target)
+    {
+        GameObject playerObj = NetworkClient.localPlayer.gameObject;
+        PlayerController playerController = playerObj.GetComponent<PlayerController>();
+        IInteractionHandler interactionHandler = playerObj.GetComponentInChildren<IInteractionHandler>();
+        PlayerModifier playerModifier = playerController.playerModifier;
 
         playerModifier.MoveModifier(true);
         playerModifier.AttackModifier(true);
         playerModifier.DirectionModifier(false, playerLockDir);
         NavigateGuideObj.SetActive(false);
-        CameraOffset.Instance.Move(0f);
 
-        inputActions.Cannon.Disable();
+        InputSystem_Actions playerInput = playerController.InputHandler;
+        playerInput.Cannon.Navigate.performed -= OnMove;
+        playerInput.Cannon.Navigate.canceled -= OnMove;
+        playerInput.Cannon.Shoot.performed -= OnShoot;
+        playerInput.Cannon.Exit.performed += ExitCannon;
+        playerInput.Cannon.Disable();
+        StartCoroutine(UnlockInteract(interactionHandler));
+    }
+
+    private IEnumerator UnlockInteract(IInteractionHandler interactionHandler)
+    {
+        yield return new WaitForEndOfFrame();
+        interactionHandler.SetActive();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        input = context.ReadValue<Vector2>();
+        Vector2 clientInput = context.ReadValue<Vector2>();
+        CmdMove(clientInput);
     }
 
-    public void OnShoot()
+    [Command]
+    private void CmdMove(Vector2 input)
+    {
+        this.input = input;
+    }
+
+    public void OnShoot(InputAction.CallbackContext ctx)
     {
         if (timer >= cooldown)
-        {         
-            cannonNavigation.ApplyRecoil();
+        {
+            CameraShake.Instance.ShakeCamera();
+        }
+            
+        CmdShoot();
+    }
+
+    [Command]
+    private void CmdShoot()
+    {
+        ShootProcess();
+    }
+
+    [Server]
+    private void ShootProcess()
+    {
+        if (timer >= cooldown)
+        {
+            RpcApplyRecoil();
             if (isFront)
             {
                 animator.Play("Cannon_Shoot");
@@ -126,37 +203,59 @@ public class CannonController : MonoBehaviour
             {
                 animator.Play("CannonBack_Shoot");
             }
-            
-            cannonShoot.Shoot();           
+            cannonShoot.Shoot(connectionToClient);
             StartCoroutine(timerUpdate());
-        }    
+        }   
     }
 
+    [ClientRpc]
+    private void RpcApplyRecoil()
+    {
+        cannonNavigation.ApplyRecoil();  
+    }
+
+    [Server]
     private IEnumerator timerUpdate()
+    {
+        timer = 0;
+        RpcStartCooldownUI(cooldown); 
+
+        while (timer < cooldown)
+        {
+            timer += Time.deltaTime;
+            RpcSetCooldownValue(timer);
+            yield return null;
+        }
+
+        RpcEndCooldownUI();
+    }
+
+    [ClientRpc]
+    private void RpcStartCooldownUI(float maxValue)
     {
         bg.DOKill();
         fill.DOKill();
         fill.color = Color.white;
         bg.color = Color.gray;
 
-        timer = 0;
         cooldownSlider.value = 0f;
-        cooldownSliderUI.SetActive(true);      
+        cooldownSlider.maxValue = maxValue;
+        cooldownSliderUI.SetActive(true);
+    }
 
-        while (timer < cooldown)
-        {
-            timer += Time.deltaTime;
-            cooldownSlider.value = timer;
-            yield return null;
-        }    
+    [ClientRpc]
+    private void RpcSetCooldownValue(float value)
+    {
+        cooldownSlider.value = value;
+    }
 
-        if (timer >= cooldown && cooldownSlider.value >= cooldown)
+    [ClientRpc]
+    private void RpcEndCooldownUI()
+    {
+        bg.DOFade(0f, 0.4f);
+        fill.DOFade(0f, 0.5f).OnComplete(() =>
         {
-            bg.DOFade(0f, 0.4f);
-            fill.DOFade(0f, 0.5f).OnComplete(() =>
-            {
-                cooldownSliderUI.SetActive(false);              
-            });
-        }     
+            cooldownSliderUI.SetActive(false);
+        });
     }
 }

@@ -19,6 +19,5 @@ public interface IPlayerRuntime : ICharacterRuntime
     float BonusCriticalDamage { get; }
 
     bool UseStamina(float amount);
-    void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState, Inventory playerInventory);
     void GainExp(float amount);
 }

@@ -1,22 +1,20 @@
+using Mirror;
 using System.Resources;
 using UnityEngine;
 
-public class EnemyShooter : MonoBehaviour
+public class EnemyShooter : NetworkBehaviour
 {
     [Header("Refs")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectilePrefab;
-    private ICharacterRuntime characterRuntime;
+    private CharacterRuntime characterRuntime;
 
     private Transform player;
 
-    public void Init(ICharacterRuntime characterRuntime)
-    {
-        this.characterRuntime = characterRuntime;
-    }
-
     private void Awake()
     {
+        characterRuntime = GetComponent<CharacterRuntime>();
+
         if (firePoint == null)
         {
             var fp = new GameObject("FirePoint");
@@ -58,5 +56,6 @@ public class EnemyShooter : MonoBehaviour
             proj = go.AddComponent<HitBoxHandler>();
         }
         proj.SetData(characterRuntime.TotalAttack, gameObject.tag, characterRuntime);
+        NetworkServer.Spawn(go);
     }
 }

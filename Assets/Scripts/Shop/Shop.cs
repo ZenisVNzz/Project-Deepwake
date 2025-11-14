@@ -1,10 +1,11 @@
+using Mirror;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class Shop : MonoBehaviour
+public class Shop : NetworkBehaviour
 {
     [SerializeField] private Button buyButton;
     [SerializeField] private ItemDetail itemDetail;
@@ -13,18 +14,18 @@ public class Shop : MonoBehaviour
     private ShopCategory shopCategory;
     public ShopCategory ShopCategory => shopCategory;
 
-    private List<ItemCategory> currentWeaponInShop = new();
-    private List<ItemCategory> currentChestplateInShop = new();
-    private List<ItemCategory> currentRingInShop = new();
-    private List<ItemCategory> currentNecklaceInShop = new();
-    private List<ItemCategory> currentSpecialInShop = new();
-    private List<ItemCategory> currentOtherInShop = new();
-    public List<ItemCategory> CurrentWeaponInShop => currentWeaponInShop;
-    public List<ItemCategory> CurrentChestplateInShop => currentChestplateInShop;
-    public List<ItemCategory> CurrentRingInShop => currentRingInShop;
-    public List<ItemCategory> CurrentNecklaceInShop => currentNecklaceInShop;
-    public List<ItemCategory> CurrentSpecialInShop => currentSpecialInShop;
-    public List<ItemCategory> CurrentOtherInShop => currentOtherInShop;
+    private SyncList<ItemCategory> currentWeaponInShop = new();
+    private SyncList<ItemCategory> currentChestplateInShop = new();
+    private SyncList<ItemCategory> currentRingInShop = new();
+    private SyncList<ItemCategory> currentNecklaceInShop = new();
+    private SyncList<ItemCategory> currentSpecialInShop = new();
+    private SyncList<ItemCategory> currentOtherInShop = new();
+    public List<ItemCategory> CurrentWeaponInShop => new List<ItemCategory>(currentWeaponInShop);
+    public List<ItemCategory> CurrentChestplateInShop => new List<ItemCategory>(currentChestplateInShop);
+    public List<ItemCategory> CurrentRingInShop => new List<ItemCategory>(currentRingInShop);
+    public List<ItemCategory> CurrentNecklaceInShop => new List<ItemCategory>(currentNecklaceInShop);
+    public List<ItemCategory> CurrentSpecialInShop => new List<ItemCategory>(currentSpecialInShop);
+    public List<ItemCategory> CurrentOtherInShop => new List<ItemCategory>(currentOtherInShop);
 
     private ItemStock currentItemSelected;
     public ItemStock CurrentItemSelected => currentItemSelected;
@@ -133,6 +134,7 @@ public class Shop : MonoBehaviour
         }
     }
 
+    [Server]
     public void InitCategory()
     {
         if (shopCategory == null)

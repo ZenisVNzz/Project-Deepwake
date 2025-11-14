@@ -1,57 +1,97 @@
 using DG.Tweening;
+using Mirror;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class EnemyController : MonoBehaviour, IEnemyController
+public class EnemyController : NetworkBehaviour, IEnemyController
 {
-    private IAIMove enemyMovement;
-    private IState enemyState;
-    private ICharacterDirectionHandler directionHandler;
-    private IAnimationHandler animationHandler;
-    private IStateHandler stateHandler;
-    private IDamageDealer enemyAttack;
+    public IAIMove enemyMovement
+    {
+        get
+        {
+            return GetComponent<IAIMove>();
+        }
+    }
+
+    private IState _enemyState;
+    public IState enemyState
+    {
+        get
+        {
+            if (_enemyState == null)
+                _enemyState = new EnemyState();
+            return _enemyState;
+        }
+        set => _enemyState = value;
+    }
+
+    public ICharacterDirectionHandler directionHandler
+    {
+        get
+        {
+            return GetComponent<ICharacterDirectionHandler>();
+        }
+    }
+
+    public IAnimationHandler animationHandler
+    {
+        get
+        {
+            return GetComponent<IAnimationHandler>();
+        }
+    }
+
+    public IStateHandler stateHandler
+    {
+         get
+        {
+            return GetComponent<IStateHandler>();
+        }
+    }
+
+    public IDamageDealer enemyAttack
+    {
+        get
+        {
+            return GetComponent<IDamageDealer>();
+        }
+    }
+
+    public ICharacterRuntime enemyRuntime
+    {
+        get
+        {
+            return GetComponent<ICharacterRuntime>();
+        }
+    }
 
     private SpriteRenderer spriteRenderer;
     private Collider2D cd2D;
     private Collider2D hurtBox;
 
-    private ICharacterRuntime enemyRuntime;
-
     private bool isDead = false;
     public bool IsDead => isDead;
 
-    public void Initialize
-    (
-      IAIMove movement,
-      IState state,
-      IDamageDealer attack,
-      IAnimationHandler animation,
-      IStateHandler stateHandler,
-      ICharacterRuntime enemyRuntime
-    )
+    public void Init()
     {
-        this.enemyMovement = movement;
-        this.enemyState = state;
-        this.enemyAttack = attack;
-        this.animationHandler = animation;
-        this.stateHandler = stateHandler;
-        this.enemyRuntime = enemyRuntime;
-
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
         hurtBox = transform.Find("HurtBox").GetComponent<Collider2D>();
         stateHandler.Register("OnDeath", OnDead);
     }
 
+    [Server]
     private void OnAttack()
     {
         if (enemyMovement.HaveReachedTarget())
         {
-            enemyAttack.Attack(enemyRuntime.TotalAttack);
+            enemyAttack.CmdAttack(enemyRuntime.TotalAttack);
         }      
     }
 
+    [Server]
     private void OnMove()
     {
         if (enemyState.GetCurrentState() != CharacterStateType.Knockback && enemyState.GetCurrentState() != CharacterStateType.Death && enemyState.GetCurrentState() != CharacterStateType.Attacking)
@@ -60,18 +100,38 @@ public class EnemyController : MonoBehaviour, IEnemyController
         }      
     }
 
+    [Server]
     private void OnDead()
     {
-        StartCoroutine(DeathProcess());
+        if (isDead) return;
         isDead = true;
+
+        RpcDeathEffect();
+        StartCoroutine(ServerDeathProcess());
     }
 
-    private IEnumerator DeathProcess()
+    [ClientRpc]
+    private void RpcDeathEffect()
+    {
+        StartCoroutine(ClientDeathCoroutine());
+    }
+
+    private IEnumerator ClientDeathCoroutine()
     {
         cd2D.enabled = false;
         hurtBox.enabled = false;
-        yield return new WaitForSeconds(3);
-        spriteRenderer.DOFade(0f, 3f).OnComplete(() => Destroy(gameObject));
+
+        yield return new WaitForSeconds(3f);
+
+        spriteRenderer.DOFade(0f, 3f);
+    }
+
+    private IEnumerator ServerDeathProcess()
+    {
+        yield return new WaitForSeconds(6f);
+
+        if (NetworkServer.active)
+            NetworkServer.Destroy(gameObject);
     }
 
     void Update()
@@ -81,6 +141,8 @@ public class EnemyController : MonoBehaviour, IEnemyController
 
     void FixedUpdate()
     {
+        if (!isServer) return;
+
         stateHandler.UpdateState();
         animationHandler.UpdateAnimation();
         OnMove();

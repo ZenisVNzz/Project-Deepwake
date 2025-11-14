@@ -1,48 +1,45 @@
+using Mirror;
 using UnityEngine;
 
-public class EnemyFlyingMovement : IAIMove
+public class EnemyFlyingMovement : MonoBehaviour, IAIMove
 {
     public enum VerticalSide { Above, Below }
 
     private Transform target;
-    private readonly Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    private readonly float chaseDistance = 30f; 
-    private readonly float stopDistance = 0.8f; 
+    public float chaseDistance = 30f; 
+    public float stopDistance = 0.8f; 
 
-    private readonly float acceleration = 16f; 
-    private readonly float maxTurnForce = 25f;
-    private readonly float damping = 2.5f; 
+    public float acceleration = 16f; 
+    public float maxTurnForce = 25f;
+    public float damping = 2.5f; 
 
-    private readonly float horizSwayAmplitude = 9f; 
-    private readonly float horizSwayFrequency = 1.8f; 
-    private readonly float vertSwayAmplitude = 0.25f;
-    private readonly float vertSwayFrequency = 0.9f;
-    private readonly float swayPhase;
+    public float horizSwayAmplitude = 9f; 
+    public float horizSwayFrequency = 1.8f; 
+    public float vertSwayAmplitude = 0.25f;
+    public float vertSwayFrequency = 0.9f;
+    public float swayPhase;
 
-    private readonly float desiredVerticalOffset;
-    private readonly VerticalSide keepSide; 
+    public float desiredVerticalOffset;
+    public VerticalSide keepSide;
 
     private bool haveReachedTarget;
 
-    public EnemyFlyingMovement(Rigidbody2D rb, MonoBehaviour runner)
-    : this(rb, runner, VerticalSide.Above, 2.5f, 0.8f)
-    { }
-
-    public EnemyFlyingMovement(Rigidbody2D rb, MonoBehaviour runner, VerticalSide side,
-    float verticalOffset = 2.5f, float stopDistance = 0.8f)
+    private void Awake()
     {
-        this.rb = rb;
-        this.keepSide = side;
-        this.desiredVerticalOffset = Mathf.Abs(verticalOffset);
-        this.stopDistance = stopDistance;
+        keepSide = (Random.value < 0.5f) ? VerticalSide.Above : VerticalSide.Below;
 
+        this.rb = GetComponent<Rigidbody2D>();
+        this.desiredVerticalOffset = Mathf.Abs(2.5f);
+        this.desiredVerticalOffset = Mathf.Abs(2.5f);
         swayPhase = Random.value * Mathf.PI * 2f;
 
         var playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) target = playerObj.transform;
     }
 
+    [Server]
     public void Move(float moveSpeed)
     {
         if (target == null)
@@ -98,7 +95,7 @@ public class EnemyFlyingMovement : IAIMove
         }
     }
 
-    public void Move(Vector2 input, float moveSpeed, bool isMoveOnSlope) => Move(moveSpeed);
+    public void CmdMove(Vector2 input, float moveSpeed, bool isMoveOnSlope) => Move(moveSpeed);
 
     public Vector2 GetDir()
     {

@@ -171,6 +171,16 @@ GameObject:
   - component: {fileID: 3380793897104630607}
   - component: {fileID: 9155886222308715731}
   - component: {fileID: 5474676802259660572}
+  - component: {fileID: 2606505304216500288}
+  - component: {fileID: 3575104902711433603}
+  - component: {fileID: 5793328180890304969}
+  - component: {fileID: 2827809349537410999}
+  - component: {fileID: 3604613343592465338}
+  - component: {fileID: 733878525578547207}
+  - component: {fileID: 1793720406767216967}
+  - component: {fileID: 2163746999641416890}
+  - component: {fileID: 1896581090225003650}
+  - component: {fileID: 1086661137206785100}
   m_Layer: 7
   m_Name: Fly
   m_TagString: Enemy
@@ -293,10 +303,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c187325dea6b274a9762eddd41353fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterData: {fileID: 0}
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  _characterData: {fileID: 11400000, guid: 6dadd3ad7a857fb4aac599f4b75f2853, type: 2}
+  multiplayerStatusUI: {fileID: 0}
   isFlyingEnemy: 1
-  isTwoDirEnemy: 1
-  stopDistance: 2.5
 --- !u!114 &3380793897104630607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea9c73651dd3cf46bf97b2084adf4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   firePoint: {fileID: 4104837415047226155}
   projectilePrefab: {fileID: 3289687652989030670, guid: b2c818cb663454a4b95ed5a21b666f21, type: 3}
 --- !u!95 &9155886222308715731
@@ -350,6 +365,186 @@ MonoBehaviour:
   reflectionLayer: 3
   reflectionSprite: {fileID: 0}
   updatePerFrame: 1
+--- !u!114 &2606505304216500288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror::Mirror.NetworkIdentity
+  sceneId: 0
+  _assetId: 325811910
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &3575104902711433603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkAnimator
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 9155886222308715731}
+--- !u!114 &5793328180890304969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc41003ec495ffd46bcaa19a25f061cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyFlyingMovement
+  chaseDistance: 30
+  stopDistance: 2.5
+  acceleration: 16
+  maxTurnForce: 25
+  damping: 2.5
+  horizSwayAmplitude: 9
+  horizSwayFrequency: 1.8
+  vertSwayAmplitude: 0.25
+  vertSwayFrequency: 0.9
+  swayPhase: 0
+  desiredVerticalOffset: 0
+  keepSide: 0
+--- !u!114 &2827809349537410999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d96e9c5982c5004c9154b3ce85a7fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDirectionHandler
+  twoWayOnly: 0
+--- !u!114 &3604613343592465338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af47e5977e99854eac938727a2aa01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationHandler
+  twoWayOnly: 1
+--- !u!114 &733878525578547207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73afcfe0966014947a77f3d6b567fcc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStateHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+--- !u!114 &1793720406767216967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a215d755dde9c104f86359dbc4208812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+--- !u!114 &2163746999641416890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cad420509a34a74c987c5d1ccedf330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyRuntime
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  level: 1
+  vitality: 0
+  defense: 0
+  strength: 0
+  luck: 0
+--- !u!114 &1896581090225003650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39c031ae09e7034c95abe8b508b0a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
+--- !u!114 &1086661137206785100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec4f7556ca1e4b55a3381fc6a02b1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkRigidbodyReliable2D
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 3275726899782578262}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  timelineOffset: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  useFixedUpdate: 0
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &4779864766893373958
 GameObject:
   m_ObjectHideFlags: 0

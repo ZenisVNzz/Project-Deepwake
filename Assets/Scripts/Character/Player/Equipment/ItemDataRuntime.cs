@@ -1,9 +1,16 @@
+using Mirror;
 using System.Threading;
 using UnityEngine;
 
-public class ItemDataRuntime : MonoBehaviour
+public class ItemDataRuntime : NetworkBehaviour
 {
     [SerializeField] private ItemData _itemData;
+
+    [SyncVar(hook = nameof(OnItemIdChanged))]
+    private string itemId;
+
+    [SyncVar(hook = nameof(OnParentChanged))]
+    private NetworkIdentity parentIdentity;
 
     private float _pickupEnableTime;
 
@@ -12,7 +19,25 @@ public class ItemDataRuntime : MonoBehaviour
     public void SetData(ItemData data)
     {
         _itemData = data;
+        itemId = data.itemId;
         GetComponent<SpriteRenderer>().sprite = data.icon;
+    }
+
+    public void SetParent(NetworkIdentity parent)
+    {
+        parentIdentity = parent;
+        transform.SetParent(parent != null ? parent.transform : null, false);
+    }
+
+    private void OnParentChanged(NetworkIdentity _, NetworkIdentity newParent)
+    {
+        transform.SetParent(newParent != null ? newParent.transform : null, false);
+    }
+
+    private void OnItemIdChanged(string _, string newId)
+    {
+        var db = ResourceManager.Instance.GetAsset<ItemDatabase>("ItemDatabase");
+        SetData(db.Get(newId));
     }
 
     public void SetPickupDelay(float seconds)
@@ -35,7 +60,7 @@ public class ItemDataRuntime : MonoBehaviour
         bool added = player.PlayerInventory != null && player.PlayerInventory.AddItem(_itemData);
         if (added)
         {
-            Destroy(gameObject);
+            NetworkServer.Destroy(gameObject);
         }
         else
         {

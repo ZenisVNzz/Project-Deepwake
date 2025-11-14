@@ -1,6 +1,7 @@
+using Mirror;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController : NetworkBehaviour
 {
     public static GameController Instance { get; private set; }
 
@@ -20,17 +21,26 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        sceneLoader = new SceneLoader();
+        sceneLoader = SceneLoader.Instance;
         gameStateMachine = new GameStateMachine(sceneLoader);
     }
 
-    private void Start()
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        OnStartGame();
+    }
+
+    private void OnStartGame()
     {
         gameStateMachine.ChangeState<GameBeginState>();
     }
 
     private void Update()
     {
-        gameStateMachine.CurrentState.Update();
+        if (gameStateMachine.CurrentState != null)
+        {
+            gameStateMachine.CurrentState.Update();
+        }             
     }
 }

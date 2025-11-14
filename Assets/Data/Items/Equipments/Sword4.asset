@@ -38,7 +38,7 @@ MonoBehaviour:
   equipmentType: 2
   maxHealthBonus: 0
   maxStaminaBonus: 0
-  attackPowerBonus: 75
+  attackPowerBonus: 10
   defenseBonus: 0
   speedBonus: 0
   criticalChanceBonus: 0

@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 7408561927820063938}
   - component: {fileID: 1749853278582577541}
   - component: {fileID: 3846108613638888559}
+  - component: {fileID: 6676731755486950600}
   m_Layer: 7
   m_Name: Wolf
   m_TagString: Enemy
@@ -605,6 +606,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c187325dea6b274a9762eddd41353fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   _characterData: {fileID: 0}
   isFlyingEnemy: 0
   isTwoDirEnemy: 0
@@ -676,6 +680,23 @@ MonoBehaviour:
   reflectionLayer: 3
   reflectionSprite: {fileID: 0}
   updatePerFrame: 1
+--- !u!114 &6676731755486950600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8049365926704496716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror::Mirror.NetworkIdentity
+  sceneId: 0
+  _assetId: 1031753935
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &8535615014044358217
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,24 +1,23 @@
+using Mirror;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
 
-[System.Serializable]
 public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
 {
     [Header("Experience System")]
-    [SerializeField] protected float currentExp = 0;
-    [SerializeField] protected float expToNextLevel = 100;
+    [SerializeField][SyncVar] protected float currentExp = 0;
+    [SerializeField][SyncVar] protected float expToNextLevel = 100;
     public float CurrentExp => currentExp;
     public float ExpToNextLevel => expToNextLevel;
     public event Action<float, float> OnExpChanged;
     public event Action<int> OnLevelUp;
 
     [Header("Character Bonus Stats")]
-    protected float bonusStamina = 0;
-    protected float bonusCriticalChance = 0;
-    protected float bonusCriticalDamage = 0;
+    [SyncVar] protected float bonusStamina = 0;
+    [SyncVar] protected float bonusCriticalChance = 0;
+    [SyncVar] protected float bonusCriticalDamage = 0;
     public float BonusStamina => bonusStamina;
     public float BonusCriticalChance => bonusCriticalChance;
     public float BonusCriticalDamage => bonusCriticalDamage;
@@ -31,7 +30,7 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     public float TotalCriticalChance => totalCriticalChance;
     public float TotalCriticalDamage => totalCriticalDamage;
 
-    [SerializeField] protected float stamina;
+    [SyncVar(hook = nameof(StaminaSync))] protected float stamina;
     public float Stamina => stamina;
     public event System.Action<float> OnStaminaChanged;
     protected float _staminaRegenRate;
@@ -47,18 +46,22 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     private Equipment equipment;
     public Equipment PlayerEquipment => equipment;
 
-    public void Init(CharacterData playerData, Rigidbody2D rigidbody2D, IState PlayerState, Inventory playerInventory)
+    public override void Init()
     {
-        base.Init(playerData, rigidbody2D, PlayerState);
-
+        base.Init();
         stamina = totalStamina;
         _staminaRegenRate = characterData.StaminaRegenRate;
         _staminaConsumptionMultiplier = characterData.StaminaConsumptionMultiplier;
         OnStaminaChanged?.Invoke(stamina);
 
-        this.playerInventory = playerInventory;
+        this.playerInventory = new Inventory();
         currencyWallet = new CurrencyWallet();
         equipment = new Equipment(this);
+    }
+
+    private void StaminaSync(float oldValue, float newValue)
+    {
+        OnStaminaChanged?.Invoke(newValue);
     }
 
     public virtual void GainExp(float amount)
@@ -100,7 +103,7 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
         {
             StopCoroutine(_staminaRegenCoroutine);
         }
-        _staminaRegenCoroutine = StartCoroutine(RegenSatamina());
+        _staminaRegenCoroutine = StartCoroutine(RegenStamina());
     }
 
     public override void ApplyBonusStat(BonusStat bonusStat, float amount)
@@ -129,14 +132,14 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
             {
                 StopCoroutine(_staminaRegenCoroutine);
             }
-            _staminaRegenCoroutine = StartCoroutine(RegenSatamina());
+            _staminaRegenCoroutine = StartCoroutine(RegenStamina());
 
             return true;
         }
         return false;
     }
 
-    private IEnumerator RegenSatamina()
+    private IEnumerator RegenStamina()
     {
         yield return new WaitForSeconds(2f);
         while (stamina < totalStamina)

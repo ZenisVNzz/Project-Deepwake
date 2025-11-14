@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5971697492492590811}
   - component: {fileID: 7062509308614500834}
   - component: {fileID: 1004875459569034699}
+  - component: {fileID: 251382098760736830}
+  - component: {fileID: 6121366354077022199}
   m_Layer: 11
   m_Name: Chest_Tier1
   m_TagString: Untagged
@@ -72,6 +74,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811ccbbabaf4dc844ad69b6654edc94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chest
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  parentIndex: 0
   prefabParent: {fileID: 5971697492492590811}
   animator: {fileID: 7062509308614500834}
   lootSpawnDelay: 0.37
@@ -83,29 +89,59 @@ MonoBehaviour:
   pickupDelay: 1.5
   lootTable:
   - item: {fileID: 11400000, guid: e5ea0b607c80ede4dbdf7b2eed8aa1f4, type: 2}
-    rate: 0.8
+    rate: 0.65
     pickupPrefab: {fileID: 0}
     quantity: 1
   - item: {fileID: 11400000, guid: 9a7f16978fbf99541b5caedb39bcdf02, type: 2}
-    rate: 0.3
-    pickupPrefab: {fileID: 0}
-    quantity: 1
-  - item: {fileID: 11400000, guid: 60370b44ff852244fb999d65cfa6bcac, type: 2}
-    rate: 0.1
+    rate: 0.15
     pickupPrefab: {fileID: 0}
     quantity: 1
   - item: {fileID: 11400000, guid: 11c76e59689c1f642ba3b91dd30ed830, type: 2}
-    rate: 0.7
+    rate: 0.5
     pickupPrefab: {fileID: 0}
     quantity: 1
   - item: {fileID: 11400000, guid: acca89fef84aea34cae4df894fcb8768, type: 2}
-    rate: 0.25
+    rate: 0.1
     pickupPrefab: {fileID: 0}
     quantity: 1
   - item: {fileID: 11400000, guid: 5884c9d13ae8b9d40b3eb1b7654e03ca, type: 2}
     rate: 0.8
     pickupPrefab: {fileID: 0}
     quantity: 2
+--- !u!114 &251382098760736830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325300687434461065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror::Mirror.NetworkIdentity
+  sceneId: 0
+  _assetId: 2035310065
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &6121366354077022199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325300687434461065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkAnimator
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 7062509308614500834}
 --- !u!1 &4193664110918312522
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +516,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5971697492492590811}
     m_Modifications:
+    - target: {fileID: 546625473050825882, guid: 14ac9476697ba1c41b5ae8ef5919947e, type: 3}
+      propertyPath: _assetId
+      value: 2035310065
+      objectReference: {fileID: 0}
     - target: {fileID: 738245923072637906, guid: 14ac9476697ba1c41b5ae8ef5919947e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

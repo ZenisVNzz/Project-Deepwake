@@ -39,7 +39,7 @@ MonoBehaviour:
   maxHealthBonus: 0
   maxStaminaBonus: 0
   attackPowerBonus: 0
-  defenseBonus: 7
+  defenseBonus: 3
   speedBonus: 0
   criticalChanceBonus: 0
   criticalDamageBonus: 0

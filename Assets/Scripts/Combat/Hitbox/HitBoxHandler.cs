@@ -1,17 +1,18 @@
+using Mirror;
 using UnityEngine;
 
-public class HitBoxHandler : MonoBehaviour
+public class HitBoxHandler : NetworkBehaviour
 {
     [SerializeField] private float damage = 10f;
     [SerializeField] private float knockbackForce = 10f;
     [SerializeField] private string undamagedTag;
 
     [SerializeField] private bool destroyThisOnHit = false;
-    private ICharacterRuntime _characterRuntime;
+    public CharacterRuntime _characterRuntime = null;
 
-    private bool isOwnerDmg = false;
+    public bool isOwnerDmg = false;
 
-    public void SetData(float damage, string undamagedTag, ICharacterRuntime owner, float knockbackForce = 10f)
+    public void SetData(float damage, string undamagedTag, CharacterRuntime owner, float knockbackForce = 10f)
     {
         this.damage = damage;     
         this.undamagedTag = undamagedTag;      
@@ -19,7 +20,7 @@ public class HitBoxHandler : MonoBehaviour
         this.knockbackForce = knockbackForce;
     }
 
-    public void SetData(string undamagedTag, ICharacterRuntime owner, float knockbackForce = 10f)
+    public void SetData(string undamagedTag, CharacterRuntime owner, float knockbackForce = 10f)
     {
         this.undamagedTag = undamagedTag;
         _characterRuntime = owner;
@@ -29,30 +30,50 @@ public class HitBoxHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!isServer && !isOwned)
+            return;
 
-        if (other.tag != undamagedTag && other.tag != "Untagged")
+        if (other.CompareTag(undamagedTag) || other.CompareTag("Untagged"))
+            return;
+
+        IAttackable damageable = other.GetComponentInParent<IAttackable>();
+        if (damageable == null) return;
+
+        Vector3 knockDir = (other.transform.position - transform.position).normalized * knockbackForce;
+        float finalDamage = isOwnerDmg ? _characterRuntime.TotalAttack : damage;
+
+        if (isServer)
         {
-            IAttackable damageable = other.GetComponentInParent<IAttackable>();
-            if (damageable != null)
-            {
-                Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
+            DealDamageInternal(damageable, finalDamage, knockDir);
+        }
+        else if (isOwned)
+        {
+            CmdDealDamage(((MonoBehaviour)damageable).gameObject, finalDamage, knockDir);
+        }
 
-                if (damageable is EnemyRuntime enemyRuntime && _characterRuntime is IPlayerRuntime playerRuntime)
-                {
-                    damageable.TakeDamage(isOwnerDmg? _characterRuntime.TotalAttack : damage, knockbackDirection * knockbackForce, _characterRuntime);
-                }
-                else
-                {
-                    damageable.TakeDamage(isOwnerDmg ? _characterRuntime.TotalAttack : damage, knockbackDirection * knockbackForce, null);
-                }
+        Debug.Log($"[HitBox] {gameObject.name} dealt {finalDamage} dmg to {other.name}");
+    }
 
-                if (destroyThisOnHit)
-                {
-                    Destroy(gameObject);
-                }
+    [Command]
+    private void CmdDealDamage(GameObject targetObj, float damageAmount, Vector3 knockback)
+    {
+        if (targetObj == null) return;
 
-                Debug.Log($"Dealt {damage} damage with {knockbackForce} knockback to {other.name}");
-            }
-        }    
+        IAttackable target = targetObj.GetComponentInParent<IAttackable>();
+        if (target == null) return;
+
+        DealDamageInternal(target, damageAmount, knockback);
+    }
+
+    [Server]
+    private void DealDamageInternal(IAttackable target, float damageAmount, Vector3 knockback)
+    {
+        if (_characterRuntime != null)
+            target.TakeDamage(damageAmount, knockback, _characterRuntime);
+        else
+            target.TakeDamage(damageAmount, knockback);
+
+        if (destroyThisOnHit)
+            NetworkServer.Destroy(gameObject);
     }
 }

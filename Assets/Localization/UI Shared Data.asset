@@ -52,7 +52,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 722696186552320
-    m_Key: UI_NoConnection
+    m_Key: UI_NetworkError
     m_Metadata:
       m_Items: []
   - m_Id: 9501003866628096
@@ -197,6 +197,46 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 14984984657584128
     m_Key: UI_Rarity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15864134171811840
+    m_Key: UI_OfflineMode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15866087882809344
+    m_Key: UI_TryAgain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15870804054695936
+    m_Key: UI_NET_CHECK_EXCEPTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15871803465064448
+    m_Key: UI_GENERIC_STARTUP_ERROR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872294668394496
+    m_Key: UI_GAME_OUTDATED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16470511487475712
+    m_Key: UI_Singleplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16470559923298304
+    m_Key: UI_Multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16470579623944192
+    m_Key: UI_Quitgame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16476327208738816
+    m_Key: UI_CreateRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16476401057849344
+    m_Key: UI_Join
     m_Metadata:
       m_Items: []
   m_Metadata:

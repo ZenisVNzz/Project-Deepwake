@@ -39,6 +39,12 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  - m_AssetGUID: 6fb6e5be14137e8428f8708e131204d5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _labels:
   - m_LabelString: ShipAssets
   - m_LabelString: ShopData
+  - m_LabelString: Material

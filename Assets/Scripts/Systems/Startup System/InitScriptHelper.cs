@@ -1,20 +1,19 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class InitScriptHelper : MonoBehaviour
 {
-    [SerializeField] private List<MonoBehaviour> _manager;
-    [SerializeField] private List<string> _preloadKeys;
-    [SerializeField] private string _loadSceneOnLoadDone;
+    [SerializeField] public List<MonoBehaviour> _manager;
+    [SerializeField] public bool LoadAssetWhenInitResourceManager = false;
+    [SerializeField] public List<string> _preloadKeys;
+    [SerializeField] public string _loadSceneOnLoadDone;  
 
     private SceneLoader _sceneLoader;
 
-    private async void Awake()
+    public async void Load()
     {
-        _sceneLoader = GetComponent<SceneLoader>();
+        _sceneLoader = SceneLoader.Instance;
 
         int totalTask = _manager.Count;
         int taskDone = 0;
@@ -25,14 +24,13 @@ public class InitScriptHelper : MonoBehaviour
                 var initTask = initManager.InitAsync();
                 await initTask;
 
-                if (initManager is ResourceManager)
+                if (LoadAssetWhenInitResourceManager && manager is ResourceManager)
                 {
                     await LoadAsset();
                 }
 
                 while (!initTask.IsCompleted)
                 {
-                    Assert.IsTrue(initTask.Result, $"{manager.GetType().Name} failed to initialize.");
                     await Task.Yield();
                 }          
                 taskDone++;
@@ -42,31 +40,48 @@ public class InitScriptHelper : MonoBehaviour
                 Debug.LogError($"{manager.GetType().Name} does not implement IManager interface.");
             }
         }
-        
-        if (taskDone  == totalTask)
+
+        if (!LoadAssetWhenInitResourceManager || taskDone == totalTask)
         {
-            await LoadScene();
+            await LoadAsset();
         }
     }
 
     private async Task LoadAsset()
     {
+        int totalPreload = _preloadKeys.Count;
+        int preloadDone = 0;
+
         foreach (var key in _preloadKeys)
         {
             var resourceManager = ResourceManager.Instance;
             if (resourceManager != null)
             {
                 await resourceManager.Preload(key);
+                preloadDone++;
             }
             else
             {
                 Debug.LogError("ResourceManager instance is null.");
             }
         }
+
+        if (preloadDone == totalPreload)
+        {
+            Debug.Log("[InitScriptHelper] All assets preloaded successfully.");
+            await LoadScene();
+        }
     }
 
     private async Task LoadScene()
-    {   
-        await _sceneLoader.LoadScene(_loadSceneOnLoadDone);
+    {
+        if (_loadSceneOnLoadDone != "Loading")
+        {
+            await _sceneLoader.LoadScene(_loadSceneOnLoadDone, false);
+        }
+        else
+        {
+            ClientHandler.Instance.SendLoadDone();
+        }
     }
 }

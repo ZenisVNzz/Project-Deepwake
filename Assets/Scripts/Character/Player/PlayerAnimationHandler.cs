@@ -1,23 +1,31 @@
+using Mirror;
 using System;
+using System.Collections;
 using UnityEngine;
 
-public class PlayerAnimationHandler : IAnimationHandler
+public class PlayerAnimationHandler : NetworkBehaviour, IAnimationHandler
 {
-    private readonly Animator animator;
-    private readonly IState playerState;
-    private readonly ICharacterDirectionHandler directionHandler;
+    private NetworkAnimator netAnimator;
+    private Animator animator;
+    private IState playerState;
+    private ICharacterDirectionHandler directionHandler;
+    private PlayerNet PlayerNet;
 
     private string currentAnimName;
 
-    public PlayerAnimationHandler(Animator animator, IState playerState, ICharacterDirectionHandler directionHandler)
+    private void Awake()
     {
-        this.animator = animator;
-        this.playerState = playerState;
-        this.directionHandler = directionHandler;
+        animator = GetComponent<Animator>();
+        netAnimator = GetComponent<NetworkAnimator>();
+        playerState = GetComponent<PlayerController>().playerState;
+        directionHandler = GetComponent<ICharacterDirectionHandler>();
+        PlayerNet = GetComponent<PlayerNet>();
     }
 
     public void UpdateAnimation()
     {
+        if (playerState == null) return;
+
         CharacterStateType currentState = playerState.GetCurrentState();
 
         switch (currentState)
@@ -93,8 +101,14 @@ public class PlayerAnimationHandler : IAnimationHandler
         var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName(currentAnimName) && stateInfo.normalizedTime >= 1.0f)
         {
-            playerState.ChangeState(CharacterStateType.Idle);
+            CmdRequestChangeState(CharacterStateType.Idle);
         }
+    }
+
+    [Command]
+    private void CmdRequestChangeState(CharacterStateType newState)
+    {
+        PlayerNet.ChangeState(newState);
     }
 
     private void PlayAnimation(string animName)

@@ -204,6 +204,46 @@ MonoBehaviour:
     m_Localized: Rarity
     m_Metadata:
       m_Items: []
+  - m_Id: 15864134171811840
+    m_Localized: Offline mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15866087882809344
+    m_Localized: Try again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15870804054695936
+    m_Localized: An unknown error occurred while checking the network connection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15871803465064448
+    m_Localized: Unknown error
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872294668394496
+    m_Localized: You are using an outdated game version. Please update or continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16470511487475712
+    m_Localized: Singleplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16470559923298304
+    m_Localized: Multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16470579623944192
+    m_Localized: Quit game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16476327208738816
+    m_Localized: Host game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16476401057849344
+    m_Localized: Join
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

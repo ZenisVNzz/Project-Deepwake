@@ -13,6 +13,8 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float smoothStopDistance = 2.5f;
     [SerializeField] private GameObject background;
 
+    [SerializeField] private Transform follower;
+
     private ObjectMove shipMover;
     private ObjectMove bgMover;
 
@@ -36,6 +38,17 @@ public class ShipController : MonoBehaviour
 
         if (bgMover == null && background != null)
             Debug.LogWarning("ShipController: Background assigned but has no ObjectMove.");
+    }
+
+    public void SetChild(Transform child, bool worldPositionStay)
+    {
+        if (follower == null) return;
+        child.SetParent(follower, worldPositionStay);
+
+        if (!worldPositionStay)
+        {
+            child.localPosition = Vector3.zero;
+        }
     }
 
     private void Update()

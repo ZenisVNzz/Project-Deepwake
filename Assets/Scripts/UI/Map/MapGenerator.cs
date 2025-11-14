@@ -1,7 +1,5 @@
-﻿    using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
+﻿using System.Collections.Generic;
 using UnityEngine;
-    using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
@@ -18,6 +16,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private Transform nodeContainer;
     [SerializeField] private UIDottedLineDrawer lineDrawer;
     [SerializeField] private Transform dotLineContainer;
+    [SerializeField] PlayerNet playerNet;
 
     [SerializeField] private Button confirmButton;
 
@@ -218,9 +217,14 @@ public class MapGenerator : MonoBehaviour
         if (currentSelectedNode != null)
         {
             OnNodeConfirm(currentSelectedNode);
-            currentSelectedNode.OnSelect();
+            SendRequest(currentSelectedNode);
             currentSelectedNode = null;
         }
+    }
+
+    private void SendRequest(MapNode mapNode)
+    {
+        playerNet.ChangeGameMapRequest(mapNode.nodeData.nodeType.NodeTypes);
     }
 
     private void OnNodeConfirm(MapNode node)
