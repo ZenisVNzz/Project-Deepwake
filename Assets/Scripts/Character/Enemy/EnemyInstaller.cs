@@ -33,6 +33,6 @@ public class EnemyInstaller : CharacterInstaller
         GetComponent();
         InitComponent();
 
-        ShipController.Instance.SetChild(this.transform, true);
+        ShipController.Instance.SetChild(this.transform, true, false);
     }
 }

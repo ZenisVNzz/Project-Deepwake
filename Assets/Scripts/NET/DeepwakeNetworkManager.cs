@@ -20,6 +20,7 @@ public class DeepwakeNetworkManager : NetworkManager
     {
         base.OnStartServer();
         NetworkServer.RegisterHandler<ClientLoadDoneMessage>(OnClientLoadDone);
+        NetworkServer.RegisterHandler<ClientReadyMessage>(OnClientReady);
     }
 
     public struct LoadAssetMessage : NetworkMessage
@@ -27,6 +28,14 @@ public class DeepwakeNetworkManager : NetworkManager
         public string sceneName;
         public SceneOperation sceneOperation;
         public bool customHandling;
+    }
+
+    public struct ClientLoadDoneMessage : NetworkMessage
+    {
+    }
+
+    public struct ClientReadyMessage : NetworkMessage
+    {
     }
 
     public void SetupClient()
@@ -70,11 +79,7 @@ public class DeepwakeNetworkManager : NetworkManager
 
         startPositionIndex = 0;
         startPositions.Clear();
-    }
-
-    public struct ClientLoadDoneMessage : NetworkMessage
-    {
-    }
+    }  
 
     private void OnClientLoadDone(NetworkConnectionToClient conn, ClientLoadDoneMessage msg)
     {
@@ -85,63 +90,30 @@ public class DeepwakeNetworkManager : NetworkManager
 
         Debug.Log("Client joined");
 
-        if (!NetworkClient.ready)
-        {
-            NetworkClient.Ready();
-        }
-
-        if (IsRemoteClient(conn))
-        {
-            Debug.Log("OnServerAddPlayer called on server");
-            if (conn.identity == null)
-            {
-                GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-                NetworkServer.AddPlayerForConnection(conn, player);
-                NetworkServer.SpawnObjects();
-            }
-        }
-
         if (NetworkServer.active && NetworkClient.connection != null && SceneManager.GetActiveScene().name != "Game")
         {
-            singleton.ServerChangeScene("Game");
-            StartCoroutine(WaitForGameSceneLoaded());
-            return;
-        }
+            ServerChangeScene("Game");
+        } 
     }
 
-    private bool IsRemoteClient(NetworkConnectionToClient conn)
+    private void OnClientReady(NetworkConnectionToClient conn, ClientReadyMessage msg)
     {
-        return conn != NetworkServer.localConnection;
-    }
-
-    private IEnumerator WaitForGameSceneLoaded()
-    {
-        while (SceneManager.GetActiveScene().name != "Game")
+        if (!conn.isReady)
         {
-            yield return null;
+            NetworkServer.SetClientReady(conn);
         }
 
-        SpawnLocalHostPlayer();
+        SpawnPlayer(conn);
     }
 
-    private void SpawnLocalHostPlayer()
+    private void SpawnPlayer(NetworkConnectionToClient conn)
     {
-        if (NetworkClient.connection.identity == null)
-        {
-            GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            NetworkServer.AddPlayerForConnection(NetworkServer.localConnection, player);
-            NetworkServer.SpawnObjects();
-        }
-    }
+        Transform startPos = GetStartPosition();
+        GameObject player = startPos != null
+            ? Instantiate(playerPrefab, startPos.position, startPos.rotation)
+            : Instantiate(playerPrefab);
 
-    public override void OnServerAddPlayer(NetworkConnectionToClient conn)
-    {
-        Debug.Log("OnServerAddPlayer called on server");
-        if (conn.identity == null)
-        {
-            GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            NetworkServer.AddPlayerForConnection(conn, player);
-            NetworkServer.SpawnObjects();
-        }
+        player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
+        NetworkServer.AddPlayerForConnection(conn, player);
     }
 }

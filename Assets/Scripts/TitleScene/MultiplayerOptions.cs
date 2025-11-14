@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MultiplayerOptions : NetworkBehaviour
+public class MultiplayerOptions : MonoBehaviour
 {
     public Button HostButton;
     public Button JoinButton;

@@ -31,6 +31,7 @@ public class PlayerAttack : NetworkBehaviour, IDamageDealer
         }
     }
 
+    [Server]
     public void Dash()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();

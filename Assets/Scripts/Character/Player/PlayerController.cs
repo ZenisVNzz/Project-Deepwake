@@ -133,8 +133,6 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         stateHandler.Register("OnDeath", OnDead);
 
         _uiManager = FindAnyObjectByType<CharacterUIManager>();
-
-        ShipController.Instance.SetChild(this.transform, false);
     }
 
     public override void OnStartLocalPlayer()

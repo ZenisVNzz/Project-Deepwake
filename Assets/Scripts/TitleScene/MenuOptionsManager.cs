@@ -20,10 +20,11 @@ public class MenuOptionsManager : MonoBehaviour
         ExitButton.onClick.AddListener(OnExitButtonClicked);
     }
 
-    private async void OnSingleplayerButtonClicked()
+    private void OnSingleplayerButtonClicked()
     {
+        DeepwakeNetworkManager networkManager = FindAnyObjectByType<DeepwakeNetworkManager>();
+        networkManager.SetupClient();
         NetworkManager.singleton.StartHost();
-        await SceneLoader.Instance.LoadScene("Game", true);
     }
 
     private void OnMultiplayerButtonClicked()

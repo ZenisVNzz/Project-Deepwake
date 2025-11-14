@@ -13,7 +13,6 @@ public class GameController : NetworkBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
         }
         else
         {

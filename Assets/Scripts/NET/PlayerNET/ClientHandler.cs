@@ -1,5 +1,6 @@
-using Mirror;
+﻿using Mirror;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static DeepwakeNetworkManager;
 
 public class ClientHandler : NetworkBehaviour
@@ -30,6 +31,21 @@ public class ClientHandler : NetworkBehaviour
         if (NetworkClient.connection != null && NetworkClient.isConnected)
         {
             NetworkClient.Send(new ClientLoadDoneMessage());
+        }
+    }
+
+    private void OnEnable() =>
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+    private void OnDisable() =>
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Game")
+        {
+            Debug.Log("Client finished loading Game scene → notifying server");
+            NetworkClient.Send(new DeepwakeNetworkManager.ClientReadyMessage());
         }
     }
 }

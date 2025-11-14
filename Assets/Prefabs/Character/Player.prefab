@@ -6662,7 +6662,6 @@ GameObject:
   - component: {fileID: 5220222964460864711}
   - component: {fileID: 2832459845338404151}
   - component: {fileID: 9117324732779500466}
-  - component: {fileID: 3010712401073575981}
   - component: {fileID: 1297593478178200814}
   - component: {fileID: 943918870436601819}
   - component: {fileID: 8548296308678827752}
@@ -6671,6 +6670,7 @@ GameObject:
   - component: {fileID: 6993958671799342744}
   - component: {fileID: 5996433640564924404}
   - component: {fileID: 2598622195544407424}
+  - component: {fileID: 3089138031887199594}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -6954,40 +6954,6 @@ MonoBehaviour:
   syncInterval: 0
   clientAuthority: 1
   animator: {fileID: 8054341816088807579}
---- !u!114 &3010712401073575981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053339638299214103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ec4f7556ca1e4b55a3381fc6a02b1bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkRigidbodyReliable2D
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 5290127179865208800}
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  onlySyncOnChange: 1
-  compressRotation: 1
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  coordinateSpace: 0
-  timelineOffset: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChangeCorrectionMultiplier: 2
-  useFixedUpdate: 0
-  rotationSensitivity: 0.01
-  positionPrecision: 0.01
-  scalePrecision: 0.01
 --- !u!114 &1297593478178200814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7109,6 +7075,40 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+--- !u!114 &3089138031887199594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec4f7556ca1e4b55a3381fc6a02b1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkRigidbodyReliable2D
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 5290127179865208800}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  timelineOffset: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  useFixedUpdate: 0
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &2059629113541717755
 GameObject:
   m_ObjectHideFlags: 0
@@ -14692,6 +14692,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84456f1df4e316348b95fe68b4739ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shop
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   buyButton: {fileID: 1030042769220844142}
   itemDetail: {fileID: 5727145602891837525}
 --- !u!1 &4305369797000597618

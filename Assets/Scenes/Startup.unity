@@ -527,6 +527,7 @@ GameObject:
   - component: {fileID: 292635465}
   - component: {fileID: 292635469}
   - component: {fileID: 292635470}
+  - component: {fileID: 292635471}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -659,6 +660,23 @@ MonoBehaviour:
   LoadAssetWhenInitResourceManager: 0
   _preloadKeys: []
   _loadSceneOnLoadDone: 
+--- !u!114 &292635471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292635464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror::Mirror.NetworkIdentity
+  sceneId: 554989153
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &306895492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2796,6 +2814,7 @@ GameObject:
   - component: {fileID: 1965046650}
   - component: {fileID: 1965046649}
   - component: {fileID: 1965046652}
+  - component: {fileID: 1965046653}
   m_Layer: 0
   m_Name: Script(DontDestroyOnLoad)
   m_TagString: Untagged
@@ -2965,6 +2984,23 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+--- !u!114 &1965046653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965046644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror::Mirror.NetworkIdentity
+  sceneId: 2532648343
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
