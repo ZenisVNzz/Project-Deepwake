@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 
 public class EnemyFlyingMovement : MonoBehaviour, IAIMove
@@ -31,14 +32,14 @@ public class EnemyFlyingMovement : MonoBehaviour, IAIMove
 
         this.rb = GetComponent<Rigidbody2D>();
         this.desiredVerticalOffset = Mathf.Abs(2.5f);
-        this.stopDistance = 0.8f;
-
+        this.desiredVerticalOffset = Mathf.Abs(2.5f);
         swayPhase = Random.value * Mathf.PI * 2f;
 
         var playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) target = playerObj.transform;
     }
 
+    [Server]
     public void Move(float moveSpeed)
     {
         if (target == null)

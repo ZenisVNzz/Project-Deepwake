@@ -28,6 +28,11 @@ public class GameController : NetworkBehaviour
     public override void OnStartServer()
     {
         base.OnStartServer();
+        OnStartGame();
+    }
+
+    private void OnStartGame()
+    {
         gameStateMachine.ChangeState<GameBeginState>();
     }
 

@@ -237,7 +237,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 16476327208738816
-    m_Localized: Create room
+    m_Localized: Host game
     m_Metadata:
       m_Items: []
   - m_Id: 16476401057849344

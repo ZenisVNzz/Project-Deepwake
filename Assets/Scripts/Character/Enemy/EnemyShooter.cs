@@ -1,7 +1,8 @@
+using Mirror;
 using System.Resources;
 using UnityEngine;
 
-public class EnemyShooter : MonoBehaviour
+public class EnemyShooter : NetworkBehaviour
 {
     [Header("Refs")]
     [SerializeField] private Transform firePoint;
@@ -55,5 +56,6 @@ public class EnemyShooter : MonoBehaviour
             proj = go.AddComponent<HitBoxHandler>();
         }
         proj.SetData(characterRuntime.TotalAttack, gameObject.tag, characterRuntime);
+        NetworkServer.Spawn(go);
     }
 }

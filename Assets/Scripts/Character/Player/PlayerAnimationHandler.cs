@@ -1,5 +1,6 @@
 using Mirror;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAnimationHandler : NetworkBehaviour, IAnimationHandler

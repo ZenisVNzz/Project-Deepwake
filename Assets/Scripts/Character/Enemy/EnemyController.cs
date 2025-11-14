@@ -82,6 +82,7 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         stateHandler.Register("OnDeath", OnDead);
     }
 
+    [Server]
     private void OnAttack()
     {
         if (enemyMovement.HaveReachedTarget())
@@ -90,6 +91,7 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         }      
     }
 
+    [Server]
     private void OnMove()
     {
         if (enemyState.GetCurrentState() != CharacterStateType.Knockback && enemyState.GetCurrentState() != CharacterStateType.Death && enemyState.GetCurrentState() != CharacterStateType.Attacking)
@@ -139,6 +141,8 @@ public class EnemyController : NetworkBehaviour, IEnemyController
 
     void FixedUpdate()
     {
+        if (!isServer) return;
+
         stateHandler.UpdateState();
         animationHandler.UpdateAnimation();
         OnMove();

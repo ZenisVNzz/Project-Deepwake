@@ -43,6 +43,7 @@ namespace Mirror
 
         // <clienttime, snaps>
         readonly SortedList<double, TimeSnapshot> snapshots = new SortedList<double, TimeSnapshot>();
+        public readonly bool isLocalClient;
 
         // Snapshot Buffer size limit to avoid ever growing list memory consumption attacks from clients.
         public int snapshotBufferSizeLimit = 64;

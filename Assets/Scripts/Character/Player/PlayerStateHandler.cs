@@ -41,7 +41,7 @@ public class PlayerStateHandler : NetworkBehaviour, IStateHandler
         {
             if (!IsWaitForKnockBack)
             {
-                CoroutineRunner.Instance.RunCoroutine(WaitForKnockBack());
+                StartCoroutine(WaitForKnockBack());
             }
             return;
         }
@@ -74,14 +74,18 @@ public class PlayerStateHandler : NetworkBehaviour, IStateHandler
     {
         IsWaitForKnockBack = true;
         inputHandler.Player.Disable();
+
         yield return new WaitForSeconds(0.3f);
         inputHandler.Player.Enable();
+
         yield return new WaitForSeconds(0.4f);
+
         if (playerState.GetCurrentState() == CharacterStateType.Knockback)
         {
             PlayerNet.ChangeState(CharacterStateType.Idle);
-            IsWaitForKnockBack = false;
         }
+
+        IsWaitForKnockBack = false; 
     }
 
     public void Register(string eventName, Action listener)

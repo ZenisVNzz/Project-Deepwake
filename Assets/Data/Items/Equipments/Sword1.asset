@@ -22,13 +22,23 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  itemDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemTier: 0
   icon: {fileID: 8405742350395111979, guid: 6723a5d90b6a120488368a0e11309827, type: 3}
   itemType: 2
   maxStack: 99
   equipmentType: 2
   maxHealthBonus: 0
   maxStaminaBonus: 0
-  attackPowerBonus: 5
+  attackPowerBonus: 3
   defenseBonus: 0
   speedBonus: 0
   criticalChanceBonus: 0

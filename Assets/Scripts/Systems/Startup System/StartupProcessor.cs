@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -184,7 +185,7 @@ public class StartupProcessor : MonoBehaviour
         if (isCompleted && !isLoadingScene)
         {
             isLoadingScene = true;
-            await SceneLoader.Instance.LoadScene("Loading");
+            await SceneLoader.Instance.LoadScene("Title", true);
             inputActions.UI.Disable();
         }
     }

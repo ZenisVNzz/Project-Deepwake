@@ -26,7 +26,15 @@ public class PlayerAttack : NetworkBehaviour, IDamageDealer
         CharacterStateType state = _playerState.GetCurrentState();
         if (state != CharacterStateType.Attacking)
         {
+            Dash();
             PlayerNet.ChangeState(CharacterStateType.Attacking);
         }
+    }
+
+    public void Dash()
+    {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        var dashDirection = GetComponent<PlayerDirectionHandler>().DirectionToVector2();
+        rb.linearVelocity = dashDirection * 8f;
     }
 }

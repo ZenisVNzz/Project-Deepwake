@@ -30,21 +30,28 @@ public class HitBoxHandler : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!isServer && !isOwned)
+            return;
 
-        if (other.tag != undamagedTag && other.tag != "Untagged")
+        if (other.CompareTag(undamagedTag) || other.CompareTag("Untagged"))
+            return;
+
+        IAttackable damageable = other.GetComponentInParent<IAttackable>();
+        if (damageable == null) return;
+
+        Vector3 knockDir = (other.transform.position - transform.position).normalized * knockbackForce;
+        float finalDamage = isOwnerDmg ? _characterRuntime.TotalAttack : damage;
+
+        if (isServer)
         {
-            IAttackable damageable = other.GetComponentInParent<IAttackable>();
-            if (damageable != null)
-            {
-                Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
+            DealDamageInternal(damageable, finalDamage, knockDir);
+        }
+        else if (isOwned)
+        {
+            CmdDealDamage(((MonoBehaviour)damageable).gameObject, finalDamage, knockDir);
+        }
 
-                if (damageable is EnemyRuntime enemyRuntime)
-                {
-                    CmdDealDamage(enemyRuntime.gameObject, isOwnerDmg ? _characterRuntime.TotalAttack : damage, knockbackDirection * knockbackForce);
-                    Debug.Log($"Dealt {damage} damage with {knockbackForce} knockback to {enemyRuntime.gameObject.name}");
-                }                   
-            }
-        }    
+        Debug.Log($"[HitBox] {gameObject.name} dealt {finalDamage} dmg to {other.name}");
     }
 
     [Command]
@@ -53,22 +60,20 @@ public class HitBoxHandler : NetworkBehaviour
         if (targetObj == null) return;
 
         IAttackable target = targetObj.GetComponentInParent<IAttackable>();
-        if (target != null)
-        {
-            if (_characterRuntime == null)
-            {
-                target.TakeDamage(damageAmount, knockback);
-                
-            }
-            else
-            {
-                target.TakeDamage(damageAmount, knockback, _characterRuntime);
-            }       
+        if (target == null) return;
 
-            if (destroyThisOnHit)
-            {
-                NetworkServer.Destroy(gameObject);
-            }
-        }
+        DealDamageInternal(target, damageAmount, knockback);
+    }
+
+    [Server]
+    private void DealDamageInternal(IAttackable target, float damageAmount, Vector3 knockback)
+    {
+        if (_characterRuntime != null)
+            target.TakeDamage(damageAmount, knockback, _characterRuntime);
+        else
+            target.TakeDamage(damageAmount, knockback);
+
+        if (destroyThisOnHit)
+            NetworkServer.Destroy(gameObject);
     }
 }

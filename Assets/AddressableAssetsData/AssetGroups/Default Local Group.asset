@@ -89,6 +89,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3376745178c2a45b7b67cd3a93406ffa
+    m_Address: WaterMaterialNew
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Material
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3bfa86f2a2bf2e24d875da98229fcfa7
     m_Address: Stone
     m_ReadOnly: 0
@@ -209,6 +215,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - UIPrefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b79786cbff972d54784088bac306441b
+    m_Address: TitleUICanvas
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - UIPrefab
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b85f960a82fd6b44eb65a64e8d5999b0
     m_Address: Tree
     m_ReadOnly: 0
@@ -232,6 +245,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5a4d4f721e61cc408e8c661b4dd4f21
+    m_Address: TitlePopupCanvas
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - UIPrefab
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e07642fd886fae440beb488f74e8fdc6
     m_Address: Grass

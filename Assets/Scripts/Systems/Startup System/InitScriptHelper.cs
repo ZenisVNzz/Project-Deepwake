@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class InitScriptHelper : MonoBehaviour
 {
-    [SerializeField] private List<MonoBehaviour> _manager;
-    [SerializeField] private bool LoadAssetWhenInitResourceManager = false;
-    [SerializeField] private List<string> _preloadKeys;
-    [SerializeField] private string _loadSceneOnLoadDone;  
+    [SerializeField] public List<MonoBehaviour> _manager;
+    [SerializeField] public bool LoadAssetWhenInitResourceManager = false;
+    [SerializeField] public List<string> _preloadKeys;
+    [SerializeField] public string _loadSceneOnLoadDone;  
 
     private SceneLoader _sceneLoader;
 
-    private async void Awake()
+    public async void Load()
     {
         _sceneLoader = SceneLoader.Instance;
 
@@ -75,6 +75,6 @@ public class InitScriptHelper : MonoBehaviour
 
     private async Task LoadScene()
     {   
-        await _sceneLoader.LoadScene(_loadSceneOnLoadDone);
+        await _sceneLoader.LoadScene(_loadSceneOnLoadDone, false);
     }
 }

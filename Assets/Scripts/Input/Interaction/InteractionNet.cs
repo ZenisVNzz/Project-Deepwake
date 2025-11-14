@@ -22,8 +22,18 @@ public class InteractionNet : NetworkBehaviour
     [Command]
     public void RequestExit(NetworkIdentity target)
     {
+        if (target == null)
+        {
+            Debug.LogWarning("[InteractionNet] RequestExit called with null target!");
+            return;
+        }
+
         var interactable = target.GetComponentInChildren<IInteractable>();
-        if (interactable == null) return;
+        if (interactable == null)
+        {
+            Debug.LogWarning($"[InteractionNet] RequestExit: No IInteractable found in {target.name}");
+            return;
+        }
 
         interactable.OnExit(connectionToClient);
     }
