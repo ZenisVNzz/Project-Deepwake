@@ -13,6 +13,7 @@ public class PlayerDataProvider : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {

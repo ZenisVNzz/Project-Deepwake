@@ -24,6 +24,8 @@ public class MultiplayerOptions : NetworkBehaviour
 
     private async Task WaitForHost()
     {
+        DeepwakeNetworkManager networkManager = FindAnyObjectByType<DeepwakeNetworkManager>();
+        networkManager.SetupClient();
         NetworkManager.singleton.StartHost();
         float timeout = 5f;
         float timer = 0f;
@@ -37,7 +39,7 @@ public class MultiplayerOptions : NetworkBehaviour
         if (NetworkServer.active && NetworkClient.isConnected)
         {
             Debug.Log("Host game successfully");
-            await SceneLoader.Instance.LoadScene("Game", true);
+            //await SceneLoader.Instance.LoadScene("Game", true);
         }
         else
         {
@@ -48,12 +50,14 @@ public class MultiplayerOptions : NetworkBehaviour
     private void OnJoinButtonClicked()
     {
         NetworkManager.singleton.networkAddress = AddressInputField.text;
+        DeepwakeNetworkManager networkManager = FindAnyObjectByType<DeepwakeNetworkManager>();
+        networkManager.SetupClient();
         StartCoroutine(ConnectToServer());
     }
 
     private IEnumerator ConnectToServer()
     {
-        NetworkClient.Connect(NetworkManager.singleton.networkAddress);
+        NetworkManager.singleton.StartClient();
 
         float timeout = 10f;
         float timer = 0f;
@@ -67,7 +71,7 @@ public class MultiplayerOptions : NetworkBehaviour
         if (NetworkClient.isConnected)
         {
             Debug.Log("Connected to server successfully");
-            yield return SceneLoader.Instance.LoadScene("Game", true);
+            //yield return SceneLoader.Instance.LoadScene("Game", true);
         }
         else
         {

@@ -54,7 +54,6 @@ public class SceneLoader : NetworkBehaviour
         if (initHelper)
         {
             loadOperation = SceneManager.LoadSceneAsync("Loading");
-            loadOperation.allowSceneActivation = false;
 
             foreach (var slk in sceneLoadKeys)
             {
@@ -67,20 +66,31 @@ public class SceneLoader : NetworkBehaviour
 
             initScriptHelper._loadSceneOnLoadDone = sceneName;
 
-            while (loadOperation.progress < 0.9f)
-                await Task.Yield();
+            if (loadOperation != null)
+            {
+                while (loadOperation.progress < 0.9f)
+                    await Task.Yield();
+            }           
         }
         else
         {
-            loadOperation = SceneManager.LoadSceneAsync(sceneName);
-            loadOperation.allowSceneActivation = false;
+            if (NetworkServer.active)
+            {
+                NetworkManager.singleton.ServerChangeScene(sceneName);
+            }
+            else
+            {
+                loadOperation = SceneManager.LoadSceneAsync(sceneName);
+                loadOperation.allowSceneActivation = false;
+            }          
         }
 
         transitionAnimator.Play("Scene_Close");
 
         await WaitForAnimationEnd();
 
-        loadOperation.allowSceneActivation = true;
+        if (loadOperation != null)
+            loadOperation.allowSceneActivation = true;
 
         if (initHelper)
         {

@@ -74,7 +74,14 @@ public class InitScriptHelper : MonoBehaviour
     }
 
     private async Task LoadScene()
-    {   
-        await _sceneLoader.LoadScene(_loadSceneOnLoadDone, false);
+    {
+        if (_loadSceneOnLoadDone != "Loading")
+        {
+            await _sceneLoader.LoadScene(_loadSceneOnLoadDone, false);
+        }
+        else
+        {
+            ClientHandler.Instance.SendLoadDone();
+        }
     }
 }

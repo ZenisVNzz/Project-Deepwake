@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 292635466}
   - component: {fileID: 292635465}
   - component: {fileID: 292635469}
+  - component: {fileID: 292635470}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -632,7 +633,32 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   transitionAnimator: {fileID: 144654857}
-  sceneLoadKeys: []
+  sceneLoadKeys:
+  - sceneName: Title
+    preloadKeys:
+    - TitleScene
+  - sceneName: Game
+    preloadKeys:
+    - InGame
+  - sceneName: Loading
+    preloadKeys:
+    - InGame
+--- !u!114 &292635470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292635464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245b40b20c2845440ac04babebcd7725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InitScriptHelper
+  _manager: []
+  LoadAssetWhenInitResourceManager: 0
+  _preloadKeys: []
+  _loadSceneOnLoadDone: 
 --- !u!1 &306895492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,6 +2795,7 @@ GameObject:
   - component: {fileID: 1965046651}
   - component: {fileID: 1965046650}
   - component: {fileID: 1965046649}
+  - component: {fileID: 1965046652}
   m_Layer: 0
   m_Name: Script(DontDestroyOnLoad)
   m_TagString: Untagged
@@ -2923,6 +2950,21 @@ MonoBehaviour:
   evaluationMethod: 0
   evaluationInterval: 3
   timeInterpolationGui: 0
+--- !u!114 &1965046652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965046644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14b1c882eec30944b0521d2e44669ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClientHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
