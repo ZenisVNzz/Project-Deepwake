@@ -21,8 +21,6 @@ public class PlayerAttack : NetworkBehaviour, IDamageDealer
     [Command]
     public void CmdAttack(float ATK)
     {
-        if (!GetComponent<PlayerController>().playerModifier.CanAttack) return;
-
         CharacterStateType state = _playerState.GetCurrentState();
         if (state != CharacterStateType.Attacking)
         {

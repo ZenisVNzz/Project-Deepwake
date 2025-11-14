@@ -173,7 +173,7 @@ public class PlayerController : NetworkBehaviour, IPlayerController
 
     private void OnAttack()
     {
-        if (!isLocalPlayer) return;
+        if (!isLocalPlayer || !playerModifier.CanAttack) return;
         playerAttack.CmdAttack(playerRuntime.TotalAttack);
     }
 

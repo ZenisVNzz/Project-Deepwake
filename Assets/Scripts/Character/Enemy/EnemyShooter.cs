@@ -37,6 +37,8 @@ public class EnemyShooter : NetworkBehaviour
 
     public void Fire()
     {
+        if (!isServer)
+            return;
         if (projectilePrefab == null)
             return;
 
