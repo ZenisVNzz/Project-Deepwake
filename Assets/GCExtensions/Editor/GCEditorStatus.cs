@@ -1,5 +1,5 @@
-﻿using Boo.Lang;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -144,7 +144,7 @@ namespace GCGames.Editors
 			result.RemoveAt(clear);
 			Debug.Log("You have destroyed the component: " + listScripts.GetValue(clear));
 			Component remove = (Component)listScripts.GetValue(clear);
-			result.ToArray(listScripts);
+			result.ToArray();
 			DestroyImmediate(remove);
 
 		}

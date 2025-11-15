@@ -55,21 +55,21 @@ namespace Facebook.Unity.Example
             if (this.Button("Purchase IAP Consumable"))
             {
                 this.Status = "Purchased IAP Consumable";
-                IAPWrapper.PurchaseConsumable();
+                //IAPWrapper.PurchaseConsumable();
                 LogView.AddLog(
                     "Purchased IAP Consumable");
             }
             if (this.Button("Purchase IAP Non-Consumable"))
             {
                 this.Status = "Purchased IAP Non-Consumable";
-                IAPWrapper.PurchaseNonConsumable();
+                //IAPWrapper.PurchaseNonConsumable();
                 LogView.AddLog(
                     "Purchased IAP Non-Consumable");
             }
             if (this.Button("Purchase IAP Subscription"))
             {
                 this.Status = "Purchased IAP Subscription";
-                IAPWrapper.PurchaseSubscription();
+                //IAPWrapper.PurchaseSubscription();
                 LogView.AddLog(
                     "Purchased IAP Subscription");
             }

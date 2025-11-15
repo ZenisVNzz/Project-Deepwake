@@ -1,33 +1,46 @@
-﻿using UnityEngine;
-using Facebook.Unity;
-using System.Collections.Generic; // For List
+﻿using Facebook.Unity;
+using fbg;
+using Firebase;
+using Firebase.Extensions;
+using System.Collections.Generic;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class FacebookLoginHandler : MonoBehaviour
 {
-    private System.Action<string> onAccessTokenReceivedCallback;
+    Firebase.Auth.FirebaseAuth auth;
 
     void Awake()
     {
         if (!FB.IsInitialized)
         {
-            FB.Init(OnInitComplete, OnHideUnity);
+            // Initialize the Facebook SDK
+            FB.Init(InitCallback, OnHideUnity);
         }
         else
         {
+            // Already initialized, signal an app activation App Event
             FB.ActivateApp();
         }
     }
 
-    private void OnInitComplete()
+    void Start()
+    {
+        auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+    }
+
+    private void InitCallback()
     {
         if (FB.IsInitialized)
         {
+            // Signal an app activation App Event
             FB.ActivateApp();
-            Debug.Log("Facebook SDK initialized successfully.");
+            // Continue with Facebook SDK
+            // ...
         }
         else
         {
-            Debug.LogError("Failed to Initialize the Facebook SDK");
+            Debug.Log("Failed to Initialize the Facebook SDK");
         }
     }
 
@@ -35,43 +48,55 @@ public class FacebookLoginHandler : MonoBehaviour
     {
         if (!isGameShown)
         {
+            // Pause the game - we will need to hide
             Time.timeScale = 0;
         }
         else
         {
+            // Resume the game - we're getting focus again
             Time.timeScale = 1;
         }
-    }
-
-    public void SignInFacebook(System.Action<string> callback)
-    {
-        onAccessTokenReceivedCallback = callback;
-
-        if (FB.IsLoggedIn)
-        {
-            AccessToken aToken = AccessToken.CurrentAccessToken;
-            Debug.Log($"Facebook already logged in. Access Token: {aToken.TokenString}");
-            onAccessTokenReceivedCallback?.Invoke(aToken.TokenString);
-            return;
-        }
-
-        var permissions = new List<string>() { "public_profile", "email" };
-
-        FB.LogInWithReadPermissions(permissions, AuthCallback);
     }
 
     private void AuthCallback(ILoginResult result)
     {
         if (FB.IsLoggedIn)
         {
-            AccessToken aToken = AccessToken.CurrentAccessToken;
-            Debug.Log($"Facebook Login successful. Access Token: {aToken.TokenString}");
-            onAccessTokenReceivedCallback?.Invoke(aToken.TokenString);
+            // AccessToken class will have session details
+            var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
+
+            FacebookAuth(aToken.TokenString);
         }
         else
         {
-            Debug.LogError($"Facebook Login Failed. Error: {result.Error}");
-            onAccessTokenReceivedCallback?.Invoke(null);
+            Debug.Log("User cancelled login");
         }
+    }
+
+    private void FacebookAuth(string accessToken)
+    {
+        Firebase.Auth.Credential credential = Firebase.Auth.FacebookAuthProvider.GetCredential(accessToken);
+        auth.SignInAndRetrieveDataWithCredentialAsync(credential).ContinueWithOnMainThread(task => {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("SignInAndRetrieveDataWithCredentialAsync was canceled.");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("SignInAndRetrieveDataWithCredentialAsync encountered an error: " + task.Exception);
+                return;
+            }
+
+            Firebase.Auth.AuthResult result = task.Result;
+            Debug.LogFormat("User signed in successfully: {0} ({1})",
+                result.User.DisplayName, result.User.UserId);
+        });
+    }
+
+    public void FacebookLogin()
+    {
+        var perms = new List<string>() { "public_profile", "email" };
+        FB.LogInWithReadPermissions(perms, AuthCallback);
     }
 }
