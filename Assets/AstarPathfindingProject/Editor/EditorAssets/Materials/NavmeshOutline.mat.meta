@@ -1,8 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/AstarPathfindingProject/Editor/EditorAssets/Materials/NavmeshOutline.mat.meta
 guid: 91035448860ba4e708919485c73f7edc
 timeCreated: 1442945121
+========
+guid: 67cb5b2387b8e4ec9b2fa69ad9510e9b
+timeCreated: 1447720184
+>>>>>>>> origin/SignIn:Assets/FacebookSDK/Examples/Mobile/AccessTokenMenu.unity.meta
 licenseType: Pro
-NativeFormatImporter:
+DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 

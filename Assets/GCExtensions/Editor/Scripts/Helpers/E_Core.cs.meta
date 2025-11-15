@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 6ace1ea61e2d9674db1aa08a35fb9e64
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177350
+  packageName: Extensions for Playfab
+  packageVersion: 1.1
+  assetPath: Assets/GCExtensions/Editor/Scripts/Helpers/E_Core.cs
+  uploadId: 389402

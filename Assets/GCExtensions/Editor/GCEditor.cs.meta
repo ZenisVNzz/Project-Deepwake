@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8e12d27600bc8b740821838440414320
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177350
+  packageName: Extensions for Playfab
+  packageVersion: 1.1
+  assetPath: Assets/GCExtensions/Editor/GCEditor.cs
+  uploadId: 389402
