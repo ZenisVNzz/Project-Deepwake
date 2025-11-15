@@ -8,9 +8,12 @@ public class MenuOptionsManager : MonoBehaviour
     public Button MultiplayerButton;
     public Button SettingsButton;
     public Button ExitButton;
+    public Button AccountCenterButton;
 
     public GameObject MultiplayerOptionsPanel;
     public GameObject SettingsPanel;
+
+    public GameObject AccountCenterPanel;
 
     private void Start()
     {
@@ -18,6 +21,7 @@ public class MenuOptionsManager : MonoBehaviour
         MultiplayerButton.onClick.AddListener(OnMultiplayerButtonClicked);
         SettingsButton.onClick.AddListener(OnSettingsButtonClicked);
         ExitButton.onClick.AddListener(OnExitButtonClicked);
+        AccountCenterButton.onClick.AddListener(OnAccountCenterClicked);
     }
 
     private void OnSingleplayerButtonClicked()
@@ -40,5 +44,10 @@ public class MenuOptionsManager : MonoBehaviour
     private void OnExitButtonClicked()
     {
         Application.Quit();
+    }
+
+    private void OnAccountCenterClicked()
+    {
+        AccountCenterPanel.SetActive(true);
     }
 }

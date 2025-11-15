@@ -45,7 +45,7 @@ namespace Facebook.Unity.Example
             if (this.Button("Initialize GPBL"))
             {
                 this.Status = "Initialized GPBL";
-                IAPWrapper.InitializeGPBL();
+                //IAPWrapper.InitializeGPBL();
                 LogView.AddLog(
                     "Initialized GPBL");
             }

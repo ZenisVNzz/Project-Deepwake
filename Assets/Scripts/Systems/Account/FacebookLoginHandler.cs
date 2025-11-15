@@ -4,6 +4,7 @@ using Firebase;
 using Firebase.Extensions;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
 public class FacebookLoginHandler : MonoBehaviour
@@ -22,6 +23,9 @@ public class FacebookLoginHandler : MonoBehaviour
             // Already initialized, signal an app activation App Event
             FB.ActivateApp();
         }
+
+        Button loginButton = GetComponent<Button>();
+        loginButton.onClick.AddListener(FacebookLogin);
     }
 
     void Start()
@@ -76,21 +80,21 @@ public class FacebookLoginHandler : MonoBehaviour
     private void FacebookAuth(string accessToken)
     {
         Firebase.Auth.Credential credential = Firebase.Auth.FacebookAuthProvider.GetCredential(accessToken);
-        auth.SignInAndRetrieveDataWithCredentialAsync(credential).ContinueWithOnMainThread(task => {
+        auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
+        {
             if (task.IsCanceled)
             {
-                Debug.LogError("SignInAndRetrieveDataWithCredentialAsync was canceled.");
+                Debug.LogError("SignInWithCredentialAsync was canceled.");
                 return;
             }
             if (task.IsFaulted)
             {
-                Debug.LogError("SignInAndRetrieveDataWithCredentialAsync encountered an error: " + task.Exception);
+                Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
                 return;
             }
 
-            Firebase.Auth.AuthResult result = task.Result;
-            Debug.LogFormat("User signed in successfully: {0} ({1})",
-                result.User.DisplayName, result.User.UserId);
+            var user = task.Result;
+            Debug.Log($"User signed in successfully: {user.DisplayName} ({user.UserId})");
         });
     }
 

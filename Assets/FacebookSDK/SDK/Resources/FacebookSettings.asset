@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 0
+  - 26030364539903001
   appLabels:
-  - App Name
+  - Deepwake
   cookie: 1
   logging: 1
   status: 1

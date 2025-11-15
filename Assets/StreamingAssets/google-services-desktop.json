@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "355138368747",
-    "project_id": "project2-79bd7",
-    "storage_bucket": "project2-79bd7.firebasestorage.app"
+    "project_number": "1042625468516",
+    "project_id": "deepwake-207c8",
+    "storage_bucket": "deepwake-207c8.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:355138368747:android:ad698d307c26ce030ffaae",
+        "mobilesdk_app_id": "1:1042625468516:android:cc2514d74080650e252771",
         "android_client_info": {
           "package_name": "com.ZerO.Deepwake"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "355138368747-uj8rj21s33pqirvc7h7nb0rj5albq74m.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCdu8zdLtFUxxXN8iYimpjHiRNOf6F7VmE"
+          "current_key": "AIzaSyA_eIfxnaEQzYbeMmYXB9tgbrniOI6td7o"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "355138368747-uj8rj21s33pqirvc7h7nb0rj5albq74m.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

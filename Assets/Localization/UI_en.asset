@@ -244,6 +244,26 @@ MonoBehaviour:
     m_Localized: Join
     m_Metadata:
       m_Items: []
+  - m_Id: 18026014936064000
+    m_Localized: Account center
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206807377502208
+    m_Localized: Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206841472999424
+    m_Localized: Register
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206866697543680
+    m_Localized: Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18291940176617472
+    m_Localized: Or login with
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

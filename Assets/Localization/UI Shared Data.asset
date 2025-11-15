@@ -239,6 +239,26 @@ MonoBehaviour:
     m_Key: UI_Join
     m_Metadata:
       m_Items: []
+  - m_Id: 18026014936064000
+    m_Key: UI_AccountCenter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206807377502208
+    m_Key: UI_Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206841472999424
+    m_Key: UI_Register
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206866697543680
+    m_Key: UI_Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18291940176617472
+    m_Key: UI_OtherLogin
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
