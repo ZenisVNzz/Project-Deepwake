@@ -1,6 +1,4 @@
 ﻿using Facebook.Unity;
-using fbg;
-using Firebase;
 using Firebase.Extensions;
 using System.Collections.Generic;
 using UnityEngine;
