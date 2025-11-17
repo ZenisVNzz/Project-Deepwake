@@ -93,6 +93,18 @@ public class FacebookLoginHandler : MonoBehaviour
 
             var user = task.Result;
             Debug.Log($"User signed in successfully: {user.DisplayName} ({user.UserId})");
+
+            StartupProcessor.Instance.GetService<PlayFabClient>().FacebookLoginAsync(accessToken).ContinueWith(playFabTask =>
+            {
+                if (playFabTask.IsFaulted || playFabTask.IsCanceled)
+                {
+                    Debug.LogError("PlayFab Facebook login failed: " + playFabTask.Exception);
+                }
+                else
+                {
+                    Debug.Log("PlayFab Facebook login successful!");
+                }
+            });
         });
     }
 

@@ -264,6 +264,14 @@ MonoBehaviour:
     m_Localized: Or login with
     m_Metadata:
       m_Items: []
+  - m_Id: 18856954126065664
+    m_Localized: Username
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18857043846422528
+    m_Localized: Confirm password
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

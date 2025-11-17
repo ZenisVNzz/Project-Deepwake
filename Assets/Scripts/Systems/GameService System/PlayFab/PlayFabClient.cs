@@ -97,7 +97,7 @@ public class PlayFabClient : PlayFabService
             Email = email,
             Password = password,
             Username = username,
-            RequireBothUsernameAndEmail = false
+            RequireBothUsernameAndEmail = true
         };
 
         PlayFabClientAPI.RegisterPlayFabUser(request, result =>

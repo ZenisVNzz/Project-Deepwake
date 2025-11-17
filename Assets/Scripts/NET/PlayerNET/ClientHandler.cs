@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static DeepwakeNetworkManager;
 
-public class ClientHandler : NetworkBehaviour
+public class ClientHandler : MonoBehaviour
 {
     public static ClientHandler Instance;
     private bool isLoadDone = false;

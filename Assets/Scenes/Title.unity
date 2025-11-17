@@ -33396,18 +33396,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6427915985606283156, guid: b79786cbff972d54784088bac306441b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6427915985606283156, guid: b79786cbff972d54784088bac306441b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6427915985606283156, guid: b79786cbff972d54784088bac306441b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6427915985606283156, guid: b79786cbff972d54784088bac306441b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -33420,10 +33408,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1031246387}
     - target: {fileID: 8297059513411631202, guid: b79786cbff972d54784088bac306441b, type: 3}
-      propertyPath: AccountCenterButton
-      value: 
-      objectReference: {fileID: 1866694222668952222}
-    - target: {fileID: 8297059513411631202, guid: b79786cbff972d54784088bac306441b, type: 3}
       propertyPath: MultiplayerOptionsPanel
       value: 
       objectReference: {fileID: 2036242079}
@@ -33432,17 +33416,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b79786cbff972d54784088bac306441b, type: 3}
---- !u!114 &1866694222668952222 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6022505821648247587, guid: b79786cbff972d54784088bac306441b, type: 3}
-  m_PrefabInstance: {fileID: 1866694222668952221}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!4 &1885225504475873076
 Transform:
   m_ObjectHideFlags: 0
@@ -33721,7 +33694,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1120942001437574286, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1665044194103801474, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
       propertyPath: m_Pivot.x
@@ -33806,10 +33779,6 @@ PrefabInstance:
     - target: {fileID: 6375348524460568684, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
       propertyPath: m_Name
       value: TitlePopupCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375348524460568684, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36074,52 +36043,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &6832527238371549226
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7468782877199286499}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.004393656, y: -0.030242842}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.16366301}
-    oldSize: {x: 0.32, y: 0.6102128}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.25626186, y: 0.11643403}
-  m_EdgeRadius: 0
 --- !u!114 &6931901825069779183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36381,8 +36304,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8411007798680446076}
   - component: {fileID: 3217312069972721085}
-  - component: {fileID: 6832527238371549226}
-  - component: {fileID: 7949060000316428638}
   - component: {fileID: 4453099670393121165}
   m_Layer: 0
   m_Name: Wheel
@@ -36458,20 +36379,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8956778600530488124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7949060000316428638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7468782877199286499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de070e8a116b3354fad10bff667b784e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipWheel
-  map: {fileID: 0}
-  arrow: {fileID: 0}
 --- !u!4 &8032550340686824542
 Transform:
   m_ObjectHideFlags: 0
