@@ -38,7 +38,7 @@ public class PlayFabClient : PlayFabService
         return await task.Task;
     }
 
-    public async Task<bool> GoogleLoginAsync(string Token)
+    public Task<bool> GoogleLoginAsync(string Token)
     {
         var task = new TaskCompletionSource<bool>();
 
@@ -60,10 +60,10 @@ public class PlayFabClient : PlayFabService
             task.SetResult(false);
         });
 
-        return await task.Task;
+        return task.Task;
     }
 
-    public async Task<bool> FacebookLoginAsync(string Token)
+    public Task<bool> FacebookLoginAsync(string Token)
     {
         var task = new TaskCompletionSource<bool>();
 
@@ -85,7 +85,7 @@ public class PlayFabClient : PlayFabService
             task.SetResult(false);
         });
 
-        return await task.Task;
+        return task.Task;
     }  
     
     public async Task<bool> EmailRegesterAsync(string email, string password, string username)

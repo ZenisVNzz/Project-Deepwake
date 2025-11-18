@@ -33828,6 +33828,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -366.66998
       objectReference: {fileID: 0}
+    - target: {fileID: 5530164967177069240, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530164967177069240, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530164967177069240, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2591955087435098870}
+    - target: {fileID: 5530164967177069240, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530164967177069240, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SignInWithGoogle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530164967177069240, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FirebaseAuth, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530164967177069240, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5892553080117636350, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -33844,6 +33872,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 6101362629580346098, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+      propertyPath: googleClientDataObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 83d637e14ee8975409d7b72e146ae264, type: 2}
+    - target: {fileID: 6101362629580346098, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+      propertyPath: googleClientDataObjectEditor
+      value: 
+      objectReference: {fileID: 11400000, guid: b30e8b0c40a857c45a31fd3b1d68e129, type: 2}
     - target: {fileID: 6375348524460568684, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
       propertyPath: m_Name
       value: TitlePopupCanvas
@@ -33851,8 +33887,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210539131998861063, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2591955087435098870}
   m_SourcePrefab: {fileID: 100100000, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+--- !u!1 &2591955087435098869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210539131998861063, guid: d5a4d4f721e61cc408e8c661b4dd4f21, type: 3}
+  m_PrefabInstance: {fileID: 2591955087435098868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2591955087435098870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591955087435098869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a33b90340f15394f86b3fe5ebd05810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FirebaseAuth
 --- !u!1 &2700804055435461420
 GameObject:
   m_ObjectHideFlags: 0
