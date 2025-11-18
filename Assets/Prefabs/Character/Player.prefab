@@ -7030,6 +7030,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d218e50bb7e7147aae3c6418bf4852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDirectionHandler
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!114 &6993958671799342744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7087,7 +7090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec4f7556ca1e4b55a3381fc6a02b1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkRigidbodyReliable2D
-  syncDirection: 0
+  syncDirection: 1
   syncMode: 0
   syncInterval: 0
   target: {fileID: 5290127179865208800}

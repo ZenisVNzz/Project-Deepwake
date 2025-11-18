@@ -45,8 +45,7 @@ public class PlayFabClient : PlayFabService
         var request = new LoginWithGoogleAccountRequest
         {
             TitleId = PlayFabSettings.TitleId,
-            ServerAuthCode = Token,
-            CreateAccount = true
+            ServerAuthCode = Token
         };
 
         PlayFabClientAPI.LoginWithGoogleAccount(request, result =>

@@ -185,7 +185,6 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         CmdMove(clientInput);
     }
 
-    [Command]
     private void CmdMove(Vector2 input)
     {
         playerInput = input;
