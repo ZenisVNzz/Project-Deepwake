@@ -79,7 +79,7 @@ public class GoogleLoginHandler : MonoBehaviour
                 }
             });
 
-            StartupProcessor.Instance.GetService<PlayFabClient>().GoogleLoginAsync(task.Result.IdToken).ContinueWith(playFabTask =>
+            StartupProcessor.Instance.GetService<PlayFabServiceManager>().GetService<PlayFabClient>().GoogleLoginAsync(task.Result.IdToken).ContinueWith(playFabTask =>
             {
                 if (playFabTask.IsFaulted || playFabTask.IsCanceled)
                 {

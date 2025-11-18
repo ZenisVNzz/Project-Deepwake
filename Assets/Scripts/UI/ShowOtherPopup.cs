@@ -5,6 +5,8 @@ public class ShowOtherPopup : MonoBehaviour
 {
     public Button showPopupButton;
     public GameObject targetPopup;
+    public GameObject currentPopup;
+    public bool closeCurrentPopup = true;
 
     void Start()
     {
@@ -14,5 +16,9 @@ public class ShowOtherPopup : MonoBehaviour
     void ShowPopup()
     {
         targetPopup.SetActive(true);
+        if (closeCurrentPopup && currentPopup != null)
+        {
+            currentPopup.SetActive(false);
+        }
     }
 }

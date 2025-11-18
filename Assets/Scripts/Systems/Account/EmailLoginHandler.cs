@@ -19,7 +19,7 @@ public class EmailLoginHandler : MonoBehaviour
             Debug.LogError("Email and password are required.");
             return;
         }
-        StartupProcessor.Instance.GetService<PlayFabClient>().EmailLoginAsync(email, password).ContinueWith(task =>
+        StartupProcessor.Instance.GetService<PlayFabServiceManager>().GetService<PlayFabClient>().EmailLoginAsync(email, password).ContinueWith(task =>
         {
             if (task.IsFaulted)
             {

@@ -33,7 +33,7 @@ public class EmailRegisterHandler : MonoBehaviour
             return;
         }
 
-        StartupProcessor.Instance.GetService<PlayFabClient>().EmailRegesterAsync(username, email, password).ContinueWith(task =>
+        StartupProcessor.Instance.GetService<PlayFabServiceManager>().GetService<PlayFabClient>().EmailRegesterAsync(email, password, username).ContinueWith(task =>
         {
             if (task.IsFaulted)
             {

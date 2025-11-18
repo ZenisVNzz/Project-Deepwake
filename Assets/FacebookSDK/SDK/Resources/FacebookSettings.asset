@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Facebook.Unity.Settings.dll::Facebook.Unity.Settings.FacebookSettings
   selectedAppIndex: 0
   clientTokens:
-  - 
+  - 937f97648c1c3e428e7b300bcce28068
   appIds:
   - 26030364539903001
   appLabels:
@@ -24,7 +24,7 @@ MonoBehaviour:
   status: 1
   xfbml: 0
   frictionlessRequests: 1
-  androidKeystorePath: 
+  androidKeystorePath: user.keystore
   iosURLSuffix: 
   appLinkSchemes:
   - list: []
