@@ -12,20 +12,7 @@
           "package_name": "com.ZerO.Deepwake"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "1042625468516-dalc85q7qbcj49fl9kc9bh6h0t8slm59.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.ZerO.Deepwake",
-            "certificate_hash": "673ff8a6cae4591e3f627c9c674c7c3f342c7252"
-          }
-        },
-        {
-          "client_id": "1042625468516-40manp0l7o04alqc71m9uqulaq28n7aj.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyA_eIfxnaEQzYbeMmYXB9tgbrniOI6td7o"
@@ -33,12 +20,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1042625468516-40manp0l7o04alqc71m9uqulaq28n7aj.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
