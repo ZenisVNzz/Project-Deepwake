@@ -438,12 +438,12 @@ TextureImporter:
       name: '!Ship_Canons_6'
       rect:
         serializedVersion: 2
-        x: 901
-        y: 671
-        width: 60
-        height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 852
+        y: 674
+        width: 46
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6438037}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -482,7 +482,7 @@ TextureImporter:
       name: '!Ship_Canons_8'
       rect:
         serializedVersion: 2
-        x: 49
+        x: 48
         y: 577
         width: 46
         height: 76
@@ -614,12 +614,12 @@ TextureImporter:
       name: '!Ship_Canons_14'
       rect:
         serializedVersion: 2
-        x: 899
-        y: 575
-        width: 64
-        height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 949
+        y: 674
+        width: 46
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6438037}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1191,7 +1191,7 @@ TextureImporter:
         width: 46
         height: 76
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1213,7 +1213,7 @@ TextureImporter:
         width: 46
         height: 76
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1552,6 +1552,50 @@ TextureImporter:
       bones: []
       spriteID: 4c49e64fb2359d64d9ceea934f62bdd0
       internalID: 715157250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!Ship_Canons_48'
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 546
+        width: 46
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa39bf7c21521054ab54bdc3c70b159c
+      internalID: -6909329338622651345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!Ship_Canons_49'
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 545
+        width: 46
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 283bbf220362e974a9f87459ba50e6ee
+      internalID: 1740516916461099929
       vertices: []
       indices: 
       edges: []
