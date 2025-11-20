@@ -87,12 +87,12 @@ public class FloatingTextService : IFloatingTextService
         }
     }
 
-    public void Destroy(string instanceID)
+    public void Destroy(string instanceID, float time)
     {
         if (_activeUI.ContainsKey(instanceID))
         {
             GameObject uiGO = _activeUI[instanceID];
-            GameObject.Destroy(uiGO);
+            GameObject.Destroy(uiGO, time);
             _activeUI.Remove(instanceID);
         }
         else

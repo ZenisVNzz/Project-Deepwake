@@ -22,7 +22,7 @@ public class PopupService : IPopupService
     {
         if (_activePopups.ContainsKey(instanceID))
         {
-            Destroy(instanceID);
+            Destroy(instanceID, 0f);
         }
 
         if (canvas == null)
@@ -63,12 +63,12 @@ public class PopupService : IPopupService
         }
     }
 
-    public void Destroy(string instanceID)
+    public void Destroy(string instanceID, float time)
     {
         if (_activePopups.ContainsKey(instanceID))
         {
             GameObject popupGO = _activePopups[instanceID];
-            GameObject.Destroy(popupGO);
+            GameObject.Destroy(popupGO, time);
             _activePopups.Remove(instanceID);
         }
         else

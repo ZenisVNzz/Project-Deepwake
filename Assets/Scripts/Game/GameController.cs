@@ -1,4 +1,6 @@
 using Mirror;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : NetworkBehaviour
@@ -7,6 +9,8 @@ public class GameController : NetworkBehaviour
 
     public GameStateMachine gameStateMachine;
     private SceneLoader sceneLoader;
+
+    public int CurrentLevel = 0;
 
     private void Awake()
     {
@@ -33,6 +37,30 @@ public class GameController : NetworkBehaviour
     private void OnStartGame()
     {
         gameStateMachine.ChangeState<GameBeginState>();
+    }
+
+    public void NextLevel()
+    {
+        RpcNextLevel();
+    }
+
+    [ClientRpc]
+    private void RpcNextLevel()
+    {
+        CurrentLevel++;
+
+        switch (CurrentLevel)
+        {
+            case 1:
+                gameStateMachine.ChangeState<LevelOneState>();
+                break;
+            case 2:
+                gameStateMachine.ChangeState<LevelTwoState>();
+                break;
+            default:
+                gameStateMachine.ChangeState<LevelThreeState>();
+                break;
+        }
     }
 
     private void Update()

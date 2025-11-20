@@ -47,7 +47,7 @@ public class Popup : MonoBehaviour
     {
         animator.Play("Popup_Close");
         yield return new WaitForSeconds(destroyTime);
-        UIManager.Instance.GetPopupService().Destroy(InstanceID);
+        UIManager.Instance.GetPopupService().Destroy(InstanceID, 0f);
     }
 
     public void Setup(string InstanceID, LocalizedString content) => Setup(InstanceID, content, null, null);
