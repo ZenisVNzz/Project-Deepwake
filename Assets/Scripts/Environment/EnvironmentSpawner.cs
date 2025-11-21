@@ -1,3 +1,4 @@
+using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,8 +28,8 @@ public class EnvironmentSpawner : MonoBehaviour
     public void Spawn(string id, Vector3 offset, bool stopShip)
     {
         Vector3 position = ship.position + offset;
-        GameObject enviromentGO = Instantiate(Prefabs[id]);
-        enviromentGO.transform.position = position;
+        GameObject enviromentGO = Instantiate(Prefabs[id], position, Quaternion.identity);
+        NetworkServer.Spawn(enviromentGO);
 
         if (stopShip)
         {
