@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class CannonBulletRuntime : BulletRuntime
 {
     private Rigidbody2D rb;
-    private float speed = 6f;
+    private float speed = 7f;
     private Vector2 dir;
 
     public void Awake()

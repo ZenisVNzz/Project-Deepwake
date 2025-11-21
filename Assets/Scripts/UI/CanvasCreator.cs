@@ -19,8 +19,8 @@ public class CanvasCreator
         }
         else
         {
-            canvas.renderMode = RenderMode.ScreenSpaceCamera;
-            canvas.worldCamera = Camera.main;
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            //canvas.worldCamera = Camera.main;
             canvas.sortingOrder = 99;
         }
           

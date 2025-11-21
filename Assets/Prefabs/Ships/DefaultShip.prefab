@@ -1018,7 +1018,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -1546,7 +1546,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.42811355}
-    oldSize: {x: 2.59, y: 1.6005583}
+    oldSize: {x: 2.59, y: 1.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1778,7 +1778,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.16366301}
-    oldSize: {x: 0.32, y: 0.6102128}
+    oldSize: {x: 0.32, y: 0.61}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2173,6 +2173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12a63bdcca0dab489eec0a8d46f073e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reverseSlope: 0
 --- !u!1 &5118428482265978853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,7 +2914,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.07, y: 0.1800628}
+    oldSize: {x: 0.07, y: 0.18}
     newSize: {x: 8.74, y: 3.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3371,6 +3372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12a63bdcca0dab489eec0a8d46f073e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reverseSlope: 0
 --- !u!1 &8960865961160042521
 GameObject:
   m_ObjectHideFlags: 0

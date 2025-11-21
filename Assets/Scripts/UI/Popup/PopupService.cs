@@ -33,7 +33,15 @@ public class PopupService : IPopupService
 
         GameObject popupGO = GameObject.Instantiate(_popupsPrefab[prefabID], canvas.transform);
         Popup popup = popupGO.GetComponent<Popup>();
-        popup.Setup(instanceID , content, button1, button2);
+        if (button1 == null && button2 == null)
+        {
+            popup.Setup(instanceID, content);
+        }  
+        else
+        {
+            popup.Setup(instanceID, content, button1, button2);
+        }
+        
         _activePopups.Add(instanceID, popupGO);
     }
 

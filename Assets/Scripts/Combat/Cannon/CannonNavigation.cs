@@ -89,12 +89,12 @@ public class CannonNavigation
 
         if (isFront)
         {
-            var rotatedDir = Quaternion.Euler(0, 0, 4.2f) * baseDir;
+            var rotatedDir = Quaternion.Euler(0, 0, 0f) * baseDir;
             return rotatedDir.normalized;
         }
         else
         {
-            var rotatedDir = Quaternion.Euler(0, 0, -4.2f) * baseDir;
+            var rotatedDir = Quaternion.Euler(0, 0, -0f) * baseDir;
             return -rotatedDir.normalized;
         }
     }
