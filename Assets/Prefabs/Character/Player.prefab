@@ -7077,6 +7077,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  cooldown: 1.5
+  lastAttackTime: -999
 --- !u!114 &3089138031887199594
 MonoBehaviour:
   m_ObjectHideFlags: 0

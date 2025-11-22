@@ -148,7 +148,10 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
             if (characterState.GetCurrentState() != CharacterStateType.Attacking && characterState.GetCurrentState() != CharacterStateType.Death)
             {
                 rb.AddForce(knockback, ForceMode2D.Impulse);
-                PlayerNet.ChangeState(CharacterStateType.Knockback);
+                if (this is PlayerRuntime)
+                {
+                    PlayerNet.ChangeState(CharacterStateType.Knockback);
+                }            
             }
 
             Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");

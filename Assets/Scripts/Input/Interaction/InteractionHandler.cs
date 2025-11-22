@@ -1,10 +1,12 @@
 using Mirror;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InteractionHandler : NetworkBehaviour, IInteractionHandler
 {
-    private IInteractable currentInteract;
-    private NetworkIdentity currentTarget;
+    private List<IInteractable> currentInteract = new();
+    private List<NetworkIdentity> currentTarget = new();
     private InteractionNet interactionNet;
     private bool Active = true;
 
@@ -22,9 +24,9 @@ public class InteractionHandler : NetworkBehaviour, IInteractionHandler
 
         if (collision.TryGetComponent(out IInteractable interactable))
         {
-            currentInteract = interactable;
-            currentTarget = (interactable as MonoBehaviour).GetComponentInParent<NetworkIdentity>();
-            interactionNet.RequestEnter(currentTarget);
+            currentInteract.Add(interactable);
+            currentTarget.Add((interactable as MonoBehaviour).GetComponentInParent<NetworkIdentity>());
+            interactionNet.RequestEnter((interactable as MonoBehaviour).GetComponentInParent<NetworkIdentity>());
         }
     }
 
@@ -32,10 +34,10 @@ public class InteractionHandler : NetworkBehaviour, IInteractionHandler
     {
         if (!isLocalPlayer) return;
 
-        if (collision.TryGetComponent(out IInteractable interactable) && currentInteract == interactable)
+        if (collision.TryGetComponent(out IInteractable interactable) && currentInteract.Contains(interactable))
         {
-            currentInteract = null;
-            currentTarget = null;
+            currentInteract.Remove(interactable);
+            currentTarget.Remove((interactable as MonoBehaviour).GetComponentInParent<NetworkIdentity>());
             interactionNet.RequestExit((interactable as MonoBehaviour).GetComponentInParent<NetworkIdentity>());
         }
     }
@@ -44,6 +46,6 @@ public class InteractionHandler : NetworkBehaviour, IInteractionHandler
     {
         if (!Active || currentTarget == null || !isLocalPlayer) return;
 
-        interactionNet.RequestInteract(currentTarget);
+        interactionNet.RequestInteract(currentTarget.Last());
     }
 }
