@@ -2,6 +2,7 @@ using DG.Tweening;
 using EasyTextEffects.Editor.MyBoxCopy.Extensions;
 using Mirror;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -34,6 +35,8 @@ public class CannonController : NetworkBehaviour
     [SyncVar] private float timer;
     private Image fill;
     private Image bg;
+
+    public List<ObjectFade> objectFade = new();
 
     private void Awake()
     {
@@ -103,6 +106,14 @@ public class CannonController : NetworkBehaviour
         playerInput.Cannon.Navigate.canceled += OnMove;
         playerInput.Cannon.Shoot.performed += OnShoot;
         playerInput.Cannon.Exit.performed += ExitCannon;
+
+        if (objectFade.Count > 0)
+        {
+            foreach (var item in objectFade)
+            {
+                item.FadeObject();
+            }
+        }
     }
 
     private void ExitCannon(InputAction.CallbackContext ctx)
@@ -153,6 +164,14 @@ public class CannonController : NetworkBehaviour
         playerInput.Cannon.Exit.performed += ExitCannon;
         playerInput.Cannon.Disable();
         StartCoroutine(UnlockInteract(interactionHandler));
+
+        if (objectFade.Count > 0)
+        {
+            foreach (var item in objectFade)
+            {
+                item.UnfadeObject();
+            }
+        }
     }
 
     private IEnumerator UnlockInteract(IInteractionHandler interactionHandler)
