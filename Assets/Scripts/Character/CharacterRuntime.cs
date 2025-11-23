@@ -51,6 +51,7 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
     [SyncVar(hook = nameof(HPSync))] protected float hp;
     public float HP => hp;
     public event Action<float> OnHPChanged;
+    public event Action OnHit;
     protected float _hpRegenRate;   
 
     protected CharacterData characterData;
@@ -129,6 +130,7 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
 
             hp -= FinalDamage; 
             OnHPChanged?.Invoke(hp);
+            OnHit?.Invoke();
             if (_hpRegenCoroutine != null)
             {
                 StopCoroutine(_hpRegenCoroutine);
