@@ -4,12 +4,12 @@ using UnityEngine;
 public class EnemyCannonShoot
 {
     private GameObject bulletPrefab;
-    private CannonNavigation cannonNavigation;
+    private IEnemyCannonNavigation cannonNavigation;
     private Transform spawnPos;
 
     private EnemyCannonController cannonController;
 
-    public EnemyCannonShoot(CannonNavigation cannonNavigation, Transform spawnPos, EnemyCannonController cannonController)
+    public EnemyCannonShoot(IEnemyCannonNavigation cannonNavigation, Transform spawnPos, EnemyCannonController cannonController)
     {
         this.cannonNavigation = cannonNavigation;
         this.spawnPos = spawnPos;
