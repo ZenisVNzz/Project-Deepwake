@@ -96,10 +96,16 @@ public class CannonController : NetworkBehaviour
         NavigateGuideObj.SetActive(true);
 
         if (isFront)
+        {
             CameraOffset.Instance.Move(-4f);
+            CameraController.Instance.SetOrthographicSize(5.8f);
+        }      
         else
+        {
             CameraOffset.Instance.Move(4f);
-
+            CameraController.Instance.SetOrthographicSize(5.8f);
+        }
+            
         InputSystem_Actions playerInput = playerController.InputHandler;
         playerInput.Cannon.Enable();
         playerInput.Cannon.Navigate.performed += OnMove;
@@ -119,6 +125,7 @@ public class CannonController : NetworkBehaviour
     private void ExitCannon(InputAction.CallbackContext ctx)
     {   
         CameraOffset.Instance.Move(0f);
+        CameraController.Instance.SetOrthographicSize(4.8f);
 
         RequestExitCannon();    
     }
