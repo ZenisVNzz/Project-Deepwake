@@ -105,13 +105,16 @@ public class CannonController : NetworkBehaviour
             CameraOffset.Instance.Move(4f);
             CameraController.Instance.SetOrthographicSize(5.8f);
         }
-            
+
+        PlayerRuntime playerRuntime = playerController.playerRuntime;
+        playerRuntime.OnHit += ExitCannon;
+
         InputSystem_Actions playerInput = playerController.InputHandler;
         playerInput.Cannon.Enable();
         playerInput.Cannon.Navigate.performed += OnMove;
         playerInput.Cannon.Navigate.canceled += OnMove;
         playerInput.Cannon.Shoot.performed += OnShoot;
-        playerInput.Cannon.Exit.performed += ExitCannon;
+        playerInput.Cannon.Exit.performed += ctx => ExitCannon();
 
         if (objectFade.Count > 0)
         {
@@ -122,7 +125,7 @@ public class CannonController : NetworkBehaviour
         }
     }
 
-    private void ExitCannon(InputAction.CallbackContext ctx)
+    private void ExitCannon()
     {   
         CameraOffset.Instance.Move(0f);
         CameraController.Instance.SetOrthographicSize(4.8f);
@@ -164,11 +167,14 @@ public class CannonController : NetworkBehaviour
         playerModifier.DirectionModifier(false, playerLockDir);
         NavigateGuideObj.SetActive(false);
 
+        PlayerRuntime playerRuntime = playerController.playerRuntime;
+        playerRuntime.OnHit -= ExitCannon;
+
         InputSystem_Actions playerInput = playerController.InputHandler;
         playerInput.Cannon.Navigate.performed -= OnMove;
         playerInput.Cannon.Navigate.canceled -= OnMove;
         playerInput.Cannon.Shoot.performed -= OnShoot;
-        playerInput.Cannon.Exit.performed += ExitCannon;
+        playerInput.Cannon.Exit.performed += ctx => ExitCannon();
         playerInput.Cannon.Disable();
         StartCoroutine(UnlockInteract(interactionHandler));
 
