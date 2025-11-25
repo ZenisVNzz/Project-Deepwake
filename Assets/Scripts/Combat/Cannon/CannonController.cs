@@ -96,9 +96,9 @@ public class CannonController : NetworkBehaviour
         NavigateGuideObj.SetActive(true);
 
         if (isFront)
-            CameraOffset.Instance.Move(-3.5f);
+            CameraOffset.Instance.Move(-4f);
         else
-            CameraOffset.Instance.Move(3.5f);
+            CameraOffset.Instance.Move(4f);
 
         InputSystem_Actions playerInput = playerController.InputHandler;
         playerInput.Cannon.Enable();

@@ -24,8 +24,10 @@ public class EnemyCannonController : NetworkBehaviour
     private EnemyCannonNavigation enemyCannonNavigation;
     private EnemyCannonShoot cannonShoot;
 
-    private float cooldown = 1f;
+    private float cooldown = 3.5f;
     private float timer;
+
+    private bool active = false;
 
     private void Awake()
     {
@@ -43,7 +45,7 @@ public class EnemyCannonController : NetworkBehaviour
 
     private void Update()
     {
-        if (!isServer) return;
+        if (!isServer || !active) return;
 
         timer += Time.deltaTime;
 
@@ -70,7 +72,7 @@ public class EnemyCannonController : NetworkBehaviour
     }
 
     [Server]
-    private void UseCannon(NetworkIdentity networkIdentity)
+    public void UseCannon(NetworkIdentity networkIdentity)
     {
         if (currentEnemy != null) return;
         currentEnemy = networkIdentity;
@@ -79,6 +81,10 @@ public class EnemyCannonController : NetworkBehaviour
         ownerObj.transform.position = ownerLockPos.position;
         GhostPirateMovement movement = ownerObj.GetComponent<GhostPirateMovement>();
         movement.CanMove = false;
+
+        CharacterRuntime characterRuntime = ownerObj.GetComponent<CharacterRuntime>();
+        characterRuntime.OnHit += ReleaseCannon;
+        active = true;
     }
 
     [Server]
@@ -88,7 +94,12 @@ public class EnemyCannonController : NetworkBehaviour
         GameObject ownerObj = currentEnemy.gameObject;
         GhostPirateMovement movement = ownerObj.GetComponent<GhostPirateMovement>();
         movement.CanMove = true;
+
+        CharacterRuntime characterRuntime = ownerObj.GetComponent<CharacterRuntime>();
+        characterRuntime.OnHit -= ReleaseCannon;
+
         currentEnemy = null;
+        active = false;
     }
 
     private PlayerRuntime GetRadomTarget()

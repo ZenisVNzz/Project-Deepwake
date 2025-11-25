@@ -94,12 +94,12 @@ public class EnemyCannonNavigation : IEnemyCannonNavigation
         if (isFront)
         {
             var rotatedDir = Quaternion.Euler(0, 0, 0f) * baseDir;
-            return rotatedDir.normalized;
+            return -rotatedDir.normalized;
         }
         else
         {
             var rotatedDir = Quaternion.Euler(0, 0, -0f) * baseDir;
-            return -rotatedDir.normalized;
+            return rotatedDir.normalized;
         }
     }
 
