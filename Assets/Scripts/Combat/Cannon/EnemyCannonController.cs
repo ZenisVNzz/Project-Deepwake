@@ -24,7 +24,7 @@ public class EnemyCannonController : NetworkBehaviour
     private EnemyCannonNavigation enemyCannonNavigation;
     private EnemyCannonShoot cannonShoot;
 
-    private float cooldown = 3.5f;
+    private float cooldown = 4f;
     private float timer;
 
     private bool active = false;

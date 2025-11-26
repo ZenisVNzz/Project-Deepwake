@@ -98,12 +98,12 @@ public class CannonController : NetworkBehaviour
         if (isFront)
         {
             CameraOffset.Instance.Move(-4f);
-            CameraController.Instance.SetOrthographicSize(5.8f);
+            CameraController.Instance.SetOrthographicSize(6.4f);
         }      
         else
         {
             CameraOffset.Instance.Move(4f);
-            CameraController.Instance.SetOrthographicSize(5.8f);
+            CameraController.Instance.SetOrthographicSize(6.4f);
         }
 
         PlayerRuntime playerRuntime = playerController.playerRuntime;

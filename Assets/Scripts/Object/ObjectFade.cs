@@ -22,7 +22,7 @@ public class ObjectFade : MonoBehaviour
             if (spriteRenderer != null)
             {
                 var color = spriteRenderer.color;
-                color.a = 0.4f;
+                color.a = 0.3f;
                 spriteRenderer.color = color;
             }
         }

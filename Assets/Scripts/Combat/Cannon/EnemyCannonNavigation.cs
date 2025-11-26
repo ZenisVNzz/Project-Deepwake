@@ -40,6 +40,7 @@ public class EnemyCannonNavigation : IEnemyCannonNavigation
             baseDir = navigateGuideObject.transform.up;
 
         Vector2 toTarget = (targetWorldPos - recoilPivot.position);
+        toTarget += new Vector2(0.5f, 0f);
         if (toTarget.sqrMagnitude < 0.0001f)
         {
             rotateSpeed = Mathf.MoveTowards(rotateSpeed, 0f, deceleration * Time.deltaTime);
@@ -55,7 +56,8 @@ public class EnemyCannonNavigation : IEnemyCannonNavigation
                 desiredAngle = -desiredAngle;
             }
 
-            desiredAngle = Mathf.Clamp(desiredAngle, -maxAngle, maxAngle);
+            desiredAngle = Mathf.Clamp(desiredAngle, -maxAngle, maxAngle);        
+
             float error = desiredAngle - currentAngle;
             float sign = Mathf.Sign(error);
             rotateSpeed += sign * acceleration * Time.deltaTime;
