@@ -8,6 +8,7 @@ public class EnemyShipController : MonoBehaviour, IAttackable
 
     public Slider BossStatusUI;
 
+    public float MaxHP = 3000f;
     public float HP = 3000f;
 
     private void Awake()
@@ -18,11 +19,11 @@ public class EnemyShipController : MonoBehaviour, IAttackable
             return;
         }
         Instance = this;
-
     }
 
     private void Start()
     {
+        HP = MaxHP;
         BossStatusUI.maxValue = HP;
         BossStatusUI.value = HP;
     }
@@ -54,4 +55,13 @@ public class EnemyShipController : MonoBehaviour, IAttackable
     }
 
     public void TakeDamage(float dmg, Vector3 knockback) => TakeDamage(dmg, knockback, null);
+
+    public void Repair(float amount)
+    {
+        HP += amount;
+        if (HP > MaxHP)
+        {
+            HP = MaxHP;
+        }
+    }
 }

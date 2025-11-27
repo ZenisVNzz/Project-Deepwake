@@ -85,6 +85,7 @@ public class EnemyCannonController : NetworkBehaviour
         CharacterRuntime characterRuntime = ownerObj.GetComponent<CharacterRuntime>();
         characterRuntime.OnHit += ReleaseCannon;
         active = true;
+        Debug.Log("Use Cannon");
     }
 
     [Server]
@@ -93,6 +94,7 @@ public class EnemyCannonController : NetworkBehaviour
         if (currentEnemy == null) return;
         GameObject ownerObj = currentEnemy.gameObject;
         GhostPirateMovement movement = ownerObj.GetComponent<GhostPirateMovement>();
+        movement.isControllingCannon = false;
         movement.CanMove = true;
 
         CharacterRuntime characterRuntime = ownerObj.GetComponent<CharacterRuntime>();
@@ -100,6 +102,7 @@ public class EnemyCannonController : NetworkBehaviour
 
         currentEnemy = null;
         active = false;
+        Debug.Log("Release Cannon");
     }
 
     private PlayerRuntime GetRadomTarget()

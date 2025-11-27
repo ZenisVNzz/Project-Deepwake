@@ -6,6 +6,7 @@ using static EnemyFlyingMovement;
 public class GhostPirateMovement : MonoBehaviour, IAIMove
 {
     public List<EnemyCannonController> Cannon;
+    public List<Transform> RepairPot;
     private EnemyCannonController currentCannon = null;
     private IState enemyState;
 
@@ -14,6 +15,8 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
     public bool CanMove = true;
 
     private Rigidbody2D rb;
+
+    public float repair = 35f;
 
     private void Start()
     {
@@ -24,9 +27,35 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
     [Server]
     public void Move(float moveSpeed)
     {
+        if (enemyState.GetCurrentState() == CharacterStateType.Knockback) return;
+
         if (!CanMove)
         {
             rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        if (EnemyShipController.Instance.HP + 400 < EnemyShipController.Instance.MaxHP)
+        {
+            if (isControllingCannon)
+            {
+                isControllingCannon = false; 
+                currentCannon.ReleaseCannon();
+                currentCannon = null;
+            }
+
+            Transform repairTarget = GetRandomRepairTarget();
+            float distanceToRepair = Vector2.Distance(repairTarget.position, this.transform.position);
+
+            if (distanceToRepair < 0.65f)
+            {
+                EnemyShipController.Instance.Repair(repair * Time.fixedDeltaTime);
+            }
+            else
+            {
+                Vector2 dir = (repairTarget.position - this.transform.position).normalized;
+                rb.linearVelocity = dir * moveSpeed;
+            }
             return;
         }
 
@@ -47,7 +76,6 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
             {
                 Vector2 dir = (currentCannon.transform.position - this.transform.position).normalized;
                 rb.linearVelocity = dir * moveSpeed;
-                isControllingCannon = false;
             }
         }
     }
@@ -65,9 +93,11 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
         return Cannon[randIndex];
     }
 
-    private void GetRandomCracked()
+    private Transform GetRandomRepairTarget()
     {
-
+        if (RepairPot.Count == 0) return null;
+        int randIndex = Random.Range(0, RepairPot.Count);
+        return RepairPot[randIndex];
     }
 
     public Vector2 GetDir()

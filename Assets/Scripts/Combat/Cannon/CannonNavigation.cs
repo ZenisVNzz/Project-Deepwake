@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class CannonNavigation
 {
     private float maxAngle = 50f;
-    private float acceleration = 150f;
+    private float acceleration = 180f;
     private float deceleration = 200f;
 
     private readonly float recoilDistance = 0.2f;
