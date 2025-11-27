@@ -273,11 +273,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 292
-        y: 590
-        width: 45
-        height: 63
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 545
+        width: 41
+        height: 127
+      alignment: 9
+      pivot: {x: 0.5, y: 0.19453971}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
