@@ -20,7 +20,7 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
 
     private Rigidbody2D rb;
 
-    public float repair = 35f;
+    public float repair = 50f;
     public bool active = true;
 
     private void Start()
@@ -32,11 +32,6 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
     [Server]
     public void Move(float moveSpeed)
     {
-        if (!CanMove || !active)
-        {
-            return;
-        }
-
         if (EnemyShipController.Instance.HP + 400 < EnemyShipController.Instance.MaxHP)
         {
             if (isControllingCannon)
@@ -59,6 +54,11 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
                 Vector2 dir = (repairTarget.position - this.transform.position).normalized;
                 rb.linearVelocity = dir * moveSpeed;
             }
+            return;
+        }
+
+        if (!CanMove || !active)
+        {
             return;
         }
 

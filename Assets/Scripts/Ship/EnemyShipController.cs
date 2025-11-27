@@ -6,7 +6,7 @@ public class EnemyShipController : MonoBehaviour, IAttackable
     public static EnemyShipController Instance { get; private set; }
     [SerializeField] private Transform follower;
 
-    public Slider BossStatusUI;
+    public BossStatusUI BossStatusUI;
 
     public float MaxHP = 3000f;
     public float HP = 3000f;
@@ -24,8 +24,7 @@ public class EnemyShipController : MonoBehaviour, IAttackable
     private void Start()
     {
         HP = MaxHP;
-        BossStatusUI.maxValue = HP;
-        BossStatusUI.value = HP;
+        BossStatusUI.SetData("GHOST PIRATE SHIP", MaxHP);
     }
 
     public void SetChild(Transform child, bool worldPositionStay, bool ResetPostion)
@@ -51,7 +50,7 @@ public class EnemyShipController : MonoBehaviour, IAttackable
             HP = 0;
         }
 
-        BossStatusUI.value = HP;
+        BossStatusUI.UpdateHealth(HP);
     }
 
     public void TakeDamage(float dmg, Vector3 knockback) => TakeDamage(dmg, knockback, null);
@@ -63,5 +62,7 @@ public class EnemyShipController : MonoBehaviour, IAttackable
         {
             HP = MaxHP;
         }
+
+        BossStatusUI.UpdateHealth(HP);
     }
 }
