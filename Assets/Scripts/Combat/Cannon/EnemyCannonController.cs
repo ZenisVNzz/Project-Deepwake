@@ -1,5 +1,6 @@
 using Mirror;
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -94,8 +95,9 @@ public class EnemyCannonController : NetworkBehaviour
         if (currentEnemy == null) return;
         GameObject ownerObj = currentEnemy.gameObject;
         GhostPirateMovement movement = ownerObj.GetComponent<GhostPirateMovement>();
+        movement.active = false;
         movement.isControllingCannon = false;
-        movement.CanMove = true;
+        movement.currentCannon = null; 
 
         CharacterRuntime characterRuntime = ownerObj.GetComponent<CharacterRuntime>();
         characterRuntime.OnHit -= ReleaseCannon;
@@ -103,8 +105,16 @@ public class EnemyCannonController : NetworkBehaviour
         currentEnemy = null;
         active = false;
         Debug.Log("Release Cannon");
+
+        StartCoroutine(WaitAndReleaseCannon(2f, movement));
     }
 
+    private IEnumerator WaitAndReleaseCannon(float waitTime, GhostPirateMovement ghostPirate)
+    {
+        yield return new WaitForSeconds(waitTime);
+        ghostPirate.active = true;
+        ghostPirate.CanMove = true;
+    }
     private PlayerRuntime GetRadomTarget()
     {
         List<PlayerRuntime> players =  PlayerNetManager.Instance.GetAllPlayerRuntimes();

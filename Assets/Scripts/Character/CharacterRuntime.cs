@@ -153,7 +153,11 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
                 if (this is PlayerRuntime)
                 {
                     PlayerNet.ChangeState(CharacterStateType.Knockback);
-                }            
+                }   
+                else
+                {
+                    characterState.ChangeState(CharacterStateType.Knockback);
+                }
             }
 
             Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");

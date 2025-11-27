@@ -7,8 +7,12 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
 {
     public List<EnemyCannonController> Cannon;
     public List<Transform> RepairPot;
-    private EnemyCannonController currentCannon = null;
+    public EnemyCannonController currentCannon = null;
     private IState enemyState;
+
+    [Header("Movement Settings")]
+    [SerializeField] private float acceleration = 15f;
+    [SerializeField] private float deceleration = 20f;
 
     public bool isControllingCannon = false;
     public bool haveReachedTarget = false;
@@ -17,6 +21,7 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
     private Rigidbody2D rb;
 
     public float repair = 35f;
+    public bool active = true;
 
     private void Start()
     {
@@ -27,11 +32,8 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
     [Server]
     public void Move(float moveSpeed)
     {
-        if (enemyState.GetCurrentState() == CharacterStateType.Knockback) return;
-
-        if (!CanMove)
+        if (!CanMove || !active)
         {
-            rb.linearVelocity = Vector2.zero;
             return;
         }
 
@@ -50,6 +52,7 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
             if (distanceToRepair < 0.65f)
             {
                 EnemyShipController.Instance.Repair(repair * Time.fixedDeltaTime);
+                rb.linearVelocity = Vector2.zero;
             }
             else
             {
@@ -70,6 +73,7 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
             {
                 currentCannon.UseCannon(this.GetComponent<NetworkIdentity>());
                 isControllingCannon = true;
+                rb.linearVelocity = Vector2.zero;
                 return;
             }
             else
