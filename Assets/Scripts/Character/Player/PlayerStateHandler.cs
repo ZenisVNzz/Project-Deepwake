@@ -1,10 +1,10 @@
+using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class PlayerStateHandler : IStateHandler
+public class PlayerStateHandler : NetworkBehaviour, IStateHandler
 {
     private IState playerState;
     private Rigidbody2D rb;
@@ -14,15 +14,24 @@ public class PlayerStateHandler : IStateHandler
 
     private bool IsWaitForKnockBack = false;
 
-    public PlayerStateHandler(IState state, Rigidbody2D rigidbody2D, InputSystem_Actions inputHandler)
+    private PlayerNet PlayerNet;
+
+    public void Awake()
     {
-        playerState = state;
-        rb = rigidbody2D;
-        this.inputHandler = inputHandler;
+        playerState = GetComponent<PlayerController>().playerState;
+        rb = GetComponent<Rigidbody2D>();
+        inputHandler = GetComponent<PlayerController>().InputHandler;
+        PlayerNet = GetComponent<PlayerNet>();
     }
 
+    [Command]
     public void UpdateState()
     {
+        if (playerState == null)
+        {
+            playerState = GetComponent<PlayerController>().playerState;
+        }
+
         if (playerState.GetCurrentState() == CharacterStateType.Attacking || playerState.GetCurrentState() == CharacterStateType.Death)
         {
             inputHandler.Player.Move.Disable();
@@ -32,7 +41,7 @@ public class PlayerStateHandler : IStateHandler
         {
             if (!IsWaitForKnockBack)
             {
-                CoroutineRunner.Instance.RunCoroutine(WaitForKnockBack());
+                StartCoroutine(WaitForKnockBack());
             }
             return;
         }
@@ -40,9 +49,19 @@ public class PlayerStateHandler : IStateHandler
         {
             inputHandler.Player.Move.Enable();
             if (CheckIfMoving())
-                playerState.ChangeState(CharacterStateType.Running);
+            {
+                if (playerState.GetCurrentState() != CharacterStateType.Running)
+                {
+                    PlayerNet.ChangeState(CharacterStateType.Running);
+                }
+            } 
             else
-                playerState.ChangeState(CharacterStateType.Idle);
+            {
+                if (playerState.GetCurrentState() != CharacterStateType.Idle)
+                {
+                    PlayerNet.ChangeState(CharacterStateType.Idle);
+                }
+            }
         }   
     }
 
@@ -55,13 +74,18 @@ public class PlayerStateHandler : IStateHandler
     {
         IsWaitForKnockBack = true;
         inputHandler.Player.Disable();
-        yield return new WaitForSeconds(0.7f);
+
+        yield return new WaitForSeconds(0.3f);
+        inputHandler.Player.Enable();
+
+        yield return new WaitForSeconds(0.4f);
+
         if (playerState.GetCurrentState() == CharacterStateType.Knockback)
         {
-            playerState.ChangeState(CharacterStateType.Idle);
-            inputHandler.Player.Enable();
-            IsWaitForKnockBack = false;
+            PlayerNet.ChangeState(CharacterStateType.Idle);
         }
+
+        IsWaitForKnockBack = false; 
     }
 
     public void Register(string eventName, Action listener)

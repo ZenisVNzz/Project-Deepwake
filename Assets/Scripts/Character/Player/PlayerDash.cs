@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class PlayerDash : IDashable
+public class PlayerDash : MonoBehaviour, IDashable
 {
     private float _dashForce = 15f;
     private float _dashDuration = 0.2f;   
@@ -14,10 +14,10 @@ public class PlayerDash : IDashable
 
     private IPlayerRuntime _characterRuntime;
 
-    public PlayerDash(Rigidbody2D rigidbody, IPlayerRuntime characterRuntime)
+    private void Awake()
     {
-        _rb = rigidbody;
-        this._characterRuntime = characterRuntime;
+        _rb = GetComponent<Rigidbody2D>();
+        _characterRuntime = GetComponent<IPlayerRuntime>();
     }
 
     private async Task DaskCooldown()

@@ -1,9 +1,8 @@
-using NUnit.Framework;
+using EasyTextEffects;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Localization;
-using EasyTextEffects;
 
 public class ProgressText : MonoBehaviour
 {

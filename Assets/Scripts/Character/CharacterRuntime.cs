@@ -1,16 +1,59 @@
+using Mirror;
 using System;
 using System.Collections;
 using UnityEngine;
 
-public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
+public enum BonusStat
 {
-    [SerializeField] protected float hp;
-    public float HP => hp;
+    Health,
+    AttackPower,
+    Defense,
+    Speed,
+    Stamina,
+    CriticalChance,
+    CriticalDmg
+}
 
-    protected float _hpRegenRate;
+public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
+{
+    [Header("Character Attributes")]
+    [SerializeField][SyncVar] protected float level = 1;
+    [SerializeField][SyncVar] protected float vitality = 0;
+    [SerializeField][SyncVar] protected float defense = 0;
+    [SerializeField][SyncVar] protected float strength = 0;
+    [SerializeField][SyncVar] protected float luck = 0;
+    public float Level => level;
+    public float Vitality => vitality;
+    public float Defense => defense;
+    public float Strength => strength;
+    public float Luck => luck;
+
+    [Header("Character Bonus Stats")]
+    [SyncVar] protected float bonusMaxHealth = 0;
+    [SyncVar] protected float bonusAttackPower = 0;
+    [SyncVar] protected float bonusDefense = 0;
+    [SyncVar] protected float bonusSpeed = 0;
+    public float BonusMaxHealth => bonusMaxHealth;
+    public float BonusAttackPower => bonusAttackPower;
+    public float BonusDefense => bonusDefense;
+    public float BonusSpeed => bonusSpeed;
+
+    [Header("Total Stats")]
+    [SerializeField] protected float totalHealth => characterData.HP + bonusMaxHealth + (2f * vitality);
+    [SerializeField] protected float totalAttack => characterData.AttackPower + bonusAttackPower + (1f * strength);
+    [SerializeField] protected float totalDefense => characterData.Defense + bonusDefense + (0.5f * defense);
+    [SerializeField] protected float totalSpeed => characterData.MoveSpeed + bonusSpeed;
+    public float TotalHealth => totalHealth;
+    public float TotalAttack => totalAttack;
+    public float TotalDefense => totalDefense;
+    public float TotalSpeed => totalSpeed;    
+
+    [SyncVar(hook = nameof(HPSync))] protected float hp;
+    public float HP => hp;
+    public event Action<float> OnHPChanged;
+    protected float _hpRegenRate;   
 
     protected CharacterData characterData;
-    public CharacterData CharacterData => characterData;
 
     protected Rigidbody2D rb;
     protected IState characterState;
@@ -18,16 +61,62 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
     private Material flashMaterial;
     private DamageFlash damageFlash;
 
-    public virtual void Init(CharacterData CharacterData, Rigidbody2D rigidbody2D, IState characterState)
-    {
-        characterData = CharacterData;
-        hp = CharacterData.HP;
+    public CharacterAttributes RuntimeAttributes { get; private set; } = new CharacterAttributes();
 
-        rb = rigidbody2D;  
-        this.characterState = characterState;
+    private Coroutine _hpRegenCoroutine;
+
+    private PlayerNet PlayerNet => NetworkClient.connection.identity.GetComponent<PlayerNet>();
+
+    public virtual void Init()
+    {
+        characterData = GetComponent<CharacterInstaller>()._characterData;
+        hp = totalHealth;
+        _hpRegenRate = characterData.HPRegenRate;    
+        OnHPChanged?.Invoke(hp);
+
+        rb = GetComponent<Rigidbody2D>();
+        this.characterState = GetComponent<PlayerController>().playerState;
     }
 
-    public virtual void TakeDamage(float damage, Vector3 knockback)
+    private void HPSync(float oldHP, float newHP)
+    {
+        OnHPChanged?.Invoke(newHP);
+    }
+
+    public virtual void ApplyAttributes(CharacterAttributes attributes)
+    {
+        RuntimeAttributes = attributes;
+        vitality = attributes.VIT;
+        defense = attributes.DEF;
+        strength = attributes.STR;
+        luck = attributes.LUCK;
+
+        if (hp > TotalHealth) hp = TotalHealth;
+        OnHPChanged?.Invoke(hp);
+        if (_hpRegenCoroutine != null)
+        {
+            StopCoroutine(_hpRegenCoroutine);
+        }
+        _hpRegenCoroutine = StartCoroutine(RegenHP());
+    }
+
+    public virtual void ApplyBonusStat(BonusStat bonusStat, float amount)
+    {
+        switch (bonusStat)
+        {
+            case BonusStat.Health:
+                bonusMaxHealth = amount; break;
+            case BonusStat.Defense:
+                bonusDefense = amount; break;
+            case BonusStat.Speed:
+                bonusSpeed = amount; break;
+            case BonusStat.AttackPower:
+                bonusAttackPower = amount; break;
+        }
+    }
+
+    [Server]
+    public virtual void TakeDamage(float damage, Vector3 knockback, ICharacterRuntime characterRuntime)
     {
         if (characterState.GetCurrentState() != CharacterStateType.Death)
         {
@@ -36,36 +125,88 @@ public class CharacterRuntime : MonoBehaviour, ICharacterRuntime
             DamageReduceCal damageReduceCal = new DamageReduceCal();
             float FinalDamage = damageReduceCal.Calculate(damage, characterData.Defense);
 
-            if (flashMaterial == null)
+            OnTakeDamage(FinalDamage);
+
+            hp -= FinalDamage; 
+            OnHPChanged?.Invoke(hp);
+            if (_hpRegenCoroutine != null)
             {
-                flashMaterial = ResourceManager.Instance.GetAsset<Material>("DamageFlashMaterial");
-                damageFlash = new DamageFlash(GetComponent<SpriteRenderer>(), flashMaterial);
+                StopCoroutine(_hpRegenCoroutine);
             }
-
-            damageFlash.TriggerFlash();
-            UIManager.Instance.GetSingleUIService().Create
-                ("FloatingDamage", $"FloatingDamage{Time.time}_{UnityEngine.Random.Range(0, 99999)}", FinalDamage.ToString("F1"), transform.position + Vector3.up * 0.8f);
-
-            hp -= FinalDamage;                             
+            _hpRegenCoroutine = StartCoroutine(RegenHP());
 
             if (hp <= 0)
             {
                 Die();
+                if (characterRuntime is IPlayerRuntime playerRuntime)
+                {
+                    playerRuntime.GainExp(characterData.ExpOnKill);
+                    playerRuntime.CurrencyWallet.Add(CurrencyType.Gold, characterData.GoldOnKill);
+                }
             }
 
             if (characterState.GetCurrentState() != CharacterStateType.Attacking && characterState.GetCurrentState() != CharacterStateType.Death)
             {
                 rb.AddForce(knockback, ForceMode2D.Impulse);
-                characterState.ChangeState(CharacterStateType.Knockback);
+                PlayerNet.ChangeState(CharacterStateType.Knockback);
             }
 
             Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");
         }   
     }
 
+    [ClientRpc]
+    private void OnTakeDamage(float damage)
+    {
+        if (flashMaterial == null)
+        {
+            flashMaterial = ResourceManager.Instance.GetAsset<Material>("DamageFlashMaterial");
+            damageFlash = new DamageFlash(GetComponent<SpriteRenderer>(), flashMaterial);
+        }
+
+        damageFlash.TriggerFlash();
+        UIManager.Instance.GetSingleUIService().Create
+                ("FloatingDamage", $"FloatingDamage{Time.time}_{UnityEngine.Random.Range(0, 99999)}", damage.ToString("F1"), transform.position + Vector3.up * 0.8f);
+    }
+
+    [Server]
+    public virtual void TakeDamage(float damage, Vector3 knockback)
+    {
+        TakeDamage(damage, knockback, null);
+    }
+
     protected void Die()
     {
-        characterState.ChangeState(CharacterStateType.Death);
+        if (this is PlayerRuntime player)
+        {
+            PlayerNet.ChangeState(CharacterStateType.Death);
+        }
+        else
+        {
+            characterState.ChangeState(CharacterStateType.Death);
+        }
+        
         Debug.Log($"{gameObject} has died.");
+    }
+
+    private IEnumerator RegenHP()
+    {
+        yield return new WaitForSeconds(2f);
+        while (hp < totalHealth)
+        {
+            hp += _hpRegenRate * Time.deltaTime;
+            if (hp > totalHealth)
+            {
+                hp = totalHealth;
+            }
+            OnHPChanged?.Invoke(hp);
+            yield return null;
+        }
+        _hpRegenCoroutine = null;
+    }
+
+    protected void InvokeHPChanged(float newHP)
+    {
+        OnHPChanged?.Invoke(newHP);
     }
 }

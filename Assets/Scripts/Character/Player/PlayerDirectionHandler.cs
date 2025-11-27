@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerDirectionHandler : ICharacterDirectionHandler
+public class PlayerDirectionHandler : MonoBehaviour, ICharacterDirectionHandler
 {
     private IMovable playerMovement;
     private Direction lastDirection = Direction.Down;
@@ -9,9 +9,9 @@ public class PlayerDirectionHandler : ICharacterDirectionHandler
 
     private float deadzone = 0.3f;
 
-    public PlayerDirectionHandler(IMovable playerMovement)
+    private void Awake()
     {
-        this.playerMovement = playerMovement;
+        playerMovement = GetComponent<IMovable>();
     }
 
     public void EnableForceDir(Direction direction)
@@ -78,5 +78,21 @@ public class PlayerDirectionHandler : ICharacterDirectionHandler
 
         lastDirection = newDir;
         return newDir;
+    }
+
+    public Vector2 DirectionToVector2()
+    {
+        return lastDirection switch
+        {
+            Direction.Left => Vector2.left,
+            Direction.Right => Vector2.right,
+            Direction.Up => Vector2.up,
+            Direction.Down => Vector2.down,
+            Direction.UpLeft => (Vector2.up + Vector2.left).normalized,
+            Direction.UpRight => (Vector2.up + Vector2.right).normalized,
+            Direction.DownLeft => (Vector2.down + Vector2.left).normalized,
+            Direction.DownRight => (Vector2.down + Vector2.right).normalized,
+            _ => Vector2.zero
+        };
     }
 }

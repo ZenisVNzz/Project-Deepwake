@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 
 public class Popup : MonoBehaviour
 {
+    [SerializeField] private string InstanceID;
     [SerializeField] private LocalizationText contentText;
     [SerializeField] private Button button1;
     [SerializeField] private Button button2;
@@ -16,8 +18,10 @@ public class Popup : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Setup(LocalizedString content, Action button1Action, Action button2Action)
+    public void Setup(string InstanceID ,LocalizedString content, Action button1Action, Action button2Action)
     {
+        this.InstanceID = InstanceID;
+
         contentText.ChangeText(content);
 
         if (button1 != null)
@@ -25,8 +29,7 @@ public class Popup : MonoBehaviour
             button1.onClick.AddListener(() =>
             {
                 button1Action?.Invoke();
-                animator.Play("Popup_Close");
-                Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+                StartCoroutine(ClosePopup(animator.GetCurrentAnimatorStateInfo(0).length));
             });
         }   
 
@@ -35,11 +38,17 @@ public class Popup : MonoBehaviour
             button2.onClick.AddListener(() =>
             {
                 button2Action?.Invoke();
-                animator.Play("Popup_Close");
-                Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+                StartCoroutine(ClosePopup(animator.GetCurrentAnimatorStateInfo(0).length));
             });
         }
     }
 
-    public void Setup(LocalizedString content) => Setup(content, null, null);
+    private IEnumerator ClosePopup(float destroyTime)
+    {
+        animator.Play("Popup_Close");
+        yield return new WaitForSeconds(destroyTime);
+        UIManager.Instance.GetPopupService().Destroy(InstanceID);
+    }
+
+    public void Setup(string InstanceID, LocalizedString content) => Setup(InstanceID, content, null, null);
 }

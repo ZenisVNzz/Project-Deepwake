@@ -1,107 +1,217 @@
-using DG.Tweening;
-using Mirror.BouncyCastle.Crypto.Signers;
+using Mirror;
 using System.Collections;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[System.Serializable]
-public class PlayerController : MonoBehaviour, IPlayerController
+[RequireComponent(typeof(IMovable))]
+[RequireComponent(typeof(IDashable))]
+[RequireComponent(typeof(ICharacterDirectionHandler))]
+[RequireComponent(typeof(IAnimationHandler))]
+[RequireComponent(typeof(IStateHandler))]
+[RequireComponent(typeof(IDamageDealer))]
+public class PlayerController : NetworkBehaviour, IPlayerController
 {
-    private IMovable playerMovement;
-    private IDashable playerDash;
-    private IState playerState;
-    private ICharacterDirectionHandler directionHandler;
-    private IAnimationHandler animationHandler;
-    private IStateHandler stateHandler;
-    private IDamageDealer playerAttack;
+    public PlayerMovement playerMovement
+    {
+        get
+        {
+            return GetComponent<PlayerMovement>();
+        }
+    }
+
+    public IDashable playerDash
+    {
+        get
+        {
+            return GetComponent<IDashable>();
+        }
+    }
+
+    private IState _playerState;
+    public IState playerState
+    {
+        get
+        {
+            if (_playerState == null)
+                _playerState = new PlayerState();
+            return _playerState;
+        }
+        set => _playerState = value;
+    }
+
+    public ICharacterDirectionHandler directionHandler
+    {
+        get
+        {
+            return GetComponent<ICharacterDirectionHandler>();
+        }
+    }
+
+    public PlayerAnimationHandler animationHandler
+    {
+        get
+        {
+            return GetComponent<PlayerAnimationHandler>();
+        }
+    }
+
+    public PlayerStateHandler stateHandler
+    {
+        get
+        {
+            return GetComponent<PlayerStateHandler>();
+        }
+    }
+
+    public PlayerAttack playerAttack
+    {
+        get
+        {
+            return GetComponent<PlayerAttack>();
+        }
+    }
+
+    public PlayerRuntime playerRuntime
+    {
+        get
+        {
+            return GetComponent<PlayerRuntime>();
+        }
+    }
 
     private InputSystem_Actions inputHandler;
+    public InputSystem_Actions InputHandler
+    {
+        get
+        {
+            if (inputHandler == null)
+            {
+                inputHandler = new InputSystem_Actions();
+            }
+            return inputHandler;
+        }
+        set => inputHandler = value;
+    }
+
+    private PlayerModifier _playerModifier;
+    public PlayerModifier playerModifier
+    {
+        get
+        {
+            if (_playerModifier == null)
+            {
+                _playerModifier = new PlayerModifier(directionHandler);
+            }
+            return _playerModifier;
+        }
+        set => _playerModifier = value;
+    }
+
+    [SyncVar] Vector2 playerInput = new Vector2();
+
     private IInteractionHandler interactionHandler;
-    private CharacterData characterData;
 
     private SpriteRenderer spriteRenderer;
     private Collider2D cd2D;
     private Collider2D hurtBox;
 
-    private PlayerModifier playerModifier;
-    public PlayerModifier PlayerModifier => playerModifier;
+    private bool isMoveOnSlope = false;
+    public bool reverseSlope = false;
 
-    public void Initialize
-    (
-      IMovable movement,
-      IDashable dash,
-      IState state,
-      ICharacterDirectionHandler directionHandler,
-      IDamageDealer attack,
-      IAnimationHandler animation,
-      IStateHandler stateHandler,
-      InputSystem_Actions input,
-      CharacterData characterData
-    )
+    private CharacterUIManager _uiManager;
+
+    private bool isDead = false;
+    public bool IsDead => isDead;
+
+    public void Init()
     {
-        this.playerMovement = movement;
-        this.playerDash = dash;
-        this.playerState = state;
-        this.directionHandler = directionHandler;
-        this.playerAttack = attack;
-        this.animationHandler = animation;
-        this.stateHandler = stateHandler;
-        this.inputHandler = input;
-        this.characterData = characterData;
-
-        inputHandler.Player.Enable();
-        inputHandler.Player.Attack.performed += ctx => OnAttack();
-        inputHandler.Player.Move.performed += OnMove;
-        inputHandler.Player.Move.canceled += OnMove;
-        inputHandler.Player.Dash.performed += ctx => OnDash();
-        inputHandler.Player.Interact.performed += ctx => OnInteract();
-
-        interactionHandler = GetComponentInChildren<InteractionHandler>();
-        playerModifier = new PlayerModifier(directionHandler);
+        interactionHandler = GetComponentInChildren<InteractionHandler>();    
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         cd2D = transform.Find("Collider").GetComponent<Collider2D>();
         hurtBox = transform.Find("HurtBox").GetComponent<Collider2D>();
         stateHandler.Register("OnDeath", OnDead);
 
+        _uiManager = FindAnyObjectByType<CharacterUIManager>();
+
+        ShipController.Instance.SetChild(this.transform, false);
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+
+        InputHandler.Player.Enable();
+
+        InputHandler.Player.Attack.performed += ctx => OnAttack();
+        InputHandler.Player.Move.performed += OnMove;
+        InputHandler.Player.Move.canceled += OnMove;
+        InputHandler.Player.Dash.performed += ctx => OnDash();
+        InputHandler.Player.Interact.performed += ctx => OnInteract();
+        InputHandler.Player.OpenInventory.performed += ctx => OnOpenCharMenu();
+        InputHandler.Player.OpenOptions.performed += ctx => OnOpenGameMenu();
     }
 
     private void OnInteract()
     {
-        interactionHandler.Interact();    
+        interactionHandler.Interact();
+    }
+
+    private void OnOpenCharMenu()
+    {
+        if (_uiManager != null)
+        {
+            _uiManager.ToggleCharacterMenu();
+        }
+    }
+
+    private void OnOpenGameMenu()
+    {
+        if (_uiManager != null)
+        {
+            _uiManager.ToggleOptionsMenu();
+        }
     }
 
     private void OnAttack()
     {
-        if (playerModifier.CanAttack)
-        {
-            playerAttack.Attack(characterData.AttackPower);
-        }   
+        if (!isLocalPlayer) return;
+        playerAttack.CmdAttack(playerRuntime.TotalAttack);
     }
 
     private void OnMove(InputAction.CallbackContext context)
     {
-        if (!playerModifier.CanMove)
-        {
-            return;
-        }
+        if (!playerModifier.CanMove || !isLocalPlayer) return;
 
-        playerInput = context.ReadValue<Vector2>();
-    }    
+        Vector2 clientInput = context.ReadValue<Vector2>();
+        CmdMove(clientInput);
+    }
+
+    [Command]
+    private void CmdMove(Vector2 input)
+    {
+        playerInput = input;
+    }
 
     private void OnDash()
     {
-        if (playerModifier.CanDash)
-        {
-            playerDash.Dash();
-        }        
+        if (!isLocalPlayer) return;
+
+        CmdDash();
+    }
+
+    [Command]
+    private void CmdDash()
+    {
+        if (!playerModifier.CanDash) return;
+
+        playerDash.Dash();
     }
 
     private void OnDead()
     {
         StartCoroutine(DeathProcess());
+        isDead = true;
     }
 
     private IEnumerator DeathProcess()
@@ -111,17 +221,22 @@ public class PlayerController : MonoBehaviour, IPlayerController
         yield return null;
     }
 
-    void Update()
-    {       
-        animationHandler.UpdateAnimation();   
+    public void MoveOnSlope(bool moveOnSlope)
+    {
+        isMoveOnSlope = moveOnSlope;
     }
 
-    Vector2 playerInput;
+    void Update()
+    { 
+        if (!isLocalPlayer) return;
+        stateHandler.UpdateState();
+        animationHandler.UpdateAnimation();
+    }
+
     void FixedUpdate()
     {
+        if (!isLocalPlayer) return;
         if (!playerModifier.CanMove) playerInput = Vector2.zero;
-
-        playerMovement.Move(playerInput, characterData.MoveSpeed);
-        stateHandler.UpdateState();
+        playerMovement.CmdMove(playerInput, playerRuntime.TotalSpeed, isMoveOnSlope); 
     }
 }

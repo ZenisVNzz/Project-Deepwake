@@ -61,9 +61,21 @@ MonoBehaviour:
       - rid: 6622836072186380291
       - rid: 6622836072186380292
       - rid: 6622836072186380293
-      - rid: 882189426902433792
+      - rid: 6622836318489804800
     m_RuntimeSettings:
-      m_List: []
+      m_List:
+      - rid: 7752762179098771456
+      - rid: 7752762179098771457
+      - rid: 7752762179098771459
+      - rid: 7752762179098771461
+      - rid: 7752762179098771462
+      - rid: 7752762179098771464
+      - rid: 7752762179098771466
+      - rid: 7752762179098771468
+      - rid: 7752762179098771472
+      - rid: 7752762179098771476
+      - rid: 6622836072186380292
+      - rid: 6622836072186380293
   m_AssetVersion: 8
   m_ObsoleteDefaultVolumeProfile: {fileID: 0}
   m_RenderingLayerNames:
@@ -87,10 +99,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 882189426902433792
-      type: {class: RenderingDebuggerRuntimeResources, ns: UnityEngine.Rendering, asm: Unity.RenderPipelines.Core.Runtime}
-      data:
-        m_version: 0
     - rid: 3114554863623077888
       type: {class: UniversalRenderPipelineEditorAssets, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
@@ -214,6 +222,10 @@ MonoBehaviour:
           - {r: 0.5, g: 0, b: 0.5, a: 1}
           - {r: 0.5, g: 0.5, b: 0.5, a: 1}
           - {r: 0, g: 0, b: 1, a: 1}
+    - rid: 6622836318489804800
+      type: {class: RenderingDebuggerRuntimeResources, ns: UnityEngine.Rendering, asm: Unity.RenderPipelines.Core.Runtime}
+      data:
+        m_version: 0
     - rid: 7752762179098771456
       type: {class: UniversalRenderPipelineRuntimeTextures, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:

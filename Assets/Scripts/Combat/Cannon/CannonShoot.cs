@@ -1,6 +1,5 @@
-using System.Collections;
+using Mirror;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CannonShoot
 {
@@ -8,19 +7,25 @@ public class CannonShoot
     private CannonNavigation cannonNavigation;
     private Transform spawnPos;
 
-    public CannonShoot(CannonNavigation cannonNavigation, Transform spawnPos)
+    private CannonController cannonController;
+
+    public CannonShoot(CannonNavigation cannonNavigation, Transform spawnPos, CannonController cannonController)
     {
         this.cannonNavigation = cannonNavigation;
         this.spawnPos = spawnPos;
+        this.cannonController = cannonController;
 
         bulletPrefab = ResourceManager.Instance.GetAsset<GameObject>("Ball");
     }
 
-    public void Shoot()
+    [Server]
+    public void Shoot(NetworkConnectionToClient Client)
     {
-        CameraShake.Instance.ShakeCamera();
-        GameObject bullet = GameObject.Instantiate(bulletPrefab);
-        bullet.transform.position = spawnPos.position;
+        GameObject bullet = GameObject.Instantiate(bulletPrefab, spawnPos.position, Quaternion.identity);
+        CharacterRuntime characterRuntime = cannonController.CurPlayer.GetComponent<CharacterRuntime>();
+        CannonDamageCal cannonDamageCal = new CannonDamageCal();
+        bullet.GetComponent<HitBoxHandler>().SetData(cannonDamageCal.Calculate(characterRuntime), "Player", characterRuntime);
         bullet.AddComponent<CannonBulletRuntime>().Init(cannonNavigation.GetFireDirection());
-    }  
+        NetworkServer.Spawn(bullet, Client);
+    }
 }

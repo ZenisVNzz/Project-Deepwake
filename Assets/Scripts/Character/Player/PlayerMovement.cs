@@ -1,7 +1,8 @@
+using Mirror;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerMovement : IMovable
+public class PlayerMovement : NetworkBehaviour, IMovable
 {
     [Header("Movement Settings")]
     [SerializeField] private float acceleration = 15f;
@@ -9,16 +10,18 @@ public class PlayerMovement : IMovable
 
     private Rigidbody2D rb;
     private Vector2 input;
+    [SyncVar] private Vector2 moveVelocity;
 
     private IState playerState;
 
-    public PlayerMovement(Rigidbody2D rigidbody, IState playerState)
+    private void Awake()
     {
-        this.rb = rigidbody;
-        this.playerState = playerState;
+        rb = GetComponent<Rigidbody2D>();
+        playerState = GetComponent<PlayerController>().playerState;
     }
 
-    public void Move(Vector2 input, float moveSpeed)
+    [Command]
+    public void CmdMove(Vector2 input, float moveSpeed, bool isMoveOnSlope)
     {
         this.input = input;
 
@@ -28,11 +31,19 @@ public class PlayerMovement : IMovable
             return;
         }
 
-        Vector2 isoInput = ToIsometric(input.normalized);
-
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, isoInput * moveSpeed, acceleration * Time.fixedDeltaTime);
+        if (isMoveOnSlope)
+        {
+            MoveAlongSlope(new Vector2(1, 1), moveSpeed, 0.7f);
+        }
+        else
+        {
+            Vector2 isoInput = ToIsometric(input.normalized);
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, isoInput * moveSpeed, acceleration * Time.fixedDeltaTime);
+        }   
+        moveVelocity = rb.linearVelocity;
     }
 
+    [Command]
     public void Move(float moveSpeed) => Debug.LogWarning("[PlayerMovement] input is missing.");
 
     private Vector2 ToIsometric(Vector2 input)
@@ -44,8 +55,40 @@ public class PlayerMovement : IMovable
         return iso.normalized;
     }
 
+    [Server]
+    private void MoveAlongSlope(Vector2 dir, float moveSpeed, float speedModifier)
+    {
+        bool isReverse = GetComponent<PlayerController>().reverseSlope;
+
+        const float epsilon = 0.0001f;
+
+        if (input.sqrMagnitude <= epsilon)
+        {
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
+            return;
+        }
+
+        Vector2 isoInput = ToIsometric(input.normalized);
+        Vector2 move = Vector2.Lerp(rb.linearVelocity, (isoInput * moveSpeed) * speedModifier, acceleration * Time.fixedDeltaTime);
+
+        if (move.x < 0)
+        {
+            if (isReverse)
+                rb.linearVelocity = new Vector2(move.x, move.y - dir.y * 0.32f);
+            else
+                rb.linearVelocity = new Vector2(move.x, move.y + dir.y * 0.32f);
+        }
+        else
+        {
+            if (isReverse)
+                rb.linearVelocity = new Vector2(move.x, move.y + dir.y * 0.32f);
+            else
+                rb.linearVelocity = new Vector2(move.x, move.y - dir.y * 0.32f);
+        }
+    }
+
     public Vector2 GetDir()
     {
-        return input;
+        return moveVelocity.normalized;
     }
 }

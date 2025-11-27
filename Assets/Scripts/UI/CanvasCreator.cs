@@ -21,7 +21,7 @@ public class CanvasCreator
         {
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.worldCamera = Camera.main;
-            canvas.sortingOrder = 5;
+            canvas.sortingOrder = 99;
         }
           
         CanvasScaler scaler = CanvasGO.AddComponent<CanvasScaler>();

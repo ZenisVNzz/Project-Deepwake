@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WaveController : MonoBehaviour
@@ -5,31 +6,37 @@ public class WaveController : MonoBehaviour
     [SerializeField] private EnemySpawnTable enemySpawnTable;
     [SerializeField] private Transform ship;
     private EnemySpawner enemySpawner;
-    private float delayBetweenWaves = 5f;
 
-    private bool waitingNextWave = false;
     private int currentWave = 0;
+    public int CurrentWave => currentWave;
 
     private void Awake()
     {
-        enemySpawner = new EnemySpawner(enemySpawnTable, ship, currentWave);
-        SpawnNextWave();
+        enemySpawner = new EnemySpawner(enemySpawnTable, ship);
     }
 
-    private void Update()
+    private IEnumerator WaitForAllEnemyAreDead()
     {
-        if (!waitingNextWave && enemySpawner.AreAllEnemiesDead())
+        yield return new WaitForSeconds(7f);
+
+        while (!enemySpawner.AreAllEnemiesDead())
         {
-            waitingNextWave = true;
-            Invoke(nameof(SpawnNextWave), delayBetweenWaves);
+            yield return new WaitForSeconds(1f);
         }
+
+        GameController.Instance.gameStateMachine.ChangeState<WaveResultStage>();
     }
 
-    private void SpawnNextWave()
+    public void IncreaseDifficulty()
+    {
+        enemySpawner.IncreaseDifficulty();
+    }
+
+    public void SpawnNextWave()
     {
         currentWave++;
         Debug.Log($"Wave {currentWave} incoming");
         StartCoroutine(enemySpawner.SpawnEnemy());
-        waitingNextWave = false;
+        StartCoroutine(WaitForAllEnemyAreDead());
     }
 }

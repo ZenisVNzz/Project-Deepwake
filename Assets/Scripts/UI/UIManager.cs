@@ -4,6 +4,9 @@ using UnityEngine;
 public class UIManager : MonoBehaviour, IManager
 {
     public static UIManager Instance;
+    private RuntimeUIServiceRegistry _runtimeUIServiceRegistry;
+    public RuntimeUIServiceRegistry RuntimeUIServiceRegistry => _runtimeUIServiceRegistry;
+
     private IPopupService _popupService;
     private IFloatingTextService _singleUIService;
 
@@ -11,6 +14,7 @@ public class UIManager : MonoBehaviour, IManager
     {
         _popupService = new PopupService();
         _singleUIService = new FloatingTextService();
+        _runtimeUIServiceRegistry = new RuntimeUIServiceRegistry();
         await Task.CompletedTask;
         return true;
     }

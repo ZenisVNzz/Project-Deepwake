@@ -37,24 +37,38 @@ public class NetworkMonitor : NetworkService
         }
     }
 
-    public async Task<bool> CheckConnectionAsync()
+    public async Task<bool> CheckConnectionAsync(
+    int timeoutSeconds = 3,
+    int retryIntervalMs = 500,
+    CancellationToken ct = default)
     {
-        using (var req = UnityWebRequest.Get(_pingUrl))
-        using (var timeoutCTS = new CancellationTokenSource(TimeSpan.FromSeconds(1)))
-        {
-            var op = req.SendWebRequest();
+        var startTime = Time.time;
 
-            while (!op.isDone)
+        while (!ct.IsCancellationRequested)
+        {
+            using (var req = UnityWebRequest.Head(_pingUrl))
             {
-                if (timeoutCTS.Token.IsCancellationRequested)
+                req.timeout = timeoutSeconds;
+                var op = req.SendWebRequest();
+
+                while (!op.isDone)
                 {
-                    req.Abort();
-                    return false;
+                    if (ct.IsCancellationRequested)
+                        return false;
+
+                    await Task.Yield();
                 }
-                await Task.Yield();
+
+                if (req.result == UnityWebRequest.Result.Success)
+                    return true;
             }
 
-            return req.result == UnityWebRequest.Result.Success;
+            if (Time.time - startTime >= timeoutSeconds)
+                return false;
+
+            await Task.Delay(retryIntervalMs, ct);
         }
+
+        return false;
     }
 }

@@ -2,15 +2,14 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using Deepwake.NetworkSystem;
 
 [CreateAssetMenu(fileName = "InitNetworkTask", menuName = "StartupSystem/InitNetworkTask")]
 public class InitNetworkTask : StartupTask
 {
     public override bool HasTimeout { get { return true; } }
 
-    public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
+    public override async Task<StartupTaskResult> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
         IServiceRegistry SR = new ServiceRegistry();
 
@@ -29,18 +28,18 @@ public class InitNetworkTask : StartupTask
                     if (!o)
                     {
                         Debug.Log($"[Network] Initialize service failed: {ServiceName}");
-                        return false;
+                        return StartupTaskResult.Fail("NET_SERVICE_INIT_FAILED", $"Failed to initialize network service: {ServiceName}");
                     }
                 }
                 catch (OperationCanceledException)
                 {
                     Debug.LogWarning($"[Network] Initialize timeout or cancelled: {ServiceName}");
-                    return false;
+                    return StartupTaskResult.Fail("NET_SERVICE_INIT_TIMEOUT", $"Network service initialization timed out: {ServiceName}");
                 }
                 catch (Exception ex)
                 {
                     Debug.LogException(ex);
-                    return false;
+                    return StartupTaskResult.Fail("NET_SERVICE_INIT_EXCEPTION", $"Exception while initializing network service: {ServiceName}");
                 }
             }
         }
@@ -48,6 +47,6 @@ public class InitNetworkTask : StartupTask
         var Net = new NetworkManager(SR);
         await Net.InitAsync(serviceRegistry, ct);
 
-        return true;
+        return StartupTaskResult.Ok();
     }
 }

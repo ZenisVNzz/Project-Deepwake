@@ -10,7 +10,7 @@ public class InitConfigTask : StartupTask
 {
     public override bool HasTimeout { get { return true; } }
 
-    public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
+    public override async Task<StartupTaskResult> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
         IServiceRegistry SR = new ServiceRegistry();
 
@@ -38,12 +38,14 @@ public class InitConfigTask : StartupTask
             catch (Exception ex)
             {
                 Debug.LogWarning($"[ConfigReader] Reading {fileName} failed\nException: {ex}");
+                return StartupTaskResult.Fail("CONFIG_LOAD_FAILED", $"Failed to load config: {fileName}");
             }        
         }
 
         var configManager = new ConfigManager(SR);
         await configManager.InitAsync(serviceRegistry, ct);
 
-        return true;
+        EventManager.Instance.Trigger("UI_NextProgress");
+        return StartupTaskResult.Ok();
     }
 }

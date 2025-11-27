@@ -1,7 +1,7 @@
-using NUnit.Framework;
-using System;
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,12 +12,12 @@ public class EnemySpawner
     private int difficultyMultiplier;
     private EnemyLevelModifier levelModifier;
 
-    private float minSpawnDistance = 10f;
+    private float minSpawnDistance = 11f;
     private float maxSpawnDistance = 13f;
 
     private List<GameObject> activeEnemies = new List<GameObject>();
 
-    public EnemySpawner(EnemySpawnTable enemySpawnTable, Transform ship, int difficultyMultiplier)
+    public EnemySpawner(EnemySpawnTable enemySpawnTable, Transform ship, int difficultyMultiplier = 1)
     {
         this.enemySpawnTable = enemySpawnTable;
         this.ship = ship;
@@ -25,18 +25,31 @@ public class EnemySpawner
         levelModifier = new EnemyLevelModifier();
     }
 
+    public void IncreaseDifficulty()
+    {
+        difficultyMultiplier++;
+    }
+
     public IEnumerator SpawnEnemy()
     {
+        if (!NetworkServer.active) yield break;
+
+        activeEnemies.Clear();
         int count = Random.Range(enemySpawnTable.minSpawn, enemySpawnTable.maxSpawn + 1);
+        yield return new WaitForSeconds(3f);
 
         for (int i = 0; i < count; i++)
         {
-            var enemyData = levelModifier.ModifyStats(enemySpawnTable.GetRandomEnemy(), difficultyMultiplier);
+            var enemyData = enemySpawnTable.GetRandomEnemy();
+            var enemyDataRuntime = levelModifier.ModifyStats(enemyData, difficultyMultiplier);
             var spawnPos = GetRandomSpawnPos();
-            var enemy = GameObject.Instantiate(enemyData.prefab, spawnPos, Quaternion.identity);
-            enemy.transform.SetParent(ship, worldPositionStays: true);
-            var CharInstaller = enemy.GetComponent<CharacterInstaller>();
-            CharInstaller.SetData(enemyData);
+            var enemy = GameObject.Instantiate(enemyData.prefab, spawnPos, Quaternion.identity);   
+            CharacterInstaller characterInstaller = enemy.GetComponent<CharacterInstaller>();
+            characterInstaller.SetData(enemyDataRuntime);
+            characterInstaller.InitCharacter(); 
+
+            NetworkServer.Spawn(enemy);
+
             activeEnemies.Add(enemy);
             yield return new WaitForSeconds(2f);
         }
@@ -45,10 +58,24 @@ public class EnemySpawner
     private Vector2 GetRandomSpawnPos()
     {
         float angle = Random.Range(0f, 360f);
-        float distance = Random.Range(minSpawnDistance, maxSpawnDistance);
-        Vector2 offset = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad) * distance);
+
+        float min2 = minSpawnDistance * minSpawnDistance;
+        float max2 = maxSpawnDistance * maxSpawnDistance;
+        float distance = Mathf.Sqrt(Random.Range(min2, max2));
+
+        float rad = angle * Mathf.Deg2Rad;
+        Vector2 offset = new Vector2(Mathf.Cos(rad) * distance, Mathf.Sin(rad) * distance);
         return (Vector2)ship.position + offset;
     }
 
-    public bool AreAllEnemiesDead() => activeEnemies.TrueForAll(e => e == null);
+    public bool AreAllEnemiesDead()
+    {
+        activeEnemies.RemoveAll(e => e == null);
+
+        return activeEnemies.All(e =>
+        {
+            var controller = e.GetComponent<IEnemyController>();
+            return controller == null || controller.IsDead;
+        });
+    }
 }

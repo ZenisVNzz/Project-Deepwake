@@ -7,10 +7,19 @@ public class InitAssetsTask : StartupTask
 {
     public override bool HasTimeout { get { return true; } }
 
-    public override async Task<bool> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
+    public override async Task<StartupTaskResult> RunTaskAsync(IServiceRegistry serviceRegistry, CancellationToken ct)
     {
         ResourceManager resourceManager = ResourceManager.Instance;
-        await resourceManager.Preload("Startup");
-        return true;
+        try
+        {
+            await resourceManager.Preload("Startup");
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning($"[InitAssetsTask] Exception while preloading assets: {ex.Message}");
+            return StartupTaskResult.Fail("ASSET_PRELOAD_EXCEPTION", "Exception while preloading assets.");
+        }
+
+        return StartupTaskResult.Ok();
     }    
 }
