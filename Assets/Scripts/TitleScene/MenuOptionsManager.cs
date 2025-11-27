@@ -8,9 +8,12 @@ public class MenuOptionsManager : MonoBehaviour
     public Button MultiplayerButton;
     public Button SettingsButton;
     public Button ExitButton;
+    public Button AccountCenterButton;
 
     public GameObject MultiplayerOptionsPanel;
     public GameObject SettingsPanel;
+
+    public GameObject AccountCenterPanel;
 
     private void Start()
     {
@@ -18,12 +21,14 @@ public class MenuOptionsManager : MonoBehaviour
         MultiplayerButton.onClick.AddListener(OnMultiplayerButtonClicked);
         SettingsButton.onClick.AddListener(OnSettingsButtonClicked);
         ExitButton.onClick.AddListener(OnExitButtonClicked);
+        AccountCenterButton.onClick.AddListener(OnAccountCenterClicked);
     }
 
-    private async void OnSingleplayerButtonClicked()
+    private void OnSingleplayerButtonClicked()
     {
+        DeepwakeNetworkManager networkManager = FindAnyObjectByType<DeepwakeNetworkManager>();
+        networkManager.SetupClient();
         NetworkManager.singleton.StartHost();
-        await SceneLoader.Instance.LoadScene("Game", true);
     }
 
     private void OnMultiplayerButtonClicked()
@@ -39,5 +44,10 @@ public class MenuOptionsManager : MonoBehaviour
     private void OnExitButtonClicked()
     {
         Application.Quit();
+    }
+
+    private void OnAccountCenterClicked()
+    {
+        AccountCenterPanel.SetActive(true);
     }
 }

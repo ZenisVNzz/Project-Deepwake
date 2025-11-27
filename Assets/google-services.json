@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1042625468516",
+    "project_id": "deepwake-207c8",
+    "storage_bucket": "deepwake-207c8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042625468516:android:cc2514d74080650e252771",
+        "android_client_info": {
+          "package_name": "com.ZerO.Deepwake"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_eIfxnaEQzYbeMmYXB9tgbrniOI6td7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

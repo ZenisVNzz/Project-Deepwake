@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Vietnamese (vi)
   m_GUID: df1939d1bd64255439e42c0b3f69e590
   m_SerializeEntries:
+  - m_GUID: 4c26cb917f479fb4cb2fac4e7c9de673
+    m_Address: Level_vi
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-vi
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6a24e72bce6434043b61f1f319b0a28e
     m_Address: Items_vi
     m_ReadOnly: 1
@@ -26,6 +32,7 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-vi
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: db30cef871e41d8428315e0e590fec13, type: 2}

@@ -10,6 +10,8 @@ public class EnemyInstaller : CharacterInstaller
     private IEnemyController _enemyController;
     private Seeker _seeker;
 
+    public bool installOnEnemyShip = false;
+
     public override void GetComponent()
     {
         if (!isFlyingEnemy)
@@ -33,6 +35,13 @@ public class EnemyInstaller : CharacterInstaller
         GetComponent();
         InitComponent();
 
-        ShipController.Instance.SetChild(this.transform, true);
+        if (installOnEnemyShip)
+        {
+            EnemyShipController.Instance.SetChild(this.transform, false, true);
+        }
+        else
+        {
+            ShipController.Instance.SetChild(this.transform, false, true);
+        }
     }
 }

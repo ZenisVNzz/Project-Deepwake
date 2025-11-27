@@ -9,7 +9,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float normalSpeed = 0.5f;
     [SerializeField] private float maxSpeed = 5f; 
     [SerializeField] private float acceleration = 5f;
-    [SerializeField] private float deceleration = 6f;
+    [SerializeField] private float deceleration = 4f;
     [SerializeField] private float smoothStopDistance = 2.5f;
     [SerializeField] private GameObject background;
 
@@ -23,6 +23,8 @@ public class ShipController : MonoBehaviour
     private bool movingToTarget;
     private bool continueAfterStop;
     private float targetStopX;
+
+    public float currentSpeed => shipMover != null ? shipMover.Speed : 0f;
 
     private void Awake()
     {
@@ -40,15 +42,19 @@ public class ShipController : MonoBehaviour
             Debug.LogWarning("ShipController: Background assigned but has no ObjectMove.");
     }
 
-    public void SetChild(Transform child, bool worldPositionStay)
+    public void SetChild(Transform child, bool worldPositionStay, bool ResetPostion)
     {
         if (follower == null) return;
+        Vector3 originalScale = child.localScale;
         child.SetParent(follower, worldPositionStay);
 
-        if (!worldPositionStay)
+
+        if (ResetPostion)
         {
             child.localPosition = Vector3.zero;
         }
+
+        child.localScale = originalScale;
     }
 
     private void Update()

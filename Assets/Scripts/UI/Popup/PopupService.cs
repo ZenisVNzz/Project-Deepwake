@@ -22,7 +22,7 @@ public class PopupService : IPopupService
     {
         if (_activePopups.ContainsKey(instanceID))
         {
-            Destroy(instanceID);
+            Destroy(instanceID, 0f);
         }
 
         if (canvas == null)
@@ -33,7 +33,15 @@ public class PopupService : IPopupService
 
         GameObject popupGO = GameObject.Instantiate(_popupsPrefab[prefabID], canvas.transform);
         Popup popup = popupGO.GetComponent<Popup>();
-        popup.Setup(instanceID , content, button1, button2);
+        if (button1 == null && button2 == null)
+        {
+            popup.Setup(instanceID, content);
+        }  
+        else
+        {
+            popup.Setup(instanceID, content, button1, button2);
+        }
+        
         _activePopups.Add(instanceID, popupGO);
     }
 
@@ -63,12 +71,12 @@ public class PopupService : IPopupService
         }
     }
 
-    public void Destroy(string instanceID)
+    public void Destroy(string instanceID, float time)
     {
         if (_activePopups.ContainsKey(instanceID))
         {
             GameObject popupGO = _activePopups[instanceID];
-            GameObject.Destroy(popupGO);
+            GameObject.Destroy(popupGO, time);
             _activePopups.Remove(instanceID);
         }
         else

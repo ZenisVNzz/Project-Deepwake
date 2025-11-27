@@ -5,7 +5,7 @@ public class WaveController : MonoBehaviour
 {
     [SerializeField] private EnemySpawnTable enemySpawnTable;
     [SerializeField] private Transform ship;
-    private EnemySpawner enemySpawner;
+    public EnemySpawner enemySpawner;
 
     private int currentWave = 0;
     public int CurrentWave => currentWave;

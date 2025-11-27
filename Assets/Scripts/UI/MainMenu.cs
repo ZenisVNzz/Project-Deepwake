@@ -10,10 +10,15 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
-    public void PlayOnline()
+    public void OnPlayOnlineButton()
     {
-        SceneManager.LoadScene("OnlineScene");
+        SceneManager.LoadScene("Login");
     }
+    public void BackToTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit!");

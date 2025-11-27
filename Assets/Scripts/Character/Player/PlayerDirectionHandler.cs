@@ -1,9 +1,10 @@
+using Mirror;
 using UnityEngine;
 
-public class PlayerDirectionHandler : MonoBehaviour, ICharacterDirectionHandler
+public class PlayerDirectionHandler : NetworkBehaviour, ICharacterDirectionHandler
 {
     private IMovable playerMovement;
-    private Direction lastDirection = Direction.Down;
+    [SyncVar] private Direction lastDirection = Direction.Down;
     private bool isForceDir = false;
     private Direction ForceDir;
 
@@ -76,8 +77,14 @@ public class PlayerDirectionHandler : MonoBehaviour, ICharacterDirectionHandler
         else
             newDir = Direction.Down;
 
-        lastDirection = newDir;
+        CmdSyncDirection(newDir);
         return newDir;
+    }
+
+    [Command]
+    private void CmdSyncDirection(Direction direction)
+    {
+        lastDirection = direction;
     }
 
     public Vector2 DirectionToVector2()

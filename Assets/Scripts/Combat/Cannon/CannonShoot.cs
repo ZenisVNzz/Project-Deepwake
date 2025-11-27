@@ -20,12 +20,12 @@ public class CannonShoot
 
     [Server]
     public void Shoot(NetworkConnectionToClient Client)
-    {
+    {   
         GameObject bullet = GameObject.Instantiate(bulletPrefab, spawnPos.position, Quaternion.identity);
         CharacterRuntime characterRuntime = cannonController.CurPlayer.GetComponent<CharacterRuntime>();
         CannonDamageCal cannonDamageCal = new CannonDamageCal();
         bullet.GetComponent<HitBoxHandler>().SetData(cannonDamageCal.Calculate(characterRuntime), "Player", characterRuntime);
-        bullet.AddComponent<CannonBulletRuntime>().Init(cannonNavigation.GetFireDirection());
+        bullet.GetComponent<CannonBulletRuntime>().Init(cannonNavigation.GetFireDirection());
         NetworkServer.Spawn(bullet, Client);
     }
 }

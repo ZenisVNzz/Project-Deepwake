@@ -55,6 +55,19 @@ public class EnemySpawner
         }
     }
 
+    public void ClearAllEnemies()
+    {
+        if (!NetworkServer.active) return;
+        foreach (var enemy in activeEnemies)
+        {
+            if (enemy != null)
+            {
+                NetworkServer.Destroy(enemy);
+            }
+        }
+        activeEnemies.Clear();
+    }
+
     private Vector2 GetRandomSpawnPos()
     {
         float angle = Random.Range(0f, 360f);

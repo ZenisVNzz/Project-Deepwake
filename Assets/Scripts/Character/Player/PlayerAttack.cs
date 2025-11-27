@@ -11,6 +11,9 @@ public class PlayerAttack : NetworkBehaviour, IDamageDealer
 
     private PlayerNet PlayerNet;
 
+    public float cooldown = 0.7f;
+    public float lastAttackTime = -999f;
+
     public void Awake()
     {
         _playerState = GetComponent<PlayerController>().playerState;
@@ -21,7 +24,10 @@ public class PlayerAttack : NetworkBehaviour, IDamageDealer
     [Command]
     public void CmdAttack(float ATK)
     {
-        if (!GetComponent<PlayerController>().playerModifier.CanAttack) return;
+        if (Time.time < lastAttackTime + cooldown)
+            return;
+
+        lastAttackTime = Time.time;
 
         CharacterStateType state = _playerState.GetCurrentState();
         if (state != CharacterStateType.Attacking)
@@ -31,6 +37,7 @@ public class PlayerAttack : NetworkBehaviour, IDamageDealer
         }
     }
 
+    [Server]
     public void Dash()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();

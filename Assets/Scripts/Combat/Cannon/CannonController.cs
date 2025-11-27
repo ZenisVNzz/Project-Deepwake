@@ -2,6 +2,7 @@ using DG.Tweening;
 using EasyTextEffects.Editor.MyBoxCopy.Extensions;
 using Mirror;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -34,6 +35,8 @@ public class CannonController : NetworkBehaviour
     [SyncVar] private float timer;
     private Image fill;
     private Image bg;
+
+    public List<ObjectFade> objectFade = new();
 
     private void Awake()
     {
@@ -93,21 +96,39 @@ public class CannonController : NetworkBehaviour
         NavigateGuideObj.SetActive(true);
 
         if (isFront)
-            CameraOffset.Instance.Move(-3.5f);
+        {
+            CameraOffset.Instance.Move(-4f);
+            CameraController.Instance.SetOrthographicSize(6.4f);
+        }      
         else
-            CameraOffset.Instance.Move(3.5f);
+        {
+            CameraOffset.Instance.Move(4f);
+            CameraController.Instance.SetOrthographicSize(6.4f);
+        }
+
+        PlayerRuntime playerRuntime = playerController.playerRuntime;
+        playerRuntime.OnHit += ExitCannon;
 
         InputSystem_Actions playerInput = playerController.InputHandler;
         playerInput.Cannon.Enable();
         playerInput.Cannon.Navigate.performed += OnMove;
         playerInput.Cannon.Navigate.canceled += OnMove;
         playerInput.Cannon.Shoot.performed += OnShoot;
-        playerInput.Cannon.Exit.performed += ExitCannon;
+        playerInput.Cannon.Exit.performed += ctx => ExitCannon();
+
+        if (objectFade.Count > 0)
+        {
+            foreach (var item in objectFade)
+            {
+                item.FadeObject();
+            }
+        }
     }
 
-    private void ExitCannon(InputAction.CallbackContext ctx)
+    private void ExitCannon()
     {   
         CameraOffset.Instance.Move(0f);
+        CameraController.Instance.SetOrthographicSize(4.8f);
 
         RequestExitCannon();    
     }
@@ -146,13 +167,24 @@ public class CannonController : NetworkBehaviour
         playerModifier.DirectionModifier(false, playerLockDir);
         NavigateGuideObj.SetActive(false);
 
+        PlayerRuntime playerRuntime = playerController.playerRuntime;
+        playerRuntime.OnHit -= ExitCannon;
+
         InputSystem_Actions playerInput = playerController.InputHandler;
         playerInput.Cannon.Navigate.performed -= OnMove;
         playerInput.Cannon.Navigate.canceled -= OnMove;
         playerInput.Cannon.Shoot.performed -= OnShoot;
-        playerInput.Cannon.Exit.performed += ExitCannon;
+        playerInput.Cannon.Exit.performed += ctx => ExitCannon();
         playerInput.Cannon.Disable();
         StartCoroutine(UnlockInteract(interactionHandler));
+
+        if (objectFade.Count > 0)
+        {
+            foreach (var item in objectFade)
+            {
+                item.UnfadeObject();
+            }
+        }
     }
 
     private IEnumerator UnlockInteract(IInteractionHandler interactionHandler)

@@ -133,8 +133,6 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         stateHandler.Register("OnDeath", OnDead);
 
         _uiManager = FindAnyObjectByType<CharacterUIManager>();
-
-        ShipController.Instance.SetChild(this.transform, false);
     }
 
     public override void OnStartLocalPlayer()
@@ -175,7 +173,7 @@ public class PlayerController : NetworkBehaviour, IPlayerController
 
     private void OnAttack()
     {
-        if (!isLocalPlayer) return;
+        if (!isLocalPlayer || !playerModifier.CanAttack) return;
         playerAttack.CmdAttack(playerRuntime.TotalAttack);
     }
 
@@ -187,7 +185,6 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         CmdMove(clientInput);
     }
 
-    [Command]
     private void CmdMove(Vector2 input)
     {
         playerInput = input;

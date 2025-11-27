@@ -43,12 +43,12 @@ public class Popup : MonoBehaviour
         }
     }
 
+    public void Setup(string InstanceID, LocalizedString content) => Setup(InstanceID, content, null, null);
+
     private IEnumerator ClosePopup(float destroyTime)
     {
         animator.Play("Popup_Close");
         yield return new WaitForSeconds(destroyTime);
-        UIManager.Instance.GetPopupService().Destroy(InstanceID);
+        UIManager.Instance.GetPopupService().Destroy(InstanceID, 0f);
     }
-
-    public void Setup(string InstanceID, LocalizedString content) => Setup(InstanceID, content, null, null);
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class GameBeginState : GameState
 {
@@ -13,6 +14,9 @@ public class GameBeginState : GameState
         }
 
         shipWheel.SetActive();
+
+        UIManager.Instance.GetPopupService().Create("100003", "GAME_BEGIN", new LocalizedString("Level", "LevelOne"), null, null);
+        UIManager.Instance.GetPopupService().Destroy("GAME_BEGIN", 4.5f);
     }
     public override void Update() { }
     public override void Exit() { }
