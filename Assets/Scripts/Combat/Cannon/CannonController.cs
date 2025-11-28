@@ -152,6 +152,8 @@ public class CannonController : NetworkBehaviour
             netIdentity.RemoveClientAuthority();
             currentPlayer = null;
         }
+
+        input = Vector2.zero;
     }
 
     [TargetRpc]

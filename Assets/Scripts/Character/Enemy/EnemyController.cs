@@ -66,11 +66,11 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         }
     }
 
-    private SpriteRenderer spriteRenderer;
-    private Collider2D cd2D;
-    private Collider2D hurtBox;
+    protected SpriteRenderer spriteRenderer;
+    protected Collider2D cd2D;
+    protected Collider2D hurtBox;
 
-    private bool isDead = false;
+    protected bool isDead = false;
     public bool IsDead => isDead;
 
     public void Init()
@@ -101,7 +101,7 @@ public class EnemyController : NetworkBehaviour, IEnemyController
     }
 
     [Server]
-    private void OnDead()
+    public virtual void OnDead()
     {
         if (isDead) return;
         isDead = true;
@@ -111,12 +111,12 @@ public class EnemyController : NetworkBehaviour, IEnemyController
     }
 
     [ClientRpc]
-    private void RpcDeathEffect()
+    public virtual void RpcDeathEffect()
     {
         StartCoroutine(ClientDeathCoroutine());
     }
 
-    private IEnumerator ClientDeathCoroutine()
+    public virtual IEnumerator ClientDeathCoroutine()
     {
         cd2D.enabled = false;
         hurtBox.enabled = false;
@@ -126,7 +126,7 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         spriteRenderer.DOFade(0f, 3f);
     }
 
-    private IEnumerator ServerDeathProcess()
+    public virtual IEnumerator ServerDeathProcess()
     {
         yield return new WaitForSeconds(6f);
 

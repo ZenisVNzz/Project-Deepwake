@@ -11,13 +11,22 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
     private string currentAnimName;
     private bool isDeath = false;
 
+    [SerializeField]
     public bool twoWayOnly;
+
+    public enum AnimDirectionMode { TwoWay, FourWayDiagonal, EightWay }
+
+    [SerializeField]
+    private AnimDirectionMode directionMode = AnimDirectionMode.FourWayDiagonal;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         enemyState = GetComponent<EnemyController>().enemyState;
         directionHandler = GetComponent<ICharacterDirectionHandler>();
+
+        if (twoWayOnly)
+            directionMode = AnimDirectionMode.TwoWay;
     }
 
     public void UpdateAnimation()
@@ -44,77 +53,146 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
                     IdleProcess();
                     break;
             }
-        }   
+        }
     }
 
     private void IdleProcess()
     {
-        if (twoWayOnly)
-        {
-            Direction dir = directionHandler.GetDirection();
-            bool faceRight = dir != Direction.Left;
-            animator.transform.localScale = new Vector3(faceRight ?1f : -1f,1f,1f);
-            PlayAnimation("Enemy_Idle");
-            return;
-        }
+        Direction dir = directionHandler.GetDirection();
 
-        Direction d = directionHandler.GetDirection();
-        string anim = d switch
+        switch (directionMode)
         {
-            Direction.UpLeft => "Enemy_UpLeft_Idle",
-            Direction.UpRight => "Enemy_UpRight_Idle",
-            Direction.DownLeft => "Enemy_DownLeft_Idle",
-            _ => "Enemy_DownRight_Idle"
-        };
-        PlayAnimation(anim);
+            case AnimDirectionMode.TwoWay:
+                {
+                    bool faceRight = dir != Direction.Left;
+                    animator.transform.localScale = new Vector3(faceRight ? 1f : -1f, 1f, 1f);
+                    PlayAnimation("Enemy_Idle");
+                    break;
+                }
+            case AnimDirectionMode.EightWay:
+                {
+                    string anim = dir switch
+                    {
+                        Direction.Up => "Enemy_Up_Idle",
+                        Direction.UpLeft => "Enemy_UpLeft_Idle",
+                        Direction.UpRight => "Enemy_UpRight_Idle",
+                        Direction.DownLeft => "Enemy_DownLeft_Idle",
+                        Direction.DownRight => "Enemy_DownRight_Idle",
+                        Direction.Down => "Enemy_Down_Idle",
+                        Direction.Left => "Enemy_Left_Idle",
+                        Direction.Right => "Enemy_Right_Idle",
+                        _ => "Enemy_Down_Idle"
+                    };
+                    PlayAnimation(anim);
+                    break;
+                }
+            default: 
+                {
+                    string anim = dir switch
+                    {
+                        Direction.UpLeft => "Enemy_UpLeft_Idle",
+                        Direction.UpRight => "Enemy_UpRight_Idle",
+                        Direction.DownLeft => "Enemy_DownLeft_Idle",
+                        _ => "Enemy_DownRight_Idle"
+                    };
+                    PlayAnimation(anim);
+                    break;
+                }
+        }
     }
 
     private void RunningProcess()
     {
-        if (twoWayOnly)
-        {
-            Direction dir = directionHandler.GetDirection();
-            bool faceRight = dir != Direction.Left;
-            animator.transform.localScale = new Vector3(faceRight ?1f : -1f,1f,1f);
-            PlayAnimation("Enemy_Idle");
-            return;
-        }
+        Direction dir = directionHandler.GetDirection();
 
-        Direction d = directionHandler.GetDirection();
-        string anim = d switch
+        switch (directionMode)
         {
-            Direction.UpLeft => "Enemy_UpLeft_Run",
-            Direction.UpRight => "Enemy_UpRight_Run",
-            Direction.DownLeft => "Enemy_DownLeft_Run",
-            _ => "Enemy_DownRight_Run"
-        };
-        PlayAnimation(anim);
+            case AnimDirectionMode.TwoWay:
+                {
+                    bool faceRight = dir != Direction.Left;
+                    animator.transform.localScale = new Vector3(faceRight ? 1f : -1f, 1f, 1f);
+                    PlayAnimation("Enemy_Run");
+                    break;
+                }
+            case AnimDirectionMode.EightWay:
+                {
+                    string anim = dir switch
+                    {
+                        Direction.Up => "Enemy_Up_Run",
+                        Direction.UpLeft => "Enemy_UpLeft_Run",
+                        Direction.UpRight => "Enemy_UpRight_Run",
+                        Direction.DownLeft => "Enemy_DownLeft_Run",
+                        Direction.DownRight => "Enemy_DownRight_Run",
+                        Direction.Down => "Enemy_Down_Run",
+                        Direction.Left => "Enemy_Left_Run",
+                        Direction.Right => "Enemy_Right_Run",
+                        _ => "Enemy_Down_Run"
+                    };
+                    PlayAnimation(anim);
+                    break;
+                }
+            default:
+                {
+                    string anim = dir switch
+                    {
+                        Direction.UpLeft => "Enemy_UpLeft_Run",
+                        Direction.UpRight => "Enemy_UpRight_Run",
+                        Direction.DownLeft => "Enemy_DownLeft_Run",
+                        _ => "Enemy_DownRight_Run"
+                    };
+                    PlayAnimation(anim);
+                    break;
+                }
+        }
     }
 
     private void AttackProcess()
     {
-        if (twoWayOnly)
+        Direction dir = directionHandler.GetDirection();
+
+        switch (directionMode)
         {
-            Direction dir = directionHandler.GetDirection();
-            bool faceRight = dir != Direction.Left;
-            animator.transform.localScale = new Vector3(faceRight ?1f : -1f,1f,1f);
-            PlayAnimation("Enemy_Attack1");
-        }
-        else
-        {
-            Direction d = directionHandler.GetDirection();
-            string anim = d switch
-            {
-                Direction.UpLeft => "Enemy_UpLeft_Attack1",
-                Direction.UpRight => "Enemy_UpRight_Attack1",
-                Direction.DownLeft => "Enemy_DownLeft_Attack1",
-                _ => "Enemy_DownRight_Attack1"
-            };
-            PlayAnimation(anim);
+            case AnimDirectionMode.TwoWay:
+                {
+                    bool faceRight = dir != Direction.Left;
+                    animator.transform.localScale = new Vector3(faceRight ? 1f : -1f, 1f, 1f);
+                    PlayAnimation("Enemy_Attack1");
+                    break;
+                }
+            case AnimDirectionMode.EightWay:
+                {
+                    string anim = dir switch
+                    {
+                        Direction.Up => "Enemy_Up_Attack1",
+                        Direction.UpLeft => "Enemy_UpLeft_Attack1",
+                        Direction.UpRight => "Enemy_UpRight_Attack1",
+                        Direction.DownLeft => "Enemy_DownLeft_Attack1",
+                        Direction.DownRight => "Enemy_DownRight_Attack1",
+                        Direction.Down => "Enemy_Down_Attack1",
+                        Direction.Left => "Enemy_Left_Attack1",
+                        Direction.Right => "Enemy_Right_Attack1",
+                        _ => "Enemy_Down_Attack1"
+                    };
+                    PlayAnimation(anim);
+                    break;
+                }
+            default:
+                {
+                    bool faceRight = false;
+                    string anim = dir switch
+                    {
+                        Direction.UpLeft => "Enemy_UpLeft_Attack1",
+                        Direction.UpRight => "Enemy_UpRight_Attack1",
+                        Direction.DownLeft => "Enemy_DownLeft_Attack1",
+                        _ => "Enemy_DownRight_Attack1"
+                    };
+                    PlayAnimation(anim);
+                    break;
+                }
         }
 
         var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (stateInfo.IsName(currentAnimName) && stateInfo.normalizedTime >=1.0f)
+        if (stateInfo.IsName(currentAnimName) && stateInfo.normalizedTime >= 1.0f)
         {
             enemyState.ChangeState(CharacterStateType.Idle);
         }
@@ -124,27 +202,51 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
     {
         if (!isDeath)
         {
-            if (twoWayOnly)
-            {
-                Direction dir = directionHandler.GetDirection();
-                bool faceRight = dir != Direction.Left;
-                animator.transform.localScale = new Vector3(faceRight ?1f : -1f,1f,1f);
-                PlayAnimation("Enemy_Death");
-                isDeath = true;
-                return;
-            }
+            Direction dir = directionHandler.GetDirection();
 
-            Direction dir2 = directionHandler.GetDirection();
-            string anim = dir2 switch
+            switch (directionMode)
             {
-                Direction.UpLeft => "Enemy_UpLeft_Death",
-                Direction.UpRight => "Enemy_UpRight_Death",
-                Direction.DownLeft => "Enemy_DownLeft_Death",
-                _ => "Enemy_DownRight_Death"
-            };
-            PlayAnimation(anim);
-            isDeath = true;
-        }   
+                case AnimDirectionMode.TwoWay:
+                    {
+                        bool faceRight = dir != Direction.Left;
+                        animator.transform.localScale = new Vector3(faceRight ? 1f : -1f, 1f, 1f);
+                        PlayAnimation("Enemy_Death");
+                        isDeath = true;
+                        break;
+                    }
+                case AnimDirectionMode.EightWay:
+                    {
+                        string anim = dir switch
+                        {
+                            Direction.Up => "Enemy_Up_Death",
+                            Direction.UpLeft => "Enemy_UpLeft_Death",
+                            Direction.UpRight => "Enemy_UpRight_Death",
+                            Direction.DownLeft => "Enemy_DownLeft_Death",
+                            Direction.DownRight => "Enemy_DownRight_Death",
+                            Direction.Down => "Enemy_Down_Death",
+                            Direction.Left => "Enemy_Left_Death",
+                            Direction.Right => "Enemy_Right_Death",
+                            _ => "Enemy_Down_Death"
+                        };
+                        PlayAnimation(anim);
+                        isDeath = true;
+                        break;
+                    }
+                default:
+                    {
+                        string anim = dir switch
+                        {
+                            Direction.UpLeft => "Enemy_UpLeft_Death",
+                            Direction.UpRight => "Enemy_UpRight_Death",
+                            Direction.DownLeft => "Enemy_DownLeft_Death",
+                            _ => "Enemy_DownRight_Death"
+                        };
+                        PlayAnimation(anim);
+                        isDeath = true;
+                        break;
+                    }
+            }
+        }
     }
 
     private void PlayAnimation(string animName)

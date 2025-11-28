@@ -6,7 +6,7 @@ public class CannonNavigation
 {
     private float maxAngle = 50f;
     private float acceleration = 180f;
-    private float deceleration = 200f;
+    private float deceleration = 220f;
 
     private readonly float recoilDistance = 0.2f;
     private readonly float recoilReturnSpeed = 0.9f;

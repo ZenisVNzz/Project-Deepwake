@@ -20,7 +20,7 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
 
     private Rigidbody2D rb;
 
-    public float repair = 50f;
+    public float repair = 80f;
     public bool active = true;
 
     private void Start()
@@ -44,7 +44,7 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
             Transform repairTarget = GetRandomRepairTarget();
             float distanceToRepair = Vector2.Distance(repairTarget.position, this.transform.position);
 
-            if (distanceToRepair < 0.65f)
+            if (distanceToRepair < 0.7f)
             {
                 EnemyShipController.Instance.Repair(repair * Time.fixedDeltaTime);
                 rb.linearVelocity = Vector2.zero;
