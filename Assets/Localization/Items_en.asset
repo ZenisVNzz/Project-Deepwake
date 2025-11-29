@@ -22,6 +22,10 @@ MonoBehaviour:
     m_Localized: Wooden Sword
     m_Metadata:
       m_Items: []
+  - m_Id: 8386552429993984
+    m_Localized: A simple wooden sword, a bit chipped, but better than nothing
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
