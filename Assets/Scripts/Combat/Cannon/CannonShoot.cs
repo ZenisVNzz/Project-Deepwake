@@ -1,4 +1,5 @@
 using Mirror;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class CannonShoot
@@ -6,7 +7,9 @@ public class CannonShoot
     private GameObject bulletPrefab;
     private CannonNavigation cannonNavigation;
     private Transform spawnPos;
-
+    //
+    private SFXData cannonFireSFX;
+    //
     private CannonController cannonController;
 
     public CannonShoot(CannonNavigation cannonNavigation, Transform spawnPos, CannonController cannonController)
@@ -16,6 +19,7 @@ public class CannonShoot
         this.cannonController = cannonController;
 
         bulletPrefab = ResourceManager.Instance.GetAsset<GameObject>("Ball");
+        cannonFireSFX = ResourceManager.Instance.GetAsset<SFXData>("CannonFire");
     }
 
     [Server]
@@ -27,5 +31,6 @@ public class CannonShoot
         bullet.GetComponent<HitBoxHandler>().SetData(cannonDamageCal.Calculate(characterRuntime), "Player", characterRuntime);
         bullet.GetComponent<CannonBulletRuntime>().Init(cannonNavigation.GetFireDirection());
         NetworkServer.Spawn(bullet, Client);
+        //SFXManager.Instance.Play(cannonFireSFX, spawnPos.position);
     }
 }
