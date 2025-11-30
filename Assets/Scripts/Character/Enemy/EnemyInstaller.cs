@@ -37,11 +37,11 @@ public class EnemyInstaller : CharacterInstaller
 
         if (installOnEnemyShip)
         {
-            EnemyShipController.Instance.SetChild(this.transform, false, true);
+            EnemyShipController.Instance.SetChild(this.transform, false, false);
         }
         else
         {
-            ShipController.Instance.SetChild(this.transform, false, true);
+            ShipController.Instance.SetChild(this.transform, false, false);
         }
     }
 }

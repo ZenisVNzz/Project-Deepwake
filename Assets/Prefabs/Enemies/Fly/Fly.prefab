@@ -309,6 +309,7 @@ MonoBehaviour:
   _characterData: {fileID: 11400000, guid: 6dadd3ad7a857fb4aac599f4b75f2853, type: 2}
   multiplayerStatusUI: {fileID: 0}
   isFlyingEnemy: 1
+  installOnEnemyShip: 0
 --- !u!114 &3380793897104630607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d96e9c5982c5004c9154b3ce85a7fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDirectionHandler
-  twoWayOnly: 0
+  twoWayOnly: 1
+  directionMode: 0
 --- !u!114 &3604613343592465338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationHandler
   twoWayOnly: 1
+  directionMode: 0
 --- !u!114 &733878525578547207
 MonoBehaviour:
   m_ObjectHideFlags: 0
