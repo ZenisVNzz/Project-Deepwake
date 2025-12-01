@@ -267,6 +267,34 @@ MonoBehaviour:
     m_Key: UI_ConfirmPassword
     m_Metadata:
       m_Items: []
+  - m_Id: 24083672822636544
+    m_Key: options_resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083768234663936
+    m_Key: options_maximun_screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083796974034944
+    m_Key: options_master_volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083822479597568
+    m_Key: options_music_volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083852426928128
+    m_Key: options_sfx_volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083981200449536
+    m_Key: options_languages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24084317717848064
+    m_Key: options_apply
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

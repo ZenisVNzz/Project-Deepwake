@@ -272,6 +272,34 @@ MonoBehaviour:
     m_Localized: Confirm password
     m_Metadata:
       m_Items: []
+  - m_Id: 24083672822636544
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083768234663936
+    m_Localized: Full Screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083796974034944
+    m_Localized: Master Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083822479597568
+    m_Localized: Music Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083852426928128
+    m_Localized: Effect Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083981200449536
+    m_Localized: Languages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24084317717848064
+    m_Localized: Apply
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

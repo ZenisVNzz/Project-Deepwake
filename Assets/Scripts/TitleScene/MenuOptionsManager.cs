@@ -38,7 +38,7 @@ public class MenuOptionsManager : MonoBehaviour
 
     private void OnSettingsButtonClicked()
     {
-        SettingsPanel.SetActive(true);
+        SettingManager.instance.settingObject.SetActive(true);
     }
 
     private void OnExitButtonClicked()
