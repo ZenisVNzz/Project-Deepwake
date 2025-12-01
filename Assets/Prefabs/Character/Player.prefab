@@ -6688,6 +6688,7 @@ GameObject:
   - component: {fileID: 2598622195544407424}
   - component: {fileID: 3089138031887199594}
   - component: {fileID: 8905229947424640789}
+  - component: {fileID: 1770334097205901992}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -7144,6 +7145,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostTrail
   prefab: {fileID: 5946643090234269705, guid: afd8a18013122ae4a8fd952cc7f6285a, type: 3}
   spawnInterval: 0.05
+--- !u!114 &1770334097205901992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053339638299214103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a9dd67b4a585e4ea219b6db87bf064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerArchiveData
+  goldObtained: 0
+  itemObtained: 0
+  enemyDefeated: 0
+  totalDamageDealt: 0
+  totalDamageTaken: 0
 --- !u!1 &2059629113541717755
 GameObject:
   m_ObjectHideFlags: 0

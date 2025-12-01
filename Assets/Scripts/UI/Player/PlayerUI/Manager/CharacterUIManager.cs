@@ -174,4 +174,10 @@ public class CharacterUIManager : NetworkBehaviour
         if (equipmentPanel == null) return;
         equipmentPanel.gameObject.SetActive(!equipmentPanel.gameObject.activeSelf);
     }
+
+    public void ToggleUICanvas()
+    {
+        if (UICanvas == null) return;
+        UICanvas.SetActive(!UICanvas.activeSelf);
+    }    
 }

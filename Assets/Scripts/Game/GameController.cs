@@ -11,7 +11,7 @@ public class GameController : NetworkBehaviour
     private SceneLoader sceneLoader;
 
     public int CurrentLevel = 0;
-
+    public int CurrentNode = 1;
     private void Awake()
     {
         if (Instance == null)
@@ -42,6 +42,7 @@ public class GameController : NetworkBehaviour
     public void NextLevel()
     {
         CurrentLevel++;
+        CurrentNode = 1;
 
         switch (CurrentLevel)
         {

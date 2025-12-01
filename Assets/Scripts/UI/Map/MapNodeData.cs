@@ -10,6 +10,7 @@ public class MapNodeData
 
     public void OnSelect()
     {
+        GameController.Instance.CurrentNode++;
         Debug.Log($"Selected node {nodeType.NodeTypes}");
         if (nodeType.NodeTypes == NodeTypes.Monster)
         {

@@ -303,6 +303,30 @@ MonoBehaviour:
     m_Localized: "\xC1p d\u1EE5ng"
     m_Metadata:
       m_Items: []
+  - m_Id: 24099878724100096
+    m_Localized: "B\u1EA1n \u0111\xE3 ch\u1EBFt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100170974814208
+    m_Localized: "V\xE0ng ki\u1EBFm \u0111\u01B0\u1EE3c"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100312499019776
+    m_Localized: "V\u1EADt ph\u1EA9m ki\u1EBFm \u0111\u01B0\u1EE3c"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100383068184576
+    m_Localized: "K\u1EBB \u0111\u1ECBch \u0111\xE3 \u0111\xE1nh b\u1EA1i"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100532574150656
+    m_Localized: "T\u1ED5ng s\xE1t th\u01B0\u01A1ng g\xE2y ra"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100602858102784
+    m_Localized: "T\u1ED5ng s\xE1t th\u01B0\u01A1ng nh\u1EADn ph\u1EA3i"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

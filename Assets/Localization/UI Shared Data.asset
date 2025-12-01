@@ -295,6 +295,30 @@ MonoBehaviour:
     m_Key: options_apply
     m_Metadata:
       m_Items: []
+  - m_Id: 24099878724100096
+    m_Key: UI_you_dead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100170974814208
+    m_Key: UI_gold_obtained
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100312499019776
+    m_Key: UI_item_obtained
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100383068184576
+    m_Key: UI_enemy_defeated
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100532574150656
+    m_Key: UI_total_damage_deal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100602858102784
+    m_Key: UI_total_damage_taken
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

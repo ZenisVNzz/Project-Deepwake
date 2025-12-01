@@ -1,4 +1,5 @@
 using Mirror;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -123,6 +124,8 @@ public class PlayerController : NetworkBehaviour, IPlayerController
     private bool isDead = false;
     public bool IsDead => isDead;
 
+    public event Action OnPlayerDead;
+
     public void Init()
     {
         interactionHandler = GetComponentInChildren<InteractionHandler>();    
@@ -205,10 +208,11 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         playerDash.Dash();
     }
 
-    private void OnDead()
+    public void OnDead()
     {
         StartCoroutine(DeathProcess());
         isDead = true;
+        OnPlayerDead?.Invoke();
     }
 
     private IEnumerator DeathProcess()

@@ -300,6 +300,30 @@ MonoBehaviour:
     m_Localized: Apply
     m_Metadata:
       m_Items: []
+  - m_Id: 24099878724100096
+    m_Localized: You dead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100170974814208
+    m_Localized: Gold obtained
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100312499019776
+    m_Localized: Item obtained
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100383068184576
+    m_Localized: Enemy defeated
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100532574150656
+    m_Localized: Total damage dealt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100602858102784
+    m_Localized: Total damage taken
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

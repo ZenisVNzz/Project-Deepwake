@@ -25,11 +25,11 @@ public class PlayerCheat : MonoBehaviour
         currencyWallet.Add(CurrencyType.Gold, 10000);
     }
 
-    [ContextMenu("Deal 50 damage to self")]
+    [ContextMenu("Deal 100 damage to self")]
     private void DealDamageToSelf()
     {
         PlayerRuntime playerRuntime = GetComponent<PlayerRuntime>();
-        playerRuntime.TakeDamage(50, Vector3.zero);
+        playerRuntime.TakeDamage(100, Vector3.zero);
     }
 
     [ContextMenu("Clear enemy")]

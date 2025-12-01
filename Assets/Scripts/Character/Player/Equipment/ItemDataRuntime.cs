@@ -60,6 +60,10 @@ public class ItemDataRuntime : NetworkBehaviour
         bool added = player.PlayerInventory != null && player.PlayerInventory.AddItem(_itemData);
         if (added)
         {
+            if (player is PlayerRuntime playerRuntime)
+            {
+                playerRuntime.gameObject.GetComponent<PlayerArchiveData>().itemObtained++;
+            }
             NetworkServer.Destroy(gameObject);
         }
         else

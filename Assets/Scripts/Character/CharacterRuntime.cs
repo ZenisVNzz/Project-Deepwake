@@ -128,7 +128,18 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
 
             OnTakeDamage(FinalDamage);
 
-            hp -= FinalDamage; 
+            hp -= FinalDamage;
+
+            if (characterRuntime is PlayerRuntime player)
+            {
+                player.gameObject.GetComponent<PlayerArchiveData>().totalDamageDealt += FinalDamage;
+            }
+
+            if (this is PlayerRuntime selfPlayer)
+            {
+                selfPlayer.gameObject.GetComponent<PlayerArchiveData>().totalDamageTaken += FinalDamage;
+            }
+
             OnHPChanged?.Invoke(hp);
             OnHit?.Invoke();
             if (_hpRegenCoroutine != null)
@@ -144,6 +155,10 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
                 {
                     playerRuntime.GainExp(characterData.ExpOnKill);
                     playerRuntime.CurrencyWallet.Add(CurrencyType.Gold, characterData.GoldOnKill);
+                    if (playerRuntime is PlayerRuntime _player)
+                    {
+                        _player.gameObject.GetComponent<PlayerArchiveData>().enemyDefeated++;
+                    }
                 }
             }
 
