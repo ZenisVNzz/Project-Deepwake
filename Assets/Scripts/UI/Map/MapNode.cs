@@ -36,7 +36,7 @@ public class MapNode : MonoBehaviour
     }
 
     public void OnSelect()
-    {    
+    {
         nodeData.OnSelect();
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TitleScreenBGM2
   m_EditorClassIdentifier: Assembly-CSharp::MusicData
   clip: {fileID: 8300000, guid: f6b9a938d16bc5047a2d58e2f6679e59, type: 3}
-  volume: 0.8
+  volume: 0.229
   pitch: 1
   loop: 0
   duration: 193

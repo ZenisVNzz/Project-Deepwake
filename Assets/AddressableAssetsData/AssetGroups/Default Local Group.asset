@@ -172,7 +172,7 @@ MonoBehaviour:
     m_Address: ChestOpenSFX
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PlayerData
+    - ShipAssets
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4c6b45260f7bb39498815aa7733af88b
     m_Address: Wood

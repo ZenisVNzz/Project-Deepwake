@@ -16,6 +16,8 @@ public class ItemDataRuntime : NetworkBehaviour
 
     private int _claimed = 0;
 
+    private SFXData PickUpSFX = ResourceManager.Instance.GetAsset<SFXData>("CollectItemSFX");
+
     public void SetData(ItemData data)
     {
         _itemData = data;
@@ -59,7 +61,8 @@ public class ItemDataRuntime : NetworkBehaviour
 
         bool added = player.PlayerInventory != null && player.PlayerInventory.AddItem(_itemData);
         if (added)
-        {
+        {     
+            SFXManager.Instance.Play(PickUpSFX, transform.position);
             NetworkServer.Destroy(gameObject);
         }
         else

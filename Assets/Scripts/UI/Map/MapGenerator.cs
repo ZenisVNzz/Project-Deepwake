@@ -24,6 +24,9 @@ public class MapGenerator : MonoBehaviour
     private MapNode currentSelectedNode;
     private List<List<MapNode>> layers = new();
 
+    private SFXData ClickSFX = ResourceManager.Instance.GetAsset<SFXData>("UIButtonSFX");
+    private SFXData WindSFX = ResourceManager.Instance.GetAsset<SFXData>("SelectNodeWindSFX");
+
     private void Start()
     {
         GenerateMap();
@@ -229,6 +232,8 @@ public class MapGenerator : MonoBehaviour
 
     private void OnNodeConfirm(MapNode node)
     {
+        SFXManager.Instance.Play(ClickSFX, transform.position);
+
         confirmButton.gameObject.SetActive(false);
 
         currentNode = node;
@@ -249,5 +254,7 @@ public class MapGenerator : MonoBehaviour
         }
 
         gameObject.transform.parent.gameObject.SetActive(false);
+
+        SFXManager.Instance.Play(WindSFX, transform.position);
     }
 }

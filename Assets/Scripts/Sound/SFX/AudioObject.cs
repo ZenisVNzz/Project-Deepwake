@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class AudioObject : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class AudioObject : MonoBehaviour
     private void Awake()
     {
         source = gameObject.AddComponent<AudioSource>();
+        source.outputAudioMixerGroup = SFXManager.Instance.sfxMixerGroup;
         source.playOnAwake = false;
     }
 
