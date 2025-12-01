@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 555016523649592169}
   m_Layer: 0
   m_Name: HurtBox
-  m_TagString: Hitbox
+  m_TagString: Hurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 4939858899874155234}
   m_Layer: 7
   m_Name: Jelly
-  m_TagString: Hitbox
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
