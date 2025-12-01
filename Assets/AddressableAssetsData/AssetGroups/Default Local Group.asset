@@ -167,6 +167,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d5d6a5b93471e64392add42b2e2111f
+    m_Address: EnemyBossDataBase
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 93a776db3a3493142bdda2ad1ef9f666
     m_Address: EnvironmentList
     m_ReadOnly: 0

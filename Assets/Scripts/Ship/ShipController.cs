@@ -8,8 +8,8 @@ public class ShipController : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float normalSpeed = 0.5f;
     [SerializeField] private float maxSpeed = 5f; 
-    [SerializeField] private float acceleration = 5f;
-    [SerializeField] private float deceleration = 4f;
+    [SerializeField] private float acceleration = 4f;
+    [SerializeField] private float deceleration = 3f;
     [SerializeField] private float smoothStopDistance = 2.5f;
     [SerializeField] private GameObject background;
 

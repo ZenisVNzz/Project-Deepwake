@@ -3,5 +3,6 @@ using UnityEngine;
 
 public interface IAIMove : IMovable
 {
-	bool HaveReachedTarget();
+	public bool CanMove { get; set; }
+    bool HaveReachedTarget();
 }

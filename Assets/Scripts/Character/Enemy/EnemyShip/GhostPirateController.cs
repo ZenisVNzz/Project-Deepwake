@@ -9,23 +9,19 @@ public class GhostPirateController : EnemyController
     [Server]
     public override void OnDead()
     {
-        if (isDead) return;
-        isDead = true;
-
         RpcDeathEffect();
         StartCoroutine(ServerDeathProcess());
     }
 
-    [ClientRpc]
+    [Server]
     public override void RpcDeathEffect()
-    {
-        StartCoroutine(ClientDeathCoroutine());
-    }
-
-    public override IEnumerator ClientDeathCoroutine()
     {
         cd2D.enabled = false;
         hurtBox.enabled = false;
+    }
+
+    public override IEnumerator ClientDeathCoroutine()
+    {    
         yield return null;
     }
 
@@ -33,5 +29,14 @@ public class GhostPirateController : EnemyController
     {
         yield return new WaitForSeconds(8f);
         isDead = false;
+        enemyState.ChangeState(CharacterStateType.Awake);
+        enemyRuntime.Revive();
+        cd2D.enabled = true;
+        hurtBox.enabled = true;
+    }
+
+    public void PlaySoulAnimation()
+    {
+        enemyState.ChangeState(CharacterStateType.Revive);
     }
 }

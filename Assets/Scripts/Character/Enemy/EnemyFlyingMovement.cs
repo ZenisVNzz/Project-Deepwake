@@ -26,6 +26,13 @@ public class EnemyFlyingMovement : MonoBehaviour, IAIMove
 
     private bool haveReachedTarget;
 
+    private bool canMove = true;
+    public bool CanMove
+    {
+        get { return canMove; }
+        set { canMove = value; }
+    }
+
     private void Awake()
     {
         keepSide = (Random.value < 0.5f) ? VerticalSide.Above : VerticalSide.Below;

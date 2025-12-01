@@ -9,6 +9,8 @@ public class EnemyCannonController : NetworkBehaviour
     private NetworkIdentity currentEnemy;
     public NetworkIdentity CurEnemy => currentEnemy;
 
+    public GhostPirateMovement currentUser;
+
     public PlayerRuntime Target;
 
     [SerializeField] Transform ownerLockPos;
@@ -28,7 +30,7 @@ public class EnemyCannonController : NetworkBehaviour
     private float cooldown = 4f;
     private float timer;
 
-    private bool active = false;
+    public bool active = false;
 
     private void Awake()
     {
@@ -60,6 +62,7 @@ public class EnemyCannonController : NetworkBehaviour
                 // shoot
                 cannonShoot.Shoot();
                 enemyCannonNavigation.ApplyRecoil();
+                cooldown = Random.Range(4f, 6f);
             }
         }
         else
@@ -81,7 +84,7 @@ public class EnemyCannonController : NetworkBehaviour
         GameObject ownerObj = networkIdentity.gameObject;
         ownerObj.transform.position = ownerLockPos.position;
         GhostPirateMovement movement = ownerObj.GetComponent<GhostPirateMovement>();
-        movement.CanMove = false;
+        movement.canMove = false;
 
         CharacterRuntime characterRuntime = ownerObj.GetComponent<CharacterRuntime>();
         characterRuntime.OnHit += ReleaseCannon;
@@ -103,6 +106,7 @@ public class EnemyCannonController : NetworkBehaviour
         characterRuntime.OnHit -= ReleaseCannon;
 
         currentEnemy = null;
+        currentUser = null;
         active = false;
         Debug.Log("Release Cannon");
 
@@ -113,7 +117,7 @@ public class EnemyCannonController : NetworkBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         ghostPirate.active = true;
-        ghostPirate.CanMove = true;
+        ghostPirate.canMove = true;
     }
     private PlayerRuntime GetRadomTarget()
     {

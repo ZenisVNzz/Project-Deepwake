@@ -41,12 +41,6 @@ public class GameController : NetworkBehaviour
 
     public void NextLevel()
     {
-        RpcNextLevel();
-    }
-
-    [ClientRpc]
-    private void RpcNextLevel()
-    {
         CurrentLevel++;
 
         switch (CurrentLevel)

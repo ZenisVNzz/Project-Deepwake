@@ -15,7 +15,7 @@ public class ShopStage : GameState
         shipWheel.SetActive();
 
         EnvironmentSpawner environmentSpawner = EnvironmentSpawner.Instance;
-        environmentSpawner.Spawn("WoodRaft", new Vector3(20f, -6f, 0f), true);
+        environmentSpawner.Spawn("WoodRaft", new Vector3(20f, -6f, 0f), true, false);
 
         if (UIManager.Instance.RuntimeUIServiceRegistry.TryGet<ShopUI>(out ShopUI shopUI))
         {

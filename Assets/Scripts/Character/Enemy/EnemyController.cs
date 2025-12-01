@@ -44,7 +44,7 @@ public class EnemyController : NetworkBehaviour, IEnemyController
 
     public IStateHandler stateHandler
     {
-         get
+        get
         {
             return GetComponent<IStateHandler>();
         }
@@ -58,11 +58,11 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         }
     }
 
-    public ICharacterRuntime enemyRuntime
+    public EnemyRuntime enemyRuntime
     {
         get
         {
-            return GetComponent<ICharacterRuntime>();
+            return GetComponent<EnemyRuntime>();
         }
     }
 
@@ -71,7 +71,11 @@ public class EnemyController : NetworkBehaviour, IEnemyController
     protected Collider2D hurtBox;
 
     protected bool isDead = false;
-    public bool IsDead => isDead;
+    public bool IsDead
+    {
+        get { return isDead; }
+        set { isDead = value; }
+    }
 
     public void Init()
     {
@@ -88,7 +92,7 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         if (enemyMovement.HaveReachedTarget())
         {
             enemyAttack.CmdAttack(enemyRuntime.TotalAttack);
-        }      
+        }
     }
 
     [Server]
@@ -97,7 +101,7 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         if (enemyState.GetCurrentState() != CharacterStateType.Knockback && enemyState.GetCurrentState() != CharacterStateType.Death && enemyState.GetCurrentState() != CharacterStateType.Attacking)
         {
             enemyMovement.Move(enemyRuntime.TotalSpeed);
-        }      
+        }
     }
 
     [Server]
@@ -134,9 +138,14 @@ public class EnemyController : NetworkBehaviour, IEnemyController
             NetworkServer.Destroy(gameObject);
     }
 
+    public void SetStatus(bool value)
+    {
+        isDead = value;
+    }
+
     void Update()
     {
-       
+
     }
 
     void FixedUpdate()
@@ -145,6 +154,8 @@ public class EnemyController : NetworkBehaviour, IEnemyController
 
         stateHandler.UpdateState();
         animationHandler.UpdateAnimation();
+
+        if (isDead) return;
         OnMove();
         OnAttack();
     }

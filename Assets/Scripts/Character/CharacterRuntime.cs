@@ -198,6 +198,11 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
         Debug.Log($"{gameObject} has died.");
     }
 
+    public void Revive()
+    {
+        hp = totalHealth;
+        OnHPChanged?.Invoke(hp);
+    }
     private IEnumerator RegenHP()
     {
         yield return new WaitForSeconds(2f);
@@ -217,5 +222,11 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
     protected void InvokeHPChanged(float newHP)
     {
         OnHPChanged?.Invoke(newHP);
+    }
+
+    [ContextMenu("Test Die")]
+    public void TestDie()
+    {
+        TakeDamage(99999, Vector3.zero);
     }
 }

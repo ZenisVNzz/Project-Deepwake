@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static EnemyFlyingMovement;
 
-public class GhostPirateMovement : MonoBehaviour, IAIMove
+public class GhostPirateMovement : NetworkBehaviour, IAIMove
 {
     public List<EnemyCannonController> Cannon;
     public List<Transform> RepairPot;
@@ -16,7 +16,13 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
 
     public bool isControllingCannon = false;
     public bool haveReachedTarget = false;
-    public bool CanMove = true;
+    public bool canMove = true;
+
+    public bool CanMove
+    {
+        get { return canMove; }
+        set { canMove = value; }
+    }
 
     private Rigidbody2D rb;
 
@@ -27,6 +33,8 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
     {
         rb = GetComponent<Rigidbody2D>();
         enemyState = GetComponent<EnemyController>().enemyState;
+        Cannon = EnemyShipController.Instance.cannons;
+        RepairPot = EnemyShipController.Instance.RepairPot;
     }
 
     [Server]
@@ -57,7 +65,7 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
             return;
         }
 
-        if (!CanMove || !active)
+        if (!canMove || !active)
         {
             return;
         }
@@ -67,7 +75,7 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
             currentCannon = GetRandomCannon();
         }
         else
-        {
+        {        
             float distance = Vector2.Distance(currentCannon.transform.position, this.transform.position);
             if (distance < 0.65f && !isControllingCannon)
             {
@@ -90,10 +98,12 @@ public class GhostPirateMovement : MonoBehaviour, IAIMove
     {
         if (Cannon.Count == 0) return null;
         int randIndex = Random.Range(0, Cannon.Count);
-        if (Cannon[randIndex].CurEnemy != null)
+        if (Cannon[randIndex].currentUser != null)
         {
             return GetRandomCannon();
         }
+
+        Cannon[randIndex].currentUser = this;
         return Cannon[randIndex];
     }
 

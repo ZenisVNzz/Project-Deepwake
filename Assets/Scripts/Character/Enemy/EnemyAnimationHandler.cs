@@ -9,7 +9,8 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
     private ICharacterDirectionHandler directionHandler;
 
     private string currentAnimName;
-    private bool isDeath = false;
+    EnemyController enemyController;
+    private bool isDeath => GetComponent<EnemyController>().IsDead;
 
     [SerializeField]
     public bool twoWayOnly;
@@ -22,7 +23,8 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        enemyState = GetComponent<EnemyController>().enemyState;
+        enemyController = GetComponent<EnemyController>();
+        enemyState = enemyController.enemyState;
         directionHandler = GetComponent<ICharacterDirectionHandler>();
 
         if (twoWayOnly)
@@ -31,29 +33,90 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
 
     public void UpdateAnimation()
     {
-        if (!isDeath)
-        {
-            CharacterStateType currentState = enemyState.GetCurrentState();
+        CharacterStateType currentState = enemyState.GetCurrentState();
 
-            switch (currentState)
-            {
-                case CharacterStateType.Idle:
-                    IdleProcess();
-                    break;
-                case CharacterStateType.Running:
-                    RunningProcess();
-                    break;
-                case CharacterStateType.Attacking:
-                    AttackProcess();
-                    break;
-                case CharacterStateType.Death:
-                    DeathProcess();
-                    break;
-                default:
-                    IdleProcess();
-                    break;
-            }
+        switch (currentState)
+        {
+            case CharacterStateType.Awake:
+                AwakeProcess();
+                break;
+            case CharacterStateType.Idle:
+                IdleProcess();
+                break;
+            case CharacterStateType.Running:
+                RunningProcess();
+                break;
+            case CharacterStateType.Attacking:
+                AttackProcess();
+                break;
+            case CharacterStateType.Revive:
+                ReviveProcess();
+                break;
+            case CharacterStateType.Death:
+                DeathProcess();
+                break;
+            default:
+                IdleProcess();
+                break;
         }
+    }
+
+    private void AwakeProcess()
+    {
+        Direction dir = directionHandler.GetDirection();
+        switch (directionMode)
+        {
+            case AnimDirectionMode.TwoWay:
+                {
+                    bool faceRight = dir != Direction.Left;
+                    animator.transform.localScale = new Vector3(faceRight ? 1f : -1f, 1f, 1f);
+                    PlayAnimation("Enemy_Awake");
+                    Debug.Log("Playing Enemy_Awake animation");
+                    break;
+                }
+            case AnimDirectionMode.EightWay:
+                {
+                    string anim = dir switch
+                    {
+                        Direction.Up => "Enemy_Up_Awake",
+                        Direction.UpLeft => "Enemy_UpLeft_Awake",
+                        Direction.UpRight => "Enemy_UpRight_Awake",
+                        Direction.DownLeft => "Enemy_DownLeft_Awake",
+                        Direction.DownRight => "Enemy_DownRight_Awake",
+                        Direction.Down => "Enemy_Down_Awake",
+                        Direction.Left => "Enemy_Left_Awake",
+                        Direction.Right => "Enemy_Right_Awake",
+                        _ => "Enemy_Down_Awake"
+                    };
+                    PlayAnimation(anim);
+                    break;
+                }
+            default:
+                {
+                    string anim = dir switch
+                    {
+                        Direction.UpLeft => "Enemy_UpLeft_Awake",
+                        Direction.UpRight => "Enemy_UpRight_Awake",
+                        Direction.DownLeft => "Enemy_DownLeft_Awake",
+                        _ => "Enemy_DownRight_Awake"
+                    };
+                    PlayAnimation(anim);
+                    break;
+                }
+        }
+
+        var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsName(currentAnimName) && stateInfo.normalizedTime >= 1.0f)
+        {
+            Invoke(nameof(ChangeToIdleState), 0.3f);
+        }
+    }
+
+    private void ChangeToIdleState()
+    {
+        enemyState.ChangeState(CharacterStateType.Idle);
+        IAIMove aIMove = GetComponent<IAIMove>();
+        aIMove.CanMove = true;
     }
 
     private void IdleProcess()
@@ -211,7 +274,7 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
                         bool faceRight = dir != Direction.Left;
                         animator.transform.localScale = new Vector3(faceRight ? 1f : -1f, 1f, 1f);
                         PlayAnimation("Enemy_Death");
-                        isDeath = true;
+                        enemyController.SetStatus(true);
                         break;
                     }
                 case AnimDirectionMode.EightWay:
@@ -229,7 +292,7 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
                             _ => "Enemy_Down_Death"
                         };
                         PlayAnimation(anim);
-                        isDeath = true;
+                        enemyController.SetStatus(true);
                         break;
                     }
                 default:
@@ -242,10 +305,56 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
                             _ => "Enemy_DownRight_Death"
                         };
                         PlayAnimation(anim);
-                        isDeath = true;
+                        enemyController.SetStatus(true);
                         break;
                     }
             }
+        }
+    }
+
+    private void ReviveProcess()
+    {
+        Debug.Log("ReviveProcess called");
+
+        Direction dir = directionHandler.GetDirection();
+        switch (directionMode)
+        {
+            case AnimDirectionMode.TwoWay:
+                {
+                    bool faceRight = dir != Direction.Left;
+                    animator.transform.localScale = new Vector3(faceRight ? 1f : -1f, 1f, 1f);
+                    PlayAnimation("Enemy_Revive");
+                    break;
+                }
+            case AnimDirectionMode.EightWay:
+                {
+                    string anim = dir switch
+                    {
+                        Direction.Up => "Enemy_Up_Revive",
+                        Direction.UpLeft => "Enemy_UpLeft_Revive",
+                        Direction.UpRight => "Enemy_UpRight_Revive",
+                        Direction.DownLeft => "Enemy_DownLeft_Revive",
+                        Direction.DownRight => "Enemy_DownRight_Revive",
+                        Direction.Down => "Enemy_Down_Revive",
+                        Direction.Left => "Enemy_Left_Revive",
+                        Direction.Right => "Enemy_Right_Revive",
+                        _ => "Enemy_Down_Revive"
+                    };
+                    PlayAnimation(anim);
+                    break;
+                }
+            default:
+                {
+                    string anim = dir switch
+                    {
+                        Direction.UpLeft => "Enemy_UpLeft_Revive",
+                        Direction.UpRight => "Enemy_UpRight_Revive",
+                        Direction.DownLeft => "Enemy_DownLeft_Revive",
+                        _ => "Enemy_DownRight_Revive"
+                    };
+                    PlayAnimation(anim);
+                    break;
+                }
         }
     }
 
