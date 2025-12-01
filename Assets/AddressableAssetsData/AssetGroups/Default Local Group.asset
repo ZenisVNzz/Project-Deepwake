@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: ff1207baddb889741829269af6217c36
   m_SerializeEntries:
+  - m_GUID: 01ff11298cd507441b4fef24613d051c
+    m_Address: GameSceneBGM2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlayerData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0578ccc092b39644dbd374737e5824d0
     m_Address: NodeTypeList
     m_ReadOnly: 0
@@ -45,6 +51,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Prefab
+    - ShipAssets
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14c23a93eb5c7644b97e53f44c888d36
+    m_Address: AmbientOcean2
+    m_ReadOnly: 0
+    m_SerializedLabels:
     - ShipAssets
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1cb24a4d51a73674fabcf3436f3bf17f
@@ -119,6 +131,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42867cf3234da5448aaaf4e5e230af99
+    m_Address: Assets/Data/Sound/SFX/LevelUp.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlayerData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 43abe47e41247a448b4951bc04302964
     m_Address: Flower
     m_ReadOnly: 0
@@ -135,7 +153,8 @@ MonoBehaviour:
   - m_GUID: 4bc2cc067ce0f134f954e5052c655b2b
     m_Address: TitleScreenBGM2
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - PlayerData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4bf3f0f9de424ec4e9606b9508ed1f21
     m_Address: PlayerWalkSFX
@@ -208,6 +227,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7de7ece4e571adc408abb8ddf62527ee
+    m_Address: GameSceneBGM3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlayerData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 92178ad38f523e048bacf63c401c8718
     m_Address: VFXDataList
     m_ReadOnly: 0
@@ -235,6 +260,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - MapData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1e7e0d78cf52a240871b6ac8a6be5f3
+    m_Address: AmbientOcean1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ShipAssets
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a33d88e093ea3b54da2efae9eae1258f
     m_Address: PopupContainer
@@ -274,6 +305,12 @@ MonoBehaviour:
     - UI
     - UIPrefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7f9710ad1806eb40b38473337685744
+    m_Address: GameSceneBGM1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlayerData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b85f960a82fd6b44eb65a64e8d5999b0
     m_Address: Tree
     m_ReadOnly: 0
@@ -301,7 +338,8 @@ MonoBehaviour:
   - m_GUID: c9111103b0fd2fc479223c4c165ff864
     m_Address: TitleScreenBGM1
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - PlayerData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cadb41cdb7ccc9445beb2408da5c4ea8
     m_Address: Assets/Data/Startup Task/CheckConnectionTask.asset

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e1aed7796d8ba42adc8e173b98d541, type: 3}
   m_Name: GameSceneBGM2
   m_EditorClassIdentifier: Assembly-CSharp::MusicData
-  clip: {fileID: 8300000, guid: 29da3852771f91244b7f5fca867a4eac, type: 3}
+  clip: {fileID: 8300000, guid: c6f7fa406ac6f4a49bdb010ec65f7432, type: 3}
   volume: 0.8
   pitch: 1
   loop: 0
-  duration: 126
+  duration: 119
   useSegment: 0
   startTime: 0
   endTime: 0

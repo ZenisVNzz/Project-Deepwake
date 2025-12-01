@@ -16,7 +16,7 @@ MonoBehaviour:
   volume: 0.8
   pitch: 1
   loop: 0
-  duration: 126
+  duration: 193
   useSegment: 0
   startTime: 0
   endTime: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be721f9e3c6ccd943b5b6ea68cb788ce, type: 3}
   m_Name: LevelUp
   m_EditorClassIdentifier: Assembly-CSharp::SFXData
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 484835f47c3322b4bbae75f2d1913d88, type: 3}
   volume: 1
   pitch: 1
   loop: 0

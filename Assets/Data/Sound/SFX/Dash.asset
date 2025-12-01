@@ -17,6 +17,6 @@ MonoBehaviour:
   pitch: 1.75
   loop: 0
   duration: 0.5
-  useSegment: 0
-  startTime: 0
-  endTime: 0
+  useSegment: 1
+  startTime: 0.1
+  endTime: 0.215

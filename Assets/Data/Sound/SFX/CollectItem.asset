@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be721f9e3c6ccd943b5b6ea68cb788ce, type: 3}
   m_Name: CollectItem
   m_EditorClassIdentifier: Assembly-CSharp::SFXData
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 2dafed050fc100944b6671e01cb8d9ba, type: 3}
   volume: 1
   pitch: 1
   loop: 0
-  duration: 1
+  duration: 0.75
   useSegment: 0
   startTime: 0
   endTime: 0
