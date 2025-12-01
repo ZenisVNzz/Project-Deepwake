@@ -25,6 +25,7 @@ public class GhostPirateShip : EnemyBoss
     private void Awake()
     {
         mover = GetComponent<ObjectMove>();
+        EnemyShipController.Instance.onDeath += OnDeath;
     }
 
     private void Update()
@@ -58,6 +59,7 @@ public class GhostPirateShip : EnemyBoss
     public override void OnSpawn()
     {
         base.OnSpawn();
+        ObjectCleaner.Instance.ObjectToClean.Add(this.gameObject);
         target = ShipController.Instance != null ? ShipController.Instance.transform : target;
 
         mover = GetComponent<ObjectMove>();
@@ -94,6 +96,7 @@ public class GhostPirateShip : EnemyBoss
     {
         base.OnDeath();
         if (mover != null) mover.Speed = 0f;
+        GameController.Instance.NextLevel();
         Debug.Log("Ghost Pirate Ship has been defeated!");
     }
 }

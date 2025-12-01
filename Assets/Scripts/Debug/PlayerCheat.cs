@@ -10,19 +10,19 @@ public class PlayerCheat : MonoBehaviour
         characterUIManager.GrantAttributePoints(1);
     }
 
-    [ContextMenu("Add 5000 Exp to player")]
+    [ContextMenu("Add 10000 Exp to player")]
     private void AddExp()
     {
         PlayerRuntime playerRuntime = GetComponent<PlayerRuntime>();
-        playerRuntime.GainExp(5000);
+        playerRuntime.GainExp(10000);
     }
 
-    [ContextMenu("Add 5000 Gold to player")]
+    [ContextMenu("Add 10000 Gold to player")]
     private void AddMoney()
     {
         PlayerRuntime playerRuntime = GetComponent<PlayerRuntime>();
         CurrencyWallet currencyWallet = playerRuntime.CurrencyWallet;
-        currencyWallet.Add(CurrencyType.Gold, 5000);
+        currencyWallet.Add(CurrencyType.Gold, 10000);
     }
 
     [ContextMenu("Deal 50 damage to self")]
@@ -61,5 +61,11 @@ public class PlayerCheat : MonoBehaviour
     private void GotoBossNode()
     {
         GameController.Instance.gameStateMachine.ChangeState<BossState>();
+    }
+
+    [ContextMenu("NextLevel")]
+    private void GotoNextLevel()
+    {
+        GameController.Instance.NextLevel();
     }
 }
