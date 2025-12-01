@@ -170,7 +170,8 @@ MonoBehaviour:
   - m_GUID: 7d5d6a5b93471e64392add42b2e2111f
     m_Address: EnemyBossDataBase
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - DataBase
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 93a776db3a3493142bdda2ad1ef9f666
     m_Address: EnvironmentList
@@ -238,6 +239,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Config
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bbc019b74f4784d47bf63b78133f5b82
+    m_Address: EnemySpawnTableDataBase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - DataBase
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc0f9d8e4b4b7734ea1084e7c1386341
     m_Address: NetworkServiceList

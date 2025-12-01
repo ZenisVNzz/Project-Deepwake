@@ -26,7 +26,7 @@ public class GhostPirateMovement : NetworkBehaviour, IAIMove
 
     private Rigidbody2D rb;
 
-    public float repair = 80f;
+    public float repair = 70f;
     public bool active = true;
 
     private void Start()

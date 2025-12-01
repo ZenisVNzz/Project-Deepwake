@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
     [SerializeField]
     private AnimDirectionMode directionMode = AnimDirectionMode.FourWayDiagonal;
 
+    public bool dropDeathAnimation = false;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -28,7 +31,7 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
         directionHandler = GetComponent<ICharacterDirectionHandler>();
 
         if (twoWayOnly)
-            directionMode = AnimDirectionMode.TwoWay;
+            directionMode = AnimDirectionMode.TwoWay;    
     }
 
     public void UpdateAnimation()
@@ -265,6 +268,15 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
     {
         if (!isDeath)
         {
+            Debug.Log("DeathProcess called");
+            if (dropDeathAnimation)
+            {
+                transform.DOMoveY(transform.position.y + 1f, 0.2f).SetEase(Ease.InFlash).onComplete += () =>
+                {
+                    transform.DOMoveY(transform.position.y -20f, 1.2f).SetEase(Ease.InQuad);
+                };
+            }
+
             Direction dir = directionHandler.GetDirection();
 
             switch (directionMode)
@@ -362,6 +374,7 @@ public class EnemyAnimationHandler : MonoBehaviour, IAnimationHandler
     {
         if (currentAnimName == animName) return;
 
+        Debug.Log($"Playing animation: {animName}");
         animator.Play(animName);
         currentAnimName = animName;
     }

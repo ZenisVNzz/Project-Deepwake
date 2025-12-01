@@ -107,9 +107,6 @@ public class EnemyController : NetworkBehaviour, IEnemyController
     [Server]
     public virtual void OnDead()
     {
-        if (isDead) return;
-        isDead = true;
-
         RpcDeathEffect();
         StartCoroutine(ServerDeathProcess());
     }

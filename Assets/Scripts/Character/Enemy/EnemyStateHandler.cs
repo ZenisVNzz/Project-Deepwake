@@ -27,6 +27,10 @@ public class EnemyStateHandler : NetworkBehaviour, IStateHandler
         {
             enemyState.ChangeState(CharacterStateType.Awake);
         }
+        else
+        {
+            enemyState.ChangeState(CharacterStateType.Idle);
+        }
     }
 
     public void UpdateState()

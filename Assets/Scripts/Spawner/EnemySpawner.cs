@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner
 {
-    private EnemySpawnTable enemySpawnTable;
+    private EnemySpawnTableDataBase enemySpawnTable;
     private Transform ship;
     private int difficultyMultiplier;
     private EnemyLevelModifier levelModifier;
@@ -17,10 +17,10 @@ public class EnemySpawner
 
     private List<GameObject> activeEnemies = new List<GameObject>();
 
-    public EnemySpawner(EnemySpawnTable enemySpawnTable, Transform ship, int difficultyMultiplier = 1)
+    public EnemySpawner(Transform ship, int difficultyMultiplier = 1)
     {
-        this.enemySpawnTable = enemySpawnTable;
         this.ship = ship;
+        this.enemySpawnTable = ResourceManager.Instance.GetAsset<EnemySpawnTableDataBase>("EnemySpawnTableDataBase");
         this.difficultyMultiplier = difficultyMultiplier;
         levelModifier = new EnemyLevelModifier();
     }
@@ -35,6 +35,7 @@ public class EnemySpawner
         if (!NetworkServer.active) yield break;
 
         activeEnemies.Clear();
+        EnemySpawnTable enemySpawnTable = GetRandomSpawnTable();
         int count = Random.Range(enemySpawnTable.minSpawn, enemySpawnTable.maxSpawn + 1);
         yield return new WaitForSeconds(3f);
 
@@ -53,6 +54,11 @@ public class EnemySpawner
             activeEnemies.Add(enemy);
             yield return new WaitForSeconds(2f);
         }
+    }
+
+    private EnemySpawnTable GetRandomSpawnTable()
+    {
+        return enemySpawnTable.enemySpawnTables[Random.Range(0, enemySpawnTable.enemySpawnTables.Count)];
     }
 
     public void ClearAllEnemies()

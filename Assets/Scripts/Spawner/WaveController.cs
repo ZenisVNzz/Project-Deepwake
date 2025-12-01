@@ -12,7 +12,7 @@ public class WaveController : MonoBehaviour
 
     private void Awake()
     {
-        enemySpawner = new EnemySpawner(enemySpawnTable, ship);
+        enemySpawner = new EnemySpawner(ship);
     }
 
     private IEnumerator WaitForAllEnemyAreDead()
