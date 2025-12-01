@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a9be38c630a654bba18718fca39090, type: 3}
+  m_Name: Ocean2
+  m_EditorClassIdentifier: Assembly-CSharp::AmbientLayerData
+  clip: {fileID: 8300000, guid: cf5cac40380d5214c84497f7e922abfa, type: 3}
+  volume: 1
+  pitch: 1
+  loop: 1
+  duration: 101
+  fadeInTime: 1
+  fadeOutTime: 1
+  useSegment: 0
+  startTime: 0
+  endTime: 0

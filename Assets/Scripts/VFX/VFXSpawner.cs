@@ -4,7 +4,7 @@ public static class VFXSpawner
 {
     public static BaseVFX Spawn(string id, Vector3 position)
     {
-        var listSO = ResourceManager.LoadResource<VFXDataListSO>("VFX/VFXDataList");
+        var listSO = ResourceManager.Instance.GetAsset<VFXDataListSO>("VFXDataList");
         if (listSO == null)
         {
             Debug.LogWarning("[VFXSpawner] VFXDataList not found.");

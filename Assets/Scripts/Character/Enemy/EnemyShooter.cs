@@ -9,6 +9,8 @@ public class EnemyShooter : NetworkBehaviour
     [SerializeField] private GameObject projectilePrefab;
     private CharacterRuntime characterRuntime;
 
+    private SFXData AttackSFX = ResourceManager.Instance.GetAsset<SFXData>("FlyAttackSFX");
+
     private Transform player;
 
     private void Awake()
@@ -51,6 +53,8 @@ public class EnemyShooter : NetworkBehaviour
             direction.Normalize();
             rb.linearVelocity = firePoint.TransformDirection(direction) * 2.2f;
         }
+
+        SFXManager.Instance.Play(AttackSFX, transform.position);
 
         var proj = go.GetComponent<HitBoxHandler>();
         if (proj == null)

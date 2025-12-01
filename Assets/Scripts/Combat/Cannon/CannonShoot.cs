@@ -24,13 +24,14 @@ public class CannonShoot
 
     [Server]
     public void Shoot(NetworkConnectionToClient Client)
-    {   
+    {
+        SFXManager.Instance.Play(cannonFireSFX, spawnPos.position);
         GameObject bullet = GameObject.Instantiate(bulletPrefab, spawnPos.position, Quaternion.identity);
         CharacterRuntime characterRuntime = cannonController.CurPlayer.GetComponent<CharacterRuntime>();
         CannonDamageCal cannonDamageCal = new CannonDamageCal();
         bullet.GetComponent<HitBoxHandler>().SetData(cannonDamageCal.Calculate(characterRuntime), "Player", characterRuntime);
         bullet.GetComponent<CannonBulletRuntime>().Init(cannonNavigation.GetFireDirection());
         NetworkServer.Spawn(bullet, Client);
-        //SFXManager.Instance.Play(cannonFireSFX, spawnPos.position);
+        
     }
 }

@@ -48,3 +48,4 @@ MonoBehaviour:
   - m_LabelString: ShipAssets
   - m_LabelString: ShopData
   - m_LabelString: Material
+  - m_LabelString: PlayerData
