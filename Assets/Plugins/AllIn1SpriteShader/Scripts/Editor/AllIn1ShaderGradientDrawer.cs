@@ -5,6 +5,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using UnityEditor;
 
 namespace AllIn1SpriteShader
 {
