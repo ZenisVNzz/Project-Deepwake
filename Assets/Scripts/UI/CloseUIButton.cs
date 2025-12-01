@@ -5,7 +5,6 @@ public class CloseUIButton : MonoBehaviour
 {
     private Button button;
     [SerializeField] private GameObject ObjToClose;
-    private SFXData ClickSFX = ResourceManager.Instance.GetAsset<SFXData>("UIButtonSFX");
 
     private void Awake()
     {
@@ -14,6 +13,5 @@ public class CloseUIButton : MonoBehaviour
         {
             ObjToClose.SetActive(false);
         });
-        SFXManager.Instance.Play(ClickSFX, transform.position);
     }
 }

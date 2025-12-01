@@ -10,7 +10,6 @@ public class CharMenuUINavigate : MonoBehaviour
     [SerializeField] private GameObject skillTreePopup;
     [SerializeField] private Button skillTreeButton;
     private GameObject currentPopup;
-    private SFXData ClickSFX = ResourceManager.Instance.GetAsset<SFXData>("UIButtonSFX");
 
     private void Start()
     {
@@ -29,6 +28,5 @@ public class CharMenuUINavigate : MonoBehaviour
         }
         popupToOpen.SetActive(true);
         currentPopup = popupToOpen;
-        SFXManager.Instance.Play(ClickSFX, transform.position);
     }
 }

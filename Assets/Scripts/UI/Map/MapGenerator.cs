@@ -222,6 +222,7 @@ public class MapGenerator : MonoBehaviour
             OnNodeConfirm(currentSelectedNode);
             SendRequest(currentSelectedNode);
             currentSelectedNode = null;
+            SFXManager.Instance.Play(ClickSFX, transform.position);
         }
     }
 

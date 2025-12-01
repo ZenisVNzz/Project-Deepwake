@@ -180,6 +180,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - MapObject
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5409b7d334aae18468b71fbe3bbb7dec
+    m_Address: FlyIdleSFX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5c2196b301ca2f0459d16ec24b60b7ca
     m_Address: InitPlayFabTask
     m_ReadOnly: 0
