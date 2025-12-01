@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7740935220772826625}
   m_Layer: 0
   m_Name: HurtBox
-  m_TagString: Enemy
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -443,6 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationHandler
   twoWayOnly: 1
   directionMode: 0
+  dropDeathAnimation: 0
 --- !u!114 &4357394855261837261
 MonoBehaviour:
   m_ObjectHideFlags: 0

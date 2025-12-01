@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5764886128806957989}
   m_Layer: 0
   m_Name: HurtBox
-  m_TagString: Enemy
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -423,6 +423,10 @@ MonoBehaviour:
   vertSwayAmplitude: 0.25
   vertSwayFrequency: 0.9
   swayPhase: 0
+  enableRamAttack: 0
+  jumpTriggerDistance: 1.8
+  jumpForce: 15
+  jumpCooldown: 1.4
   desiredVerticalOffset: 0
   keepSide: 0
 --- !u!114 &2827809349537410999
@@ -453,6 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationHandler
   twoWayOnly: 1
   directionMode: 0
+  dropDeathAnimation: 0
 --- !u!114 &733878525578547207
 MonoBehaviour:
   m_ObjectHideFlags: 0

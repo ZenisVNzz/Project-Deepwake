@@ -33,7 +33,7 @@ public class HitBoxHandler : NetworkBehaviour
         if (!isServer && !isOwned)
             return;
 
-        if (other.CompareTag(undamagedTag) || other.CompareTag("Untagged"))
+        if (other.CompareTag(undamagedTag) || other.CompareTag("Untagged") || !other.CompareTag("Hitbox"))
             return;
 
         IAttackable damageable = other.GetComponentInParent<IAttackable>();

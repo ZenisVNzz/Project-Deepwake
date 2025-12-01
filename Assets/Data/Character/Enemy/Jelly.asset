@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c572b7451ea45b94094c50fb3353a0f0, type: 3}
-  m_Name: Slime
+  m_Name: Jelly
   m_EditorClassIdentifier: 
-  characterID: 200003
-  prefab: {fileID: 6877434148897485417, guid: 4bb2b6d650188574eaa1eb0062cedfd4, type: 3}
+  characterID: 200004
+  prefab: {fileID: 6632439030762937602, guid: 4d2a0d9259e4b9143a7096965840f7f7, type: 3}
   ExpOnKill: 25
-  GoldOnKill: 8
+  GoldOnKill: 10
   level: 1
-  HP: 40
+  HP: 30
   Stamina: 0
-  AttackPower: 11
+  AttackPower: 18
   Defense: 2
   MoveSpeed: 2
   CriticalChance: 0
   CriticalDamageMultiplier: 0
-  HPRegenRate: 0.5
+  HPRegenRate: 0
   StaminaRegenRate: 0
   StaminaConsumptionMultiplier: 0
   skill: {fileID: 0}

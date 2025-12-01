@@ -1,4 +1,5 @@
 using Mirror;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyFlyingMovement : MonoBehaviour, IAIMove
@@ -20,6 +21,13 @@ public class EnemyFlyingMovement : MonoBehaviour, IAIMove
     public float vertSwayAmplitude = 0.25f;
     public float vertSwayFrequency = 0.9f;
     public float swayPhase;
+
+    public bool enableRamAttack = false;
+    public float jumpTriggerDistance = 1.8f;  
+    public float jumpForce = 15f;   
+    private bool isJumping = false;
+    private float jumpTimer = 0f;
+    public float jumpCooldown = 1.4f;
 
     public float desiredVerticalOffset;
     public VerticalSide keepSide;
@@ -57,6 +65,22 @@ public class EnemyFlyingMovement : MonoBehaviour, IAIMove
         }
 
         float distToPlayer = Vector2.Distance(rb.position, target.position);
+
+        if (enableRamAttack)
+        {
+            if (!isJumping && distToPlayer <= jumpTriggerDistance)
+                StartCoroutine(StartJumpAttack());
+
+            if (isJumping)
+            {
+                jumpTimer -= Time.deltaTime;
+                if (jumpTimer <= 0f)
+                    isJumping = false;
+
+                return;
+            }
+        }
+
         if (distToPlayer > chaseDistance)
         {
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, 1f - Mathf.Exp(-damping * Time.deltaTime));
@@ -100,6 +124,19 @@ public class EnemyFlyingMovement : MonoBehaviour, IAIMove
         {
             haveReachedTarget = false;
         }
+    }
+
+    [Server]
+    private IEnumerator StartJumpAttack()
+    {
+        isJumping = true;
+        jumpTimer = jumpCooldown;
+
+        Vector2 dir = (target.position - transform.position).normalized;
+
+        rb.AddForce(-dir.normalized * jumpForce/3, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.5f);
+        rb.AddForce(dir.normalized * (jumpForce + 8f), ForceMode2D.Impulse);
     }
 
     public void CmdMove(Vector2 input, float moveSpeed, bool isMoveOnSlope) => Move(moveSpeed);
