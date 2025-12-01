@@ -17,4 +17,8 @@ public class AmbientLayerData : ScriptableObject
     public bool useSegment = false;
     public float startTime = 0f;
     public float endTime = 0f;
+
+    [Header("Random Play Delay")]
+    public float minDelay = 2f;
+    public float maxDelay = 5f;
 }

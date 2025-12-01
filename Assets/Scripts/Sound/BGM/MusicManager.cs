@@ -1,41 +1,26 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class MusicManager : MonoBehaviour
+public class BGMManager : MonoBehaviour
 {
-    public static MusicManager Instance;
+    public List<AudioClip> bgmList;
+    public AudioSource source;
 
-    private AudioSource source;
-
-    private void Awake()
+    private void Start()
     {
-        if (Instance != null)
+        StartCoroutine(PlayRandomBGM());
+    }
+
+    private IEnumerator PlayRandomBGM()
+    {
+        while (true)
         {
-            Destroy(gameObject);
-            return;
+            AudioClip clip = bgmList[Random.Range(0, bgmList.Count)];
+            source.clip = clip;
+            source.Play();
+
+            yield return new WaitForSeconds(clip.length);
         }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
-        source = gameObject.AddComponent<AudioSource>();
-        source.playOnAwake = false;
-    }
-
-    public void Play(MusicData music)
-    {
-        if (music == null || music.clip == null)
-            return;
-
-        source.clip = music.clip;
-        source.volume = music.volume;
-        source.loop = music.loop;
-
-        source.Play();
-    }
-
-    public void Stop()
-    {
-        source.Stop();
     }
 }
