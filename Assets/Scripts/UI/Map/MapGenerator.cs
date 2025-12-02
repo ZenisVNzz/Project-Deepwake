@@ -24,8 +24,8 @@ public class MapGenerator : MonoBehaviour
     private MapNode currentSelectedNode;
     private List<List<MapNode>> layers = new();
 
-    private SFXData ClickSFX = ResourceManager.Instance.GetAsset<SFXData>("UIButtonSFX");
-    private SFXData WindSFX = ResourceManager.Instance.GetAsset<SFXData>("SelectNodeWindSFX");
+    private SFXData ClickSFX => ResourceManager.Instance.GetAsset<SFXData>("UIButtonSFX");
+    private SFXData WindSFX => ResourceManager.Instance.GetAsset<SFXData>("SelectNodeWindSFX");
 
     private void Start()
     {

@@ -71,6 +71,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - MapData
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2888c370225069b43982feb55287f412
+    m_Address: FlyAttackSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2db960babd764e1428ab689e7e1dda48
     m_Address: PlayFabClient
     m_ReadOnly: 0
@@ -88,6 +94,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31667749edd5cae4abdb5672834707fd
+    m_Address: PlayerAttackedSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3376745178c2a45b7b67cd3a93406ffa
     m_Address: WaterMaterialNew
@@ -107,6 +119,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42867cf3234da5448aaaf4e5e230af99
+    m_Address: LevelUpSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 43abe47e41247a448b4951bc04302964
     m_Address: Flower
     m_ReadOnly: 0
@@ -120,17 +138,35 @@ MonoBehaviour:
     - Preload
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bf3f0f9de424ec4e9606b9508ed1f21
+    m_Address: PlayerWalkSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4c2904f09cbab1247bd408db3140276c
     m_Address: Assets/Data/Startup Task/CheckUpdateTask.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c550f2ec23d1f943af502dbfd6cec6d
+    m_Address: ChestOpenSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4c6b45260f7bb39498815aa7733af88b
     m_Address: Wood
     m_ReadOnly: 0
     m_SerializedLabels:
     - MapObject
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5409b7d334aae18468b71fbe3bbb7dec
+    m_Address: FlyIdleSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5c2196b301ca2f0459d16ec24b60b7ca
     m_Address: InitPlayFabTask
@@ -161,6 +197,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - DataBase
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7145ae7863edc1d42bed5ac28f7412e8
+    m_Address: SlashSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71d748f93daa0fb418372616d36673a8
+    m_Address: DashSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7a53a98db98edaf42ba9ca2546f3ba43
     m_Address: Assets/Data/Startup Task/InitConfigTask.asset
     m_ReadOnly: 0
@@ -183,6 +231,12 @@ MonoBehaviour:
     m_Address: AssetReferencesList
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9654ba7afc06e9b48add33c1aede4284
+    m_Address: SelectNodeWindSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9861473d96a49ad469914e0c3189bf72
     m_Address: SeaNode
@@ -252,11 +306,29 @@ MonoBehaviour:
     m_SerializedLabels:
     - Startup
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5649711f3f0d2f4c8e33be9ae6ec9e1
+    m_Address: UIButtonSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cadb41cdb7ccc9445beb2408da5c4ea8
     m_Address: Assets/Data/Startup Task/CheckConnectionTask.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd698e4aeb86bb2478e15137cb8af57f
+    m_Address: CollectItemSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d298118dca3b71049911e81d93631ccf
+    m_Address: FlyDieSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d5a4d4f721e61cc408e8c661b4dd4f21
     m_Address: TitlePopupCanvas
@@ -282,6 +354,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Startup
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb6401f7cf531eb4ba45434c523ab5c0
+    m_Address: CannonFireSFX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: db30cef871e41d8428315e0e590fec13, type: 2}

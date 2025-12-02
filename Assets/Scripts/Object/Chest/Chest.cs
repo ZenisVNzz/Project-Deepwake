@@ -34,7 +34,7 @@ public class Chest : NetworkBehaviour
     private bool _lootSpawned;
 
     [Header("SFX")]
-    private SFXData ChestOpenSFX = ResourceManager.Instance.GetAsset<SFXData>("ChestOpenSFX");
+    private SFXData ChestOpenSFX => ResourceManager.Instance.GetAsset<SFXData>("ChestOpenSFX");
 
 
     public override void OnStartClient()

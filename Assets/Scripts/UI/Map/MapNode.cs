@@ -14,7 +14,7 @@ public class MapNode : MonoBehaviour
 
     private Image OutlineImage;
     private Image IconImage;
-    private SFXData ClickSFX = ResourceManager.Instance.GetAsset<SFXData>("UIButtonSFX");
+    private SFXData ClickSFX => ResourceManager.Instance.GetAsset<SFXData>("UIButtonSFX");
 
     public void Init(MapNodeData nodeData)
     {

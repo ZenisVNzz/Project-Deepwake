@@ -10,7 +10,7 @@ public class PlayerAttack : NetworkBehaviour, IDamageDealer
     private HitBoxController _hitBoxController;
 
     private PlayerNet PlayerNet;
-    private SFXData AttackSFX = ResourceManager.Instance.GetAsset<SFXData>("SlashSFX");
+    private SFXData AttackSFX => ResourceManager.Instance.GetAsset<SFXData>("SlashSFX");
 
     public float cooldown = 0.7f;
     public float lastAttackTime = -999f;

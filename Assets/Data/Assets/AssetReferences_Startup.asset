@@ -27,3 +27,4 @@ MonoBehaviour:
   _labels:
   - m_LabelString: Startup
   - m_LabelString: Material
+  - m_LabelString: SFX
