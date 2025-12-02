@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(IMovable))]
 [RequireComponent(typeof(IDashable))]
@@ -126,6 +127,8 @@ public class PlayerController : NetworkBehaviour, IPlayerController
 
     public event Action OnPlayerDead;
 
+    public Button DebugButton;
+
     public void Init()
     {
         interactionHandler = GetComponentInChildren<InteractionHandler>();    
@@ -152,6 +155,7 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         InputHandler.Player.OpenInventory.performed += ctx => OnOpenCharMenu();
         InputHandler.Player.OpenOptions.performed += ctx => OnOpenGameMenu();
         InputHandler.Player.OpenDebug.performed += ctx => DebugUI.Instance.ToggleDebugUI();
+        DebugButton.onClick.AddListener(() => DebugUI.Instance.ToggleDebugUI());
     }
 
     private void OnInteract()
