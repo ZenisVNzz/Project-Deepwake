@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: EnemySpawnTableDataBase
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnTableDataBase
   enemySpawnTables:
+  - {fileID: 11400000, guid: 25925464aebcbcf458aa4b6e359982b7, type: 2}
+  - {fileID: 11400000, guid: 8854986c5f8221c4793b7818238e81fa, type: 2}
   - {fileID: 11400000, guid: c557485be17c5ad459dded5db09adb47, type: 2}
