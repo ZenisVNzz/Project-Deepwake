@@ -15,6 +15,8 @@ public class PlayerDash : MonoBehaviour, IDashable
     private IPlayerRuntime _characterRuntime;
     private GhostTrail _ghostTrail;
 
+    private SFXData SFXData => ResourceManager.Instance.GetAsset<SFXData>("DashSFX");
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -35,6 +37,7 @@ public class PlayerDash : MonoBehaviour, IDashable
     {
         if (!_isDashing && _characterRuntime.UseStamina(_staminaCost))
         {
+            SFXManager.Instance.Play(SFXData, transform.position);
             if (_ghostTrail != null)
             {
                 _ghostTrail.StartTrail(0.2f);

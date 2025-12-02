@@ -19,7 +19,7 @@ public class CannonShoot
         this.cannonController = cannonController;
 
         bulletPrefab = ResourceManager.Instance.GetAsset<GameObject>("Ball");
-        cannonFireSFX = ResourceManager.Instance.GetAsset<SFXData>("CannonFire");
+        cannonFireSFX = ResourceManager.Instance.GetAsset<SFXData>("CannonFireSFX");
     }
 
     [Server]

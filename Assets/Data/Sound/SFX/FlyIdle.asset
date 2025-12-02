@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FlyIdle
   m_EditorClassIdentifier: Assembly-CSharp::SFXData
   clip: {fileID: 8300000, guid: 41d9e5418220fbf40b7481a46aec6fab, type: 3}
-  volume: 0.2
+  volume: 0.05
   pitch: 1
   loop: 0
   duration: 1

@@ -6977,6 +6977,7 @@ MonoBehaviour:
   luck: 0
   currentExp: 0
   expToNextLevel: 100
+  playerArchiveData: {fileID: 0}
 --- !u!114 &2614238347761736227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7050,7 +7051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Mirror.Components::Mirror.NetworkAnimator
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0
   clientAuthority: 1

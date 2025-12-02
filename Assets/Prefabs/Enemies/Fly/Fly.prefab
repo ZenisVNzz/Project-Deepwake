@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 1896581090225003650}
   - component: {fileID: 1086661137206785100}
   - component: {fileID: -4209282498677086294}
+  - component: {fileID: 1363906458110754860}
   m_Layer: 7
   m_Name: Fly
   m_TagString: Enemy
@@ -568,6 +569,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SFXTrigger
   sfx: {fileID: 11400000, guid: d298118dca3b71049911e81d93631ccf, type: 2}
+--- !u!114 &1363906458110754860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853017518195124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7125415b123fb9b4c931970e82421938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SFXPlay
 --- !u!1 &4779864766893373958
 GameObject:
   m_ObjectHideFlags: 0

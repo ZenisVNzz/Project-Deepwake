@@ -49,7 +49,7 @@ public class StartupProcessor : MonoBehaviour
         if (pipelineResult.Success)
         {
             Debug.Log("[Startup] Startup success.");
-            ResourceManager.Instance.ReleaseAssetReferences("Startup");
+            //ResourceManager.Instance.ReleaseAssetReferences("Startup");
             if (_offlineMode)
             {
                 EventManager.Instance.Trigger("UI_NextProgress");

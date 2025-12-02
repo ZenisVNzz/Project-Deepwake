@@ -8,6 +8,7 @@ public class EnemyCannonShoot
     private Transform spawnPos;
 
     private EnemyCannonController cannonController;
+    private SFXData SFXData => ResourceManager.Instance.GetAsset<SFXData>("CannonFireSFX");
 
     public EnemyCannonShoot(IEnemyCannonNavigation cannonNavigation, Transform spawnPos, EnemyCannonController cannonController)
     {
@@ -21,6 +22,7 @@ public class EnemyCannonShoot
     [Server]
     public void Shoot()
     {
+        SFXManager.Instance.Play(SFXData, spawnPos.position);
         GameObject bullet = GameObject.Instantiate(bulletPrefab, spawnPos.position, Quaternion.identity);
         CharacterRuntime characterRuntime = cannonController.CurEnemy.GetComponent<CharacterRuntime>();
         CannonDamageCal cannonDamageCal = new CannonDamageCal();

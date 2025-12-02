@@ -22,7 +22,7 @@ public class OptionsPopup : MonoBehaviour
 
     private void OnReturnToTitle()
     {
-        _ = SceneLoader.Instance.LoadScene("TitleScene", false);
+        _ = SceneLoader.Instance.LoadScene("Title", false);
     }
 
     private void OnQuitGame()

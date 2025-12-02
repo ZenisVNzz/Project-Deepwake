@@ -14,6 +14,8 @@ public class PlayerMovement : NetworkBehaviour, IMovable
 
     private IState playerState;
 
+    private SFXData SFXData => ResourceManager.Instance.GetAsset<SFXData>("PlayerWalkSFX");
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -87,5 +89,10 @@ public class PlayerMovement : NetworkBehaviour, IMovable
     public Vector2 GetDir()
     {
         return moveVelocity.normalized;
+    }
+
+    public void MoveSFX()
+    {
+        SFXManager.Instance.Play(SFXData, transform.position);
     }
 }
