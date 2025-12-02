@@ -151,6 +151,7 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         InputHandler.Player.Interact.performed += ctx => OnInteract();
         InputHandler.Player.OpenInventory.performed += ctx => OnOpenCharMenu();
         InputHandler.Player.OpenOptions.performed += ctx => OnOpenGameMenu();
+        InputHandler.Player.OpenDebug.performed += ctx => DebugUI.Instance.ToggleDebugUI();
     }
 
     private void OnInteract()
