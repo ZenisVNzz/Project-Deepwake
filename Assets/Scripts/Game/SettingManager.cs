@@ -157,11 +157,11 @@ public class SettingManager : MonoBehaviour
 
         if (volume == -30f)
         {
-            audioMixer.SetFloat("MasterVolume", -80f);
+            audioMixer.SetFloat("Master", -80f);
         }
         else
         {
-            audioMixer.SetFloat("MasterVolume", volume);
+            audioMixer.SetFloat("Master", volume);
         }
     }
 
@@ -171,11 +171,11 @@ public class SettingManager : MonoBehaviour
 
         if (volume == -30f)
         {
-            audioMixer.SetFloat("MusicVolume", -80f);
+            audioMixer.SetFloat("BGN", -80f);
         }
         else
         {
-            audioMixer.SetFloat("MusicVolume", volume);
+            audioMixer.SetFloat("BGM", volume);
         }
     }
 
@@ -185,12 +185,12 @@ public class SettingManager : MonoBehaviour
 
         if (volume == -30f)
         {
-            audioMixer.SetFloat("SFXVolume", -80f);
+            audioMixer.SetFloat("SFX", -80f);
 
         }
         else
         {
-            audioMixer.SetFloat("SFXVolume", volume);
+            audioMixer.SetFloat("SFX", volume);
         }
     }
 
