@@ -33,6 +33,9 @@ public class Chest : NetworkBehaviour
     [SyncVar] private bool _opened;
     private bool _lootSpawned;
 
+    [Header("SFX")]
+    private SFXData ChestOpenSFX = ResourceManager.Instance.GetAsset<SFXData>("ChestOpenSFX");
+
 
     public override void OnStartClient()
     {
@@ -68,7 +71,10 @@ public class Chest : NetworkBehaviour
         _opened = true;
 
         if (animator != null)
-            animator.Play("Chest_Open");
+        {
+            SFXManager.Instance.Play(ChestOpenSFX, transform.position);
+            animator.Play("Chest_Open");  
+        }
 
         if (lootSpawnDelay > 0f)
         {

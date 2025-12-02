@@ -84,4 +84,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.2
+    functionName: FlyDieSFX
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: d298118dca3b71049911e81d93631ccf, type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

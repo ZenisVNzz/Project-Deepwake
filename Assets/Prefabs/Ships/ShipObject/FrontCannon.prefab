@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 920816146465375125}
   - component: {fileID: 3389098460900208351}
   - component: {fileID: 4638697947009171899}
+  - component: {fileID: 3282817216927808978}
   m_Layer: 0
   m_Name: FrontCannon
   m_TagString: Untagged
@@ -636,6 +637,19 @@ MonoBehaviour:
   rotationSensitivity: 0.01
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &3282817216927808978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3805974597939556484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f2b07f151eda5469e1b65e91a96ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SFXTrigger
+  sfx: {fileID: 11400000, guid: fb6401f7cf531eb4ba45434c523ab5c0, type: 2}
 --- !u!1 &4269921978136163244
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class ShowOtherPopup : MonoBehaviour
     public GameObject currentPopup;
     public bool closeCurrentPopup = true;
 
+    private SFXData ClickSFX = ResourceManager.Instance.GetAsset<SFXData>("UIButtonSFX");
+
     void Start()
     {
         showPopupButton.onClick.AddListener(ShowPopup);
@@ -20,5 +22,6 @@ public class ShowOtherPopup : MonoBehaviour
         {
             currentPopup.SetActive(false);
         }
+        SFXManager.Instance.Play(ClickSFX, transform.position);
     }
 }

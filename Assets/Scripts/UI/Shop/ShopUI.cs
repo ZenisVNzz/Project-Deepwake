@@ -23,6 +23,7 @@ public class ShopUI : MonoBehaviour, IRuntimeUIService
     private IPlayerRuntime playerRuntime;
     private ShopCategories currentCategory;
 
+
     private void Awake()
     {
         UIManager.Instance.RuntimeUIServiceRegistry.Register(this);

@@ -80,6 +80,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.25
+    functionName: FlyAttackSFX
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: 2888c370225069b43982feb55287f412, type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.25
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}

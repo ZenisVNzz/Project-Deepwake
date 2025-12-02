@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [Header(" UI Panels")]
-    public GameObject optionPanel;  
-    
+    public GameObject optionPanel;
+
     public void Play()
     {
         SceneManager.LoadScene("GameScene");

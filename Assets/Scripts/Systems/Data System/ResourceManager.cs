@@ -159,4 +159,11 @@ public class ResourceManager : MonoBehaviour, IManager
             Debug.LogWarning($"[ResourceManager] No AssetReferences found with key: {key}");
         }
     }
+
+    //
+
+    public static T LoadResource<T>(string path) where T : Object
+    {
+        return Resources.Load<T>(path);
+    }
 }
