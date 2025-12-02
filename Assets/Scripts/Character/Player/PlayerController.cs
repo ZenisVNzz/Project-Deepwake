@@ -189,6 +189,7 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         CmdMove(clientInput);
     }
 
+    [Command]
     private void CmdMove(Vector2 input)
     {
         playerInput = input;
@@ -230,14 +231,13 @@ public class PlayerController : NetworkBehaviour, IPlayerController
 
     void Update()
     { 
-        if (!isLocalPlayer) return;
         stateHandler.UpdateState();
         animationHandler.UpdateAnimation();
     }
 
+    [Server]
     void FixedUpdate()
     {
-        if (!isLocalPlayer) return;
         if (!playerModifier.CanMove) playerInput = Vector2.zero;
         playerMovement.CmdMove(playerInput, playerRuntime.TotalSpeed, isMoveOnSlope); 
     }

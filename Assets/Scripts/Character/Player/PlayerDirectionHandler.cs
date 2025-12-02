@@ -81,7 +81,6 @@ public class PlayerDirectionHandler : NetworkBehaviour, ICharacterDirectionHandl
         return newDir;
     }
 
-    [Command]
     private void CmdSyncDirection(Direction direction)
     {
         lastDirection = direction;
