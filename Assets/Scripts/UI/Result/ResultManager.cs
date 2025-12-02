@@ -1,3 +1,4 @@
+using Mirror;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -43,11 +44,13 @@ public class ResultManager : MonoBehaviour
             }
         }
 
-        data.gameObject.GetComponent<CharacterUIManager>().ToggleUICanvas();
+        data.gameObject.GetComponent<CharacterUIManager>().ToggleUICanvas();       
     }
 
     public void OnConfirmButtonPressed()
     {
-        _ = SceneLoader.Instance.LoadScene("Title", false);
+        NetworkManager.singleton.StopHost();
+        _ = SceneLoader.Instance.LoadScene("Title", true);      
+        ResourceManager.Instance.ReleaseAssetReferences("InGame");
     }
 }
