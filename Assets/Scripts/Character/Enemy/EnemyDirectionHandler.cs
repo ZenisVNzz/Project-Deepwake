@@ -13,13 +13,27 @@ public class EnemyDirectionHandler : MonoBehaviour, ICharacterDirectionHandler
 
     public bool twoWayOnly; 
 
+    public enum DirectionMode { TwoWay, FourWayDiagonal, EightWay }
+
+    [SerializeField]
+    private DirectionMode directionMode = DirectionMode.FourWayDiagonal;
+
     private void Awake()
     {
         this.enemyMovement = GetComponent<IAIMove>();
         if (twoWayOnly)
         {
-            lastDirection = Direction.Right; 
+            directionMode = DirectionMode.TwoWay;
+        }
+        if (directionMode == DirectionMode.TwoWay)
+        {
+            lastDirection = Direction.Right;
             lastDirVector = Vector2.right;
+        }
+        else
+        {
+            lastDirection = Direction.DownLeft;
+            lastDirVector = Vector2.down;
         }
     }
 
@@ -55,12 +69,16 @@ public class EnemyDirectionHandler : MonoBehaviour, ICharacterDirectionHandler
                     dir = Vector2.left;
                     break;
                 default:
-                    dir = Vector2.zero;
+                    if (ForceDir == Direction.UpLeft) dir = (Vector2.up + Vector2.left).normalized;
+                    else if (ForceDir == Direction.UpRight) dir = (Vector2.up + Vector2.right).normalized;
+                    else if (ForceDir == Direction.DownLeft) dir = (Vector2.down + Vector2.left).normalized;
+                    else if (ForceDir == Direction.DownRight) dir = (Vector2.down + Vector2.right).normalized;
+                    else dir = Vector2.zero;
                     break;
             }
         }
 
-        if (twoWayOnly)
+        if (directionMode == DirectionMode.TwoWay)
         {
             if (Mathf.Abs(dir.x) < deadzone)
                 return lastDirection;
@@ -77,16 +95,41 @@ public class EnemyDirectionHandler : MonoBehaviour, ICharacterDirectionHandler
         if (angle < directionChangeThreshold)
             return lastDirection;
 
-        Direction newDir;
+        Direction newDir = lastDirection;
 
-        if (dir.x >= 0 && dir.y >= 0)
-            newDir = Direction.UpRight;
-        else if (dir.x < 0 && dir.y >= 0)
-            newDir = Direction.UpLeft;
-        else if (dir.x >= 0 && dir.y < 0)
-            newDir = Direction.DownRight;
+        if (directionMode == DirectionMode.FourWayDiagonal)
+        {
+            if (dir.x >= 0 && dir.y >= 0)
+                newDir = Direction.UpRight;
+            else if (dir.x < 0 && dir.y >= 0)
+                newDir = Direction.UpLeft;
+            else if (dir.x >= 0 && dir.y < 0)
+                newDir = Direction.DownRight;
+            else
+                newDir = Direction.DownLeft;
+        }
         else
-            newDir = Direction.DownLeft;
+        {
+            float x = Mathf.Abs(dir.x) < deadzone ? 0f : dir.x;
+            float y = Mathf.Abs(dir.y) < deadzone ? 0f : dir.y;
+
+            if (Mathf.Approximately(x, 0f) && y > 0f)
+                newDir = Direction.Up;
+            else if (Mathf.Approximately(x, 0f) && y < 0f)
+                newDir = Direction.Down;
+            else if (Mathf.Approximately(y, 0f) && x > 0f)
+                newDir = Direction.Right;
+            else if (Mathf.Approximately(y, 0f) && x < 0f)
+                newDir = Direction.Left;
+            else if (x > 0f && y > 0f)
+                newDir = Direction.UpRight;
+            else if (x < 0f && y > 0f)
+                newDir = Direction.UpLeft;
+            else if (x > 0f && y < 0f)
+                newDir = Direction.DownRight;
+            else
+                newDir = Direction.DownLeft;
+        }
 
         lastDirection = newDir;
         lastDirVector = dir.normalized;

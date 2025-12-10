@@ -31,7 +31,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.1
+        time: 0.05
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -52,14 +52,14 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -7730666272393688213, guid: 16660f9b91090ef4c954121a094a6172, type: 3}
-    - time: 0.1
+    - time: 0.05
       value: {fileID: -4312285689333886753, guid: 16660f9b91090ef4c954121a094a6172, type: 3}
     attribute: m_Sprite
     path: HeadCannon
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 10
+  m_SampleRate: 20
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -92,7 +92,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.2
+    m_StopTime: 0.1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -122,7 +122,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.1
+        time: 0.05
         value: 0
         inSlope: Infinity
         outSlope: Infinity

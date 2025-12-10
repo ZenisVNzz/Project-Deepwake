@@ -22,6 +22,12 @@ MonoBehaviour:
     m_Localized: "Ki\u1EBFm G\u1ED7"
     m_Metadata:
       m_Items: []
+  - m_Id: 8386552429993984
+    m_Localized: "M\u1ED9t thanh ki\u1EBFm g\u1ED7 b\xECnh th\u01B0\u1EDDng, d\xF9
+      c\xF3 h\u01A1i b\u1ECB s\u1EE9c m\u1EBB nh\u01B0ng t\u1ED1t h\u01A1n l\xE0
+      kh\xF4ng c\xF3 g\xEC"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

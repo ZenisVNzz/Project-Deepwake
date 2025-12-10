@@ -14,13 +14,14 @@ public class PlayerMovement : NetworkBehaviour, IMovable
 
     private IState playerState;
 
+    private SFXData SFXData => ResourceManager.Instance.GetAsset<SFXData>("PlayerWalkSFX");
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerState = GetComponent<PlayerController>().playerState;
     }
 
-    [Command]
     public void CmdMove(Vector2 input, float moveSpeed, bool isMoveOnSlope)
     {
         this.input = input;
@@ -43,7 +44,6 @@ public class PlayerMovement : NetworkBehaviour, IMovable
         moveVelocity = rb.linearVelocity;
     }
 
-    [Command]
     public void Move(float moveSpeed) => Debug.LogWarning("[PlayerMovement] input is missing.");
 
     private Vector2 ToIsometric(Vector2 input)
@@ -55,7 +55,6 @@ public class PlayerMovement : NetworkBehaviour, IMovable
         return iso.normalized;
     }
 
-    [Server]
     private void MoveAlongSlope(Vector2 dir, float moveSpeed, float speedModifier)
     {
         bool isReverse = GetComponent<PlayerController>().reverseSlope;
@@ -90,5 +89,10 @@ public class PlayerMovement : NetworkBehaviour, IMovable
     public Vector2 GetDir()
     {
         return moveVelocity.normalized;
+    }
+
+    public void MoveSFX()
+    {
+        SFXManager.Instance.Play(SFXData, transform.position);
     }
 }

@@ -25,6 +25,7 @@ public class CurrencyWallet
     private readonly Dictionary<CurrencyType, int> _balances = new Dictionary<CurrencyType, int>();
 
     public event Action<CurrencyType, int> OnCurrencyChanged;
+    public event Action<CurrencyType, int> OnCurrencyGain;
 
     public CurrencyWallet()
     {
@@ -64,6 +65,7 @@ public class CurrencyWallet
         if (current < 0) current = 0;
         _balances[type] = current;
         OnCurrencyChanged?.Invoke(type, current);
+        OnCurrencyGain?.Invoke(type, amount);
     }
 
     public int Gold => Get(CurrencyType.Gold);

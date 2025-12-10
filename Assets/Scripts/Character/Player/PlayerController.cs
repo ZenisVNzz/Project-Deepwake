@@ -1,7 +1,9 @@
 using Mirror;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(IMovable))]
 [RequireComponent(typeof(IDashable))]
@@ -123,6 +125,10 @@ public class PlayerController : NetworkBehaviour, IPlayerController
     private bool isDead = false;
     public bool IsDead => isDead;
 
+    public event Action OnPlayerDead;
+
+    public Button DebugButton;
+
     public void Init()
     {
         interactionHandler = GetComponentInChildren<InteractionHandler>();    
@@ -133,8 +139,6 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         stateHandler.Register("OnDeath", OnDead);
 
         _uiManager = FindAnyObjectByType<CharacterUIManager>();
-
-        ShipController.Instance.SetChild(this.transform, false);
     }
 
     public override void OnStartLocalPlayer()
@@ -150,6 +154,8 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         InputHandler.Player.Interact.performed += ctx => OnInteract();
         InputHandler.Player.OpenInventory.performed += ctx => OnOpenCharMenu();
         InputHandler.Player.OpenOptions.performed += ctx => OnOpenGameMenu();
+        InputHandler.Player.OpenDebug.performed += ctx => DebugUI.Instance.ToggleDebugUI();
+        DebugButton.onClick.AddListener(() => DebugUI.Instance.ToggleDebugUI());
     }
 
     private void OnInteract()
@@ -175,7 +181,7 @@ public class PlayerController : NetworkBehaviour, IPlayerController
 
     private void OnAttack()
     {
-        if (!isLocalPlayer) return;
+        if (!isLocalPlayer || !playerModifier.CanAttack) return;
         playerAttack.CmdAttack(playerRuntime.TotalAttack);
     }
 
@@ -208,10 +214,11 @@ public class PlayerController : NetworkBehaviour, IPlayerController
         playerDash.Dash();
     }
 
-    private void OnDead()
+    public void OnDead()
     {
         StartCoroutine(DeathProcess());
         isDead = true;
+        OnPlayerDead?.Invoke();
     }
 
     private IEnumerator DeathProcess()
@@ -228,14 +235,13 @@ public class PlayerController : NetworkBehaviour, IPlayerController
 
     void Update()
     { 
-        if (!isLocalPlayer) return;
         stateHandler.UpdateState();
         animationHandler.UpdateAnimation();
     }
 
+    [Server]
     void FixedUpdate()
     {
-        if (!isLocalPlayer) return;
         if (!playerModifier.CanMove) playerInput = Vector2.zero;
         playerMovement.CmdMove(playerInput, playerRuntime.TotalSpeed, isMoveOnSlope); 
     }

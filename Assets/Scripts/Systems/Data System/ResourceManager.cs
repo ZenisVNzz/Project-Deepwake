@@ -133,13 +133,10 @@ public class ResourceManager : MonoBehaviour, IManager
         {
             foreach (var assetReference in assetReferences.Assets)
             {
-                string runtimeKey = assetReference.RuntimeKey.ToString();
-                if (_loadedAssets.TryGetValue(runtimeKey, out AsyncOperationHandle handle))
-                {
-                    Addressables.Release(handle);
-                    _loadedAssets.Remove(runtimeKey);
-                    Debug.Log($"[ResourceManager] Released asset: {runtimeKey}");
-                }
+                string runtimeKey = assetReference.Asset.name;
+                assetReference.ReleaseAsset();
+                _loadedAssets.Remove(runtimeKey);
+                Debug.Log($"[ResourceManager] Released asset: {runtimeKey}");
             }
 
             foreach (var labelReference in assetReferences.Labels)
@@ -161,5 +158,12 @@ public class ResourceManager : MonoBehaviour, IManager
         {
             Debug.LogWarning($"[ResourceManager] No AssetReferences found with key: {key}");
         }
+    }
+
+    //
+
+    public static T LoadResource<T>(string path) where T : Object
+    {
+        return Resources.Load<T>(path);
     }
 }

@@ -46,6 +46,8 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
     private Equipment equipment;
     public Equipment PlayerEquipment => equipment;
 
+    public PlayerArchiveData playerArchiveData;
+
     public override void Init()
     {
         base.Init();
@@ -57,6 +59,9 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
         this.playerInventory = new Inventory();
         currencyWallet = new CurrencyWallet();
         equipment = new Equipment(this);
+
+        currencyWallet.OnCurrencyGain += OnGoldObtained;
+        playerArchiveData = GetComponent<PlayerArchiveData>();
     }
 
     private void StaminaSync(float oldValue, float newValue)
@@ -153,5 +158,10 @@ public class PlayerRuntime : CharacterRuntime, IPlayerRuntime
             yield return null;
         }
         _staminaRegenCoroutine = null;
+    }
+
+    private void OnGoldObtained(CurrencyType type, int amount)
+    {
+        playerArchiveData.goldObtained += amount;
     }
 }

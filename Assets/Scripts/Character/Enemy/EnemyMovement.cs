@@ -4,6 +4,14 @@ using PlayFab.MultiplayerModels;
 using System.Collections;
 using UnityEngine;
 
+public enum EnemyMoveState
+{
+    Idle,
+    ChasePlayer,
+    MoveToPoint,
+    Disabled
+}
+
 public class EnemyMovement : MonoBehaviour, IAIMove
 {
     private Transform target;
@@ -17,6 +25,15 @@ public class EnemyMovement : MonoBehaviour, IAIMove
     private Rigidbody2D rb;
 
     private bool haveReachedTarget = false;
+    public EnemyMoveState MoveState { get; private set; } = EnemyMoveState.Idle;
+    private Vector3 customTarget;
+
+    private bool canMove = true;
+    public bool CanMove
+    {
+        get { return canMove; }
+        set { canMove = value; }
+    }
 
     private void Awake()
     {
@@ -44,8 +61,10 @@ public class EnemyMovement : MonoBehaviour, IAIMove
 
     void UpdatePath()
     {
-        if (seeker.IsDone())
+        if (MoveState == EnemyMoveState.ChasePlayer)
             seeker.StartPath(rb.position, target.position, OnPathComplete);
+        else if (MoveState == EnemyMoveState.MoveToPoint)
+            seeker.StartPath(rb.position, customTarget, OnPathComplete);
     }
 
     void OnPathComplete(Path p)
@@ -59,6 +78,12 @@ public class EnemyMovement : MonoBehaviour, IAIMove
 
     public void Move(float moveSpeed)
     {
+        if (MoveState == EnemyMoveState.Disabled || MoveState == EnemyMoveState.Idle)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         if (path == null) return;
         if (currentWaypoint >= path.vectorPath.Count) return;
 
@@ -101,4 +126,28 @@ public class EnemyMovement : MonoBehaviour, IAIMove
     }
 
     public bool HaveReachedTarget () => haveReachedTarget;
+
+    public void SetIdle()
+    {
+        MoveState = EnemyMoveState.Idle;
+        rb.linearVelocity = Vector2.zero;
+    }
+
+    public void DisableMovement()
+    {
+        MoveState = EnemyMoveState.Disabled;
+        rb.linearVelocity = Vector2.zero;
+    }
+
+    public void EnableChasePlayer()
+    {
+        MoveState = EnemyMoveState.ChasePlayer;
+    }
+
+    public void MoveTo(Vector3 worldPos)
+    {
+        MoveState = EnemyMoveState.MoveToPoint;
+        customTarget = worldPos;
+        seeker.StartPath(rb.position, customTarget, OnPathComplete);
+    }
 }

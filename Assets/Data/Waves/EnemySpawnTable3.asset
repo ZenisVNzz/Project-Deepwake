@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d09778fd4a3e847b2132dd8125404e, type: 3}
+  m_Name: EnemySpawnTable3
+  m_EditorClassIdentifier: 
+  characterData:
+  - {fileID: 11400000, guid: ded899235730f7d4fb9dfda30f15e02f, type: 2}
+  minSpawn: 3
+  maxSpawn: 4

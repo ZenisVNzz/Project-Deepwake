@@ -44,7 +44,7 @@ public class EnemyController : NetworkBehaviour, IEnemyController
 
     public IStateHandler stateHandler
     {
-         get
+        get
         {
             return GetComponent<IStateHandler>();
         }
@@ -58,20 +58,24 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         }
     }
 
-    public ICharacterRuntime enemyRuntime
+    public EnemyRuntime enemyRuntime
     {
         get
         {
-            return GetComponent<ICharacterRuntime>();
+            return GetComponent<EnemyRuntime>();
         }
     }
 
-    private SpriteRenderer spriteRenderer;
-    private Collider2D cd2D;
-    private Collider2D hurtBox;
+    protected SpriteRenderer spriteRenderer;
+    protected Collider2D cd2D;
+    protected Collider2D hurtBox;
 
-    private bool isDead = false;
-    public bool IsDead => isDead;
+    protected bool isDead = false;
+    public bool IsDead
+    {
+        get { return isDead; }
+        set { isDead = value; }
+    }
 
     public void Init()
     {
@@ -88,7 +92,7 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         if (enemyMovement.HaveReachedTarget())
         {
             enemyAttack.CmdAttack(enemyRuntime.TotalAttack);
-        }      
+        }
     }
 
     [Server]
@@ -97,26 +101,23 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         if (enemyState.GetCurrentState() != CharacterStateType.Knockback && enemyState.GetCurrentState() != CharacterStateType.Death && enemyState.GetCurrentState() != CharacterStateType.Attacking)
         {
             enemyMovement.Move(enemyRuntime.TotalSpeed);
-        }      
+        }
     }
 
     [Server]
-    private void OnDead()
+    public virtual void OnDead()
     {
-        if (isDead) return;
-        isDead = true;
-
         RpcDeathEffect();
         StartCoroutine(ServerDeathProcess());
     }
 
     [ClientRpc]
-    private void RpcDeathEffect()
+    public virtual void RpcDeathEffect()
     {
         StartCoroutine(ClientDeathCoroutine());
     }
 
-    private IEnumerator ClientDeathCoroutine()
+    public virtual IEnumerator ClientDeathCoroutine()
     {
         cd2D.enabled = false;
         hurtBox.enabled = false;
@@ -126,7 +127,7 @@ public class EnemyController : NetworkBehaviour, IEnemyController
         spriteRenderer.DOFade(0f, 3f);
     }
 
-    private IEnumerator ServerDeathProcess()
+    public virtual IEnumerator ServerDeathProcess()
     {
         yield return new WaitForSeconds(6f);
 
@@ -134,9 +135,14 @@ public class EnemyController : NetworkBehaviour, IEnemyController
             NetworkServer.Destroy(gameObject);
     }
 
+    public void SetStatus(bool value)
+    {
+        isDead = value;
+    }
+
     void Update()
     {
-       
+
     }
 
     void FixedUpdate()
@@ -145,6 +151,8 @@ public class EnemyController : NetworkBehaviour, IEnemyController
 
         stateHandler.UpdateState();
         animationHandler.UpdateAnimation();
+
+        if (isDead) return;
         OnMove();
         OnAttack();
     }

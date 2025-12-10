@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: Items_WoodenSword
     m_Metadata:
       m_Items: []
+  - m_Id: 8386552429993984
+    m_Key: Items_WoodenSword_Des
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

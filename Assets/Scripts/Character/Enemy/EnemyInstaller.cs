@@ -1,6 +1,7 @@
 using Pathfinding;
+using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
-using static EnemyFlyingMovement;
 
 public class EnemyInstaller : CharacterInstaller
 {
@@ -9,6 +10,9 @@ public class EnemyInstaller : CharacterInstaller
     private ICharacterRuntime _enemyRuntime;
     private IEnemyController _enemyController;
     private Seeker _seeker;
+
+    public bool installOnEnemyShip = false;
+    public bool hasAwakeAnimation = false;
 
     public override void GetComponent()
     {
@@ -28,11 +32,18 @@ public class EnemyInstaller : CharacterInstaller
         _enemyController.Init();
     }
 
-    public override void InitCharacter()
+    public override async void InitCharacter()
     {
+        if (installOnEnemyShip)
+        {
+            EnemyShipController.Instance.SetChild(this.transform, true, false);
+        }
+        else
+        {
+            ShipController.Instance.SetChild(this.transform, true, false);
+        }
+
         GetComponent();
         InitComponent();
-
-        ShipController.Instance.SetChild(this.transform, true);
     }
 }

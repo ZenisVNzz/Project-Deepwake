@@ -39,6 +39,9 @@ public class PlayerAnimationHandler : NetworkBehaviour, IAnimationHandler
             case CharacterStateType.Attacking:
                 AttackProcess();
                 break;
+            case CharacterStateType.Death:
+                GetComponent<PlayerController>().OnDead();
+                break;
             default:
                 IdleProcess();
                 break;

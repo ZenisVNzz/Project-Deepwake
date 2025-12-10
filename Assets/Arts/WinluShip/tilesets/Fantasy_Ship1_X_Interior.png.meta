@@ -2106,7 +2106,7 @@ TextureImporter:
         width: 45
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2128,7 +2128,7 @@ TextureImporter:
         width: 78
         height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2150,7 +2150,7 @@ TextureImporter:
         width: 40
         height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2172,7 +2172,7 @@ TextureImporter:
         width: 45
         height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2181,6 +2181,28 @@ TextureImporter:
       bones: []
       spriteID: deee4be4ff0d7924aa3a519e7f0430b0
       internalID: 1517229747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fantasy_Ship1_X_Interior_83
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 530
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4f0aa5079897ee4c9250aabf7152519
+      internalID: 567896514
       vertices: []
       indices: 
       edges: []
@@ -2281,6 +2303,7 @@ TextureImporter:
       Fantasy_Ship1_X_Interior_80: 1691730139
       Fantasy_Ship1_X_Interior_81: -747196085
       Fantasy_Ship1_X_Interior_82: 1517229747
+      Fantasy_Ship1_X_Interior_83: 567896514
       Fantasy_Ship1_X_Interior_9: -8685639626727657919
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

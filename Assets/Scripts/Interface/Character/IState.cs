@@ -2,13 +2,15 @@ using UnityEngine;
 
 public enum CharacterStateType
 {
+    Awake,
     Idle,
     Running,
     Jumping,
     Falling,
     Knockback,
     Attacking,
-    Death
+    Death,
+    Revive
 }
 
 public interface IState

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : NetworkBehaviour
+public class SceneLoader : MonoBehaviour
 {   
     public static SceneLoader Instance;
     [SerializeField] private Animator transitionAnimator;

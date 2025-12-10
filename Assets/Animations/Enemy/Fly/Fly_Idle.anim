@@ -78,4 +78,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: PlaySFX
+    data: FlyIdleSFX
+    objectReferenceParameter: {fileID: 11400000, guid: 5409b7d334aae18468b71fbe3bbb7dec, type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

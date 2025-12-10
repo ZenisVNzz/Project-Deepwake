@@ -239,6 +239,86 @@ MonoBehaviour:
     m_Key: UI_Join
     m_Metadata:
       m_Items: []
+  - m_Id: 18026014936064000
+    m_Key: UI_AccountCenter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206807377502208
+    m_Key: UI_Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206841472999424
+    m_Key: UI_Register
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206866697543680
+    m_Key: UI_Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18291940176617472
+    m_Key: UI_OtherLogin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18856954126065664
+    m_Key: UI_Username
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18857043846422528
+    m_Key: UI_ConfirmPassword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083672822636544
+    m_Key: options_resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083768234663936
+    m_Key: options_maximun_screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083796974034944
+    m_Key: options_master_volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083822479597568
+    m_Key: options_music_volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083852426928128
+    m_Key: options_sfx_volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083981200449536
+    m_Key: options_languages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24084317717848064
+    m_Key: options_apply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24099878724100096
+    m_Key: UI_you_dead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100170974814208
+    m_Key: UI_gold_obtained
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100312499019776
+    m_Key: UI_item_obtained
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100383068184576
+    m_Key: UI_enemy_defeated
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100532574150656
+    m_Key: UI_total_damage_deal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100602858102784
+    m_Key: UI_total_damage_taken
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

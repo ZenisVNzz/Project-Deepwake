@@ -13,11 +13,15 @@ public class PlayerDash : MonoBehaviour, IDashable
     private Vector2 _dashDirection;
 
     private IPlayerRuntime _characterRuntime;
+    private GhostTrail _ghostTrail;
+
+    private SFXData SFXData => ResourceManager.Instance.GetAsset<SFXData>("DashSFX");
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _characterRuntime = GetComponent<IPlayerRuntime>();
+        _ghostTrail = GetComponent<GhostTrail>();
     }
 
     private async Task DaskCooldown()
@@ -33,6 +37,11 @@ public class PlayerDash : MonoBehaviour, IDashable
     {
         if (!_isDashing && _characterRuntime.UseStamina(_staminaCost))
         {
+            SFXManager.Instance.Play(SFXData, transform.position);
+            if (_ghostTrail != null)
+            {
+                _ghostTrail.StartTrail(0.2f);
+            }
             _dashDirection = _rb.linearVelocity.normalized;
             _rb.linearVelocity = _dashDirection * _dashForce;
 

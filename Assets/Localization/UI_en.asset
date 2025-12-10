@@ -244,6 +244,86 @@ MonoBehaviour:
     m_Localized: Join
     m_Metadata:
       m_Items: []
+  - m_Id: 18026014936064000
+    m_Localized: Account center
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206807377502208
+    m_Localized: Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206841472999424
+    m_Localized: Register
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18206866697543680
+    m_Localized: Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18291940176617472
+    m_Localized: Or login with
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18856954126065664
+    m_Localized: Username
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18857043846422528
+    m_Localized: Confirm password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083672822636544
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083768234663936
+    m_Localized: Full Screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083796974034944
+    m_Localized: Master Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083822479597568
+    m_Localized: Music Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083852426928128
+    m_Localized: Effect Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24083981200449536
+    m_Localized: Languages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24084317717848064
+    m_Localized: Apply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24099878724100096
+    m_Localized: You dead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100170974814208
+    m_Localized: Gold obtained
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100312499019776
+    m_Localized: Item obtained
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100383068184576
+    m_Localized: Enemy defeated
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100532574150656
+    m_Localized: Total damage dealt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24100602858102784
+    m_Localized: Total damage taken
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

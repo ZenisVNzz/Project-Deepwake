@@ -1,3 +1,4 @@
+using Assets.Scripts.Game.State;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class MapNodeData
 
     public void OnSelect()
     {
+        GameController.Instance.CurrentNode++;
         Debug.Log($"Selected node {nodeType.NodeTypes}");
         if (nodeType.NodeTypes == NodeTypes.Monster)
         {
@@ -21,6 +23,10 @@ public class MapNodeData
         else if (nodeType.NodeTypes == NodeTypes.Shop)
         {
             GameController.Instance.gameStateMachine.ChangeState<ShopStage>();
+        }
+        else if (nodeType.NodeTypes == NodeTypes.Boss)
+        {
+            GameController.Instance.gameStateMachine.ChangeState<BossState>();
         }
     }
 }

@@ -1,3 +1,4 @@
+using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,16 +25,24 @@ public class EnvironmentSpawner : MonoBehaviour
         }
     }
 
-    public void Spawn(string id, Vector3 offset, bool stopShip)
+    public GameObject Spawn(string id, Vector3 offset, bool stopShip, bool MoveToTarget)
     {
         Vector3 position = ship.position + offset;
-        GameObject enviromentGO = Instantiate(Prefabs[id]);
-        enviromentGO.transform.position = position;
+        GameObject enviromentGO = Instantiate(Prefabs[id], position, Quaternion.identity);
+        NetworkServer.Spawn(enviromentGO);
+
+        if (MoveToTarget)
+        {
+            ShipController shipController = ShipController.Instance;
+            shipController.MoveToX(position.x, true);
+        }
 
         if (stopShip)
         {
             ShipController shipController = ShipController.Instance;
             shipController.MoveToX(position.x + 1.5f, false);
         }
+
+        return enviromentGO;
     }
 }

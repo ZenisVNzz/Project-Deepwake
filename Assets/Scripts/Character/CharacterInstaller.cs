@@ -71,7 +71,7 @@ public class CharacterInstaller : NetworkBehaviour
             CmdRegisterCharacterRuntime();
         }
 
-        ShipController.Instance.SetChild(this.transform, false);
+        ShipController.Instance.SetChild(this.transform, false, true);
     }
 
     [Command]

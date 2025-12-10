@@ -2,6 +2,7 @@ using Mirror;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -20,6 +21,8 @@ public class PlayerNetManager : NetworkBehaviour
     public event Action<PlayerRuntime, bool> OnNewPlayerJoined;
     public event Action<PlayerRuntime, bool> OnPlayerLeft;
 
+    public GameObject resultUI;
+
     private void Awake()
     {
         if (Instance == null)
@@ -30,6 +33,27 @@ public class PlayerNetManager : NetworkBehaviour
         {
             Destroy(gameObject);
         }    
+    }
+
+    [Server]
+    private void OnPlayerDead()
+    {
+        Debug.Log("Checking all players status...");
+        List<PlayerController> Players = new List<PlayerController>();
+        Players = allCharacterRuntimes.Select(pr => pr.GetComponent<PlayerController>()).ToList();
+        if (Players.All(p => p.IsDead))
+        {
+            RpcShowResultUI();
+        }
+    }
+
+    [ClientRpc]
+    private void RpcShowResultUI()
+    {
+        if (resultUI != null)
+        {
+            resultUI.SetActive(true);
+        }
     }
 
     public override void OnStartClient()
@@ -110,6 +134,7 @@ public class PlayerNetManager : NetworkBehaviour
         if (!allCharacterRuntimes.Contains(characterRuntime))
         {
             allCharacterRuntimes.Add(characterRuntime);
+            characterRuntime.gameObject.GetComponent<PlayerController>().OnPlayerDead += OnPlayerDead;
         }
     }
 
@@ -119,6 +144,7 @@ public class PlayerNetManager : NetworkBehaviour
         if (allCharacterRuntimes.Contains(characterRuntime))
         {
             allCharacterRuntimes.Remove(characterRuntime);
+            characterRuntime.gameObject.GetComponent<PlayerController>().OnPlayerDead -= OnPlayerDead;
         }
     }
 }

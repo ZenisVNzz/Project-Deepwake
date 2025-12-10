@@ -190,6 +190,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenDebug"",
+                    ""type"": ""Button"",
+                    ""id"": ""d85b0f6f-2d18-4c80-9b17-bf8e812c69bc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -597,6 +606,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OpenOptions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5915570-3915-4d7d-ab02-30d997fcc2a0"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""OpenDebug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1329,6 +1349,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         m_Player_OpenOptions = m_Player.FindAction("OpenOptions", throwIfNotFound: true);
+        m_Player_OpenDebug = m_Player.FindAction("OpenDebug", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1439,6 +1460,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_OpenInventory;
     private readonly InputAction m_Player_OpenOptions;
+    private readonly InputAction m_Player_OpenDebug;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1494,6 +1516,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/OpenOptions".
         /// </summary>
         public InputAction @OpenOptions => m_Wrapper.m_Player_OpenOptions;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/OpenDebug".
+        /// </summary>
+        public InputAction @OpenDebug => m_Wrapper.m_Player_OpenDebug;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1553,6 +1579,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @OpenOptions.started += instance.OnOpenOptions;
             @OpenOptions.performed += instance.OnOpenOptions;
             @OpenOptions.canceled += instance.OnOpenOptions;
+            @OpenDebug.started += instance.OnOpenDebug;
+            @OpenDebug.performed += instance.OnOpenDebug;
+            @OpenDebug.canceled += instance.OnOpenDebug;
         }
 
         /// <summary>
@@ -1597,6 +1626,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @OpenOptions.started -= instance.OnOpenOptions;
             @OpenOptions.performed -= instance.OnOpenOptions;
             @OpenOptions.canceled -= instance.OnOpenOptions;
+            @OpenDebug.started -= instance.OnOpenDebug;
+            @OpenDebug.performed -= instance.OnOpenDebug;
+            @OpenDebug.canceled -= instance.OnOpenDebug;
         }
 
         /// <summary>
@@ -2092,6 +2124,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpenOptions(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenDebug" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenDebug(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

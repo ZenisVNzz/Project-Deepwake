@@ -10,6 +10,10 @@ public class PlayerAttack : NetworkBehaviour, IDamageDealer
     private HitBoxController _hitBoxController;
 
     private PlayerNet PlayerNet;
+    private SFXData AttackSFX => ResourceManager.Instance.GetAsset<SFXData>("SlashSFX");
+
+    public float cooldown = 0.7f;
+    public float lastAttackTime = -999f;
 
     public void Awake()
     {
@@ -21,16 +25,21 @@ public class PlayerAttack : NetworkBehaviour, IDamageDealer
     [Command]
     public void CmdAttack(float ATK)
     {
-        if (!GetComponent<PlayerController>().playerModifier.CanAttack) return;
+        if (Time.time < lastAttackTime + cooldown)
+            return;
+
+        lastAttackTime = Time.time;
 
         CharacterStateType state = _playerState.GetCurrentState();
         if (state != CharacterStateType.Attacking)
         {
             Dash();
             PlayerNet.ChangeState(CharacterStateType.Attacking);
+            SFXManager.Instance.Play(AttackSFX, transform.position);
         }
     }
 
+    [Server]
     public void Dash()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();

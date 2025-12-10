@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnvironmentList
   Prefabs:
   - {fileID: 1595781703453536364, guid: b699b0a32110fba4a86fa7e76a02553d, type: 3}
+  - {fileID: 6118800887438094242, guid: 5d26a72ad94ee8d42b995fc2e49e2feb, type: 3}

@@ -33,6 +33,9 @@ public class Chest : NetworkBehaviour
     [SyncVar] private bool _opened;
     private bool _lootSpawned;
 
+    [Header("SFX")]
+    private SFXData ChestOpenSFX => ResourceManager.Instance.GetAsset<SFXData>("ChestOpenSFX");
+
 
     public override void OnStartClient()
     {
@@ -68,19 +71,24 @@ public class Chest : NetworkBehaviour
         _opened = true;
 
         if (animator != null)
-            animator.Play("Chest_Open");
+        {
+            SFXManager.Instance.Play(ChestOpenSFX, transform.position);
+            animator.Play("Chest_Open");  
+        }
 
         if (lootSpawnDelay > 0f)
         {
             Invoke(nameof(SpawnLootOnce), lootSpawnDelay);
-            Invoke(nameof(DestroySelf), lootSpawnDelay + 1f);
+            Invoke(nameof(RpcFadeAndDestroy), lootSpawnDelay + 1f);
+            Invoke(nameof(DestroySelf), lootSpawnDelay + 2f);
         }
         else
         {
             var clips = animator != null ? animator.GetCurrentAnimatorClipInfo(0) : null;
             float delay = (clips != null && clips.Length > 0 && clips[0].clip != null) ? clips[0].clip.length : 0.7f;
             Invoke(nameof(SpawnLootOnce), delay);
-            Invoke(nameof(DestroySelf), delay + 1f);
+            Invoke(nameof(RpcFadeAndDestroy), delay + 1f);
+            Invoke(nameof(DestroySelf), 3f);
         }
     }
 
@@ -127,35 +135,12 @@ public class Chest : NetworkBehaviour
     [Server]
     private void DestroySelf()
     {
-        RpcFadeAndDestroy();
         NetworkServer.Destroy(gameObject);
     }
 
     [ClientRpc]
     private void RpcFadeAndDestroy()
     {
-        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
-        if (sr != null)
-            sr.DOFade(0f, 3f).OnComplete(() => Destroy(gameObject)); 
+        animator.Play("Chest_Hide");
     }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = new Color(1f, 0.85f, 0.2f, 0.4f);
-        Vector3 center = transform.position;
-        if (dropPoints != null)
-        {
-            foreach (var t in dropPoints)
-            {
-                if (t == null) continue;
-                Gizmos.DrawWireSphere(t.position, spawnRadius);
-            }
-        }
-        else
-        {
-            Gizmos.DrawWireSphere(center, spawnRadius);
-        }
-    }
-#endif
 }

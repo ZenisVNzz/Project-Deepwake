@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 
 public class CannonNavigation
 {
-    private float maxAngle = 40f;
-    private float acceleration = 150f;
-    private float deceleration = 200f;
+    private float maxAngle = 50f;
+    private float acceleration = 180f;
+    private float deceleration = 220f;
 
     private readonly float recoilDistance = 0.2f;
     private readonly float recoilReturnSpeed = 0.9f;
@@ -89,12 +89,12 @@ public class CannonNavigation
 
         if (isFront)
         {
-            var rotatedDir = Quaternion.Euler(0, 0, 4.2f) * baseDir;
+            var rotatedDir = Quaternion.Euler(0, 0, 0f) * baseDir;
             return rotatedDir.normalized;
         }
         else
         {
-            var rotatedDir = Quaternion.Euler(0, 0, -4.2f) * baseDir;
+            var rotatedDir = Quaternion.Euler(0, 0, -0f) * baseDir;
             return -rotatedDir.normalized;
         }
     }

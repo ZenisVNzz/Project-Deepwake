@@ -9,6 +9,7 @@ public class EnemyShooter : NetworkBehaviour
     [SerializeField] private GameObject projectilePrefab;
     private CharacterRuntime characterRuntime;
 
+
     private Transform player;
 
     private void Awake()
@@ -37,6 +38,8 @@ public class EnemyShooter : NetworkBehaviour
 
     public void Fire()
     {
+        if (!isServer)
+            return;
         if (projectilePrefab == null)
             return;
 
@@ -49,6 +52,7 @@ public class EnemyShooter : NetworkBehaviour
             direction.Normalize();
             rb.linearVelocity = firePoint.TransformDirection(direction) * 2.2f;
         }
+
 
         var proj = go.GetComponent<HitBoxHandler>();
         if (proj == null)

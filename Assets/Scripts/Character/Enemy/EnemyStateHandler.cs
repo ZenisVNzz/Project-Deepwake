@@ -21,16 +21,32 @@ public class EnemyStateHandler : NetworkBehaviour, IStateHandler
     {
         enemyState = GetComponent<EnemyController>().enemyState;
         this.rb = GetComponent<Rigidbody2D>();
+
+        EnemyInstaller enemyInstaller = GetComponent<EnemyInstaller>();
+        if (enemyInstaller.hasAwakeAnimation)
+        {
+            enemyState.ChangeState(CharacterStateType.Awake);
+        }
+        else
+        {
+            enemyState.ChangeState(CharacterStateType.Idle);
+        }
     }
 
     public void UpdateState()
     {   
+        if (enemyState.GetCurrentState() == CharacterStateType.Awake)
+        {
+            IAIMove aiMovement = GetComponent<IAIMove>();
+            aiMovement.CanMove = false;
+            return;
+        }
         if (enemyState.GetCurrentState() == CharacterStateType.Death)
         {
             Trigger("OnDeath");
             return;
         }
-        else if (enemyState.GetCurrentState() == CharacterStateType.Attacking)
+        else if (enemyState.GetCurrentState() == CharacterStateType.Attacking || enemyState.GetCurrentState() == CharacterStateType.Revive)
         {
             return;
         }

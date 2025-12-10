@@ -51,6 +51,7 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
     [SyncVar(hook = nameof(HPSync))] protected float hp;
     public float HP => hp;
     public event Action<float> OnHPChanged;
+    public event Action OnHit;
     protected float _hpRegenRate;   
 
     protected CharacterData characterData;
@@ -127,8 +128,20 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
 
             OnTakeDamage(FinalDamage);
 
-            hp -= FinalDamage; 
+            hp -= FinalDamage;
+
+            if (characterRuntime is PlayerRuntime player)
+            {
+                player.gameObject.GetComponent<PlayerArchiveData>().totalDamageDealt += FinalDamage;
+            }
+
+            if (this is PlayerRuntime selfPlayer)
+            {
+                selfPlayer.gameObject.GetComponent<PlayerArchiveData>().totalDamageTaken += FinalDamage;
+            }
+
             OnHPChanged?.Invoke(hp);
+            OnHit?.Invoke();
             if (_hpRegenCoroutine != null)
             {
                 StopCoroutine(_hpRegenCoroutine);
@@ -142,13 +155,24 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
                 {
                     playerRuntime.GainExp(characterData.ExpOnKill);
                     playerRuntime.CurrencyWallet.Add(CurrencyType.Gold, characterData.GoldOnKill);
+                    if (playerRuntime is PlayerRuntime _player)
+                    {
+                        _player.gameObject.GetComponent<PlayerArchiveData>().enemyDefeated++;
+                    }
                 }
             }
 
             if (characterState.GetCurrentState() != CharacterStateType.Attacking && characterState.GetCurrentState() != CharacterStateType.Death)
             {
                 rb.AddForce(knockback, ForceMode2D.Impulse);
-                PlayerNet.ChangeState(CharacterStateType.Knockback);
+                if (this is PlayerRuntime)
+                {
+                    PlayerNet.ChangeState(CharacterStateType.Knockback);
+                }   
+                else
+                {
+                    characterState.ChangeState(CharacterStateType.Knockback);
+                }
             }
 
             Debug.Log($"{gameObject} took {FinalDamage} damage, remaining HP: {hp}");
@@ -189,6 +213,11 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
         Debug.Log($"{gameObject} has died.");
     }
 
+    public void Revive()
+    {
+        hp = totalHealth;
+        OnHPChanged?.Invoke(hp);
+    }
     private IEnumerator RegenHP()
     {
         yield return new WaitForSeconds(2f);
@@ -208,5 +237,11 @@ public class CharacterRuntime : NetworkBehaviour, ICharacterRuntime
     protected void InvokeHPChanged(float newHP)
     {
         OnHPChanged?.Invoke(newHP);
+    }
+
+    [ContextMenu("Test Die")]
+    public void TestDie()
+    {
+        TakeDamage(99999, Vector3.zero);
     }
 }

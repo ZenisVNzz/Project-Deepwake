@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class ShopCategory
 {
-    public Category weaponCategoryData;
-    public Category chestplateCategoryData;
-    public Category ringCategoryData;
-    public Category necklaceCategoryData;
-    public Category specialCategoryData;
-    public Category otherCategoryData;
+    public Category weaponCategoryData = new Category();
+    public Category chestplateCategoryData = new Category();
+    public Category ringCategoryData = new Category();
+    public Category necklaceCategoryData = new Category();
+    public Category specialCategoryData = new Category();
+    public Category otherCategoryData = new Category();
 
     public ShopCategory() { }
 
