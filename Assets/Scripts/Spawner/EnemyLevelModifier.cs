@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class EnemyLevelModifier
 {
-    private float HPMultipler = 1.08f;
-    private float StaminaMultiplier = 1.01f;
-    private float AttackMultiplier = 1.05f;
-    private float DefenseMultiplier = 1.02f;
+    private float HPMultipler = 1.18f;
+    private float StaminaMultiplier = 1.11f;
+    private float AttackMultiplier = 1.15f;
+    private float DefenseMultiplier = 1.12f;
 
     public CharacterData ModifyStats(CharacterData charData, int level)
     {

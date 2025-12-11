@@ -17,7 +17,7 @@ MonoBehaviour:
   ExpOnKill: 25
   GoldOnKill: 10
   level: 1
-  HP: 30
+  HP: 40
   Stamina: 0
   AttackPower: 18
   Defense: 2
